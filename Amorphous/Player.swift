@@ -16,6 +16,7 @@ class Player: SKSpriteNode {
     }
     
     var currentState: State!
+    let IMPULSE_MAGNITUDE: CGFloat = 50
     
     init() {
         // Make a texture from an image, a color, and size
@@ -27,14 +28,14 @@ class Player: SKSpriteNode {
         super.init(texture: texture, color: color, size: size)
         
         // Set physics properties
-        self.physicsBody = SKPhysicsBody(circleOfRadius: size.width/2)
-        physicsBody?.categoryBitMask = 1
+        self.physicsBody = SKPhysicsBody(texture: self.texture!,
+                                           size: self.texture!.size())
         physicsBody?.friction = 0.6
         physicsBody?.mass = 0.5
         
         
         //turn off the gravity for now
-        physicsBody?.affectedByGravity = false
+        physicsBody?.affectedByGravity = true
         
         currentState = .liquid
         
@@ -71,6 +72,18 @@ class Player: SKSpriteNode {
         } else if(currentState.rawValue == 0) {
             //change to plasma state
         }
+        self.physicsBody = SKPhysicsBody(texture: self.texture!,
+                                         size: self.texture!.size())
     }
+    
+    func applyRightImpulse() {
+        self.physicsBody?.applyImpulse(CGVector(dx: IMPULSE_MAGNITUDE, dy: 0))
+    }
+    
+    func applyLeftImpulse() {
+        self.physicsBody?.applyImpulse(CGVector(dx: -1*IMPULSE_MAGNITUDE, dy: 0))
+
+    }
+    
 
 }

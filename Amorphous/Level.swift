@@ -61,6 +61,15 @@ class Level: SKScene {
             }
         }
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {        let location = (touches.first as! UITouch).location(in: self.view)
+        if location.x < (self.view?.bounds.size.width)!/2 {
+            // left code: will be run when the touch is on the left side
+            currentPlayer.applyRightImpulse()
+        } else {
+            // right code: will be run when the touch is on the right side
+            currentPlayer.applyLeftImpulse()
+        }
+    }
 
 
 }
