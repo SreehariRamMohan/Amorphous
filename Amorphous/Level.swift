@@ -1,5 +1,5 @@
 //
-//  Level_1.swift
+//  Level.swift
 //  Amorphous
 //
 //  Created by Sreehari Ram Mohan on 7/10/17.
@@ -8,9 +8,18 @@
 
 import Foundation
 import SpriteKit
+class Level: SKScene {
 
-class Level_1: Level {
+    override func didMove(to view: SKView) {
+    
+    }
     
     
     
+    override func update(_ currentTime: CFTimeInterval) {
+        
+        
+    }
+
+
 }

@@ -22,6 +22,7 @@
 		F76C41B11F13EBD000F84F43 /* LevelSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76C41B01F13EBD000F84F43 /* LevelSelect.swift */; };
 		F76C41B31F13FE6B00F84F43 /* Level_1.sks in Resources */ = {isa = PBXBuildFile; fileRef = F76C41B21F13FE6B00F84F43 /* Level_1.sks */; };
 		F76C41B51F13FE9800F84F43 /* Level_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76C41B41F13FE9800F84F43 /* Level_1.swift */; };
+		F76C41B81F14057E00F84F43 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76C41B71F14057E00F84F43 /* Level.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		F76C41B01F13EBD000F84F43 /* LevelSelect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelect.swift; sourceTree = "<group>"; };
 		F76C41B21F13FE6B00F84F43 /* Level_1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_1.sks; sourceTree = "<group>"; };
 		F76C41B41F13FE9800F84F43 /* Level_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_1.swift; sourceTree = "<group>"; };
+		F76C41B71F14057E00F84F43 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				F76C417E1F13DFB000F84F43 /* Forest.swift */,
 				F76C41AC1F13E67400F84F43 /* MSButtonNode.swift */,
 				F76C41801F13DFB000F84F43 /* GameViewController.swift */,
+				F76C41B71F14057E00F84F43 /* Level.swift */,
 				F76C41821F13DFB000F84F43 /* Main.storyboard */,
 				F76C41851F13DFB000F84F43 /* Assets.xcassets */,
 				F76C41871F13DFB000F84F43 /* LaunchScreen.storyboard */,
@@ -299,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F76C417F1F13DFB000F84F43 /* Forest.swift in Sources */,
+				F76C41B81F14057E00F84F43 /* Level.swift in Sources */,
 				F76C41811F13DFB000F84F43 /* GameViewController.swift in Sources */,
 				F76C41B51F13FE9800F84F43 /* Level_1.swift in Sources */,
 				F76C41B11F13EBD000F84F43 /* LevelSelect.swift in Sources */,

@@ -27,8 +27,32 @@ class LevelSelect: SKScene {
         setButtonCallbacks()
     }
     
-    func loadGame(level: Int) {
-    
+    func loadLevel(level: Int) {
+        /* Grab reference to our SpriteKit view */
+        guard let skView = self.view as SKView! else {
+            print("Could not get Skview")
+            return
+        }
+        
+        /* Load Game scene */
+        guard let scene = LevelSelect.level(level) else {
+            print("Could not load GameScene with level " + String(level))
+            return
+        }
+        
+        
+        
+        /* Ensure correct aspect mode */
+        scene.scaleMode = .aspectFit
+        
+        /* Show debug */
+        skView.showsPhysics = true
+        skView.showsDrawCount = true
+        skView.showsFPS = true
+        
+        /* Start game scene */
+        skView.presentScene(scene)
+
     }
     
     func initializeButtons(){
@@ -58,11 +82,13 @@ class LevelSelect: SKScene {
         
         button_level_1.selectedHandler = {
             //load level 1
+            self.loadLevel(level: 1)
             print("Going to level 1")
         }
         
         button_level_2.selectedHandler = {
             //load level 2
+            
         }
         
         button_level_3.selectedHandler = {
@@ -107,6 +133,16 @@ class LevelSelect: SKScene {
         /* Start game scene */
         skView.presentScene(scene)
 
+    }
+    
+    /* Make a Class method to load levels */
+    class func level(_ levelNumber: Int) -> Level? {
+        guard let scene = Level(fileNamed: "Level_\(levelNumber)") else {
+            return nil
+        }
+        
+        scene.scaleMode = .aspectFit
+        return scene
     }
     
     
