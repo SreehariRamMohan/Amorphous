@@ -1,5 +1,5 @@
 //
-//  GameScene.swift
+//  Forest.swift
 //  Amorphous
 //
 //  Created by Sreehari Ram Mohan on 7/10/17.
@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class Forest: SKScene {
     
     //create button variables
     var plant_button: MSButtonNode!
@@ -87,7 +87,7 @@ class GameScene: SKScene {
         
         /* Load Game scene */
         guard let scene = LevelSelect(fileNamed: "LevelSelect") else {
-            print("Could not load GameScene with level 1")
+            print("Could not load Forest with level 1")
             return
         }
         

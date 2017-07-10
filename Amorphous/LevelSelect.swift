@@ -12,6 +12,16 @@ class LevelSelect: SKScene {
     //create variables for UI elements
     var back_to_forest_button: MSButtonNode!
     
+    //button variables for chapter 1 levels 1 - 5
+    var button_level_1: MSButtonNode!
+    var button_level_2: MSButtonNode!
+    var button_level_3: MSButtonNode!
+    var button_level_4: MSButtonNode!
+    var button_level_5: MSButtonNode!
+    
+    //next chapter button variable
+    var button_next_chapter: MSButtonNode!
+
     override func didMove(to view: SKView) {
         initializeButtons()
         setButtonCallbacks()
@@ -22,13 +32,55 @@ class LevelSelect: SKScene {
     }
     
     func initializeButtons(){
+        //making a code connection with the buttons
+        
         back_to_forest_button = self.childNode(withName: "//back_to_forest_button") as! MSButtonNode
+        
+        button_next_chapter = self.childNode(withName: "//button_next_chapter") as! MSButtonNode
+        
+        button_level_1 = self.childNode(withName: "//button_level_1") as! MSButtonNode
+        
+        button_level_2 = self.childNode(withName: "//button_level_2") as! MSButtonNode
+        
+        button_level_2 = self.childNode(withName: "//button_level_2") as! MSButtonNode
+        
+        button_level_3 = self.childNode(withName: "//button_level_3") as! MSButtonNode
+        
+        button_level_4 = self.childNode(withName: "//button_level_4") as! MSButtonNode
+        
+        button_level_5 = self.childNode(withName: "//button_level_5") as! MSButtonNode
     }
     
     func setButtonCallbacks() {
         back_to_forest_button.selectedHandler = {
             self.load_forest()
         }
+        
+        button_level_1.selectedHandler = {
+            //load level 1
+            print("Going to level 1")
+        }
+        
+        button_level_2.selectedHandler = {
+            //load level 2
+        }
+        
+        button_level_3.selectedHandler = {
+            //load level 3
+        }
+        
+        button_level_4.selectedHandler = {
+            //load level 4
+        }
+        
+        button_level_5.selectedHandler = {
+            //load level 5
+        }
+        
+        button_next_chapter.selectedHandler = {
+            //load next chapter
+        }
+        
     }
     
     func load_forest(){
@@ -39,7 +91,7 @@ class LevelSelect: SKScene {
         }
         
         /* Load Game scene */
-        guard let scene = GameScene(fileNamed: "Forest") else {
+        guard let scene = Forest(fileNamed: "Forest") else {
             print("Could not load Forest")
             return
         }
