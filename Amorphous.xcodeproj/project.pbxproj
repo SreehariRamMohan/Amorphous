@@ -23,6 +23,7 @@
 		F76C41B31F13FE6B00F84F43 /* Level_1.sks in Resources */ = {isa = PBXBuildFile; fileRef = F76C41B21F13FE6B00F84F43 /* Level_1.sks */; };
 		F76C41B51F13FE9800F84F43 /* Level_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76C41B41F13FE9800F84F43 /* Level_1.swift */; };
 		F76C41B81F14057E00F84F43 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76C41B71F14057E00F84F43 /* Level.swift */; };
+		F76C41BA1F141DE800F84F43 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76C41B91F141DE800F84F43 /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		F76C41B21F13FE6B00F84F43 /* Level_1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_1.sks; sourceTree = "<group>"; };
 		F76C41B41F13FE9800F84F43 /* Level_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_1.swift; sourceTree = "<group>"; };
 		F76C41B71F14057E00F84F43 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		F76C41B91F141DE800F84F43 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				F76C41AC1F13E67400F84F43 /* MSButtonNode.swift */,
 				F76C41801F13DFB000F84F43 /* GameViewController.swift */,
 				F76C41B71F14057E00F84F43 /* Level.swift */,
+				F76C41B91F141DE800F84F43 /* Player.swift */,
 				F76C41821F13DFB000F84F43 /* Main.storyboard */,
 				F76C41851F13DFB000F84F43 /* Assets.xcassets */,
 				F76C41871F13DFB000F84F43 /* LaunchScreen.storyboard */,
@@ -230,6 +233,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = H9K3EBE8A3;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.DataProtection = {
+								enabled = 0;
+							};
+						};
 					};
 					F76C418E1F13DFB000F84F43 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -305,6 +313,7 @@
 				F76C41B81F14057E00F84F43 /* Level.swift in Sources */,
 				F76C41811F13DFB000F84F43 /* GameViewController.swift in Sources */,
 				F76C41B51F13FE9800F84F43 /* Level_1.swift in Sources */,
+				F76C41BA1F141DE800F84F43 /* Player.swift in Sources */,
 				F76C41B11F13EBD000F84F43 /* LevelSelect.swift in Sources */,
 				F76C41791F13DFB000F84F43 /* AppDelegate.swift in Sources */,
 				F76C41AD1F13E67400F84F43 /* MSButtonNode.swift in Sources */,
@@ -461,11 +470,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = H9K3EBE8A3;
 				INFOPLIST_FILE = Amorphous/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SreehariRamMohan.Amorphous;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -474,11 +485,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = H9K3EBE8A3;
 				INFOPLIST_FILE = Amorphous/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SreehariRamMohan.Amorphous;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
