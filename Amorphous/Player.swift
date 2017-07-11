@@ -16,8 +16,29 @@ class Player: SKSpriteNode {
     }
     
     var currentState: State!
-    let IMPULSE_MAGNITUDE: CGFloat = 50
+    let IMPULSE_MAGNITUDE: CGFloat = 100
+    let JUMP_MAGNITUDE: CGFloat = 100
     var currentLevel: Int!
+    
+    //friction values for the main character
+    var WATER_DROPLET_FRICTION_VALUE: CGFloat
+        = 0.7
+    var GAS_FRICTION_VALUE: CGFloat = 0
+    var ICE_CUBE_FRICTION_VALUE: CGFloat = 0.5
+    var PLASMA_FRICTION_VALUE: CGFloat! //not decided yet
+    
+    //Bitmask Constants for the Player
+    let ICE_COLLISION_BITMASK = 0
+    let ICE_CONTACT_BITMASK = 0
+    let ICE_CATEGORY_BITMASK = 2
+    
+    let WATER_COLLISION_BITMASK = 0
+    let WATER_CONTACT_BITMASK = 0
+    let WATER_CATEGORY_BITMASK = 1
+    
+    let GAS_COLLISION_BITMASK = 0
+    let GAS_CONTACT_BITMASK = 0
+    let GAS_CATEGORY_BITMASK = 4
     
     init() {
         // Make a texture from an image, a color, and size
@@ -31,17 +52,20 @@ class Player: SKSpriteNode {
         // Set physics properties
         self.physicsBody = SKPhysicsBody(texture: self.texture!,
                                            size: self.texture!.size())
-        physicsBody?.friction = 0.6
-        physicsBody?.mass = 0.5
         
+        physicsBody?.mass = 0.5
         
         //turn off the gravity for now
         physicsBody?.affectedByGravity = true
         
+        //set the default current state which is a liquid
         currentState = .liquid
         
+        //set the current level to 1
         currentLevel = 1
         
+        //set the friction according to the current state which is a water droplet
+        self.physicsBody?.friction = WATER_DROPLET_FRICTION_VALUE
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -66,15 +90,20 @@ class Player: SKSpriteNode {
         if(currentState.rawValue == 1) {
             //change to solid state
             self.texture = SKTexture(imageNamed:"ice_cube_image")
+            self.physicsBody?.friction = ICE_CUBE_FRICTION_VALUE
         } else if(currentState.rawValue == 2) {
             //change to liquid state
             self.texture = SKTexture(imageNamed:"water_droplet_image")
+            self.physicsBody?.friction = WATER_DROPLET_FRICTION_VALUE
         } else if(currentState.rawValue == 3) {
             //change to gas state
             self.texture = SKTexture(imageNamed:"water_vapor_image")
+            self.physicsBody?.friction = GAS_FRICTION_VALUE
         } else if(currentState.rawValue == 0) {
             //change to plasma state
         }
+        
+        //reset the physics body to fit the shape of the new texture
         self.physicsBody = SKPhysicsBody(texture: self.texture!,
                                          size: self.texture!.size())
     }
@@ -94,5 +123,22 @@ class Player: SKSpriteNode {
     
     func setCurrentLevel(level: Int) {
         self.currentLevel = level
+    }
+    
+    func update() {
+        //This update method is called from Level superclass before each frame is rendered.
+        if(currentState == State.gas) {
+            float()
+        }
+    }
+    
+    func float() {
+        self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 9.9))
+    }
+    
+    func jump() {
+        if(currentState == State.solid) {
+            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: JUMP_MAGNITUDE))
+        }
     }
 }

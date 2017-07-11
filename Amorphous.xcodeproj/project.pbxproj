@@ -24,6 +24,7 @@
 		F76C41B51F13FE9800F84F43 /* Level_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76C41B41F13FE9800F84F43 /* Level_1.swift */; };
 		F76C41B81F14057E00F84F43 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76C41B71F14057E00F84F43 /* Level.swift */; };
 		F76C41BA1F141DE800F84F43 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76C41B91F141DE800F84F43 /* Player.swift */; };
+		F76C41BD1F15468000F84F43 /* Sponge.sks in Resources */ = {isa = PBXBuildFile; fileRef = F76C41BC1F15468000F84F43 /* Sponge.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		F76C41B41F13FE9800F84F43 /* Level_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_1.swift; sourceTree = "<group>"; };
 		F76C41B71F14057E00F84F43 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		F76C41B91F141DE800F84F43 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		F76C41BC1F15468000F84F43 /* Sponge.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Sponge.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				F76C41851F13DFB000F84F43 /* Assets.xcassets */,
 				F76C41871F13DFB000F84F43 /* LaunchScreen.storyboard */,
 				F76C418A1F13DFB000F84F43 /* Info.plist */,
+				F76C41BE1F15469500F84F43 /* Obstacles */,
 				F76C41B61F13FEF100F84F43 /* Level_1 */,
 			);
 			path = Amorphous;
@@ -161,6 +164,14 @@
 				F76C41B41F13FE9800F84F43 /* Level_1.swift */,
 			);
 			name = Level_1;
+			sourceTree = "<group>";
+		};
+		F76C41BE1F15469500F84F43 /* Obstacles */ = {
+			isa = PBXGroup;
+			children = (
+				F76C41BC1F15468000F84F43 /* Sponge.sks */,
+			);
+			name = Obstacles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +294,7 @@
 				F76C41AF1F13EB3500F84F43 /* LevelSelect.sks in Resources */,
 				F76C41861F13DFB000F84F43 /* Assets.xcassets in Resources */,
 				F76C41891F13DFB000F84F43 /* LaunchScreen.storyboard in Resources */,
+				F76C41BD1F15468000F84F43 /* Sponge.sks in Resources */,
 				F76C41B31F13FE6B00F84F43 /* Level_1.sks in Resources */,
 				F76C417D1F13DFB000F84F43 /* Actions.sks in Resources */,
 			);

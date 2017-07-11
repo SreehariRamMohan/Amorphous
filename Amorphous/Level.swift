@@ -66,11 +66,13 @@ class Level: SKScene {
                 //the player is far below the screen, display the restart button
                 showRestartButton()
             }
-            cameraNode.position = currentPlayer.position
+            cameraNode.position.x = currentPlayer.position.x
+            cameraNode.position.y = currentPlayer.position.y + 95
         }
-        
-        
-        
+        if(currentPlayer != nil) {
+            //call the current player update method
+            currentPlayer.update()
+        }
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
@@ -85,6 +87,7 @@ class Level: SKScene {
                 print("Swiped left")
             case UISwipeGestureRecognizerDirection.up:
                 print("Swiped up")
+                currentPlayer.jump()
             default:
                 break
             }
@@ -102,8 +105,6 @@ class Level: SKScene {
     }
     
     func loadLevelSelect() {
-        button_back_to_level_select.isHidden = true
-    
         /* Grab reference to our SpriteKit view */
         guard let skView = self.view as SKView! else {
             print("Could not get Skview")
@@ -124,7 +125,8 @@ class Level: SKScene {
         skView.showsDrawCount = true
         skView.showsFPS = true
         
-        /* Start game scene */
+        /* Start game scene and hide the back_to_level_select button*/
+        button_back_to_level_select.isHidden = true
         skView.presentScene(scene)
     }
     
@@ -149,6 +151,7 @@ class Level: SKScene {
     }
     
     func buttonRestartLevel(sender: UIButton!) {
+        button_back_to_level_select.isHidden = true
         guard sender == button_restart_level else { return }
         // This function is called when button_back_to_level_select is pressed
         print("restarting level")
@@ -156,6 +159,7 @@ class Level: SKScene {
             print("Could not get Skview")
             return
         }
+        button_restart_level.isHidden = true
         guard let scene = Level(fileNamed: "Level_" + String(currentPlayer.getCurrentLevel())) else {
             return
         }
