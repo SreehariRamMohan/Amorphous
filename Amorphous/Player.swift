@@ -28,15 +28,15 @@ class Player: SKSpriteNode {
     var PLASMA_FRICTION_VALUE: CGFloat! //not decided yet
     
     //Bitmask Constants for the Player
-    let ICE_COLLISION_BITMASK = 0
+    let ICE_COLLISION_BITMASK = 1
     let ICE_CONTACT_BITMASK = 0
     let ICE_CATEGORY_BITMASK = 2
     
-    let WATER_COLLISION_BITMASK = 0
+    let WATER_COLLISION_BITMASK = 1
     let WATER_CONTACT_BITMASK = 0
     let WATER_CATEGORY_BITMASK = 1
     
-    let GAS_COLLISION_BITMASK = 0
+    let GAS_COLLISION_BITMASK = 1
     let GAS_CONTACT_BITMASK = 0
     let GAS_CATEGORY_BITMASK = 4
     
@@ -66,6 +66,11 @@ class Player: SKSpriteNode {
         
         //set the friction according to the current state which is a water droplet
         self.physicsBody?.friction = WATER_DROPLET_FRICTION_VALUE
+        
+        self.physicsBody?.friction = WATER_DROPLET_FRICTION_VALUE
+        self.physicsBody?.categoryBitMask = UInt32(WATER_CATEGORY_BITMASK)
+        self.physicsBody?.contactTestBitMask = UInt32(WATER_CONTACT_BITMASK)
+        self.physicsBody?.collisionBitMask = UInt32(WATER_COLLISION_BITMASK)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -90,22 +95,36 @@ class Player: SKSpriteNode {
         if(currentState.rawValue == 1) {
             //change to solid state
             self.texture = SKTexture(imageNamed:"ice_cube_image")
+            //reset the physics body to fit the shape of the new texture
+            self.physicsBody = SKPhysicsBody(texture: self.texture!,
+                                             size: self.texture!.size())
             self.physicsBody?.friction = ICE_CUBE_FRICTION_VALUE
+            self.physicsBody?.categoryBitMask = UInt32(ICE_CATEGORY_BITMASK)
+            self.physicsBody?.contactTestBitMask = UInt32(ICE_CONTACT_BITMASK)
+            self.physicsBody?.collisionBitMask = UInt32(ICE_COLLISION_BITMASK)
         } else if(currentState.rawValue == 2) {
             //change to liquid state
             self.texture = SKTexture(imageNamed:"water_droplet_image")
+            //reset the physics body to fit the shape of the new texture
+            self.physicsBody = SKPhysicsBody(texture: self.texture!,
+                                             size: self.texture!.size())
             self.physicsBody?.friction = WATER_DROPLET_FRICTION_VALUE
+            self.physicsBody?.categoryBitMask = UInt32(WATER_CATEGORY_BITMASK)
+            self.physicsBody?.contactTestBitMask = UInt32(WATER_CONTACT_BITMASK)
+            self.physicsBody?.collisionBitMask = UInt32(WATER_COLLISION_BITMASK)
         } else if(currentState.rawValue == 3) {
             //change to gas state
             self.texture = SKTexture(imageNamed:"water_vapor_image")
+            //reset the physics body to fit the shape of the new texture
+            self.physicsBody = SKPhysicsBody(texture: self.texture!,
+                                             size: self.texture!.size())
             self.physicsBody?.friction = GAS_FRICTION_VALUE
+            self.physicsBody?.categoryBitMask = UInt32(GAS_CATEGORY_BITMASK)
+            self.physicsBody?.contactTestBitMask = UInt32(GAS_CONTACT_BITMASK)
+            self.physicsBody?.collisionBitMask = UInt32(GAS_COLLISION_BITMASK)
         } else if(currentState.rawValue == 0) {
             //change to plasma state
         }
-        
-        //reset the physics body to fit the shape of the new texture
-        self.physicsBody = SKPhysicsBody(texture: self.texture!,
-                                         size: self.texture!.size())
     }
     
     func applyRightImpulse() {

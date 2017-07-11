@@ -8,7 +8,7 @@
 
 import Foundation
 import SpriteKit
-class Level: SKScene {
+class Level: SKScene, SKPhysicsContactDelegate {
 
     //a reference to the current player, value will be reassigned at the start of each Level
     var currentPlayer: Player!
@@ -17,7 +17,25 @@ class Level: SKScene {
     
     var button_back_to_level_select: UIButton!
     var button_restart_level: UIButton!
+    
+    //Bitmask Constants for the Player
+    let ICE_COLLISION_BITMASK = 1
+    let ICE_CONTACT_BITMASK = 0
+    let ICE_CATEGORY_BITMASK = 2
+    
+    let WATER_COLLISION_BITMASK = 1
+    let WATER_CONTACT_BITMASK = 0
+    let WATER_CATEGORY_BITMASK = 1
+    
+    let GAS_COLLISION_BITMASK = 1
+    let GAS_CONTACT_BITMASK = 0
+    let GAS_CATEGORY_BITMASK = 4
 
+    //Obstacle/Object Bitmask Constants
+    let SPONGE_CATEGORY_BITMASK = 8
+    let SPONGE_COLLISION_BITMASK = 2
+    let SPONGE_CONTACT_BITMASK = 1
+    
         
     override func didMove(to view: SKView) {
         //create a swipe down action, and link Level class to recieve the notification.
@@ -46,6 +64,10 @@ class Level: SKScene {
         //add a back_to_level_select and restart button to the scene without having it be moved by camera
         addBackToLevelUIButton()
         addRestartButton()
+        
+        //Have the world notify Level.swift to give contact information
+        physicsWorld.contactDelegate = self
+
     }
     
     func buttonLoadLevelSelect(sender: UIButton!) {
@@ -74,16 +96,13 @@ class Level: SKScene {
             currentPlayer.update()
         }
         
+        //Loop over all of the children recursively which have name Sponge and call their update functions.
         self.enumerateChildNodes(withName: "//Sponge") {
             node, stop in
             let Sponge = node as! Sponge
-            // Your enemy movement/update code here
-            print("here")
-            Sponge.sayHi()
+            // calling the sponge's update functions
+            Sponge.update()
         }
-        
-        
-        
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
@@ -181,5 +200,26 @@ class Level: SKScene {
     
     func showRestartButton() {
         self.button_restart_level.isHidden = false
+    }
+    
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        /* Physics contact delegate implementation */
+        /* Get references to the bodies involved in the collision */
+        let contactA:SKPhysicsBody = contact.bodyA
+        let contactB:SKPhysicsBody = contact.bodyB
+        /* Get references to the physics body parent SKSpriteNode */
+        let nodeA = contactA.node as! SKSpriteNode
+        let nodeB = contactB.node as! SKSpriteNode
+        /* Check the physics bodies category bitmasks to determine their name */
+        print("in contact method")
+        print(contactA.categoryBitMask)
+        print(contactB.categoryBitMask)
+        print("-----------------------")
+        if(contactA.categoryBitMask == UInt32(SPONGE_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(WATER_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(SPONGE_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(WATER_CATEGORY_BITMASK)) {
+            print("contact between sponge and water")
+        }
+        
+        
     }
 }

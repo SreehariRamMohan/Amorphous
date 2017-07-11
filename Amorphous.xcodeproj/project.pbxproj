@@ -27,6 +27,7 @@
 		F76C41BD1F15468000F84F43 /* Sponge.sks in Resources */ = {isa = PBXBuildFile; fileRef = F76C41BC1F15468000F84F43 /* Sponge.sks */; };
 		F76C41C01F156CE300F84F43 /* Window.sks in Resources */ = {isa = PBXBuildFile; fileRef = F76C41BF1F156CE300F84F43 /* Window.sks */; };
 		F76C41C21F15706F00F84F43 /* Sponge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76C41C11F15706F00F84F43 /* Sponge.swift */; };
+		F76C41C51F15811700F84F43 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76C41C41F15811700F84F43 /* Window.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		F76C41BC1F15468000F84F43 /* Sponge.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Sponge.sks; sourceTree = "<group>"; };
 		F76C41BF1F156CE300F84F43 /* Window.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Window.sks; sourceTree = "<group>"; };
 		F76C41C11F15706F00F84F43 /* Sponge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sponge.swift; sourceTree = "<group>"; };
+		F76C41C41F15811700F84F43 /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,7 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				F76C41C31F15707600F84F43 /* Sponge */,
-				F76C41BF1F156CE300F84F43 /* Window.sks */,
+				F76C41C61F15811F00F84F43 /* Window */,
 			);
 			name = Obstacles/Objects;
 			sourceTree = "<group>";
@@ -186,6 +188,15 @@
 				F76C41C11F15706F00F84F43 /* Sponge.swift */,
 			);
 			name = Sponge;
+			sourceTree = "<group>";
+		};
+		F76C41C61F15811F00F84F43 /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				F76C41BF1F156CE300F84F43 /* Window.sks */,
+				F76C41C41F15811700F84F43 /* Window.swift */,
+			);
+			name = Window;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F76C417F1F13DFB000F84F43 /* Forest.swift in Sources */,
+				F76C41C51F15811700F84F43 /* Window.swift in Sources */,
 				F76C41B81F14057E00F84F43 /* Level.swift in Sources */,
 				F76C41C21F15706F00F84F43 /* Sponge.swift in Sources */,
 				F76C41811F13DFB000F84F43 /* GameViewController.swift in Sources */,
