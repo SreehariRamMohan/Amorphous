@@ -28,7 +28,7 @@ class Player: SKSpriteNode {
     var PLASMA_FRICTION_VALUE: CGFloat! //not decided yet
     
     //Bitmask Constants for the Player
-    let ICE_COLLISION_BITMASK = 1
+    let ICE_COLLISION_BITMASK = 8
     let ICE_CONTACT_BITMASK = 0
     let ICE_CATEGORY_BITMASK = 2
     
