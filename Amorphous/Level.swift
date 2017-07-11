@@ -73,6 +73,17 @@ class Level: SKScene {
             //call the current player update method
             currentPlayer.update()
         }
+        
+        self.enumerateChildNodes(withName: "//Sponge") {
+            node, stop in
+            let Sponge = node as! Sponge
+            // Your enemy movement/update code here
+            print("here")
+            Sponge.sayHi()
+        }
+        
+        
+        
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {

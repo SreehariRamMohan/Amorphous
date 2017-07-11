@@ -25,6 +25,8 @@
 		F76C41B81F14057E00F84F43 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76C41B71F14057E00F84F43 /* Level.swift */; };
 		F76C41BA1F141DE800F84F43 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76C41B91F141DE800F84F43 /* Player.swift */; };
 		F76C41BD1F15468000F84F43 /* Sponge.sks in Resources */ = {isa = PBXBuildFile; fileRef = F76C41BC1F15468000F84F43 /* Sponge.sks */; };
+		F76C41C01F156CE300F84F43 /* Window.sks in Resources */ = {isa = PBXBuildFile; fileRef = F76C41BF1F156CE300F84F43 /* Window.sks */; };
+		F76C41C21F15706F00F84F43 /* Sponge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76C41C11F15706F00F84F43 /* Sponge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		F76C41B71F14057E00F84F43 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		F76C41B91F141DE800F84F43 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		F76C41BC1F15468000F84F43 /* Sponge.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Sponge.sks; sourceTree = "<group>"; };
+		F76C41BF1F156CE300F84F43 /* Window.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Window.sks; sourceTree = "<group>"; };
+		F76C41C11F15706F00F84F43 /* Sponge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sponge.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +137,7 @@
 				F76C41851F13DFB000F84F43 /* Assets.xcassets */,
 				F76C41871F13DFB000F84F43 /* LaunchScreen.storyboard */,
 				F76C418A1F13DFB000F84F43 /* Info.plist */,
-				F76C41BE1F15469500F84F43 /* Obstacles */,
+				F76C41BE1F15469500F84F43 /* Obstacles/Objects */,
 				F76C41B61F13FEF100F84F43 /* Level_1 */,
 			);
 			path = Amorphous;
@@ -166,12 +170,22 @@
 			name = Level_1;
 			sourceTree = "<group>";
 		};
-		F76C41BE1F15469500F84F43 /* Obstacles */ = {
+		F76C41BE1F15469500F84F43 /* Obstacles/Objects */ = {
+			isa = PBXGroup;
+			children = (
+				F76C41C31F15707600F84F43 /* Sponge */,
+				F76C41BF1F156CE300F84F43 /* Window.sks */,
+			);
+			name = Obstacles/Objects;
+			sourceTree = "<group>";
+		};
+		F76C41C31F15707600F84F43 /* Sponge */ = {
 			isa = PBXGroup;
 			children = (
 				F76C41BC1F15468000F84F43 /* Sponge.sks */,
+				F76C41C11F15706F00F84F43 /* Sponge.swift */,
 			);
-			name = Obstacles;
+			name = Sponge;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +307,7 @@
 				F76C417B1F13DFB000F84F43 /* Forest.sks in Resources */,
 				F76C41AF1F13EB3500F84F43 /* LevelSelect.sks in Resources */,
 				F76C41861F13DFB000F84F43 /* Assets.xcassets in Resources */,
+				F76C41C01F156CE300F84F43 /* Window.sks in Resources */,
 				F76C41891F13DFB000F84F43 /* LaunchScreen.storyboard in Resources */,
 				F76C41BD1F15468000F84F43 /* Sponge.sks in Resources */,
 				F76C41B31F13FE6B00F84F43 /* Level_1.sks in Resources */,
@@ -323,6 +338,7 @@
 			files = (
 				F76C417F1F13DFB000F84F43 /* Forest.swift in Sources */,
 				F76C41B81F14057E00F84F43 /* Level.swift in Sources */,
+				F76C41C21F15706F00F84F43 /* Sponge.swift in Sources */,
 				F76C41811F13DFB000F84F43 /* GameViewController.swift in Sources */,
 				F76C41B51F13FE9800F84F43 /* Level_1.swift in Sources */,
 				F76C41BA1F141DE800F84F43 /* Player.swift in Sources */,
