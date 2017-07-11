@@ -17,6 +17,7 @@ class Player: SKSpriteNode {
     
     var currentState: State!
     let IMPULSE_MAGNITUDE: CGFloat = 50
+    var currentLevel: Int!
     
     init() {
         // Make a texture from an image, a color, and size
@@ -38,6 +39,8 @@ class Player: SKSpriteNode {
         physicsBody?.affectedByGravity = true
         
         currentState = .liquid
+        
+        currentLevel = 1
         
     }
     
@@ -85,5 +88,11 @@ class Player: SKSpriteNode {
 
     }
     
-
+    func getCurrentLevel() -> Int {
+        return currentLevel
+    }
+    
+    func setCurrentLevel(level: Int) {
+        self.currentLevel = level
+    }
 }

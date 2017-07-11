@@ -16,6 +16,7 @@ class Level: SKScene {
     let cameraNode = SKCameraNode()
     
     var button_back_to_level_select: UIButton!
+    var button_restart_level: UIButton!
 
         
     override func didMove(to view: SKView) {
@@ -42,10 +43,12 @@ class Level: SKScene {
         //adds cameraNode to the scene's camera
         self.camera = cameraNode
         
+        //add a back_to_level_select and restart button to the scene without having it be moved by camera
         addBackToLevelUIButton()
+        addRestartButton()
     }
     
-    func buttonAction(sender: UIButton!) {
+    func buttonLoadLevelSelect(sender: UIButton!) {
         guard sender == button_back_to_level_select else { return }
         // This function is called when button_back_to_level_select is pressed
         self.loadLevelSelect()
@@ -59,8 +62,14 @@ class Level: SKScene {
     override func update(_ currentTime: CFTimeInterval) {
         
         if(currentPlayer != nil && currentPlayer?.position != nil) {
+            if(cameraNode.position.y < -2*UIScreen.main.bounds.width){
+                //the player is far below the screen, display the restart button
+                showRestartButton()
+            }
             cameraNode.position = currentPlayer.position
         }
+        
+        
         
     }
     
@@ -121,11 +130,41 @@ class Level: SKScene {
     
     func addBackToLevelUIButton() {
         let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
-        btn.addTarget(self, action: #selector(Level.buttonAction), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(Level.buttonLoadLevelSelect), for: .touchUpInside)
         self.view?.addSubview(btn)
         button_back_to_level_select = btn
         let btnImage = UIImage(named: "button_back_to_level_select")
         button_back_to_level_select.setImage(btnImage , for: [])
         button_back_to_level_select.isHidden = false
+    }
+    
+    func addRestartButton() {
+        let btn = UIButton(frame: CGRect(x: UIScreen.main.bounds.width/2 - 100, y: UIScreen.main.bounds.height/2 - 25, width: 200, height: 50))
+        btn.addTarget(self, action: #selector(Level.buttonRestartLevel), for: .touchUpInside)
+        self.view?.addSubview(btn)
+        button_restart_level = btn
+        let btnImage = UIImage(named: "button_restart_level")
+        button_restart_level.setImage(btnImage , for: [])
+        button_restart_level.isHidden = true
+    }
+    
+    func buttonRestartLevel(sender: UIButton!) {
+        guard sender == button_restart_level else { return }
+        // This function is called when button_back_to_level_select is pressed
+        print("restarting level")
+        guard let skView = self.view as SKView! else{
+            print("Could not get Skview")
+            return
+        }
+        guard let scene = Level(fileNamed: "Level_" + String(currentPlayer.getCurrentLevel())) else {
+            return
+        }
+        scene.scaleMode = .aspectFit
+        button_restart_level.isHidden = true
+        skView.presentScene(scene)
+    }
+    
+    func showRestartButton() {
+        self.button_restart_level.isHidden = false
     }
 }
