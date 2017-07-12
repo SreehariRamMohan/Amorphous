@@ -105,26 +105,76 @@ class Player: SKSpriteNode {
             self.physicsBody?.categoryBitMask = UInt32(ICE_CATEGORY_BITMASK)
             self.physicsBody?.contactTestBitMask = UInt32(ICE_CONTACT_BITMASK)
             self.physicsBody?.collisionBitMask = UInt32(ICE_COLLISION_BITMASK)
+            
+            /* Create a CLOSURE to safely keep the ice cube the same scale as the shrunken down water droplet */
+            let scalePhysicsBody = SKAction.run({
+                /* Scale the currentPlayer.physics body in the scene */
+                //reset the physics body after scaling main character down
+                let currSize = self.texture!.size()
+                print("Default size is => " + String(describing: currSize))
+                let currXSize = currSize.width * self.xScale
+                let currYSize = currSize.height * self.yScale
+                let newSize: CGSize = CGSize(width: currXSize, height: currYSize)
+                print("New Size is => " + String(describing: newSize))
+                self.physicsBody = SKPhysicsBody(texture: self.texture!,size: newSize)
+                
+                //reset the bitmasks for the player
+                self.physicsBody?.friction = CGFloat(CollisionManager.ICE_CUBE_FRICTION_VALUE)
+                self.physicsBody?.categoryBitMask = UInt32(self.ICE_CATEGORY_BITMASK)
+                self.physicsBody?.contactTestBitMask = UInt32(self.ICE_CONTACT_BITMASK)
+                self.physicsBody?.collisionBitMask = UInt32(self.ICE_COLLISION_BITMASK)
+            })
+            self.run(scalePhysicsBody)
         } else if(currentState.rawValue == 2) {
             //change to liquid state
             self.texture = SKTexture(imageNamed:"water_droplet_image")
-            //reset the physics body to fit the shape of the new texture
-            self.physicsBody = SKPhysicsBody(texture: self.texture!,
-                                             size: self.texture!.size())
-            self.physicsBody?.friction = WATER_DROPLET_FRICTION_VALUE
-            self.physicsBody?.categoryBitMask = UInt32(WATER_CATEGORY_BITMASK)
-            self.physicsBody?.contactTestBitMask = UInt32(WATER_CONTACT_BITMASK)
-            self.physicsBody?.collisionBitMask = UInt32(WATER_COLLISION_BITMASK)
+            /* Create a CLOSURE to safely keep the water droplet the same scale as the shrunken down water droplet after player changes state after decreasing scale */
+            let scalePhysicsBody = SKAction.run({
+                /* Scale the currentPlayer.physics body in the scene */
+                //reset the physics body after scaling main character down
+                let currSize = self.texture!.size()
+                print("Default size is => " + String(describing: currSize))
+                let currXSize = currSize.width * self.xScale
+                let currYSize = currSize.height * self.yScale
+                let newSize: CGSize = CGSize(width: currXSize, height: currYSize)
+                print("New Size is => " + String(describing: newSize))
+                self.physicsBody = SKPhysicsBody(texture: self.texture!,size: newSize)
+                
+                //reset the bitmasks for the player
+                self.physicsBody?.friction = CGFloat(CollisionManager.WATER_DROPLET_FRICTION_VALUE)
+                self.physicsBody?.categoryBitMask = UInt32(self.WATER_CATEGORY_BITMASK)
+                self.physicsBody?.contactTestBitMask = UInt32(self.WATER_CONTACT_BITMASK)
+                self.physicsBody?.collisionBitMask = UInt32(self.WATER_COLLISION_BITMASK)
+            })
+            self.run(scalePhysicsBody)
         } else if(currentState.rawValue == 3) {
             //change to gas state
             self.texture = SKTexture(imageNamed:"water_vapor_image")
+            
             //reset the physics body to fit the shape of the new texture
-            self.physicsBody = SKPhysicsBody(texture: self.texture!,
-                                             size: self.texture!.size())
-            self.physicsBody?.friction = GAS_FRICTION_VALUE
-            self.physicsBody?.categoryBitMask = UInt32(GAS_CATEGORY_BITMASK)
-            self.physicsBody?.contactTestBitMask = UInt32(GAS_CONTACT_BITMASK)
-            self.physicsBody?.collisionBitMask = UInt32(GAS_COLLISION_BITMASK)
+            
+            /* Create a CLOSURE to safely keep the gas the same scale as the shrunken down water droplet */
+            let scalePhysicsBody = SKAction.run({
+                /* Scale the currentPlayer.physics body in the scene */
+                //reset the physics body after scaling main character down
+                let currSize = self.texture!.size()
+                print("Default size is => " + String(describing: currSize))
+                let currXSize = currSize.width * self.xScale
+                let currYSize = currSize.height * self.yScale
+                let newSize: CGSize = CGSize(width: currXSize, height: currYSize)
+                print("New Size is => " + String(describing: newSize))
+                self.physicsBody = SKPhysicsBody(texture: self.texture!,size: newSize)
+                
+                //reset the bitmasks for the player
+                self.physicsBody?.friction = CGFloat(CollisionManager.GAS_FRICTION_VALUE)
+                self.physicsBody?.categoryBitMask = UInt32(self.GAS_CATEGORY_BITMASK)
+                self.physicsBody?.contactTestBitMask = UInt32(self.GAS_CONTACT_BITMASK)
+                self.physicsBody?.collisionBitMask = UInt32(self.GAS_COLLISION_BITMASK)
+            })
+            self.run(scalePhysicsBody)
+
+            
+            
         } else if(currentState.rawValue == 0) {
             //change to plasma state
         }
