@@ -21,7 +21,9 @@ class LevelSelect: SKScene {
     
     //next chapter button variable
     var button_next_chapter: MSButtonNode!
-
+    
+    static var current_level = 1
+    
     override func didMove(to view: SKView) {
         initializeButtons()
         setButtonCallbacks()
@@ -144,7 +146,4 @@ class LevelSelect: SKScene {
         scene.scaleMode = .aspectFit
         return scene
     }
-    
-    
-    
 }

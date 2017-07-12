@@ -84,15 +84,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: CFTimeInterval) {
         
-        if(currentPlayer != nil && currentPlayer?.position != nil) {
-            if(cameraNode.position.y < -2*UIScreen.main.bounds.width){
-                //the player is far below the screen, display the restart button
-                showRestartButton()
-            }
-            cameraNode.position.x = currentPlayer.position.x
-            cameraNode.position.y = currentPlayer.position.y + 95
-        }
-        
+        //update the camera position to follow the main character
+        updateCamera()
+                
         if(currentPlayer != nil) {
             //call the current player update method
             currentPlayer.update()
@@ -299,6 +293,35 @@ class Level: SKScene, SKPhysicsContactDelegate {
             
         }
         
+        self.updateCamera()
         
     }
+    
+    func updateCamera() {
+        if(currentPlayer != nil && currentPlayer?.position != nil) {
+            if(cameraNode.position.y < -2*UIScreen.main.bounds.width){
+                //the player is far below the screen, display the restart button
+                showRestartButton()
+            }
+            let y = clamp(value: currentPlayer.position.y, lower: 20, upper: UIScreen.main.bounds.width/2-10)
+            
+            var x = currentPlayer.position.x
+            if( LevelSelect.current_level == 1) {
+                //clamp with level 1 dimensions in mind
+                x = clamp(value: currentPlayer.position.x, lower: 0 , upper: 5*(UIScreen.main.bounds.width/2) + 165)
+
+            } else {
+                //add other if statements here to customize for the other levels
+                x = currentPlayer.position.x
+            }
+            cameraNode.position.x = x
+            cameraNode.position.y = y
+            
+            
+        }
+    }
+}
+
+func clamp<T: Comparable>(value: T, lower: T, upper: T) -> T {
+    return min(max(value, lower), upper)
 }
