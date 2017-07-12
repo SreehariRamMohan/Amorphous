@@ -53,7 +53,7 @@ class Player: SKSpriteNode {
         self.physicsBody = SKPhysicsBody(texture: self.texture!,
                                            size: self.texture!.size())
         
-        physicsBody?.mass = 0.5
+        physicsBody?.mass = 1
         
         //turn off the gravity for now
         physicsBody?.affectedByGravity = true
@@ -162,5 +162,13 @@ class Player: SKSpriteNode {
         if(currentState == State.solid) {
             self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: JUMP_MAGNITUDE))
         }
+    }
+    
+    func getMass() -> CGFloat {
+        return (self.physicsBody?.mass)!
+    }
+    
+    func setMass(mass:CGFloat) {
+        self.physicsBody?.mass = mass
     }
 }

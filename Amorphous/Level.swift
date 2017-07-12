@@ -17,6 +17,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
     
     var button_back_to_level_select: UIButton!
     var button_restart_level: UIButton!
+    var you_lose_label: UILabel!
     
     //Bitmask Constants for the Player
     let ICE_COLLISION_BITMASK = CollisionManager.ICE_COLLISION_BITMASK
@@ -61,13 +62,13 @@ class Level: SKScene, SKPhysicsContactDelegate {
         //adds cameraNode to the scene's camera
         self.camera = cameraNode
         
-        //add a back_to_level_select and restart button to the scene without having it be moved by camera
+        //add a back_to_level_select, restart button, and the you_lose_label to the scene without having it be moved by camera
         addBackToLevelUIButton()
         addRestartButton()
+        addYouLoseLabel()
         
         //Have the world notify Level.swift to give contact information
         physicsWorld.contactDelegate = self
-
     }
     
     func buttonLoadLevelSelect(sender: UIButton!) {
@@ -91,9 +92,15 @@ class Level: SKScene, SKPhysicsContactDelegate {
             cameraNode.position.x = currentPlayer.position.x
             cameraNode.position.y = currentPlayer.position.y + 95
         }
+        
         if(currentPlayer != nil) {
             //call the current player update method
             currentPlayer.update()
+            //check if the current player is dead if their mass is less than 0.01
+            if(currentPlayer.getMass() < 0.01) {
+                setYouLoseText(deathBy: "Death by mass loss from sponge ;(")
+                showYouLoseLabel()
+            }
         }
         
         //Loop over all of the children recursively which have name Sponge and call their update functions.
@@ -103,6 +110,8 @@ class Level: SKScene, SKPhysicsContactDelegate {
             // calling the sponge's update functions
             Sponge.update()
         }
+        
+        
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
@@ -157,6 +166,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
         
         /* Start game scene and hide the back_to_level_select button*/
         button_back_to_level_select.isHidden = true
+        hideYouLoseLabel()
+        hideRestartButton()
+    
         skView.presentScene(scene)
     }
     
@@ -180,6 +192,23 @@ class Level: SKScene, SKPhysicsContactDelegate {
         button_restart_level.isHidden = true
     }
     
+    func addYouLoseLabel() {
+        let label = UILabel(frame: CGRect(x: UIScreen.main.bounds.width/2 - 100, y: UIScreen.main.bounds.height/2 - 25, width: 200, height: 50))
+        label.center = CGPoint(x: 160, y: 285)
+        label.textAlignment = .center
+        label.text = "This is the default text when the Label is initialized"
+        label.layer.backgroundColor = UIColor(red: 61/255, green: 83/255, blue: 255/255, alpha: 1.0).cgColor
+        label.sizeToFit()
+        label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
+        self.view?.addSubview(label)
+        label.center = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2 - 30)
+        you_lose_label = label
+        you_lose_label.isHidden = true
+    }
+    
+    
+    
     func buttonRestartLevel(sender: UIButton!) {
         button_back_to_level_select.isHidden = true
         guard sender == button_restart_level else { return }
@@ -194,12 +223,33 @@ class Level: SKScene, SKPhysicsContactDelegate {
             return
         }
         scene.scaleMode = .aspectFit
+        
+        //hide the restart button and the you_lose_label text
         button_restart_level.isHidden = true
+        you_lose_label.isHidden = true
+        
         skView.presentScene(scene)
     }
     
     func showRestartButton() {
         self.button_restart_level.isHidden = false
+    }
+    
+    func hideRestartButton() {
+        self.button_restart_level.isHidden = true
+    }
+    
+    func hideYouLoseLabel() {
+        self.you_lose_label.isHidden = true
+    }
+    
+    func showYouLoseLabel() {
+        self.you_lose_label.isHidden = false
+        showRestartButton()
+    }
+    
+    func setYouLoseText(deathBy: String) {
+        self.you_lose_label.text = deathBy
     }
     
     
@@ -224,6 +274,8 @@ class Level: SKScene, SKPhysicsContactDelegate {
             var bodyAction: SKAction?
             bodyAction = SKAction(named: "SpongeSuck")
             water.run(bodyAction!)
+            currentPlayer.setMass(mass: 0.95*currentPlayer.getMass())
+            
         }
         
         
