@@ -19,22 +19,22 @@ class Level: SKScene, SKPhysicsContactDelegate {
     var button_restart_level: UIButton!
     
     //Bitmask Constants for the Player
-    let ICE_COLLISION_BITMASK = 8
-    let ICE_CONTACT_BITMASK = 0
-    let ICE_CATEGORY_BITMASK = 2
+    let ICE_COLLISION_BITMASK = CollisionManager.ICE_COLLISION_BITMASK
+    let ICE_CONTACT_BITMASK = CollisionManager.ICE_CONTACT_BITMASK
+    let ICE_CATEGORY_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK
     
-    let WATER_COLLISION_BITMASK = 1
-    let WATER_CONTACT_BITMASK = 0
-    let WATER_CATEGORY_BITMASK = 1
+    let WATER_COLLISION_BITMASK = CollisionManager.WATER_COLLISION_BITMASK
+    let WATER_CONTACT_BITMASK = CollisionManager.WATER_CONTACT_BITMASK
+    let WATER_CATEGORY_BITMASK = CollisionManager.WATER_CATEGORY_BITMASK
     
-    let GAS_COLLISION_BITMASK = 1
-    let GAS_CONTACT_BITMASK = 0
-    let GAS_CATEGORY_BITMASK = 4
+    let GAS_COLLISION_BITMASK = CollisionManager.GAS_COLLISION_BITMASK
+    let GAS_CONTACT_BITMASK = CollisionManager.GAS_CONTACT_BITMASK
+    let GAS_CATEGORY_BITMASK = CollisionManager.GAS_CATEGORY_BITMASK
 
     //Obstacle/Object Bitmask Constants
-    let SPONGE_CATEGORY_BITMASK = 8
-    let SPONGE_COLLISION_BITMASK = 2
-    let SPONGE_CONTACT_BITMASK = 1
+    let SPONGE_CATEGORY_BITMASK = CollisionManager.SPONGE_CATEGORY_BITMASK
+    let SPONGE_COLLISION_BITMASK = CollisionManager.SPONGE_COLLISION_BITMASK
+    let SPONGE_CONTACT_BITMASK = CollisionManager.SPONGE_CONTACT_BITMASK
     
         
     override func didMove(to view: SKView) {
@@ -212,12 +212,18 @@ class Level: SKScene, SKPhysicsContactDelegate {
         let nodeA = contactA.node as! SKSpriteNode
         let nodeB = contactB.node as! SKSpriteNode
         /* Check the physics bodies category bitmasks to determine their name */
-        print("in contact method")
-        print(contactA.categoryBitMask)
-        print(contactB.categoryBitMask)
-        print("-----------------------")
         if(contactA.categoryBitMask == UInt32(SPONGE_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(WATER_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(SPONGE_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(WATER_CATEGORY_BITMASK)) {
+            
+            var water: SKSpriteNode!
+            if(contactA.categoryBitMask == UInt32(WATER_CATEGORY_BITMASK)) {
+                water = nodeA
+            } else {
+                water = nodeB
+            }
             print("contact between sponge and water")
+            var bodyAction: SKAction?
+            bodyAction = SKAction(named: "SpongeSuck")
+            water.run(bodyAction!)
         }
         
         

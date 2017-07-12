@@ -28,17 +28,17 @@ class Player: SKSpriteNode {
     var PLASMA_FRICTION_VALUE: CGFloat! //not decided yet
     
     //Bitmask Constants for the Player
-    let ICE_COLLISION_BITMASK = 8
-    let ICE_CONTACT_BITMASK = 0
-    let ICE_CATEGORY_BITMASK = 2
+    let ICE_COLLISION_BITMASK = CollisionManager.ICE_COLLISION_BITMASK
+    let ICE_CONTACT_BITMASK = CollisionManager.ICE_CONTACT_BITMASK
+    let ICE_CATEGORY_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK
     
-    let WATER_COLLISION_BITMASK = 64
-    let WATER_CONTACT_BITMASK = 0
-    let WATER_CATEGORY_BITMASK = 1
+    let WATER_COLLISION_BITMASK = CollisionManager.WATER_COLLISION_BITMASK
+    let WATER_CONTACT_BITMASK = CollisionManager.WATER_CONTACT_BITMASK
+    let WATER_CATEGORY_BITMASK = CollisionManager.WATER_CATEGORY_BITMASK
     
-    let GAS_COLLISION_BITMASK = 64
-    let GAS_CONTACT_BITMASK = 0
-    let GAS_CATEGORY_BITMASK = 4
+    let GAS_COLLISION_BITMASK = CollisionManager.GAS_COLLISION_BITMASK
+    let GAS_CONTACT_BITMASK = CollisionManager.GAS_CONTACT_BITMASK
+    let GAS_CATEGORY_BITMASK = CollisionManager.GAS_CATEGORY_BITMASK
     
     init() {
         // Make a texture from an image, a color, and size
@@ -71,6 +71,9 @@ class Player: SKSpriteNode {
         self.physicsBody?.categoryBitMask = UInt32(WATER_CATEGORY_BITMASK)
         self.physicsBody?.contactTestBitMask = UInt32(WATER_CONTACT_BITMASK)
         self.physicsBody?.collisionBitMask = UInt32(WATER_COLLISION_BITMASK)
+        
+        //set our z position to 2 so we are in front of everything else
+        self.zPosition = 2
     }
     
     required init?(coder aDecoder: NSCoder) {
