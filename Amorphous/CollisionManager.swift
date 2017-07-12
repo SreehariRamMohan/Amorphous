@@ -26,6 +26,11 @@ class CollisionManager {
     static let GAS_CONTACT_BITMASK = 0
     static let GAS_CATEGORY_BITMASK = 4
     
+    //friction values for the main character
+    static let WATER_DROPLET_FRICTION_VALUE = 0.7
+    static let GAS_FRICTION_VALUE = 0
+    static let ICE_CUBE_FRICTION_VALUE = 0.5
+    
     //Sponge Constants
     static let SPONGE_CATEGORY_BITMASK = 8
     static let SPONGE_COLLISION_BITMASK = 2

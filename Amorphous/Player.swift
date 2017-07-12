@@ -165,7 +165,12 @@ class Player: SKSpriteNode {
     }
     
     func getMass() -> CGFloat {
-        return (self.physicsBody?.mass)!
+        if(self.physicsBody != nil) {
+            return (self.physicsBody?.mass)!
+        } else {
+            //no player has been found, this is usually due to this method being called right after the restart button has been pressed. Return a default value of 1
+            return 1
+        }
     }
     
     func setMass(mass:CGFloat) {

@@ -207,8 +207,6 @@ class Level: SKScene, SKPhysicsContactDelegate {
         you_lose_label.isHidden = true
     }
     
-    
-    
     func buttonRestartLevel(sender: UIButton!) {
         button_back_to_level_select.isHidden = true
         guard sender == button_restart_level else { return }
@@ -275,6 +273,29 @@ class Level: SKScene, SKPhysicsContactDelegate {
             bodyAction = SKAction(named: "SpongeSuck")
             water.run(bodyAction!)
             currentPlayer.setMass(mass: 0.95*currentPlayer.getMass())
+            print("x scale is => " + String(describing: currentPlayer.xScale))
+            print("y scale is => " + String(describing: currentPlayer.yScale))
+            
+            
+            /* Create a CLOSURE to safely execute water shrinking after the physics engine has finished rendering the frame so the code doesn't crash */
+            let scalePhysicsBody = SKAction.run({
+                /* Scale the currentPlayer.physics body in the scene */
+                //reset the physics body after scaling main character down
+                let currSize = self.currentPlayer.texture!.size()
+                print("Default size is => " + String(describing: currSize))
+                let currXSize = currSize.width * self.currentPlayer.xScale
+                let currYSize = currSize.height * self.currentPlayer.yScale
+                let newSize: CGSize = CGSize(width: currXSize, height: currYSize)
+                print("New Size is => " + String(describing: newSize))
+                self.currentPlayer.physicsBody = SKPhysicsBody(texture: self.currentPlayer.texture!,size: newSize)
+                
+                //reset the bitmasks for the player
+                self.currentPlayer.physicsBody?.friction = CGFloat(CollisionManager.WATER_DROPLET_FRICTION_VALUE)
+                self.currentPlayer.physicsBody?.categoryBitMask = UInt32(self.WATER_CATEGORY_BITMASK)
+                self.currentPlayer.physicsBody?.contactTestBitMask = UInt32(self.WATER_CONTACT_BITMASK)
+                self.currentPlayer.physicsBody?.collisionBitMask = UInt32(self.WATER_COLLISION_BITMASK)
+            })
+            self.run(scalePhysicsBody)
             
         }
         
