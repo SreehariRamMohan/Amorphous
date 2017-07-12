@@ -31,6 +31,7 @@
 		F76C41C81F1597C600F84F43 /* CollisionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76C41C71F1597C600F84F43 /* CollisionManager.swift */; };
 		F76C41CA1F159C4B00F84F43 /* CharacterActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F76C41C91F159C4B00F84F43 /* CharacterActions.sks */; };
 		F76C41CC1F159CA100F84F43 /* SpongeSuck.sks in Resources */ = {isa = PBXBuildFile; fileRef = F76C41CB1F159CA100F84F43 /* SpongeSuck.sks */; };
+		F780B69C1F16C32600A54538 /* WindowCrack.sks in Resources */ = {isa = PBXBuildFile; fileRef = F780B69B1F16C32600A54538 /* WindowCrack.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		F76C41C71F1597C600F84F43 /* CollisionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionManager.swift; sourceTree = "<group>"; };
 		F76C41C91F159C4B00F84F43 /* CharacterActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CharacterActions.sks; sourceTree = "<group>"; };
 		F76C41CB1F159CA100F84F43 /* SpongeSuck.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = SpongeSuck.sks; path = ../SpongeSuck.sks; sourceTree = "<group>"; };
+		F780B69B1F16C32600A54538 /* WindowCrack.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = WindowCrack.sks; path = ../WindowCrack.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				F76C41871F13DFB000F84F43 /* LaunchScreen.storyboard */,
 				F76C418A1F13DFB000F84F43 /* Info.plist */,
 				F76C41CB1F159CA100F84F43 /* SpongeSuck.sks */,
+				F780B69B1F16C32600A54538 /* WindowCrack.sks */,
 				F76C41C91F159C4B00F84F43 /* CharacterActions.sks */,
 				F76C41BE1F15469500F84F43 /* Obstacles/Objects */,
 				F76C41B61F13FEF100F84F43 /* Level_1 */,
@@ -333,6 +336,7 @@
 				F76C41BD1F15468000F84F43 /* Sponge.sks in Resources */,
 				F76C41CA1F159C4B00F84F43 /* CharacterActions.sks in Resources */,
 				F76C41B31F13FE6B00F84F43 /* Level_1.sks in Resources */,
+				F780B69C1F16C32600A54538 /* WindowCrack.sks in Resources */,
 				F76C417D1F13DFB000F84F43 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -22,7 +22,7 @@ class CollisionManager {
     static let WATER_CONTACT_BITMASK = 0
     static let WATER_CATEGORY_BITMASK = 1
     
-    static let GAS_COLLISION_BITMASK = 64
+    static let GAS_COLLISION_BITMASK = 64 + CollisionManager.SPONGE_CATEGORY_BITMASK
     static let GAS_CONTACT_BITMASK = 0
     static let GAS_CATEGORY_BITMASK = 4
     
@@ -31,10 +31,15 @@ class CollisionManager {
     static let GAS_FRICTION_VALUE = 0
     static let ICE_CUBE_FRICTION_VALUE = 0.5
     
-    //Sponge Constants
+    //Sponge Bitmask Constants
     static let SPONGE_CATEGORY_BITMASK = 8
-    static let SPONGE_COLLISION_BITMASK = 2
+    static let SPONGE_COLLISION_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.GAS_CATEGORY_BITMASK
     static let SPONGE_CONTACT_BITMASK = 1
+    
+    //Window Bitmask Constants
+    static let WINDOW_CATEGORY_BITMASK = 64
+    static let WINDOW_COLLISION_BITMASK = 5
+    static let WINDOW_CONTACT_BITMASK = 2
 
     
 

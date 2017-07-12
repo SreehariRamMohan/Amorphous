@@ -15,9 +15,12 @@ class Level: SKScene, SKPhysicsContactDelegate {
     
     let cameraNode = SKCameraNode()
     
+    //labels for Level superclass
     var button_back_to_level_select: UIButton!
     var button_restart_level: UIButton!
     var you_lose_label: UILabel!
+    var next_level_label: UILabel!
+    var button_next_level: UIButton!
     
     //Bitmask Constants for the Player
     let ICE_COLLISION_BITMASK = CollisionManager.ICE_COLLISION_BITMASK
@@ -37,8 +40,18 @@ class Level: SKScene, SKPhysicsContactDelegate {
     let SPONGE_COLLISION_BITMASK = CollisionManager.SPONGE_COLLISION_BITMASK
     let SPONGE_CONTACT_BITMASK = CollisionManager.SPONGE_CONTACT_BITMASK
     
+    
+    
+    //boolean values
+    var windowHasCracked: Bool = false
+    var canShift: Bool = true
+    var canMove: Bool = true
+    
         
     override func didMove(to view: SKView) {
+        
+        initializeCriticalGameVariables()
+        
         //create a swipe down action, and link Level class to recieve the notification.
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeDown.direction = UISwipeGestureRecognizerDirection.down
@@ -62,13 +75,21 @@ class Level: SKScene, SKPhysicsContactDelegate {
         //adds cameraNode to the scene's camera
         self.camera = cameraNode
         
-        //add a back_to_level_select, restart button, and the you_lose_label to the scene without having it be moved by camera
+        //add a back_to_level_select, restart button, you_lose_label, yout_beat_level_label, and next_level_button to the scene without having it be moved by camera
         addBackToLevelUIButton()
         addRestartButton()
         addYouLoseLabel()
+        addYouBeatLevelLabel()
+        addNextLevelButton()
         
         //Have the world notify Level.swift to give contact information
         physicsWorld.contactDelegate = self
+    }
+    
+    func initializeCriticalGameVariables() {
+        windowHasCracked = false
+        canMove = true
+        canShift = true
     }
     
     func buttonLoadLevelSelect(sender: UIButton!) {
@@ -115,6 +136,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
                 print("Swiped right")
             case UISwipeGestureRecognizerDirection.down:
                 print("Swiped down")
+                if(!canShift) {
+                    return
+                }
                 currentPlayer.changeState()
             case UISwipeGestureRecognizerDirection.left:
                 print("Swiped left")
@@ -127,7 +151,11 @@ class Level: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {        let location = (touches.first as! UITouch).location(in: self.view)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if(!canMove) {
+            return
+        }
+        let location = (touches.first as! UITouch).location(in: self.view)
         if location.x < (self.view?.bounds.size.width)!/2 {
             // left code: will be run when the touch is on the left side
             currentPlayer.applyLeftImpulse()
@@ -158,11 +186,13 @@ class Level: SKScene, SKPhysicsContactDelegate {
         skView.showsDrawCount = true
         skView.showsFPS = true
         
-        /* Start game scene and hide the back_to_level_select button*/
+        /* Start level select and hide buttons and labels that don't belong in level select*/
         button_back_to_level_select.isHidden = true
         hideYouLoseLabel()
         hideRestartButton()
-    
+        hideNextLevelButton()
+        hideYouBeatLevelLabel()
+        
         skView.presentScene(scene)
     }
     
@@ -199,6 +229,36 @@ class Level: SKScene, SKPhysicsContactDelegate {
         label.center = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2 - 30)
         you_lose_label = label
         you_lose_label.isHidden = true
+    }
+    
+    func addYouBeatLevelLabel() {
+        let label = UILabel(frame: CGRect(x: UIScreen.main.bounds.width/2 - 100, y: UIScreen.main.bounds.height/2 - 25, width: 400, height: 100))
+        label.center = CGPoint(x: 160, y: 285)
+        label.textAlignment = .center
+        label.text = "Congrats you beat level " + String(LevelSelect.current_level)
+        label.font = label.font.withSize(40)
+        label.layer.backgroundColor = UIColor(red: 246/255, green: 255/255, blue: 0/255, alpha: 1.0).cgColor
+        label.sizeToFit()
+        label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
+        self.view?.addSubview(label)
+        label.center = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2 - 30)
+        next_level_label = label
+        next_level_label.isHidden = true
+    }
+    
+    func addNextLevelButton() {
+        let btn = UIButton(frame: CGRect(x: UIScreen.main.bounds.width/2 - 175, y: UIScreen.main.bounds.height/2 + 100, width: 400, height: 60))
+        btn.addTarget(self, action: #selector(Level.gotToNextLevel), for: .touchUpInside)
+        self.view?.addSubview(btn)
+        btn.setTitle("Click to travel Onward", for: [])
+        btn.titleLabel?.font = UIFont.init(name: "Helvetica", size:40)
+        btn.setTitleColor(.black, for: .normal)
+        btn.backgroundColor = UIColor.red
+        btn.sizeToFit()
+
+        button_next_level = btn
+        button_next_level.isHidden = true
     }
     
     func buttonRestartLevel(sender: UIButton!) {
@@ -244,6 +304,22 @@ class Level: SKScene, SKPhysicsContactDelegate {
         self.you_lose_label.text = deathBy
     }
     
+    func showYouBeatLevelLabel() {
+        self.next_level_label.isHidden = false
+    }
+    
+    func hideYouBeatLevelLabel() {
+        self.next_level_label.isHidden = true
+    }
+    
+    func showNextLevelButton() {
+        self.button_next_level.isHidden = false
+    }
+    
+    func hideNextLevelButton() {
+        self.button_next_level.isHidden = true
+    }
+    
     
     func didBegin(_ contact: SKPhysicsContact) {
         /* Physics contact delegate implementation */
@@ -262,25 +338,18 @@ class Level: SKScene, SKPhysicsContactDelegate {
             } else {
                 water = nodeB
             }
-            print("contact between sponge and water")
             var bodyAction: SKAction?
             bodyAction = SKAction(named: "SpongeSuck")
             water.run(bodyAction!)
             currentPlayer.setMass(mass: 0.95*currentPlayer.getMass())
-            print("x scale is => " + String(describing: currentPlayer.xScale))
-            print("y scale is => " + String(describing: currentPlayer.yScale))
-            
-            
             /* Create a CLOSURE to safely execute water shrinking after the physics engine has finished rendering the frame so the code doesn't crash */
             let scalePhysicsBody = SKAction.run({
                 /* Scale the currentPlayer.physics body in the scene */
                 //reset the physics body after scaling main character down
                 let currSize = self.currentPlayer.texture!.size()
-                print("Default size is => " + String(describing: currSize))
                 let currXSize = currSize.width * self.currentPlayer.xScale
                 let currYSize = currSize.height * self.currentPlayer.yScale
                 let newSize: CGSize = CGSize(width: currXSize, height: currYSize)
-                print("New Size is => " + String(describing: newSize))
                 self.currentPlayer.physicsBody = SKPhysicsBody(texture: self.currentPlayer.texture!,size: newSize)
                 
                 //reset the bitmasks for the player
@@ -293,8 +362,49 @@ class Level: SKScene, SKPhysicsContactDelegate {
             
         }
         
-        self.updateCamera()
-        
+        if(contactA.categoryBitMask == UInt32(CollisionManager.WINDOW_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.WINDOW_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK)) {
+            /* Load the Window Crack animation so the player can escape and finish level 1!*/
+            var iceCube: SKSpriteNode!
+            if(contactA.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK)) {
+                iceCube = nodeA
+            } else {
+                iceCube = nodeB
+            }
+            if(!windowHasCracked) {
+                var windowSprite: SKSpriteNode  = self.childNode(withName:"//window") as! SKSpriteNode
+                windowSprite.physicsBody?.collisionBitMask = 0
+                self.physicsBody?.collisionBitMask = 0
+                iceCube.physicsBody?.isDynamic = false
+                
+                //convert the point (0,0) from the window frame of reference to the scene frame of  reference
+                let windowPos: CGPoint = self.convert(CGPoint(x:0, y:0), from: windowSprite)
+                let moveAction = SKAction.move(to: windowPos, duration: 0.5)
+                let shatter = SKAction(named: "WindowCrack")!
+                
+                iceCube.run(moveAction)
+                windowSprite.run(shatter)
+                windowHasCracked = true
+                
+                //stop the player from changing state & moving after they are inside the window
+                canMove = false
+                canShift = false
+            } else {
+                var windowSprite: SKSpriteNode  = self.childNode(withName:"//window") as! SKSpriteNode
+                windowSprite.physicsBody?.collisionBitMask = 0
+                self.physicsBody?.collisionBitMask = 0
+                iceCube.physicsBody?.isDynamic = false
+                
+                //convert the point (0,0) from the window frame of reference to the scene frame of  reference
+                let windowPos: CGPoint = self.convert(CGPoint(x:0, y:0), from: windowSprite)
+                let moveAction = SKAction.move(to: windowPos, duration: 0.5)
+                iceCube.run(moveAction)
+            }
+            
+            //Display a message to the player telling them that they completed the level
+            self.showYouBeatLevelLabel()
+            self.showNextLevelButton()
+            
+        }
     }
     
     func updateCamera() {
@@ -316,9 +426,11 @@ class Level: SKScene, SKPhysicsContactDelegate {
             }
             cameraNode.position.x = x
             cameraNode.position.y = y
-            
-            
         }
+    }
+    
+    func gotToNextLevel() {
+        print("Not implemented yet")
     }
 }
 

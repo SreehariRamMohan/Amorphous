@@ -111,11 +111,9 @@ class Player: SKSpriteNode {
                 /* Scale the currentPlayer.physics body in the scene */
                 //reset the physics body after scaling main character down
                 let currSize = self.texture!.size()
-                print("Default size is => " + String(describing: currSize))
                 let currXSize = currSize.width * self.xScale
                 let currYSize = currSize.height * self.yScale
                 let newSize: CGSize = CGSize(width: currXSize, height: currYSize)
-                print("New Size is => " + String(describing: newSize))
                 self.physicsBody = SKPhysicsBody(texture: self.texture!,size: newSize)
                 
                 //reset the bitmasks for the player
@@ -123,6 +121,9 @@ class Player: SKSpriteNode {
                 self.physicsBody?.categoryBitMask = UInt32(self.ICE_CATEGORY_BITMASK)
                 self.physicsBody?.contactTestBitMask = UInt32(self.ICE_CONTACT_BITMASK)
                 self.physicsBody?.collisionBitMask = UInt32(self.ICE_COLLISION_BITMASK)
+                
+                //make sure that body is set to dynamic
+                self.physicsBody?.isDynamic = true
             })
             self.run(scalePhysicsBody)
         } else if(currentState.rawValue == 2) {
@@ -133,11 +134,9 @@ class Player: SKSpriteNode {
                 /* Scale the currentPlayer.physics body in the scene */
                 //reset the physics body after scaling main character down
                 let currSize = self.texture!.size()
-                print("Default size is => " + String(describing: currSize))
                 let currXSize = currSize.width * self.xScale
                 let currYSize = currSize.height * self.yScale
                 let newSize: CGSize = CGSize(width: currXSize, height: currYSize)
-                print("New Size is => " + String(describing: newSize))
                 self.physicsBody = SKPhysicsBody(texture: self.texture!,size: newSize)
                 
                 //reset the bitmasks for the player
@@ -145,6 +144,9 @@ class Player: SKSpriteNode {
                 self.physicsBody?.categoryBitMask = UInt32(self.WATER_CATEGORY_BITMASK)
                 self.physicsBody?.contactTestBitMask = UInt32(self.WATER_CONTACT_BITMASK)
                 self.physicsBody?.collisionBitMask = UInt32(self.WATER_COLLISION_BITMASK)
+                
+                //make sure that body is set to dynamic
+                self.physicsBody?.isDynamic = true
             })
             self.run(scalePhysicsBody)
         } else if(currentState.rawValue == 3) {
@@ -158,18 +160,20 @@ class Player: SKSpriteNode {
                 /* Scale the currentPlayer.physics body in the scene */
                 //reset the physics body after scaling main character down
                 let currSize = self.texture!.size()
-                print("Default size is => " + String(describing: currSize))
                 let currXSize = currSize.width * self.xScale
                 let currYSize = currSize.height * self.yScale
                 let newSize: CGSize = CGSize(width: currXSize, height: currYSize)
-                print("New Size is => " + String(describing: newSize))
                 self.physicsBody = SKPhysicsBody(texture: self.texture!,size: newSize)
                 
                 //reset the bitmasks for the player
                 self.physicsBody?.friction = CGFloat(CollisionManager.GAS_FRICTION_VALUE)
-                self.physicsBody?.categoryBitMask = UInt32(self.GAS_CATEGORY_BITMASK)
-                self.physicsBody?.contactTestBitMask = UInt32(self.GAS_CONTACT_BITMASK)
-                self.physicsBody?.collisionBitMask = UInt32(self.GAS_COLLISION_BITMASK)
+                self.physicsBody?.categoryBitMask = UInt32(CollisionManager.GAS_CATEGORY_BITMASK)
+                self.physicsBody?.contactTestBitMask = UInt32(CollisionManager.GAS_CONTACT_BITMASK)
+                self.physicsBody?.collisionBitMask = UInt32(CollisionManager.GAS_COLLISION_BITMASK)
+                
+                //make sure that body is set to dynamic
+                self.physicsBody?.isDynamic = true
+
             })
             self.run(scalePhysicsBody)
 
