@@ -127,7 +127,6 @@ class Level: SKScene, SKPhysicsContactDelegate {
             Sponge.update()
         }
         
-        
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
@@ -428,31 +427,20 @@ class Level: SKScene, SKPhysicsContactDelegate {
             
             
         }
+        
+        if(contactA.categoryBitMask == UInt32(CollisionManager.FAN_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(GAS_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.FAN_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(GAS_CATEGORY_BITMASK)) {
+            print("contact between gas and fan")
+            showYouLoseLabel()
+            setYouLoseText(deathBy: "Killed by a fan")
+            showRestartButton()
+        }
 
         
         
     }
     
     func updateCamera() {
-        if(currentPlayer != nil && currentPlayer?.position != nil) {
-            if(cameraNode.position.y < -2*UIScreen.main.bounds.width){
-                //the player is far below the screen, display the restart button
-                showRestartButton()
-            }
-            let y = clamp(value: currentPlayer.position.y, lower: 20, upper: UIScreen.main.bounds.width/2-10)
-            
-            var x = currentPlayer.position.x
-            if( LevelSelect.current_level == 1) {
-                //clamp with level 1 dimensions in mind
-                x = clamp(value: currentPlayer.position.x, lower: 0 , upper: 5*(UIScreen.main.bounds.width/2) + 165)
-
-            } else {
-                //add other if statements here to customize for the other levels
-                x = currentPlayer.position.x
-            }
-            cameraNode.position.x = x
-            cameraNode.position.y = y
-        }
+        
     }
     
     func gotToNextLevel() {

@@ -84,15 +84,15 @@ class LevelSelect: SKScene {
         
         button_level_1.selectedHandler = {
             //load level 1
-            self.loadLevel(level: 1)
             LevelSelect.current_level = 1
+            self.loadLevel(level: 1)
             print("Going to level 1")
         }
         
         button_level_2.selectedHandler = {
             //load level 2
-            self.loadLevel(level: 2)
             LevelSelect.current_level = 2
+            self.loadLevel(level: 2)
             print("Going to level 2")
         }
         
@@ -145,7 +145,6 @@ class LevelSelect: SKScene {
         guard let scene = Level(fileNamed: "Level_\(levelNumber)") else {
             return nil
         }
-        
         scene.scaleMode = .aspectFit
         return scene
     }
