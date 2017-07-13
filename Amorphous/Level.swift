@@ -21,6 +21,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
     var you_lose_label: UILabel!
     var next_level_label: UILabel!
     var button_next_level: UIButton!
+    var button_hint: UIButton!
     
     //Bitmask Constants for the Player
     let ICE_COLLISION_BITMASK = CollisionManager.ICE_COLLISION_BITMASK
@@ -74,13 +75,15 @@ class Level: SKScene, SKPhysicsContactDelegate {
         
         //adds cameraNode to the scene's camera
         self.camera = cameraNode
+        addChild(cameraNode)
         
-        //add a back_to_level_select, restart button, you_lose_label, yout_beat_level_label, and next_level_button to the scene without having it be moved by camera
+        //add a back_to_level_select, restart button, you_lose_label, yout_beat_level_label, next_level_button, and hint button to the scene without having it be moved by camera
         addBackToLevelUIButton()
         addRestartButton()
         addYouLoseLabel()
         addYouBeatLevelLabel()
         addNextLevelButton()
+        addHintButton()
         
         //Have the world notify Level.swift to give contact information
         physicsWorld.contactDelegate = self
@@ -194,6 +197,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
         hideRestartButton()
         hideNextLevelButton()
         hideYouBeatLevelLabel()
+        hideHintButton()
         
         skView.presentScene(scene)
         
@@ -268,6 +272,22 @@ class Level: SKScene, SKPhysicsContactDelegate {
         button_next_level.isHidden = true
     }
     
+    func addHintButton() {
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: UIScreen.main.bounds.width - 80, y: 10 , width: 50, height: 50)
+        button.layer.cornerRadius = 0.5 * button.bounds.size.width
+        button.backgroundColor = .red
+        button.setTitle("Hint", for: .normal)
+        button.addTarget(self, action: #selector(hintButtonPressed), for: .touchUpInside)
+        button_hint = button
+        button.isHidden = false
+        self.view?.addSubview(button)
+    }
+    
+    func hintButtonPressed() {
+        print("leave to children to implement")
+    }
+    
     func buttonRestartLevel(sender: UIButton!) {
         button_back_to_level_select.isHidden = true
         guard sender == button_restart_level else { return }
@@ -330,6 +350,14 @@ class Level: SKScene, SKPhysicsContactDelegate {
     func hideLabelsAndButtons() {
         hideNextLevelButton()
         hideYouBeatLevelLabel()
+    }
+    
+    func hideHintButton() {
+        button_hint.isHidden = true
+    }
+    
+    func showHintButton() {
+        button_hint.isHidden = false
     }
     
     

@@ -13,7 +13,7 @@ class Level_1: Level {
     
     //player variable
     var player: Player!
-    
+    var window: SKSpriteNode!
     override func didMove(to view: SKView) {
         //call did move in parent
         super.didMove(to: view)
@@ -54,6 +54,18 @@ class Level_1: Level {
             cameraNode.position.x = x
             cameraNode.position.y = y
         }
-
+    }
+    
+    override func hintButtonPressed() {
+        //Pan the camera around the level to alert the player of what obstacles are to come
+        //Pan the camera from where the player is currently located to the location of the window(for them to escape)
+        
+        window = self.childNode(withName: "//window") as! SKSpriteNode
+        let windowPos: CGPoint = self.convert(CGPoint(x:0, y:0), from: window)
+        let moveAction = SKAction.move(to: windowPos, duration: 5)
+        let moveAction2 = SKAction.move(to: player.position, duration: 5)
+        let sequence = SKAction.sequence([moveAction, moveAction2])
+        
+        cameraNode.run(sequence)
     }
 }
