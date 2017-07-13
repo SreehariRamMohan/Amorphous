@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F71205311F17D9DC007DF257 /* Spikes.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71205301F17D9DC007DF257 /* Spikes.sks */; };
+		F71205341F17DA21007DF257 /* Spikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71205331F17DA21007DF257 /* Spikes.swift */; };
+		F71205361F17DB18007DF257 /* Level_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71205351F17DB18007DF257 /* Level_2.swift */; };
+		F712053B1F17DCB8007DF257 /* Level_2.sks in Resources */ = {isa = PBXBuildFile; fileRef = F712053A1F17DCB8007DF257 /* Level_2.sks */; };
+		F71205401F17F39C007DF257 /* Fan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F712053F1F17F39C007DF257 /* Fan.swift */; };
+		F71205431F17F3E9007DF257 /* FanSpin.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71205421F17F3E9007DF257 /* FanSpin.sks */; };
+		F71205451F17F59A007DF257 /* Fan.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71205441F17F59A007DF257 /* Fan.sks */; };
 		F76C41791F13DFB000F84F43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76C41781F13DFB000F84F43 /* AppDelegate.swift */; };
 		F76C417B1F13DFB000F84F43 /* Forest.sks in Resources */ = {isa = PBXBuildFile; fileRef = F76C417A1F13DFB000F84F43 /* Forest.sks */; };
 		F76C417D1F13DFB000F84F43 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F76C417C1F13DFB000F84F43 /* Actions.sks */; };
@@ -52,6 +59,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F71205301F17D9DC007DF257 /* Spikes.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spikes.sks; sourceTree = "<group>"; };
+		F71205331F17DA21007DF257 /* Spikes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spikes.swift; sourceTree = "<group>"; };
+		F71205351F17DB18007DF257 /* Level_2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_2.swift; sourceTree = "<group>"; };
+		F712053A1F17DCB8007DF257 /* Level_2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_2.sks; sourceTree = "<group>"; };
+		F712053F1F17F39C007DF257 /* Fan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fan.swift; sourceTree = "<group>"; };
+		F71205421F17F3E9007DF257 /* FanSpin.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = FanSpin.sks; path = ../FanSpin.sks; sourceTree = "<group>"; };
+		F71205441F17F59A007DF257 /* Fan.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fan.sks; sourceTree = "<group>"; };
 		F76C41751F13DFB000F84F43 /* Amorphous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Amorphous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F76C41781F13DFB000F84F43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F76C417A1F13DFB000F84F43 /* Forest.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Forest.sks; sourceTree = "<group>"; };
@@ -110,6 +124,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F71205321F17D9FF007DF257 /* Spikes */ = {
+			isa = PBXGroup;
+			children = (
+				F71205301F17D9DC007DF257 /* Spikes.sks */,
+				F71205331F17DA21007DF257 /* Spikes.swift */,
+			);
+			name = Spikes;
+			sourceTree = "<group>";
+		};
+		F71205391F17DB35007DF257 /* Level_2 */ = {
+			isa = PBXGroup;
+			children = (
+				F71205351F17DB18007DF257 /* Level_2.swift */,
+				F712053A1F17DCB8007DF257 /* Level_2.sks */,
+			);
+			name = Level_2;
+			sourceTree = "<group>";
+		};
+		F712053E1F17F382007DF257 /* Fan */ = {
+			isa = PBXGroup;
+			children = (
+				F71205441F17F59A007DF257 /* Fan.sks */,
+				F712053F1F17F39C007DF257 /* Fan.swift */,
+			);
+			name = Fan;
+			sourceTree = "<group>";
+		};
+		F71205411F17F3D1007DF257 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				F76C41CB1F159CA100F84F43 /* SpongeSuck.sks */,
+				F71205421F17F3E9007DF257 /* FanSpin.sks */,
+				F780B69B1F16C32600A54538 /* WindowCrack.sks */,
+			);
+			name = Animations;
+			sourceTree = "<group>";
+		};
 		F76C416C1F13DFB000F84F43 = {
 			isa = PBXGroup;
 			children = (
@@ -148,11 +199,11 @@
 				F76C41851F13DFB000F84F43 /* Assets.xcassets */,
 				F76C41871F13DFB000F84F43 /* LaunchScreen.storyboard */,
 				F76C418A1F13DFB000F84F43 /* Info.plist */,
-				F76C41CB1F159CA100F84F43 /* SpongeSuck.sks */,
-				F780B69B1F16C32600A54538 /* WindowCrack.sks */,
 				F76C41C91F159C4B00F84F43 /* CharacterActions.sks */,
+				F71205411F17F3D1007DF257 /* Animations */,
 				F76C41BE1F15469500F84F43 /* Obstacles/Objects */,
 				F76C41B61F13FEF100F84F43 /* Level_1 */,
+				F71205391F17DB35007DF257 /* Level_2 */,
 			);
 			path = Amorphous;
 			sourceTree = "<group>";
@@ -187,7 +238,9 @@
 		F76C41BE1F15469500F84F43 /* Obstacles/Objects */ = {
 			isa = PBXGroup;
 			children = (
+				F71205321F17D9FF007DF257 /* Spikes */,
 				F76C41C31F15707600F84F43 /* Sponge */,
+				F712053E1F17F382007DF257 /* Fan */,
 				F76C41C61F15811F00F84F43 /* Window */,
 			);
 			name = Obstacles/Objects;
@@ -327,6 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F76C41841F13DFB000F84F43 /* Main.storyboard in Resources */,
+				F712053B1F17DCB8007DF257 /* Level_2.sks in Resources */,
 				F76C417B1F13DFB000F84F43 /* Forest.sks in Resources */,
 				F76C41AF1F13EB3500F84F43 /* LevelSelect.sks in Resources */,
 				F76C41861F13DFB000F84F43 /* Assets.xcassets in Resources */,
@@ -334,7 +388,10 @@
 				F76C41C01F156CE300F84F43 /* Window.sks in Resources */,
 				F76C41891F13DFB000F84F43 /* LaunchScreen.storyboard in Resources */,
 				F76C41BD1F15468000F84F43 /* Sponge.sks in Resources */,
+				F71205431F17F3E9007DF257 /* FanSpin.sks in Resources */,
 				F76C41CA1F159C4B00F84F43 /* CharacterActions.sks in Resources */,
+				F71205451F17F59A007DF257 /* Fan.sks in Resources */,
+				F71205311F17D9DC007DF257 /* Spikes.sks in Resources */,
 				F76C41B31F13FE6B00F84F43 /* Level_1.sks in Resources */,
 				F780B69C1F16C32600A54538 /* WindowCrack.sks in Resources */,
 				F76C417D1F13DFB000F84F43 /* Actions.sks in Resources */,
@@ -369,9 +426,12 @@
 				F76C41C21F15706F00F84F43 /* Sponge.swift in Sources */,
 				F76C41811F13DFB000F84F43 /* GameViewController.swift in Sources */,
 				F76C41B51F13FE9800F84F43 /* Level_1.swift in Sources */,
+				F71205361F17DB18007DF257 /* Level_2.swift in Sources */,
 				F76C41BA1F141DE800F84F43 /* Player.swift in Sources */,
+				F71205401F17F39C007DF257 /* Fan.swift in Sources */,
 				F76C41B11F13EBD000F84F43 /* LevelSelect.swift in Sources */,
 				F76C41791F13DFB000F84F43 /* AppDelegate.swift in Sources */,
+				F71205341F17DA21007DF257 /* Spikes.swift in Sources */,
 				F76C41AD1F13E67400F84F43 /* MSButtonNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

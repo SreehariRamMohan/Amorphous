@@ -14,16 +14,16 @@ import Foundation
 
 class CollisionManager {
     //Bitmask Constants for the Player
-    static let ICE_COLLISION_BITMASK = 8
-    static let ICE_CONTACT_BITMASK = 0
+    static let ICE_COLLISION_BITMASK = 8 + CollisionManager.SPIKE_CATEGORY_BITMASK + CollisionManager.FAN_CATEGORY_BITMASK
+    static let ICE_CONTACT_BITMASK = 0 + CollisionManager.FAN_CATEGORY_BITMASK
     static let ICE_CATEGORY_BITMASK = 2
     
     static let WATER_COLLISION_BITMASK = 64
     static let WATER_CONTACT_BITMASK = 0
     static let WATER_CATEGORY_BITMASK = 1
     
-    static let GAS_COLLISION_BITMASK = 64 + CollisionManager.SPONGE_CATEGORY_BITMASK
-    static let GAS_CONTACT_BITMASK = 0
+    static let GAS_COLLISION_BITMASK = 64 + CollisionManager.SPONGE_CATEGORY_BITMASK + CollisionManager.FAN_CATEGORY_BITMASK
+    static let GAS_CONTACT_BITMASK = 0 + CollisionManager.FAN_CATEGORY_BITMASK
     static let GAS_CATEGORY_BITMASK = 4
     
     //friction values for the main character
@@ -40,6 +40,17 @@ class CollisionManager {
     static let WINDOW_CATEGORY_BITMASK = 64
     static let WINDOW_COLLISION_BITMASK = 5
     static let WINDOW_CONTACT_BITMASK = 2
+    
+    //Spike Bitmask Constants
+    static let SPIKE_CATEGORY_BITMASK = 128
+    static let SPIKE_COLLISION_BITMASK = 2
+    static let SPIKE_CONTACT_BITMASK = 2
+    
+    //Fan Bitmask Constants
+    static let FAN_CATEGORY_BITMASK = 256
+    static let FAN_COLLISION_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.GAS_CATEGORY_BITMASK
+    static let FAN_CONTACT_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.GAS_CATEGORY_BITMASK
+
 
     
 

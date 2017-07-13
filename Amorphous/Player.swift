@@ -19,6 +19,7 @@ class Player: SKSpriteNode {
     let IMPULSE_MAGNITUDE: CGFloat = 100
     let JUMP_MAGNITUDE: CGFloat = 100
     var currentLevel: Int!
+    var mass: CGFloat = 1
     
     //friction values for the main character
     var WATER_DROPLET_FRICTION_VALUE: CGFloat
@@ -53,7 +54,7 @@ class Player: SKSpriteNode {
         self.physicsBody = SKPhysicsBody(texture: self.texture!,
                                            size: self.texture!.size())
         
-        physicsBody?.mass = 1
+        physicsBody?.mass = mass
         
         //turn off the gravity for now
         physicsBody?.affectedByGravity = true
@@ -126,6 +127,9 @@ class Player: SKSpriteNode {
                 self.physicsBody?.isDynamic = true
             })
             self.run(scalePhysicsBody)
+            //set mass of player to last mass value
+            physicsBody?.mass = self.mass
+
         } else if(currentState.rawValue == 2) {
             //change to liquid state
             self.texture = SKTexture(imageNamed:"water_droplet_image")
@@ -147,8 +151,11 @@ class Player: SKSpriteNode {
                 
                 //make sure that body is set to dynamic
                 self.physicsBody?.isDynamic = true
-            })
+                })
             self.run(scalePhysicsBody)
+            //set mass of player to last mass value
+            physicsBody?.mass = self.mass
+
         } else if(currentState.rawValue == 3) {
             //change to gas state
             self.texture = SKTexture(imageNamed:"water_vapor_image")
@@ -173,23 +180,27 @@ class Player: SKSpriteNode {
                 
                 //make sure that body is set to dynamic
                 self.physicsBody?.isDynamic = true
-
             })
             self.run(scalePhysicsBody)
+            //set mass of player to last mass value
+            physicsBody?.mass = self.mass
 
-            
-            
         } else if(currentState.rawValue == 0) {
             //change to plasma state
         }
+        
+        print(self.physicsBody?.mass)
+
     }
     
     func applyRightImpulse() {
-        self.physicsBody?.applyImpulse(CGVector(dx: IMPULSE_MAGNITUDE, dy: 0))
+        self.physicsBody?.applyImpulse(CGVector(dx: IMPULSE_MAGNITUDE*getMass(), dy: 0))
+        //multiply by getMass() so that we don't move too fast if our mass has been reduced
     }
     
     func applyLeftImpulse() {
-        self.physicsBody?.applyImpulse(CGVector(dx: -1*IMPULSE_MAGNITUDE, dy: 0))
+        self.physicsBody?.applyImpulse(CGVector(dx: -1*IMPULSE_MAGNITUDE*getMass(), dy: 0))
+        //multiply by getMass() so that we don't move too fast if our mass has been reduced
 
     }
     
@@ -209,7 +220,7 @@ class Player: SKSpriteNode {
     }
     
     func float() {
-        self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 9.9))
+        self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 9.8))
     }
     
     func jump() {
@@ -220,7 +231,8 @@ class Player: SKSpriteNode {
     
     func getMass() -> CGFloat {
         if(self.physicsBody != nil) {
-            return (self.physicsBody?.mass)!
+            //return (self.physicsBody?.mass)!
+            return self.mass
         } else {
             //no player has been found, this is usually due to this method being called right after the restart button has been pressed. Return a default value of 1
             return 1
@@ -228,6 +240,7 @@ class Player: SKSpriteNode {
     }
     
     func setMass(mass:CGFloat) {
-        self.physicsBody?.mass = mass
+        self.mass = mass
+        self.physicsBody?.mass = self.mass
     }
 }

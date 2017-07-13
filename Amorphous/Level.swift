@@ -96,6 +96,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
         guard sender == button_back_to_level_select else { return }
         // This function is called when button_back_to_level_select is pressed
         self.loadLevelSelect()
+        self.isHidden = true
         
     }
     
@@ -166,6 +167,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
     }
     
     func loadLevelSelect() {
+        //hide back to level select button immedietly.
+        button_back_to_level_select.isHidden = true
+        
         /* Grab reference to our SpriteKit view */
         guard let skView = self.view as SKView! else {
             print("Could not get Skview")
@@ -187,13 +191,15 @@ class Level: SKScene, SKPhysicsContactDelegate {
         skView.showsFPS = true
         
         /* Start level select and hide buttons and labels that don't belong in level select*/
-        button_back_to_level_select.isHidden = true
         hideYouLoseLabel()
         hideRestartButton()
         hideNextLevelButton()
         hideYouBeatLevelLabel()
         
         skView.presentScene(scene)
+        
+        //hide back to level button after scene has rendered just in case it is still visible after hiding it the first time
+        button_back_to_level_select.isHidden = true
     }
     
     func addBackToLevelUIButton() {
@@ -203,6 +209,8 @@ class Level: SKScene, SKPhysicsContactDelegate {
         button_back_to_level_select = btn
         let btnImage = UIImage(named: "button_back_to_level_select")
         button_back_to_level_select.setImage(btnImage , for: [])
+        
+        //show back to level select button as soon as its added
         button_back_to_level_select.isHidden = false
     }
     
@@ -271,7 +279,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
             return
         }
         button_restart_level.isHidden = true
-        guard let scene = Level(fileNamed: "Level_" + String(currentPlayer.getCurrentLevel())) else {
+        guard let scene = Level(fileNamed: "Level_" + String(LevelSelect.current_level)) else {
             return
         }
         scene.scaleMode = .aspectFit
@@ -318,6 +326,11 @@ class Level: SKScene, SKPhysicsContactDelegate {
     
     func hideNextLevelButton() {
         self.button_next_level.isHidden = true
+    }
+    
+    func hideLabelsAndButtons() {
+        hideNextLevelButton()
+        hideYouBeatLevelLabel()
     }
     
     
@@ -405,6 +418,19 @@ class Level: SKScene, SKPhysicsContactDelegate {
             self.showNextLevelButton()
             
         }
+        
+        if(contactA.categoryBitMask == UInt32(CollisionManager.SPIKE_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.SPIKE_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK)) {
+            print("contact with spikes")
+            showYouLoseLabel()
+            setYouLoseText(deathBy: "Killed by Spikes")
+            showRestartButton()
+            
+            
+            
+        }
+
+        
+        
     }
     
     func updateCamera() {
@@ -430,8 +456,52 @@ class Level: SKScene, SKPhysicsContactDelegate {
     }
     
     func gotToNextLevel() {
-        print("Not implemented yet")
+        LevelSelect.current_level += 1
+        print("loading level " + String(LevelSelect.current_level))
+        self.loadLevel(level: LevelSelect.current_level)
+        
+        //make sure to hide any created buttons/labels that are not needed at the start of the level here.
+        hideLabelsAndButtons()
     }
+    
+    func loadLevel(level: Int) {
+        /* Grab reference to our SpriteKit view */
+        guard let skView = self.view as SKView! else {
+            print("Could not get Skview")
+            return
+        }
+        
+        /* Load Game scene */
+        guard let scene = LevelSelect.level(level) else {
+            print("Could not load GameScene with level " + String(level))
+            return
+        }
+        
+        
+        
+        /* Ensure correct aspect mode */
+        scene.scaleMode = .aspectFit
+        
+        /* Show debug */
+        skView.showsPhysics = true
+        skView.showsDrawCount = true
+        skView.showsFPS = true
+        
+        /* Start game scene */
+        skView.presentScene(scene)
+        
+    }
+    
+    /* Make a Class method to level */
+    class func level(_ levelNumber: Int) -> Level? {
+        guard let scene = Level(fileNamed: "Level_\(levelNumber)") else {
+            return nil
+        }
+        
+        scene.scaleMode = .aspectFit
+        return scene
+    }
+
 }
 
 func clamp<T: Comparable>(value: T, lower: T, upper: T) -> T {
