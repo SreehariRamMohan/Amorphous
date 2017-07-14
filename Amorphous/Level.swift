@@ -48,6 +48,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
     var canShift: Bool = true
     var canMove: Bool = true
     
+    
         
     override func didMove(to view: SKView) {
         
@@ -199,10 +200,11 @@ class Level: SKScene, SKPhysicsContactDelegate {
         hideYouBeatLevelLabel()
         hideHintButton()
         
-        skView.presentScene(scene)
+        //Remove the hint button and level select button from the superview so they won't be shown in the level select scene
+        button_hint.removeFromSuperview()
+        button_back_to_level_select.removeFromSuperview()
         
-        //hide back to level button after scene has rendered just in case it is still visible after hiding it the first time
-        button_back_to_level_select.isHidden = true
+        skView.presentScene(scene)
     }
     
     func addBackToLevelUIButton() {
@@ -462,7 +464,30 @@ class Level: SKScene, SKPhysicsContactDelegate {
             setYouLoseText(deathBy: "Killed by a fan")
             showRestartButton()
         }
-
+        
+        if(contactA.categoryBitMask == UInt32(CollisionManager.OIL_RIGHT_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.OIL_RIGHT_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK)) {
+            print("contact between RIGHT oil and ice")
+            var iceCube: SKSpriteNode!
+            if(contactA.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK)) {
+                iceCube = nodeA
+            } else {
+                iceCube = nodeB
+            }
+            iceCube.physicsBody?.applyImpulse(CGVector(dx: CollisionManager.OIL_RIGHT_IMPULSE_FORCE, dy: 0))
+        }
+        
+        if(contactA.categoryBitMask == UInt32(CollisionManager.OIL_LEFT_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.OIL_LEFT_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK)) {
+            print("contact between LEFT oil and ice")
+            var iceCube: SKSpriteNode!
+            if(contactA.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK)) {
+                iceCube = nodeA
+            } else {
+                iceCube = nodeB
+            }
+            iceCube.physicsBody?.applyImpulse(CGVector(dx: CollisionManager.OIL_LEFT_IMPULSE_FORCE, dy: 0))
+        }
+        
+        
         
         
     }
@@ -492,8 +517,6 @@ class Level: SKScene, SKPhysicsContactDelegate {
             print("Could not load GameScene with level " + String(level))
             return
         }
-        
-        
         
         /* Ensure correct aspect mode */
         scene.scaleMode = .aspectFit

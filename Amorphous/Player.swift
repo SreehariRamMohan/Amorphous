@@ -220,15 +220,12 @@ class Player: SKSpriteNode {
     }
     
     func float() {
-        self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 9.8*sqrt(getMass())))
-        print(9.8*sqrt(getMass()))
-        
+        self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 9.8*sqrt(getMass())))        
     }
     
     func jump() {
         if(currentState == State.solid) {
             self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: JUMP_MAGNITUDE*sqrt(getMass())))
-            print(JUMP_MAGNITUDE*sqrt(getMass()))
         }
     }
     

@@ -14,11 +14,11 @@ import Foundation
 
 class CollisionManager {
     //Bitmask Constants for the Player
-    static let ICE_COLLISION_BITMASK = 8 + CollisionManager.SPIKE_CATEGORY_BITMASK + CollisionManager.FAN_CATEGORY_BITMASK
+    static let ICE_COLLISION_BITMASK = 8 + CollisionManager.SPIKE_CATEGORY_BITMASK + CollisionManager.FAN_CATEGORY_BITMASK + CollisionManager.OIL_RIGHT_CATEGORY_BITMASK
     static let ICE_CONTACT_BITMASK = 0 + CollisionManager.FAN_CATEGORY_BITMASK
     static let ICE_CATEGORY_BITMASK = 2
     
-    static let WATER_COLLISION_BITMASK = 64
+    static let WATER_COLLISION_BITMASK = 64 + CollisionManager.OIL_RIGHT_CATEGORY_BITMASK
     static let WATER_CONTACT_BITMASK = 0
     static let WATER_CATEGORY_BITMASK = 1
     
@@ -51,10 +51,18 @@ class CollisionManager {
     static let FAN_COLLISION_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.GAS_CATEGORY_BITMASK
     static let FAN_CONTACT_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.GAS_CATEGORY_BITMASK
     
-    //Oil Bitmask Constants
-    static let OIL_CATEGORY_BITMASK = 512
-    static let OIL_COLLISION_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.WATER_CATEGORY_BITMASK
-    static let OIL_CONTACT_BITMASK = 0
+    //Oil Right Bitmask Constants
+    static let OIL_RIGHT_CATEGORY_BITMASK = 512
+    static let OIL_RIGHT_COLLISION_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.WATER_CATEGORY_BITMASK
+    static let OIL_RIGHT_CONTACT_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.WATER_CATEGORY_BITMASK
+    static let OIL_RIGHT_IMPULSE_FORCE = 100
+    
+    //Oil Left Bitmask Constants
+    static let OIL_LEFT_CATEGORY_BITMASK = 1024
+    static let OIL_LEFT_COLLISION_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.WATER_CATEGORY_BITMASK
+    static let OIL_LEFT_CONTACT_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.WATER_CATEGORY_BITMASK
+    static let OIL_LEFT_IMPULSE_FORCE = -100
+    
     
 
 

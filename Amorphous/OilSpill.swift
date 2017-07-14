@@ -16,6 +16,8 @@ class OilSpill: SKSpriteNode, SKPhysicsContactDelegate {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         //this will be called when the OilSpill is created.
+        self.physicsBody?.friction = 0
+        print("Oil spill friction set to 0")
     }
     
     func update() {
@@ -23,6 +25,8 @@ class OilSpill: SKSpriteNode, SKPhysicsContactDelegate {
         //You can allow every obstacle of the sponge type to have a certain behavior every tick from here
         
     }
+    
+    
     
     
     
