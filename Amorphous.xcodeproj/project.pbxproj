@@ -14,6 +14,8 @@
 		F71205401F17F39C007DF257 /* Fan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F712053F1F17F39C007DF257 /* Fan.swift */; };
 		F71205431F17F3E9007DF257 /* FanSpin.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71205421F17F3E9007DF257 /* FanSpin.sks */; };
 		F71205451F17F59A007DF257 /* Fan.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71205441F17F59A007DF257 /* Fan.sks */; };
+		F71BD43B1F1941DC0045DC2B /* OilSpill.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71BD43A1F1941DC0045DC2B /* OilSpill.sks */; };
+		F71BD43E1F1944D90045DC2B /* OilSpill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71BD43D1F1944D90045DC2B /* OilSpill.swift */; };
 		F76C41791F13DFB000F84F43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76C41781F13DFB000F84F43 /* AppDelegate.swift */; };
 		F76C417B1F13DFB000F84F43 /* Forest.sks in Resources */ = {isa = PBXBuildFile; fileRef = F76C417A1F13DFB000F84F43 /* Forest.sks */; };
 		F76C417D1F13DFB000F84F43 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F76C417C1F13DFB000F84F43 /* Actions.sks */; };
@@ -66,6 +68,8 @@
 		F712053F1F17F39C007DF257 /* Fan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fan.swift; sourceTree = "<group>"; };
 		F71205421F17F3E9007DF257 /* FanSpin.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = FanSpin.sks; path = ../FanSpin.sks; sourceTree = "<group>"; };
 		F71205441F17F59A007DF257 /* Fan.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fan.sks; sourceTree = "<group>"; };
+		F71BD43A1F1941DC0045DC2B /* OilSpill.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OilSpill.sks; sourceTree = "<group>"; };
+		F71BD43D1F1944D90045DC2B /* OilSpill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OilSpill.swift; sourceTree = "<group>"; };
 		F76C41751F13DFB000F84F43 /* Amorphous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Amorphous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F76C41781F13DFB000F84F43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F76C417A1F13DFB000F84F43 /* Forest.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Forest.sks; sourceTree = "<group>"; };
@@ -161,6 +165,15 @@
 			name = Animations;
 			sourceTree = "<group>";
 		};
+		F71BD43C1F19443D0045DC2B /* OilSpill */ = {
+			isa = PBXGroup;
+			children = (
+				F71BD43A1F1941DC0045DC2B /* OilSpill.sks */,
+				F71BD43D1F1944D90045DC2B /* OilSpill.swift */,
+			);
+			name = OilSpill;
+			sourceTree = "<group>";
+		};
 		F76C416C1F13DFB000F84F43 = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +254,7 @@
 				F71205321F17D9FF007DF257 /* Spikes */,
 				F76C41C31F15707600F84F43 /* Sponge */,
 				F712053E1F17F382007DF257 /* Fan */,
+				F71BD43C1F19443D0045DC2B /* OilSpill */,
 				F76C41C61F15811F00F84F43 /* Window */,
 			);
 			name = Obstacles/Objects;
@@ -392,6 +406,7 @@
 				F76C41CA1F159C4B00F84F43 /* CharacterActions.sks in Resources */,
 				F71205451F17F59A007DF257 /* Fan.sks in Resources */,
 				F71205311F17D9DC007DF257 /* Spikes.sks in Resources */,
+				F71BD43B1F1941DC0045DC2B /* OilSpill.sks in Resources */,
 				F76C41B31F13FE6B00F84F43 /* Level_1.sks in Resources */,
 				F780B69C1F16C32600A54538 /* WindowCrack.sks in Resources */,
 				F76C417D1F13DFB000F84F43 /* Actions.sks in Resources */,
@@ -431,6 +446,7 @@
 				F71205401F17F39C007DF257 /* Fan.swift in Sources */,
 				F76C41B11F13EBD000F84F43 /* LevelSelect.swift in Sources */,
 				F76C41791F13DFB000F84F43 /* AppDelegate.swift in Sources */,
+				F71BD43E1F1944D90045DC2B /* OilSpill.swift in Sources */,
 				F71205341F17DA21007DF257 /* Spikes.swift in Sources */,
 				F76C41AD1F13E67400F84F43 /* MSButtonNode.swift in Sources */,
 			);

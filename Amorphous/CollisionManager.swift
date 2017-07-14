@@ -50,6 +50,12 @@ class CollisionManager {
     static let FAN_CATEGORY_BITMASK = 256
     static let FAN_COLLISION_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.GAS_CATEGORY_BITMASK
     static let FAN_CONTACT_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.GAS_CATEGORY_BITMASK
+    
+    //Oil Bitmask Constants
+    static let OIL_CATEGORY_BITMASK = 512
+    static let OIL_COLLISION_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.WATER_CATEGORY_BITMASK
+    static let OIL_CONTACT_BITMASK = 0
+    
 
 
     
