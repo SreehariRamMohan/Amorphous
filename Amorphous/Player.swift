@@ -16,8 +16,8 @@ class Player: SKSpriteNode {
     }
     
     var currentState: State!
-    let IMPULSE_MAGNITUDE: CGFloat = 100
-    let JUMP_MAGNITUDE: CGFloat = 100
+    let IMPULSE_MAGNITUDE: CGFloat = 70
+    let JUMP_MAGNITUDE: CGFloat = 90
     var currentLevel: Int!
     var mass: CGFloat = 1
     
@@ -220,12 +220,15 @@ class Player: SKSpriteNode {
     }
     
     func float() {
-        self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 9.8))
+        self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 9.8*sqrt(getMass())))
+        print(9.8*sqrt(getMass()))
+        
     }
     
     func jump() {
         if(currentState == State.solid) {
-            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: JUMP_MAGNITUDE))
+            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: JUMP_MAGNITUDE*sqrt(getMass())))
+            print(JUMP_MAGNITUDE*sqrt(getMass()))
         }
     }
     
@@ -234,6 +237,7 @@ class Player: SKSpriteNode {
             //return (self.physicsBody?.mass)!
             return self.mass
         } else {
+            print("returning default of 1 for mass")
             //no player has been found, this is usually due to this method being called right after the restart button has been pressed. Return a default value of 1
             return 1
         }

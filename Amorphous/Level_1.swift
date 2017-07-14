@@ -41,16 +41,8 @@ class Level_1: Level {
                 showRestartButton()
             }
             let y = clamp(value: currentPlayer.position.y, lower: 20, upper: UIScreen.main.bounds.width/2-10)
-            
-            var x = currentPlayer.position.x
-            if( LevelSelect.current_level == 1) {
-                //clamp with level 1 dimensions in mind
-                x = clamp(value: currentPlayer.position.x, lower: 0 , upper: 5*(UIScreen.main.bounds.width/2) + 165)
-                
-            } else {
-                //add other if statements here to customize for the other levels
-                x = currentPlayer.position.x
-            }
+            let x = clamp(value: currentPlayer.position.x, lower: 0 , upper: 5*(UIScreen.main.bounds.width/2) + 165)
+            //clamp with level 1 dimensions in mind
             cameraNode.position.x = x
             cameraNode.position.y = y
         }
@@ -62,8 +54,10 @@ class Level_1: Level {
         
         window = self.childNode(withName: "//window") as! SKSpriteNode
         let windowPos: CGPoint = self.convert(CGPoint(x:0, y:0), from: window)
-        let moveAction = SKAction.move(to: windowPos, duration: 5)
-        let moveAction2 = SKAction.move(to: player.position, duration: 5)
+        let myPosition = self.position
+        
+        let moveAction = SKAction.move(to: CGPoint(x: windowPos.x, y: myPosition.y), duration: 5)
+        let moveAction2 = SKAction.move(to: CGPoint(x: myPosition.x, y: myPosition.y), duration: 5)
         let sequence = SKAction.sequence([moveAction, moveAction2])
         
         cameraNode.run(sequence)
