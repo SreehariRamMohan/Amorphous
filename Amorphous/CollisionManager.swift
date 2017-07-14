@@ -14,11 +14,11 @@ import Foundation
 
 class CollisionManager {
     //Bitmask Constants for the Player
-    static let ICE_COLLISION_BITMASK = 8 + CollisionManager.SPIKE_CATEGORY_BITMASK + CollisionManager.FAN_CATEGORY_BITMASK + CollisionManager.OIL_RIGHT_CATEGORY_BITMASK
+    static let ICE_COLLISION_BITMASK = 8 + CollisionManager.SPIKE_CATEGORY_BITMASK + CollisionManager.FAN_CATEGORY_BITMASK + CollisionManager.OIL_RIGHT_CATEGORY_BITMASK + CollisionManager.OIL_LEFT_CATEGORY_BITMASK
     static let ICE_CONTACT_BITMASK = 0 + CollisionManager.FAN_CATEGORY_BITMASK
     static let ICE_CATEGORY_BITMASK = 2
     
-    static let WATER_COLLISION_BITMASK = 64 + CollisionManager.OIL_RIGHT_CATEGORY_BITMASK
+    static let WATER_COLLISION_BITMASK = 64 + CollisionManager.OIL_RIGHT_CATEGORY_BITMASK + CollisionManager.OIL_LEFT_CATEGORY_BITMASK
     static let WATER_CONTACT_BITMASK = 0
     static let WATER_CATEGORY_BITMASK = 1
     

@@ -208,6 +208,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
     }
     
     func addBackToLevelUIButton() {
+        /*
+        This code creates the rectangular button with back to level select as an image 
+        
         let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
         btn.addTarget(self, action: #selector(Level.buttonLoadLevelSelect), for: .touchUpInside)
         self.view?.addSubview(btn)
@@ -217,6 +220,18 @@ class Level: SKScene, SKPhysicsContactDelegate {
         
         //show back to level select button as soon as its added
         button_back_to_level_select.isHidden = false
+        */
+        
+        //This code creates a circular button that allows the user to go back to level select
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: 20, y: 10 , width: 50, height: 50)
+        button.layer.cornerRadius = 0.5 * button.bounds.size.width
+        button.backgroundColor = .blue
+        button.setTitle("Back", for: .normal)
+        button.addTarget(self, action: #selector(Level.buttonLoadLevelSelect), for: .touchUpInside)
+        button.isHidden = false
+        button_back_to_level_select = button
+        self.view?.addSubview(button)
     }
     
     func addRestartButton() {
@@ -453,9 +468,6 @@ class Level: SKScene, SKPhysicsContactDelegate {
             showYouLoseLabel()
             setYouLoseText(deathBy: "Killed by Spikes")
             showRestartButton()
-            
-            
-            
         }
         
         if(contactA.categoryBitMask == UInt32(CollisionManager.FAN_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(GAS_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.FAN_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(GAS_CATEGORY_BITMASK)) {
@@ -465,26 +477,41 @@ class Level: SKScene, SKPhysicsContactDelegate {
             showRestartButton()
         }
         
-        if(contactA.categoryBitMask == UInt32(CollisionManager.OIL_RIGHT_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.OIL_RIGHT_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK)) {
-            print("contact between RIGHT oil and ice")
-            var iceCube: SKSpriteNode!
+        if(contactA.categoryBitMask == UInt32(CollisionManager.OIL_RIGHT_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.OIL_RIGHT_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK) ||
+            contactA.categoryBitMask == UInt32(CollisionManager.OIL_RIGHT_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(WATER_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.OIL_RIGHT_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(WATER_CATEGORY_BITMASK)
+            ) {
+            print("contact between RIGHT oil and ice or water")
+            var ice_or_water: SKSpriteNode!
             if(contactA.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK)) {
-                iceCube = nodeA
-            } else {
-                iceCube = nodeB
+                ice_or_water = nodeA
+            } else if(contactB.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK)){
+                ice_or_water = nodeB
             }
-            iceCube.physicsBody?.applyImpulse(CGVector(dx: CollisionManager.OIL_RIGHT_IMPULSE_FORCE, dy: 0))
+            if(contactA.categoryBitMask == UInt32(WATER_CATEGORY_BITMASK)) {
+                ice_or_water = nodeA
+            } else if(contactB.categoryBitMask == UInt32(WATER_CATEGORY_BITMASK)){
+                ice_or_water = nodeB
+            }
+            
+            ice_or_water.physicsBody?.applyImpulse(CGVector(dx: CollisionManager.OIL_RIGHT_IMPULSE_FORCE, dy: 0))
         }
         
-        if(contactA.categoryBitMask == UInt32(CollisionManager.OIL_LEFT_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.OIL_LEFT_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK)) {
-            print("contact between LEFT oil and ice")
-            var iceCube: SKSpriteNode!
+        if(contactA.categoryBitMask == UInt32(CollisionManager.OIL_LEFT_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.OIL_LEFT_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK) ||
+            contactA.categoryBitMask == UInt32(CollisionManager.OIL_LEFT_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(WATER_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.OIL_LEFT_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(WATER_CATEGORY_BITMASK)) {
+            print("contact between LEFT oil and ice or water")
+            var ice_or_water: SKSpriteNode!
             if(contactA.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK)) {
-                iceCube = nodeA
-            } else {
-                iceCube = nodeB
+                ice_or_water = nodeA
+            } else if(contactB.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK)){
+                ice_or_water = nodeB
             }
-            iceCube.physicsBody?.applyImpulse(CGVector(dx: CollisionManager.OIL_LEFT_IMPULSE_FORCE, dy: 0))
+            if(contactA.categoryBitMask == UInt32(WATER_CATEGORY_BITMASK)) {
+                ice_or_water = nodeA
+            } else if(contactB.categoryBitMask == UInt32(WATER_CATEGORY_BITMASK)){
+                ice_or_water = nodeB
+            }
+            
+            ice_or_water.physicsBody?.applyImpulse(CGVector(dx: CollisionManager.OIL_LEFT_IMPULSE_FORCE, dy: 0))
         }
         
         
@@ -536,7 +563,6 @@ class Level: SKScene, SKPhysicsContactDelegate {
         guard let scene = Level(fileNamed: "Level_\(levelNumber)") else {
             return nil
         }
-        
         scene.scaleMode = .aspectFit
         return scene
     }
