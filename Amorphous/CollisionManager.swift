@@ -63,6 +63,10 @@ class CollisionManager {
     static let OIL_LEFT_CONTACT_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.WATER_CATEGORY_BITMASK
     static let OIL_LEFT_IMPULSE_FORCE = -100
     
+    //Water Bitmask Constants
+    static let WATER_POOL_CATEGORY_BITMASK = 2048
+    static let WATER_POOL_COLLISION_BITMASK = 0
+    static let WATER_POOL_CONTACT_BITMASK = CollisionManager.WATER_CATEGORY_BITMASK + CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.GAS_CATEGORY_BITMASK
     
 
 

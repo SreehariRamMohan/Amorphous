@@ -86,7 +86,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
         addNextLevelButton()
         addHintButton()
         
-        //Have the world notify Level.swift to give contact information
+        //Have the world notify Level.swift to get contact information
         physicsWorld.contactDelegate = self
     }
     
@@ -130,6 +130,8 @@ class Level: SKScene, SKPhysicsContactDelegate {
             // calling the sponge's update functions
             Sponge.update()
         }
+        
+        
         
     }
     
@@ -518,7 +520,28 @@ class Level: SKScene, SKPhysicsContactDelegate {
             ice_or_water.physicsBody?.applyImpulse(CGVector(dx: CollisionManager.OIL_LEFT_IMPULSE_FORCE, dy: 0))
         }
         
-        
+        if(contactA.categoryBitMask == UInt32(CollisionManager.WATER_POOL_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.WATER_POOL_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK)) {
+            
+            print("Collision between ice cube and water pool")
+            
+            var object: SKSpriteNode!
+            var water: SKSpriteNode!
+            if(contactA.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK)) {
+                object = nodeA
+                water = nodeB
+            } else {
+                object = nodeB
+                water = nodeA
+            }
+            
+            let rate: CGFloat = 0.01; //Controls rate of applied motion. You shouldn't really need to touch this.
+            let disp = (((water.position.y+Water.OFFSET)+water.size.height/2.0)-((object.position.y)-object.size.height/2.0)) * Water.BUOYANCY
+            let targetPos = CGPoint(x: object.position.x, y: object.position.y+disp)
+            let targetVel = CGPoint(x: (targetPos.x-object.position.x)/(1.0/60.0), y: (targetPos.y-object.position.y)/(1.0/60.0))
+            let relVel: CGVector = CGVector(dx:targetVel.x-object.physicsBody!.velocity.dx*Water.VISCOSITY, dy:targetVel.y-object.physicsBody!.velocity.dy*Water.VISCOSITY);
+            object.physicsBody?.velocity=CGVector(dx:(object.physicsBody?.velocity.dx)!+relVel.dx*rate, dy:(object.physicsBody?.velocity.dy)!+relVel.dy*rate);
+            
+        }
         
         
     }

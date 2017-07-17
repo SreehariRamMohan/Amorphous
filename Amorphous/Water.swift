@@ -19,9 +19,9 @@ class Water: SKSpriteNode, SKPhysicsContactDelegate {
     var y: CGFloat!
     
     //MARK: Factors
-    let VISCOSITY: CGFloat = 6 //Increase to make the water "thicker/stickier," creating more friction.
-    let BUOYANCY: CGFloat = 0.4 //Slightly increase to make the object "float up faster," more buoyant.
-    let OFFSET: CGFloat = 70 //Increase to make the object float to the surface higher.
+    static let VISCOSITY: CGFloat = 6 //Increase to make the water "thicker/stickier," creating more friction.
+    static let BUOYANCY: CGFloat = 0.4 //Slightly increase to make the object "float up faster," more buoyant.
+    static let OFFSET: CGFloat = 70 //Increase to make the object float to the surface higher.
     //MARK: -
     var water: SKSpriteNode!
     
@@ -33,7 +33,6 @@ class Water: SKSpriteNode, SKPhysicsContactDelegate {
         self.physicsBody?.isDynamic = true
         self.physicsBody?.applyForce(CGVector(dx: 1000, dy: 0))
         print("Applied force")
-
     }
     
     init (currentPlayerReference: Player, width: CGFloat, height: CGFloat, x: CGFloat, y: CGFloat) {
