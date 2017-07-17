@@ -42,11 +42,11 @@ class Player: SKSpriteNode {
     let GAS_CATEGORY_BITMASK = CollisionManager.GAS_CATEGORY_BITMASK
     
     //constraints on player state
-    let MAX_JUMPS: Int = 2
+    let MAX_JUMPS: Int = 1
     var currentJumps: Int = 0
-    var lastJumpTime: Double = CACurrentMediaTime()
-    var currentJumpTime: Double = CACurrentMediaTime()
-    
+    var timeSinceLastJump: Double = 0
+    var timeAsGas: Double = 0
+    var preventLagWhenSwitching: Bool = false
     
     
     
@@ -101,6 +101,12 @@ class Player: SKSpriteNode {
             currentRaw = 1
         }
         self.currentState = State(rawValue: currentRaw)
+        self.updateState()
+    }
+    
+    func changeState(rawValue: Int) {
+        var currentRaw: Int = self.currentState.rawValue
+        self.currentState = State(rawValue: rawValue)
         self.updateState()
     }
     
@@ -189,6 +195,9 @@ class Player: SKSpriteNode {
                 
                 //make sure that body is set to dynamic
                 self.physicsBody?.isDynamic = true
+                
+                //record the starting time when we become gas so we can implement a cooldown later
+                self.timeAsGas = CFAbsoluteTimeGetCurrent()
             })
             self.run(scalePhysicsBody)
             //set mass of player to last mass value
@@ -229,13 +238,39 @@ class Player: SKSpriteNode {
     }
     
     func float() {
-        self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 9.8*sqrt(getMass())))        
+        self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 9.8*sqrt(getMass())))
+        
+        //The line below can tend to cause some lag
+        if(self.preventLagWhenSwitching && (CFAbsoluteTimeGetCurrent() - self.timeAsGas) > 2){
+            //if the player has been in the gas state for more than 2 seconds then automatically change them to a water droplet.
+            changeState(rawValue: 2)
+            return
+        } else {
+            self.preventLagWhenSwitching = true
+        }
+        
+        
     }
     
     func jump() {
+        //prevent double jumping
+        if(self.currentJumps > 0 && CFAbsoluteTimeGetCurrent() - self.timeSinceLastJump < 0.7) {
+            print(CFAbsoluteTimeGetCurrent() - self.timeSinceLastJump)
+            return
+        } else {
+            if(self.currentJumps > 1) {
+                self.currentJumps = 0
+            }
+        }
         if(currentState == State.solid) {
-            //increment the amount of jumps the player has taken in a row
+            if(self.currentJumps == 0) {
+                self.timeSinceLastJump = CFAbsoluteTimeGetCurrent()
+            }
+            //acutally perform the jump dependent on the player mass
             self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: JUMP_MAGNITUDE*sqrt(getMass())))
+            //increment the amount of jumps the player has taken in a row
+            self.currentJumps += 1
+
         }
     }
     
@@ -253,5 +288,9 @@ class Player: SKSpriteNode {
     func setMass(mass:CGFloat) {
         self.mass = mass
         self.physicsBody?.mass = self.mass
+    }
+    
+    func getTimeAsGas() -> Double {
+        return self.timeAsGas
     }
 }
