@@ -29,50 +29,12 @@ class Water: SKSpriteNode, SKPhysicsContactDelegate {
         super.init(coder: aDecoder)
         //this will be called when the Water is created.
         print("Water created")
-        print("HI there")
-        self.physicsBody?.isDynamic = true
-        self.physicsBody?.applyForce(CGVector(dx: 1000, dy: 0))
-        print("Applied force")
     }
-    
-    init (currentPlayerReference: Player, width: CGFloat, height: CGFloat, x: CGFloat, y: CGFloat) {
-        self.currentPlayer = currentPlayerReference
-        self.width = width
-        self.height = height
-        self.x = x
-        self.y = y
-        super.init(texture: nil, color: UIColor.cyan, size: CGSize(width: width, height: height))
-        print("Initialized the current player ref in Water Class")
-        
-        createWater()
-    }
-    
-    func setCurrentPlayer(currentPlayer: Player) {
-        self.currentPlayer = currentPlayer
-    }
-    
-    
-    
-    func createWater() {
-        print("HIIIIII")
-        self.width = 800
-        self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
-    }
-    
     
     func update() {
         //This will be called at the beginning of every frame from the Level class.
         //You can allow every obstacle of the sponge type to have a certain behavior every tick from here
-        
-        
-        
     }
 
-    
-    
-    
-    
-    
-    
-    
 }
+

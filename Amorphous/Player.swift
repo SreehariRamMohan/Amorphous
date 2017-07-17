@@ -41,6 +41,15 @@ class Player: SKSpriteNode {
     let GAS_CONTACT_BITMASK = CollisionManager.GAS_CONTACT_BITMASK
     let GAS_CATEGORY_BITMASK = CollisionManager.GAS_CATEGORY_BITMASK
     
+    //constraints on player state
+    let MAX_JUMPS: Int = 2
+    var currentJumps: Int = 0
+    var lastJumpTime: Double = CACurrentMediaTime()
+    var currentJumpTime: Double = CACurrentMediaTime()
+    
+    
+    
+    
     init() {
         // Make a texture from an image, a color, and size
         let texture = SKTexture(imageNamed: "water_droplet_image")
@@ -225,6 +234,7 @@ class Player: SKSpriteNode {
     
     func jump() {
         if(currentState == State.solid) {
+            //increment the amount of jumps the player has taken in a row
             self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: JUMP_MAGNITUDE*sqrt(getMass())))
         }
     }

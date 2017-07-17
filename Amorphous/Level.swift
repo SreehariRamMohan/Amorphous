@@ -47,9 +47,21 @@ class Level: SKScene, SKPhysicsContactDelegate {
     var windowHasCracked: Bool = false
     var canShift: Bool = true
     var canMove: Bool = true
+    var touchingWater: Int = 0
     
     
-        
+    //Water dependent Constants
+    static let VISCOSITY: CGFloat = 6 //Increase to make the water "thicker/stickier," creating more friction.
+    static let BUOYANCY: CGFloat = 0.4 //Slightly increase to make the object "float up faster," more buoyant.
+    static let OFFSET: CGFloat = 60 //Increase to make the object float to the surface higher.
+    
+    
+    //This is a reference to our water pool, so we can apply boyancy later on
+    var water: SKSpriteNode!
+    
+    
+    
+    
     override func didMove(to view: SKView) {
         
         initializeCriticalGameVariables()
@@ -101,7 +113,6 @@ class Level: SKScene, SKPhysicsContactDelegate {
         // This function is called when button_back_to_level_select is pressed
         self.loadLevelSelect()
         self.isHidden = true
-        
     }
     
     func setPlayer(player: Player) {
@@ -131,8 +142,26 @@ class Level: SKScene, SKPhysicsContactDelegate {
             Sponge.update()
         }
         
-        
-        
+        if(self.touchingWater > 0) {
+            //let water = self.childNode(withName: "//Water") as! SKSpriteNode
+            let water = self.water
+            //apply boyant force when we are touching water
+            let rate: CGFloat = 0.01; //Controls rate of applied motion. You shouldn't really need to touch this.
+            print(water?.position.y)
+            let position = self.convert(CGPoint(x: 0, y: 0), from: water!)
+            let posY = position.y
+            print(posY)
+
+            var part1 = posY+Level.OFFSET
+            var part2 = part1+(water?.size.height)!/2.0
+            var part3 = self.currentPlayer.position.y
+            var part4 = part3-self.currentPlayer.size.height/2.0
+            var disp = (part2 - part4) * Level.BUOYANCY
+            let targetPos = CGPoint(x: self.currentPlayer.position.x, y: self.currentPlayer.position.y+disp)
+            let targetVel = CGPoint(x: (targetPos.x-self.currentPlayer.position.x)/(1.0/60.0), y: (targetPos.y-self.currentPlayer.position.y)/(1.0/60.0))
+            let relVel: CGVector = CGVector(dx:targetVel.x-self.currentPlayer.physicsBody!.velocity.dx*Level.VISCOSITY, dy:targetVel.y-self.currentPlayer.physicsBody!.velocity.dy*Level.VISCOSITY);
+            self.currentPlayer.physicsBody?.velocity=CGVector(dx:(self.currentPlayer.physicsBody?.velocity.dx)!+relVel.dx*rate, dy:(self.currentPlayer.physicsBody?.velocity.dy)!+relVel.dy*rate);
+        }
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
@@ -344,7 +373,6 @@ class Level: SKScene, SKPhysicsContactDelegate {
     func showYouLoseLabel() {
         self.you_lose_label.isHidden = false
         showRestartButton()
-        
         //after the player loses we don't want them to be able to move or shift to a different state!
         canMove = false
         canShift = false
@@ -392,6 +420,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
         /* Get references to the physics body parent SKSpriteNode */
         let nodeA = contactA.node as! SKSpriteNode
         let nodeB = contactB.node as! SKSpriteNode
+        
         /* Check the physics bodies category bitmasks to determine their name */
         if(contactA.categoryBitMask == UInt32(SPONGE_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(WATER_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(SPONGE_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(WATER_CATEGORY_BITMASK)) {
             
@@ -522,29 +551,35 @@ class Level: SKScene, SKPhysicsContactDelegate {
         
         if(contactA.categoryBitMask == UInt32(CollisionManager.WATER_POOL_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.WATER_POOL_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK)) {
             
-            print("Collision between ice cube and water pool")
-            
-            var object: SKSpriteNode!
-            var water: SKSpriteNode!
-            if(contactA.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK)) {
-                object = nodeA
-                water = nodeB
-            } else {
-                object = nodeB
-                water = nodeA
+            self.touchingWater += 1
+            if(contactA.categoryBitMask == UInt32(CollisionManager.WATER_POOL_CATEGORY_BITMASK) ) {
+                self.water = nodeA
+                print("assigned node a")
+            } else if(contactB.categoryBitMask == UInt32(CollisionManager.WATER_POOL_CATEGORY_BITMASK)){
+                self.water = nodeB
+                print("assigned node b")
             }
-            
-            let rate: CGFloat = 0.01; //Controls rate of applied motion. You shouldn't really need to touch this.
-            let disp = (((water.position.y+Water.OFFSET)+water.size.height/2.0)-((object.position.y)-object.size.height/2.0)) * Water.BUOYANCY
-            let targetPos = CGPoint(x: object.position.x, y: object.position.y+disp)
-            let targetVel = CGPoint(x: (targetPos.x-object.position.x)/(1.0/60.0), y: (targetPos.y-object.position.y)/(1.0/60.0))
-            let relVel: CGVector = CGVector(dx:targetVel.x-object.physicsBody!.velocity.dx*Water.VISCOSITY, dy:targetVel.y-object.physicsBody!.velocity.dy*Water.VISCOSITY);
-            object.physicsBody?.velocity=CGVector(dx:(object.physicsBody?.velocity.dx)!+relVel.dx*rate, dy:(object.physicsBody?.velocity.dy)!+relVel.dy*rate);
-            
         }
-        
-        
     }
+    
+    func didEnd(_ contact: SKPhysicsContact) {
+        /* Physics contact delegate implementation */
+        /* Get references to the bodies involved in the collision */
+        let contactA:SKPhysicsBody = contact.bodyA
+        let contactB:SKPhysicsBody = contact.bodyB
+        /* Get references to the physics body parent SKSpriteNode */
+        let nodeA = contactA.node as! SKSpriteNode
+        let nodeB = contactB.node as! SKSpriteNode
+        /* Check the physics bodies category bitmasks to determine their name */
+        if(contactA.categoryBitMask == UInt32(CollisionManager.WATER_POOL_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.WATER_POOL_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK)) {
+            
+            
+            
+            
+            self.touchingWater -= 1
+        }
+    }
+
     
     func updateCamera() {
         
