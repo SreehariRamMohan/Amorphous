@@ -5,7 +5,6 @@
 //  Created by Sreehari Ram Mohan on 7/10/17.
 //  Copyright © 2017 Sreehari Ram Mohan. All rights reserved.
 //
-
 import Foundation
 import SpriteKit
 class Level: SKScene, SKPhysicsContactDelegate {
@@ -41,20 +40,18 @@ class Level: SKScene, SKPhysicsContactDelegate {
     let SPONGE_COLLISION_BITMASK = CollisionManager.SPONGE_COLLISION_BITMASK
     let SPONGE_CONTACT_BITMASK = CollisionManager.SPONGE_CONTACT_BITMASK
     
-    
-    
     //boolean values
     var windowHasCracked: Bool = false
     var canShift: Bool = true
     var canMove: Bool = true
-    var touchingWater: Int = 0
     
+    //counts the number of water pools the player is touching
+    var touchingWater: Int = 0
     
     //Water dependent Constants
     static let VISCOSITY: CGFloat = 6 //Increase to make the water "thicker/stickier," creating more friction.
     static let BUOYANCY: CGFloat = 0.4 //Slightly increase to make the object "float up faster," more buoyant.
     static let OFFSET: CGFloat = 60 //Increase to make the object float to the surface higher.
-    
     
     //This is a reference to our water pool, so we can apply boyancy later on
     var water: SKSpriteNode!
@@ -147,16 +144,13 @@ class Level: SKScene, SKPhysicsContactDelegate {
             let water = self.water
             //apply boyant force when we are touching water
             let rate: CGFloat = 0.01; //Controls rate of applied motion. You shouldn't really need to touch this.
-            print(water?.position.y)
             let position = self.convert(CGPoint(x: 0, y: 0), from: water!)
             let posY = position.y
-            print(posY)
-
-            var part1 = posY+Level.OFFSET
-            var part2 = part1+(water?.size.height)!/2.0
-            var part3 = self.currentPlayer.position.y
-            var part4 = part3-self.currentPlayer.size.height/2.0
-            var disp = (part2 - part4) * Level.BUOYANCY
+            let part1 = posY+Level.OFFSET
+            let part2 = part1+(water?.size.height)!/2.0
+            let part3 = self.currentPlayer.position.y
+            let part4 = part3-self.currentPlayer.size.height/2.0
+            let disp = (part2 - part4) * Level.BUOYANCY
             let targetPos = CGPoint(x: self.currentPlayer.position.x, y: self.currentPlayer.position.y+disp)
             let targetVel = CGPoint(x: (targetPos.x-self.currentPlayer.position.x)/(1.0/60.0), y: (targetPos.y-self.currentPlayer.position.y)/(1.0/60.0))
             let relVel: CGVector = CGVector(dx:targetVel.x-self.currentPlayer.physicsBody!.velocity.dx*Level.VISCOSITY, dy:targetVel.y-self.currentPlayer.physicsBody!.velocity.dy*Level.VISCOSITY);
@@ -175,6 +169,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
                     return
                 }
                 currentPlayer.changeState()
+                self.touchingWater = 0
             case UISwipeGestureRecognizerDirection.left:
                 print("Swiped left")
             case UISwipeGestureRecognizerDirection.up:
@@ -550,14 +545,11 @@ class Level: SKScene, SKPhysicsContactDelegate {
         }
         
         if(contactA.categoryBitMask == UInt32(CollisionManager.WATER_POOL_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.WATER_POOL_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK)) {
-            
             self.touchingWater += 1
             if(contactA.categoryBitMask == UInt32(CollisionManager.WATER_POOL_CATEGORY_BITMASK) ) {
                 self.water = nodeA
-                print("assigned node a")
             } else if(contactB.categoryBitMask == UInt32(CollisionManager.WATER_POOL_CATEGORY_BITMASK)){
                 self.water = nodeB
-                print("assigned node b")
             }
         }
     }
@@ -572,10 +564,6 @@ class Level: SKScene, SKPhysicsContactDelegate {
         let nodeB = contactB.node as! SKSpriteNode
         /* Check the physics bodies category bitmasks to determine their name */
         if(contactA.categoryBitMask == UInt32(CollisionManager.WATER_POOL_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.WATER_POOL_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK)) {
-            
-            
-            
-            
             self.touchingWater -= 1
         }
     }

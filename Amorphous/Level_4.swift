@@ -72,8 +72,8 @@ class Level_4: Level {
         let windowPos: CGPoint = self.convert(CGPoint(x:0, y:0), from: window)
         let myPosition = self.position
         
-        let moveAction = SKAction.move(to: CGPoint(x: windowPos.x - 430, y: UIScreen.main.bounds.width/4), duration: 5)
-        let moveAction2 = SKAction.move(to: CGPoint(x: myPosition.x + 300, y:  UIScreen.main.bounds.width/4), duration: 5)
+        let moveAction = SKAction.move(to: CGPoint(x: windowPos.x, y: windowPos.y), duration: 3)
+        let moveAction2 = SKAction.move(to: CGPoint(x: myPosition.x, y: myPosition.y), duration: 3)
         let sequence = SKAction.sequence([moveAction, moveAction2])
         
         cameraNode.run(sequence)
