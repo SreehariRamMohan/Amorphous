@@ -16,13 +16,37 @@ class Forest: SKScene {
     var water_plants_button: MSButtonNode!
     var rescue_water_button: MSButtonNode!
     
+     var num_water_bottles: Int = 3
+    
+    var forest_camera: SKCameraNode!
+    
     
     override func didMove(to view: SKView) {
         initialize_buttons()
         button_action_callbacks()
-    }
+        
+        //Loop over all of the children recursively which have name water_bottle and only make the number of water bottles I have as visible
+        var numBottlesShown = 0
+        self.enumerateChildNodes(withName: "//water_bottle") {
+            node, stop in
+            let bottle = node as! SKSpriteNode
+            // setting the bottle to be visible
+            if(numBottlesShown < self.num_water_bottles) {
+                //bottle.isHidden = false
+                
+                
+            } else {
+                bottle.isHidden = true
+            }
+            
+            numBottlesShown += 1
+        }
+        
+        forest_camera = self.childNode(withName: "forest_camera_node") as! SKCameraNode
+        self.camera = forest_camera
     
-    
+        }
+
     override func update(_ currentTime: TimeInterval) {
         
     }
@@ -66,10 +90,6 @@ class Forest: SKScene {
         
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
-    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
     }
@@ -102,4 +122,24 @@ class Forest: SKScene {
         /* Start game scene */
         skView.presentScene(scene)
     }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            let previousLocation = touch.previousLocation(in: self)
+            
+            let deltaX = previousLocation.x - location.x
+            let deltaY = previousLocation.y - location.y
+            
+            print("here")
+            
+            let camPosX = forest_camera.position.x + 2*deltaX
+            forest_camera.position.x = clamp(value: camPosX,lower: -220,upper: 220)
+            let camPosY = forest_camera.position.y + 2*deltaY
+            forest_camera.position.y = clamp(value: camPosY, lower: -300, upper: 300)
+            
+            
+        }
+    }
+
 }
