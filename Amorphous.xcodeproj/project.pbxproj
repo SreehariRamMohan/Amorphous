@@ -16,6 +16,8 @@
 		F71205401F17F39C007DF257 /* Fan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F712053F1F17F39C007DF257 /* Fan.swift */; };
 		F71205431F17F3E9007DF257 /* FanSpin.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71205421F17F3E9007DF257 /* FanSpin.sks */; };
 		F71205451F17F59A007DF257 /* Fan.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71205441F17F59A007DF257 /* Fan.sks */; };
+		F713B87A1F1E84520022E8E4 /* BuyPlants.sks in Resources */ = {isa = PBXBuildFile; fileRef = F713B8791F1E84520022E8E4 /* BuyPlants.sks */; };
+		F713B87C1F1E84690022E8E4 /* BuyPlants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F713B87B1F1E84690022E8E4 /* BuyPlants.swift */; };
 		F71BD43B1F1941DC0045DC2B /* OilSpill_Right.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71BD43A1F1941DC0045DC2B /* OilSpill_Right.sks */; };
 		F71BD43E1F1944D90045DC2B /* OilSpill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71BD43D1F1944D90045DC2B /* OilSpill.swift */; };
 		F71BD4401F1948A40045DC2B /* Level_3.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71BD43F1F1948A40045DC2B /* Level_3.sks */; };
@@ -50,6 +52,8 @@
 		F76C41CC1F159CA100F84F43 /* SpongeSuck.sks in Resources */ = {isa = PBXBuildFile; fileRef = F76C41CB1F159CA100F84F43 /* SpongeSuck.sks */; };
 		F780B69C1F16C32600A54538 /* WindowCrack.sks in Resources */ = {isa = PBXBuildFile; fileRef = F780B69B1F16C32600A54538 /* WindowCrack.sks */; };
 		F7C1E6081F197AD900D063E0 /* OilSpill_Left.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7C1E6071F197AD900D063E0 /* OilSpill_Left.sks */; };
+		F7DD4D821F1EC5880024687B /* PlantsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DD4D811F1EC5880024687B /* PlantsPage.swift */; };
+		F7DD4D841F1EC9A00024687B /* PlantsPage.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7DD4D831F1EC9A00024687B /* PlantsPage.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +83,8 @@
 		F712053F1F17F39C007DF257 /* Fan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fan.swift; sourceTree = "<group>"; };
 		F71205421F17F3E9007DF257 /* FanSpin.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = FanSpin.sks; path = ../FanSpin.sks; sourceTree = "<group>"; };
 		F71205441F17F59A007DF257 /* Fan.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fan.sks; sourceTree = "<group>"; };
+		F713B8791F1E84520022E8E4 /* BuyPlants.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BuyPlants.sks; sourceTree = "<group>"; };
+		F713B87B1F1E84690022E8E4 /* BuyPlants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyPlants.swift; sourceTree = "<group>"; };
 		F71BD43A1F1941DC0045DC2B /* OilSpill_Right.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OilSpill_Right.sks; sourceTree = "<group>"; };
 		F71BD43D1F1944D90045DC2B /* OilSpill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OilSpill.swift; sourceTree = "<group>"; };
 		F71BD43F1F1948A40045DC2B /* Level_3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_3.sks; sourceTree = "<group>"; };
@@ -119,6 +125,8 @@
 		F76C41CB1F159CA100F84F43 /* SpongeSuck.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = SpongeSuck.sks; path = ../SpongeSuck.sks; sourceTree = "<group>"; };
 		F780B69B1F16C32600A54538 /* WindowCrack.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = WindowCrack.sks; path = ../WindowCrack.sks; sourceTree = "<group>"; };
 		F7C1E6071F197AD900D063E0 /* OilSpill_Left.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OilSpill_Left.sks; sourceTree = "<group>"; };
+		F7DD4D811F1EC5880024687B /* PlantsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantsPage.swift; sourceTree = "<group>"; };
+		F7DD4D831F1EC9A00024687B /* PlantsPage.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlantsPage.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +159,7 @@
 			children = (
 				F76C417A1F13DFB000F84F43 /* Forest.sks */,
 				F76C417E1F13DFB000F84F43 /* Forest.swift */,
+				F713B87D1F1E84720022E8E4 /* BuyPlants */,
 			);
 			name = Forest;
 			sourceTree = "<group>";
@@ -199,6 +208,16 @@
 				F780B69B1F16C32600A54538 /* WindowCrack.sks */,
 			);
 			name = Animations;
+			sourceTree = "<group>";
+		};
+		F713B87D1F1E84720022E8E4 /* BuyPlants */ = {
+			isa = PBXGroup;
+			children = (
+				F713B8791F1E84520022E8E4 /* BuyPlants.sks */,
+				F713B87B1F1E84690022E8E4 /* BuyPlants.swift */,
+				F7DD4D801F1EC56B0024687B /* PlantsPage */,
+			);
+			name = BuyPlants;
 			sourceTree = "<group>";
 		};
 		F71BD43C1F19443D0045DC2B /* OilSpill */ = {
@@ -345,6 +364,15 @@
 			name = Window;
 			sourceTree = "<group>";
 		};
+		F7DD4D801F1EC56B0024687B /* PlantsPage */ = {
+			isa = PBXGroup;
+			children = (
+				F7DD4D811F1EC5880024687B /* PlantsPage.swift */,
+				F7DD4D831F1EC9A00024687B /* PlantsPage.sks */,
+			);
+			name = PlantsPage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -461,6 +489,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F76C41841F13DFB000F84F43 /* Main.storyboard in Resources */,
+				F713B87A1F1E84520022E8E4 /* BuyPlants.sks in Resources */,
 				F712053B1F17DCB8007DF257 /* Level_2.sks in Resources */,
 				F76C417B1F13DFB000F84F43 /* Forest.sks in Resources */,
 				F76C41AF1F13EB3500F84F43 /* LevelSelect.sks in Resources */,
@@ -479,6 +508,7 @@
 				F71BD4401F1948A40045DC2B /* Level_3.sks in Resources */,
 				F71205311F17D9DC007DF257 /* Spikes.sks in Resources */,
 				F71BD43B1F1941DC0045DC2B /* OilSpill_Right.sks in Resources */,
+				F7DD4D841F1EC9A00024687B /* PlantsPage.sks in Resources */,
 				F76C41B31F13FE6B00F84F43 /* Level_1.sks in Resources */,
 				F780B69C1F16C32600A54538 /* WindowCrack.sks in Resources */,
 				F76C417D1F13DFB000F84F43 /* Actions.sks in Resources */,
@@ -522,6 +552,8 @@
 				F76C41B11F13EBD000F84F43 /* LevelSelect.swift in Sources */,
 				F76C41791F13DFB000F84F43 /* AppDelegate.swift in Sources */,
 				F71BD43E1F1944D90045DC2B /* OilSpill.swift in Sources */,
+				F7DD4D821F1EC5880024687B /* PlantsPage.swift in Sources */,
+				F713B87C1F1E84690022E8E4 /* BuyPlants.swift in Sources */,
 				F71205341F17DA21007DF257 /* Spikes.swift in Sources */,
 				F76C41AD1F13E67400F84F43 /* MSButtonNode.swift in Sources */,
 				F752B1131F1B29CA00FAC328 /* Level_4.swift in Sources */,
