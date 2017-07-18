@@ -112,6 +112,9 @@ class LevelSelect: SKScene {
         
         button_level_5.selectedHandler = {
             //load level 5
+            LevelSelect.current_level = 5
+            self.loadLevel(level: 5)
+            print("Going to level 5")
         }
         
         button_next_chapter.selectedHandler = {
