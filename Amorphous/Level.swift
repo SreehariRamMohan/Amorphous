@@ -369,8 +369,8 @@ class Level: SKScene, SKPhysicsContactDelegate {
         self.you_lose_label.isHidden = false
         showRestartButton()
         //after the player loses we don't want them to be able to move or shift to a different state!
-        canMove = false
-        canShift = false
+        //canMove = false
+        //canShift = false
     }
     
     func setYouLoseText(deathBy: String) {
