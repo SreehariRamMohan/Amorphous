@@ -51,6 +51,8 @@
 		F76C41CA1F159C4B00F84F43 /* CharacterActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F76C41C91F159C4B00F84F43 /* CharacterActions.sks */; };
 		F76C41CC1F159CA100F84F43 /* SpongeSuck.sks in Resources */ = {isa = PBXBuildFile; fileRef = F76C41CB1F159CA100F84F43 /* SpongeSuck.sks */; };
 		F780B69C1F16C32600A54538 /* WindowCrack.sks in Resources */ = {isa = PBXBuildFile; fileRef = F780B69B1F16C32600A54538 /* WindowCrack.sks */; };
+		F7993ED41F1F37D300FE430D /* LevelSelect2.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7993ED31F1F37D300FE430D /* LevelSelect2.sks */; };
+		F7993ED61F1F37FD00FE430D /* LevelSelect2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7993ED51F1F37FD00FE430D /* LevelSelect2.swift */; };
 		F7C1E6081F197AD900D063E0 /* OilSpill_Left.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7C1E6071F197AD900D063E0 /* OilSpill_Left.sks */; };
 		F7DD4D821F1EC5880024687B /* PlantsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DD4D811F1EC5880024687B /* PlantsPage.swift */; };
 		F7DD4D841F1EC9A00024687B /* PlantsPage.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7DD4D831F1EC9A00024687B /* PlantsPage.sks */; };
@@ -124,6 +126,8 @@
 		F76C41C91F159C4B00F84F43 /* CharacterActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CharacterActions.sks; sourceTree = "<group>"; };
 		F76C41CB1F159CA100F84F43 /* SpongeSuck.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = SpongeSuck.sks; path = ../SpongeSuck.sks; sourceTree = "<group>"; };
 		F780B69B1F16C32600A54538 /* WindowCrack.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = WindowCrack.sks; path = ../WindowCrack.sks; sourceTree = "<group>"; };
+		F7993ED31F1F37D300FE430D /* LevelSelect2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelSelect2.sks; sourceTree = "<group>"; };
+		F7993ED51F1F37FD00FE430D /* LevelSelect2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelect2.swift; sourceTree = "<group>"; };
 		F7C1E6071F197AD900D063E0 /* OilSpill_Left.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OilSpill_Left.sks; sourceTree = "<group>"; };
 		F7DD4D811F1EC5880024687B /* PlantsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantsPage.swift; sourceTree = "<group>"; };
 		F7DD4D831F1EC9A00024687B /* PlantsPage.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlantsPage.sks; sourceTree = "<group>"; };
@@ -281,8 +285,6 @@
 			isa = PBXGroup;
 			children = (
 				F76C41781F13DFB000F84F43 /* AppDelegate.swift */,
-				F76C41AE1F13EB3500F84F43 /* LevelSelect.sks */,
-				F76C41B01F13EBD000F84F43 /* LevelSelect.swift */,
 				F76C417C1F13DFB000F84F43 /* Actions.sks */,
 				F76C41AC1F13E67400F84F43 /* MSButtonNode.swift */,
 				F76C41801F13DFB000F84F43 /* GameViewController.swift */,
@@ -294,6 +296,7 @@
 				F76C41871F13DFB000F84F43 /* LaunchScreen.storyboard */,
 				F76C418A1F13DFB000F84F43 /* Info.plist */,
 				F76C41C91F159C4B00F84F43 /* CharacterActions.sks */,
+				F7993ED21F1F378900FE430D /* LevelSelect */,
 				F71205411F17F3D1007DF257 /* Animations */,
 				F76C41BE1F15469500F84F43 /* Obstacles/Objects */,
 				F7101A3D1F1D50CE002C8367 /* Forest */,
@@ -362,6 +365,17 @@
 				F76C41C41F15811700F84F43 /* Window.swift */,
 			);
 			name = Window;
+			sourceTree = "<group>";
+		};
+		F7993ED21F1F378900FE430D /* LevelSelect */ = {
+			isa = PBXGroup;
+			children = (
+				F76C41AE1F13EB3500F84F43 /* LevelSelect.sks */,
+				F7993ED31F1F37D300FE430D /* LevelSelect2.sks */,
+				F76C41B01F13EBD000F84F43 /* LevelSelect.swift */,
+				F7993ED51F1F37FD00FE430D /* LevelSelect2.swift */,
+			);
+			name = LevelSelect;
 			sourceTree = "<group>";
 		};
 		F7DD4D801F1EC56B0024687B /* PlantsPage */ = {
@@ -509,6 +523,7 @@
 				F71205311F17D9DC007DF257 /* Spikes.sks in Resources */,
 				F71BD43B1F1941DC0045DC2B /* OilSpill_Right.sks in Resources */,
 				F7DD4D841F1EC9A00024687B /* PlantsPage.sks in Resources */,
+				F7993ED41F1F37D300FE430D /* LevelSelect2.sks in Resources */,
 				F76C41B31F13FE6B00F84F43 /* Level_1.sks in Resources */,
 				F780B69C1F16C32600A54538 /* WindowCrack.sks in Resources */,
 				F76C417D1F13DFB000F84F43 /* Actions.sks in Resources */,
@@ -549,6 +564,7 @@
 				F71205361F17DB18007DF257 /* Level_2.swift in Sources */,
 				F76C41BA1F141DE800F84F43 /* Player.swift in Sources */,
 				F71205401F17F39C007DF257 /* Fan.swift in Sources */,
+				F7993ED61F1F37FD00FE430D /* LevelSelect2.swift in Sources */,
 				F76C41B11F13EBD000F84F43 /* LevelSelect.swift in Sources */,
 				F76C41791F13DFB000F84F43 /* AppDelegate.swift in Sources */,
 				F71BD43E1F1944D90045DC2B /* OilSpill.swift in Sources */,

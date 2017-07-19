@@ -23,6 +23,7 @@ class LevelSelect: SKScene {
     var button_next_chapter: MSButtonNode!
     
     static var current_level = 1
+    var current_chapter: Int = 1
     
     override func didMove(to view: SKView) {
         initializeButtons()
@@ -53,6 +54,57 @@ class LevelSelect: SKScene {
         /* Start game scene */
         skView.presentScene(scene)
 
+    }
+    
+    func loadLevelSelect(levelSelect: Int) {
+        /* Grab reference to our SpriteKit view */
+        guard let skView = self.view as SKView! else {
+            print("Could not get Skview")
+            return
+        }
+        print("Scene values is " + String(levelSelect))
+        
+        
+        if(levelSelect == 1) {
+            print("In first if")
+            /* Load Game scene */
+            guard let scene = LevelSelect(fileNamed: "LevelSelect") else {
+                print("Special Case broken")
+                return
+            }
+            /* Ensure correct aspect mode */
+            scene.scaleMode = .aspectFit
+            print(scene)
+            /* Show debug */
+            skView.showsPhysics = true
+            skView.showsDrawCount = true
+            skView.showsFPS = true
+            print("Got here")
+            
+            /* Start game scene */
+            skView.presentScene(scene)
+        } else {
+            print("In else block")
+            /* Load Game scene */
+            guard let scene = LevelSelect.levelselect(current_chapter) else {
+                print("Could not load levelselect # " + String(current_chapter))
+                return
+            }
+            /* Ensure correct aspect mode */
+            scene.scaleMode = .aspectFit
+            print(scene)
+            /* Show debug */
+            skView.showsPhysics = true
+            skView.showsDrawCount = true
+            skView.showsFPS = true
+            print("Got here")
+            
+            /* Start game scene */
+            skView.presentScene(scene)
+        }
+        
+      
+        
     }
     
     func initializeButtons(){
@@ -115,8 +167,11 @@ class LevelSelect: SKScene {
             print("Going to level 5")
         }
         
-        button_next_chapter.selectedHandler = {
+        button_next_chapter.selectedHandler =
+            {
             //load next chapter
+            self.current_chapter = 2
+            self.loadLevelSelect(levelSelect: self.current_chapter)
         }
         
     }
@@ -155,4 +210,16 @@ class LevelSelect: SKScene {
         scene.scaleMode = .aspectFit
         return scene
     }
+    
+    /* Make a Class method to load level select menus */
+    class func levelselect(_ levelNumber: Int) -> LevelSelect? {
+        guard let scene = LevelSelect(fileNamed: "LevelSelect\(levelNumber)") else {
+            return nil
+        }
+        scene.scaleMode = .aspectFit
+        return scene
+    }
+
+    
+    
 }
