@@ -44,6 +44,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
     var windowHasCracked: Bool = false
     var canShift: Bool = true
     var canMove: Bool = true
+    var createdSpringJoint: Bool = false
     
     //counts the number of water pools the player is touching
     var touchingWater: Int = 0
@@ -55,8 +56,11 @@ class Level: SKScene, SKPhysicsContactDelegate {
     
     //This is a reference to our water pool, so we can apply boyancy later on
     var water: SKSpriteNode!
+    var ceiling: SKSpriteNode!
     
-    
+    var counter: Double!
+    var timer = Timer()
+    var timerLabel: UILabel!
     
     
     override func didMove(to view: SKView) {
@@ -87,22 +91,33 @@ class Level: SKScene, SKPhysicsContactDelegate {
         self.camera = cameraNode
         addChild(cameraNode)
         
-        //add a back_to_level_select, restart button, you_lose_label, yout_beat_level_label, next_level_button, and hint button to the scene without having it be moved by camera
+        //add a back_to_level_select, restart button, you_lose_label, yout_beat_level_label, stopwatch, next_level_button, and hint button to the scene without having it be moved by camera
         addBackToLevelUIButton()
         addRestartButton()
         addYouLoseLabel()
         addYouBeatLevelLabel()
         addNextLevelButton()
         addHintButton()
+        addStopwatch()
         
         //Have the world notify Level.swift to get contact information
         physicsWorld.contactDelegate = self
+        
+        //initialize the variable ceiling
+        self.ceiling = self.childNode(withName: "//ceiling") as! SKSpriteNode
+        
+        
+        //set a callback to update so that updateTimer is called every 1/10 second
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateStopwatch), userInfo: nil, repeats: true)
     }
     
     func initializeCriticalGameVariables() {
         windowHasCracked = false
         canMove = true
         canShift = true
+        ceiling = self.childNode(withName: "ceiling") as! SKSpriteNode
+        //get the current time in seconds, to use as a stopwatch later to time the player
+        self.counter = 0
     }
     
     func buttonLoadLevelSelect(sender: UIButton!) {
@@ -115,6 +130,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
     func setPlayer(player: Player) {
         self.currentPlayer = player
     }
+    
     
     override func update(_ currentTime: CFTimeInterval) {
         
@@ -138,6 +154,33 @@ class Level: SKScene, SKPhysicsContactDelegate {
             // calling the sponge's update functions
             Sponge.update()
         }
+        
+        
+        //Loop over all of the FallingBlock sprites, and if they are directly above the current player, then drop them down to the ground!
+        self.enumerateChildNodes(withName: "//falling_block_sprite") {
+            node, stop in
+            let BlockSprite = node as! FallingBlock
+            
+            //create a spring joint to the ceiling
+            if(!self.createdSpringJoint) {
+                let spring = SKPhysicsJointSpring.joint(withBodyA: BlockSprite.physicsBody!,
+                                                        bodyB: self.ceiling.physicsBody!,
+                                                        anchorA: BlockSprite.convert(CGPoint(x: 0, y: 0), to: self),
+                                                        anchorB: CGPoint(x: BlockSprite.convert(CGPoint(x: 0, y: 0), to: self).x, y: self.ceiling.position.y))
+                print(self.ceiling.position)
+                spring.frequency = 0.5
+                spring.damping = 0.01
+                self.scene?.physicsWorld.add(spring)
+            }
+            
+            else if(abs(BlockSprite.convert(CGPoint(x: 0,y: 0), to: self).x-self.currentPlayer.position.x) < 8 ){
+                // calling the Block's fall functions
+                BlockSprite.fall()
+            }
+        }
+        self.createdSpringJoint = true
+        
+        
         
         if(self.touchingWater > 0) {
             //let water = self.childNode(withName: "//Water") as! SKSpriteNode
@@ -163,6 +206,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.right:
                 print("Swiped right")
+                currentPlayer.applyRightImpulse()
             case UISwipeGestureRecognizerDirection.down:
                 print("Swiped down")
                 if(!canShift) {
@@ -172,6 +216,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
                 self.touchingWater = 0
             case UISwipeGestureRecognizerDirection.left:
                 print("Swiped left")
+                currentPlayer.applyLeftImpulse()
             case UISwipeGestureRecognizerDirection.up:
                 print("Swiped up")
                 currentPlayer.jump()
@@ -268,6 +313,26 @@ class Level: SKScene, SKPhysicsContactDelegate {
         let btnImage = UIImage(named: "button_restart_level")
         button_restart_level.setImage(btnImage , for: [])
         button_restart_level.isHidden = true
+    }
+    
+    func addStopwatch() {
+        timerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
+        timerLabel.center = CGPoint(x: UIScreen.main.bounds.width/2, y: 50)
+        timerLabel.textAlignment = .center
+        timerLabel.text = String(self.counter)
+        timerLabel.textColor = UIColor.white
+        timerLabel.font = timerLabel.font.withSize(25)
+        timerLabel.layer.cornerRadius = timerLabel.frame.width/2
+        timerLabel.layer.backgroundColor = UIColor(red: 0/255, green: 159/255, blue: 184/255, alpha: 1.0).cgColor
+        self.view?.addSubview(timerLabel)
+    }
+    
+    func updateStopwatch() {
+        if(canMove && canShift) {
+            counter? += 0.1
+            timerLabel.text = String(self.counter.format(f: ".1"))
+        }
+        updateStopwatchBackground()
     }
     
     func addYouLoseLabel() {
@@ -369,8 +434,8 @@ class Level: SKScene, SKPhysicsContactDelegate {
         self.you_lose_label.isHidden = false
         showRestartButton()
         //after the player loses we don't want them to be able to move or shift to a different state!
-        //canMove = false
-        //canShift = false
+        canMove = false
+        canShift = false
     }
     
     func setYouLoseText(deathBy: String) {
@@ -552,6 +617,13 @@ class Level: SKScene, SKPhysicsContactDelegate {
                 self.water = nodeB
             }
         }
+        
+        if(contactA.categoryBitMask == UInt32(CollisionManager.FALLING_BLOCK_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.FALLING_BLOCK_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK)) {
+            print("BLOCK COLLISON")
+            showYouLoseLabel()
+            setYouLoseText(deathBy: "Smashed by a falling block")
+            showRestartButton()
+        }
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
@@ -608,6 +680,19 @@ class Level: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    //This is a function that each level will override to set the time constraints differently!
+    func updateStopwatchBackground() {
+        if(self.counter < 13) {
+            timerLabel.layer.backgroundColor = UIColor(red: 12/255, green: 183/255, blue: 15/255, alpha: 1.0).cgColor
+        } else if(self.counter < 20) {
+            timerLabel.layer.backgroundColor = UIColor(red: 239/255, green: 232/255, blue: 11/255, alpha: 1.0).cgColor
+        } else if(self.counter < 25) {
+            timerLabel.layer.backgroundColor = UIColor(red: 229/255, green: 55/255, blue: 55/255, alpha: 1.0).cgColor
+        } else {
+            timerLabel.layer.backgroundColor = UIColor(red: 48/255, green: 3/255, blue: 3/255, alpha: 1.0).cgColor
+        }
+    }
+    
     /* Make a Class method to level */
     class func level(_ levelNumber: Int) -> Level? {
         guard let scene = Level(fileNamed: "Level_\(levelNumber)") else {
@@ -621,4 +706,10 @@ class Level: SKScene, SKPhysicsContactDelegate {
 
 func clamp<T: Comparable>(value: T, lower: T, upper: T) -> T {
     return min(max(value, lower), upper)
+}
+
+extension Double {
+    func format(f: String) -> String {
+        return String(format: "%\(f)f", self)
+    }
 }

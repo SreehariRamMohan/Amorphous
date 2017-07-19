@@ -10,10 +10,7 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-
 class Fan: SKSpriteNode, SKPhysicsContactDelegate {
-    
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         //this will be called when the fan is created.
@@ -24,8 +21,4 @@ class Fan: SKSpriteNode, SKPhysicsContactDelegate {
         //You can allow every obstacle of the sponge type to have a certain behavior every tick from here
         
     }
-    
-    
-    
-    
 }
