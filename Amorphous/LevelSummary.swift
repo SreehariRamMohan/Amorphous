@@ -7,3 +7,16 @@
 //
 
 import Foundation
+import GameplayKit
+
+class LevelSummary: Level {
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        
+    }
+    
+
+
+}
