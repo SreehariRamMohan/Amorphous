@@ -272,8 +272,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
         hideHintButton()
         
         //Remove the hint button and level select button from the superview so they won't be shown in the level select scene
-        button_hint.removeFromSuperview()
-        button_back_to_level_select.removeFromSuperview()
+        removeButtons()
         
         skView.presentScene(scene)
     }
@@ -652,6 +651,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
         
         //make sure to hide any created buttons/labels that are not needed at the start of the level here.
         hideLabelsAndButtons()
+        removeButtons()
     }
     
     func loadLevel(level: Int) {
@@ -691,6 +691,12 @@ class Level: SKScene, SKPhysicsContactDelegate {
         } else {
             timerLabel.layer.backgroundColor = UIColor(red: 48/255, green: 3/255, blue: 3/255, alpha: 1.0).cgColor
         }
+    }
+    
+    func removeButtons() {
+        button_hint.removeFromSuperview()
+        timerLabel.removeFromSuperview()
+        button_back_to_level_select.removeFromSuperview()
     }
     
     /* Make a Class method to level */

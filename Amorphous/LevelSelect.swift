@@ -219,7 +219,5 @@ class LevelSelect: SKScene {
         scene.scaleMode = .aspectFit
         return scene
     }
-
-    
     
 }
