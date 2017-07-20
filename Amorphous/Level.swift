@@ -62,6 +62,10 @@ class Level: SKScene, SKPhysicsContactDelegate {
     var timer = Timer()
     var timerLabel: UILabel!
     
+    var Level_Summary_Fragment: SKReferenceNode!
+    
+    //goals for levels
+    var goals = [(13, 20, 25), (13, 20, 25),(13, 20, 25),(13, 20, 25),(13, 20, 25),(13, 20, 25),]
     
     override func didMove(to view: SKView) {
         
@@ -315,15 +319,16 @@ class Level: SKScene, SKPhysicsContactDelegate {
     }
     
     func addStopwatch() {
-        timerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
-        timerLabel.center = CGPoint(x: UIScreen.main.bounds.width/2, y: 50)
-        timerLabel.textAlignment = .center
-        timerLabel.text = String(self.counter)
-        timerLabel.textColor = UIColor.white
-        timerLabel.font = timerLabel.font.withSize(25)
-        timerLabel.layer.cornerRadius = timerLabel.frame.width/2
-        timerLabel.layer.backgroundColor = UIColor(red: 0/255, green: 159/255, blue: 184/255, alpha: 1.0).cgColor
+        self.timerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
+        self.timerLabel.center = CGPoint(x: UIScreen.main.bounds.width/2, y: 50)
+        self.timerLabel.textAlignment = .center
+        self.timerLabel.text = String(self.counter)
+        self.timerLabel.textColor = UIColor.white
+        self.timerLabel.font = timerLabel.font.withSize(25)
+        self.timerLabel.layer.cornerRadius = timerLabel.frame.width/2
+        self.timerLabel.layer.backgroundColor = UIColor(red: 0/255, green: 159/255, blue: 184/255, alpha: 1.0).cgColor
         self.view?.addSubview(timerLabel)
+    
     }
     
     func updateStopwatch() {
@@ -551,9 +556,13 @@ class Level: SKScene, SKPhysicsContactDelegate {
                 iceCube.run(moveAction)
             }
             
+            //Player has beaten the level
+            
+            launchLevelSummaryFragment()
+            
             //Display a message to the player telling them that they completed the level
-            self.showYouBeatLevelLabel()
-            self.showNextLevelButton()
+            //self.showYouBeatLevelLabel()
+            //self.showNextLevelButton()
             
         }
         
@@ -648,10 +657,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
         LevelSelect.current_level += 1
         print("loading level " + String(LevelSelect.current_level))
         self.loadLevel(level: LevelSelect.current_level)
-        
         //make sure to hide any created buttons/labels that are not needed at the start of the level here.
-        hideLabelsAndButtons()
-        removeButtons()
+        //hideLabelsAndButtons()
+        //removeButtons()
     }
     
     func loadLevel(level: Int) {
@@ -706,6 +714,43 @@ class Level: SKScene, SKPhysicsContactDelegate {
         }
         scene.scaleMode = .aspectFit
         return scene
+    }
+    
+    func launchLevelSummaryFragment() {
+        //intentionally delay the summary screen fromt showing until the break window animation has finished
+        let delay = SKAction.wait(forDuration: 2.9)
+        self.run(delay) {
+            //remove the timer so it doesn't block some text
+            self.timerLabel.removeFromSuperview()
+            //remove the hint button, we don't need it because we already completed the level.
+            self.button_hint.removeFromSuperview()
+            print("Launched the summary page")
+            let path = Bundle.main.path(forResource: "LevelSummary", ofType: "sks")
+            let fragment = SKReferenceNode(url: URL (fileURLWithPath: path!))
+            print(fragment.children)
+            //give the fragment a reference to Superclass, this is vitally important or the level summary fragment will crash!
+            let levelSummary = fragment.childNode(withName: "//LevelSummary") as! LevelSummary
+            //setup the level summary, this initializes and sets callbacks to buttons and variables
+            levelSummary.setup()
+            levelSummary.setParentReference(parentReference: self)
+            levelSummary.populateWithInformation()
+            //set the level summary fragment view to the center of the screen!
+            fragment.position = CGPoint(x: 0, y: 0)
+            self.Level_Summary_Fragment = fragment
+            print("Fragment position is")
+            print(fragment.position.x)
+            print(fragment.position.y)
+            self.cameraNode.addChild(fragment)
+        }
+    }
+    
+    func destroyLevelSummaryFragment() {
+        Level_Summary_Fragment.removeFromParent()
+    }
+    
+    func getTimerLabel() -> UILabel {
+        print(self.timerLabel)
+        return self.timerLabel
     }
 
 }
