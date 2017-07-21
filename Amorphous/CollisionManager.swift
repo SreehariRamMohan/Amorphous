@@ -15,11 +15,11 @@ import Foundation
 class CollisionManager {
     //Bitmask Constants for the Player
     static let ICE_COLLISION_BITMASK = 8 + CollisionManager.SPIKE_CATEGORY_BITMASK + CollisionManager.FAN_CATEGORY_BITMASK + CollisionManager.OIL_RIGHT_CATEGORY_BITMASK + CollisionManager.OIL_LEFT_CATEGORY_BITMASK + CollisionManager.FALLING_BLOCK_CATEGORY_BITMASK
-    static let ICE_CONTACT_BITMASK = 0 + CollisionManager.FAN_CATEGORY_BITMASK + CollisionManager.FALLING_BLOCK_CATEGORY_BITMASK
+    static let ICE_CONTACT_BITMASK = 0 + CollisionManager.FAN_CATEGORY_BITMASK + CollisionManager.FALLING_BLOCK_CATEGORY_BITMASK + CollisionManager.FLAME_CATEGORY_BITMASK
     static let ICE_CATEGORY_BITMASK = 2
     
     static let WATER_COLLISION_BITMASK = 64 + CollisionManager.OIL_RIGHT_CATEGORY_BITMASK + CollisionManager.OIL_LEFT_CATEGORY_BITMASK
-    static let WATER_CONTACT_BITMASK = 0
+    static let WATER_CONTACT_BITMASK = 0 + CollisionManager.FLAME_CATEGORY_BITMASK
     static let WATER_CATEGORY_BITMASK = 1
     
     static let GAS_COLLISION_BITMASK = 64 + CollisionManager.SPONGE_CATEGORY_BITMASK + CollisionManager.FAN_CATEGORY_BITMASK
@@ -67,14 +67,14 @@ class CollisionManager {
     static let WATER_POOL_CATEGORY_BITMASK = 2048
     static let WATER_POOL_COLLISION_BITMASK = 0
     static let WATER_POOL_CONTACT_BITMASK = CollisionManager.WATER_CATEGORY_BITMASK + CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.GAS_CATEGORY_BITMASK
-    
-    
+
     //Falling Block Bitmask Constants
     static let FALLING_BLOCK_CATEGORY_BITMASK = 4096
     static let FALLING_BLOCK_CONTACT_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK
     static let FALLING_BLOCK_COLLISION_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK
 
-
-    
-
+    //Flame Bitmask Contants
+    static let FLAME_CATEGORY_BITMASK = 8192
+    static let FLAME_COLLISION_BITMASK = 0
+    static let FLAME_CONTACT_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.WATER_CATEGORY_BITMASK
 }

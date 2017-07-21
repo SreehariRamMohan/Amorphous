@@ -1,14 +1,13 @@
 //
-//  Level_1.swift
+//  Level_9.swift
 //  Amorphous
 //
-//  Created by Sreehari Ram Mohan on 7/10/17.
+//  Created by Sreehari Ram Mohan on 7/21/17.
 //  Copyright © 2017 Sreehari Ram Mohan. All rights reserved.
 //
 
 import Foundation
 import SpriteKit
-
 class Level_1: Level {
     
     //player variable
@@ -28,10 +27,13 @@ class Level_1: Level {
         //tell Level who the player is
         self.setPlayer(player: player)
         
-        print("reset the player in level 1")
+        print("reset the player in level 9")
         
         //add player to the world
         addChild(player)
+        
+        //this is an introductory level so we need to make the state ice so it is easier to move
+        player.changeState(rawValue: 1)
     }
     
     override func updateCamera() {
@@ -41,7 +43,7 @@ class Level_1: Level {
                 showRestartButton()
             }
             let y = clamp(value: currentPlayer.position.y, lower: 20, upper: UIScreen.main.bounds.width/2-10)
-            let x = clamp(value: currentPlayer.position.x, lower: 0 , upper: 5*(UIScreen.main.bounds.width/2) + 165)
+            let x = clamp(value: currentPlayer.position.x, lower: 20 , upper: 1*(UIScreen.main.bounds.width/3))
             //clamp with level 1 dimensions in mind
             cameraNode.position.x = x
             cameraNode.position.y = y

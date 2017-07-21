@@ -105,7 +105,6 @@ class Player: SKSpriteNode {
     }
     
     func changeState(rawValue: Int) {
-        var currentRaw: Int = self.currentState.rawValue
         self.currentState = State(rawValue: rawValue)
         self.updateState()
     }

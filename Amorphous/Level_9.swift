@@ -1,14 +1,15 @@
 //
-//  Level_20.swift
+//  Level_1.swift
 //  Amorphous
 //
-//  Created by Sreehari Ram Mohan on 7/21/17.
+//  Created by Sreehari Ram Mohan on 7/10/17.
 //  Copyright © 2017 Sreehari Ram Mohan. All rights reserved.
 //
 
 import Foundation
 import SpriteKit
-class Level_2: Level {
+
+class Level_9: Level {
     
     //player variable
     var player: Player!
@@ -27,13 +28,10 @@ class Level_2: Level {
         //tell Level who the player is
         self.setPlayer(player: player)
         
-        print("reset the player in level 20")
+        print("reset the player in level 1")
         
         //add player to the world
         addChild(player)
-        
-        //this is a level where we want to teach the player about gas, so we must make the player start as water
-        player.changeState(rawValue: 2)
     }
     
     override func updateCamera() {
@@ -43,7 +41,7 @@ class Level_2: Level {
                 showRestartButton()
             }
             let y = clamp(value: currentPlayer.position.y, lower: 20, upper: UIScreen.main.bounds.width/2-10)
-            let x = clamp(value: currentPlayer.position.x, lower: 20 , upper: 1*(UIScreen.main.bounds.width/3))
+            let x = clamp(value: currentPlayer.position.x, lower: 0 , upper: 5*(UIScreen.main.bounds.width/2) + 165)
             //clamp with level 1 dimensions in mind
             cameraNode.position.x = x
             cameraNode.position.y = y

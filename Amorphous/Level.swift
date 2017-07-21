@@ -488,7 +488,6 @@ class Level: SKScene, SKPhysicsContactDelegate {
         /* Get references to the physics body parent SKSpriteNode */
         let nodeA = contactA.node as! SKSpriteNode
         let nodeB = contactB.node as! SKSpriteNode
-        
         /* Check the physics bodies category bitmasks to determine their name */
         if(contactA.categoryBitMask == UInt32(SPONGE_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(WATER_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(SPONGE_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(WATER_CATEGORY_BITMASK)) {
             
@@ -637,6 +636,22 @@ class Level: SKScene, SKPhysicsContactDelegate {
             setYouLoseText(deathBy: "Smashed by a falling block")
             showRestartButton()
         }
+        
+        if(contactA.categoryBitMask == UInt32(CollisionManager.FLAME_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.WATER_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.FLAME_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.WATER_CATEGORY_BITMASK) || contactA.categoryBitMask == UInt32(CollisionManager.FLAME_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.FLAME_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK)) {
+            
+            var sprite: Player!
+            if(contactA.categoryBitMask == UInt32(CollisionManager.WATER_CATEGORY_BITMASK)) {
+                //node A is water
+                sprite = nodeA as! Player
+                sprite.changeState(rawValue: 3)
+                print("Changed after first if in contact")
+            } else if(contactB.categoryBitMask == UInt32(CollisionManager.WATER_CATEGORY_BITMASK)) {
+                //node B is water
+                sprite = nodeB as! Player
+                sprite.changeState(rawValue: 3)
+                print("Changed after second if in contact")
+            }
+        }
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
@@ -653,7 +668,6 @@ class Level: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    
     func updateCamera() {
         
     }
@@ -757,7 +771,6 @@ class Level: SKScene, SKPhysicsContactDelegate {
         print(self.timerLabel)
         return self.timerLabel
     }
-
 }
 
 func clamp<T: Comparable>(value: T, lower: T, upper: T) -> T {
