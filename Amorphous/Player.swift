@@ -206,9 +206,6 @@ class Player: SKSpriteNode {
         } else if(currentState.rawValue == 0) {
             //change to plasma state
         }
-        
-        print(self.physicsBody?.mass)
-
     }
     
     func applyRightImpulse() {

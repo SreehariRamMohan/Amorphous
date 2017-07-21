@@ -145,7 +145,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
             //call the current player update method
             currentPlayer.update()
             //check if the current player is dead if their mass is less than 0.01
-            if(currentPlayer.getMass() < 0.01) {
+            if(currentPlayer.getMass() < 0.5) {
                 setYouLoseText(deathBy: "Death by mass loss from sponge ;(")
                 showYouLoseLabel()
             }
@@ -497,7 +497,8 @@ class Level: SKScene, SKPhysicsContactDelegate {
             var bodyAction: SKAction?
             bodyAction = SKAction(named: "SpongeSuck")
             water.run(bodyAction!)
-            currentPlayer.setMass(mass: 0.95*currentPlayer.getMass())
+            
+            currentPlayer.setMass(mass: 0.99*currentPlayer.getMass())
             /* Create a CLOSURE to safely execute water shrinking after the physics engine has finished rendering the frame so the code doesn't crash */
             let scalePhysicsBody = SKAction.run({
                 /* Scale the currentPlayer.physics body in the scene */
