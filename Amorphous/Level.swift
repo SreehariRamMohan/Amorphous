@@ -210,13 +210,17 @@ class Level: SKScene, SKPhysicsContactDelegate {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.right:
                 print("Swiped right")
-                currentPlayer.applyRightImpulse()
+                if(canMove && canShift) {
+                    currentPlayer.applyRightImpulse()
+                }
             case UISwipeGestureRecognizerDirection.down:
                 print("Swiped down")
                 if(!canShift) {
                     return
                 }
-                currentPlayer.changeState()
+                if(canMove && canShift) {
+                    currentPlayer.changeState()
+                }
                 self.touchingWater = 0
             case UISwipeGestureRecognizerDirection.left:
                 print("Swiped left")
