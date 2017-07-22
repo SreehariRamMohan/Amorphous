@@ -64,6 +64,8 @@
 		F77F43761F22F1FA00312E78 /* Level_5.sks in Resources */ = {isa = PBXBuildFile; fileRef = F77F43751F22F1FA00312E78 /* Level_5.sks */; };
 		F77F43791F22F8CB00312E78 /* Level_6.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77F43781F22F8CB00312E78 /* Level_6.swift */; };
 		F77F437B1F22F91400312E78 /* Level_6.sks in Resources */ = {isa = PBXBuildFile; fileRef = F77F437A1F22F91400312E78 /* Level_6.sks */; };
+		F77F437F1F23461F00312E78 /* Level_7.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77F437E1F23461F00312E78 /* Level_7.swift */; };
+		F77F43811F23462800312E78 /* Level_7.sks in Resources */ = {isa = PBXBuildFile; fileRef = F77F43801F23462800312E78 /* Level_7.sks */; };
 		F780B69C1F16C32600A54538 /* WindowCrack.sks in Resources */ = {isa = PBXBuildFile; fileRef = F780B69B1F16C32600A54538 /* WindowCrack.sks */; };
 		F7993ED41F1F37D300FE430D /* LevelSelect2.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7993ED31F1F37D300FE430D /* LevelSelect2.sks */; };
 		F7993ED61F1F37FD00FE430D /* LevelSelect2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7993ED51F1F37FD00FE430D /* LevelSelect2.swift */; };
@@ -76,8 +78,8 @@
 		F7C1E6081F197AD900D063E0 /* OilSpill_Left.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7C1E6071F197AD900D063E0 /* OilSpill_Left.sks */; };
 		F7DD4D821F1EC5880024687B /* PlantsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DD4D811F1EC5880024687B /* PlantsPage.swift */; };
 		F7DD4D841F1EC9A00024687B /* PlantsPage.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7DD4D831F1EC9A00024687B /* PlantsPage.sks */; };
-		F7F162BC1F21712400BB8F77 /* Level_7.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F162BB1F21712400BB8F77 /* Level_7.swift */; };
-		F7F162BE1F21713200BB8F77 /* Level_7.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7F162BD1F21713200BB8F77 /* Level_7.sks */; };
+		F7F162BC1F21712400BB8F77 /* Level_77.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F162BB1F21712400BB8F77 /* Level_77.swift */; };
+		F7F162BE1F21713200BB8F77 /* Level_77.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7F162BD1F21713200BB8F77 /* Level_77.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +163,8 @@
 		F77F43751F22F1FA00312E78 /* Level_5.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_5.sks; sourceTree = "<group>"; };
 		F77F43781F22F8CB00312E78 /* Level_6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_6.swift; sourceTree = "<group>"; };
 		F77F437A1F22F91400312E78 /* Level_6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_6.sks; sourceTree = "<group>"; };
+		F77F437E1F23461F00312E78 /* Level_7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_7.swift; sourceTree = "<group>"; };
+		F77F43801F23462800312E78 /* Level_7.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_7.sks; sourceTree = "<group>"; };
 		F780B69B1F16C32600A54538 /* WindowCrack.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = WindowCrack.sks; path = ../WindowCrack.sks; sourceTree = "<group>"; };
 		F7993ED31F1F37D300FE430D /* LevelSelect2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelSelect2.sks; sourceTree = "<group>"; };
 		F7993ED51F1F37FD00FE430D /* LevelSelect2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelect2.swift; sourceTree = "<group>"; };
@@ -173,8 +177,8 @@
 		F7C1E6071F197AD900D063E0 /* OilSpill_Left.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OilSpill_Left.sks; sourceTree = "<group>"; };
 		F7DD4D811F1EC5880024687B /* PlantsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantsPage.swift; sourceTree = "<group>"; };
 		F7DD4D831F1EC9A00024687B /* PlantsPage.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlantsPage.sks; sourceTree = "<group>"; };
-		F7F162BB1F21712400BB8F77 /* Level_7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_7.swift; sourceTree = "<group>"; };
-		F7F162BD1F21713200BB8F77 /* Level_7.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_7.sks; sourceTree = "<group>"; };
+		F7F162BB1F21712400BB8F77 /* Level_77.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_77.swift; sourceTree = "<group>"; };
+		F7F162BD1F21713200BB8F77 /* Level_77.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_77.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -351,7 +355,7 @@
 				F752B10F1F1B28DC00FAC328 /* Level_44 */,
 				F7101A421F1D8358002C8367 /* Level_55 */,
 				F7993EDF1F1FD30B00FE430D /* Level_66 */,
-				F7F162BF1F21713A00BB8F77 /* Level_7 */,
+				F7F162BF1F21713A00BB8F77 /* Level_77 */,
 				F77F43571F226DC600312E78 /* Level_8 */,
 			);
 			path = Amorphous;
@@ -462,6 +466,7 @@
 				F76C41B61F13FEF100F84F43 /* Level_4 */,
 				F77F43771F22F5AA00312E78 /* Level_5 */,
 				F77F437C1F22FBA600312E78 /* Level_6 */,
+				F77F43821F234C4500312E78 /* Level_7 */,
 			);
 			name = Chapter_1;
 			sourceTree = "<group>";
@@ -499,6 +504,15 @@
 				F77F436F1F22C77900312E78 /* Chapter_1 */,
 			);
 			name = Levels;
+			sourceTree = "<group>";
+		};
+		F77F43821F234C4500312E78 /* Level_7 */ = {
+			isa = PBXGroup;
+			children = (
+				F77F437E1F23461F00312E78 /* Level_7.swift */,
+				F77F43801F23462800312E78 /* Level_7.sks */,
+			);
+			name = Level_7;
 			sourceTree = "<group>";
 		};
 		F7993ED21F1F378900FE430D /* LevelSelect */ = {
@@ -548,13 +562,13 @@
 			name = PlantsPage;
 			sourceTree = "<group>";
 		};
-		F7F162BF1F21713A00BB8F77 /* Level_7 */ = {
+		F7F162BF1F21713A00BB8F77 /* Level_77 */ = {
 			isa = PBXGroup;
 			children = (
-				F7F162BB1F21712400BB8F77 /* Level_7.swift */,
-				F7F162BD1F21713200BB8F77 /* Level_7.sks */,
+				F7F162BB1F21712400BB8F77 /* Level_77.swift */,
+				F7F162BD1F21713200BB8F77 /* Level_77.sks */,
 			);
-			name = Level_7;
+			name = Level_77;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -697,7 +711,8 @@
 				F752B1111F1B29B100FAC328 /* Level_44.sks in Resources */,
 				F71BD4401F1948A40045DC2B /* Level_31.sks in Resources */,
 				F71205311F17D9DC007DF257 /* Spikes.sks in Resources */,
-				F7F162BE1F21713200BB8F77 /* Level_7.sks in Resources */,
+				F77F43811F23462800312E78 /* Level_7.sks in Resources */,
+				F7F162BE1F21713200BB8F77 /* Level_77.sks in Resources */,
 				F71BD43B1F1941DC0045DC2B /* OilSpill_Right.sks in Resources */,
 				F7993EDE1F1FD20C00FE430D /* Level_66.sks in Resources */,
 				F7DD4D841F1EC9A00024687B /* PlantsPage.sks in Resources */,
@@ -753,7 +768,8 @@
 				F7993EE21F20221100FE430D /* LevelSummary.swift in Sources */,
 				F71205401F17F39C007DF257 /* Fan.swift in Sources */,
 				F77F43721F22F1C800312E78 /* Level_5.swift in Sources */,
-				F7F162BC1F21712400BB8F77 /* Level_7.swift in Sources */,
+				F7F162BC1F21712400BB8F77 /* Level_77.swift in Sources */,
+				F77F437F1F23461F00312E78 /* Level_7.swift in Sources */,
 				F7993ED61F1F37FD00FE430D /* LevelSelect2.swift in Sources */,
 				F76C41B11F13EBD000F84F43 /* LevelSelect.swift in Sources */,
 				F76C41791F13DFB000F84F43 /* AppDelegate.swift in Sources */,

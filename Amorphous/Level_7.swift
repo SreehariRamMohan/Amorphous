@@ -2,11 +2,10 @@
 //  Level_7.swift
 //  Amorphous
 //
-//  Created by Sreehari Ram Mohan on 7/20/17.
+//  Created by Sreehari Ram Mohan on 7/22/17.
 //  Copyright © 2017 Sreehari Ram Mohan. All rights reserved.
 //
 
-import Foundation
 import Foundation
 import SpriteKit
 
@@ -57,9 +56,9 @@ class Level_7: Level {
                 //allow the user to see the hidden underwater tunnel
                 y = currentPlayer.position.y
             } else {
-                y = clamp(value: currentPlayer.position.y, lower: UIScreen.main.bounds.width/4, upper: UIScreen.main.bounds.width/2 - 180)
+                y = clamp(value: currentPlayer.position.y, lower: UIScreen.main.bounds.width/4, upper: 8*UIScreen.main.bounds.width/2 - 180)
             }
-            let x = clamp(value: currentPlayer.position.x, lower: (UIScreen.main.bounds.height)/2 + 100 , upper: (7*(UIScreen.main.bounds.height/2) + 190))
+            let x = clamp(value: currentPlayer.position.x, lower: (UIScreen.main.bounds.height)/2 + 100 , upper: (8*(UIScreen.main.bounds.height/2) + 190))
             //clamp with level 1 dimensions in mind
             cameraNode.position.x = x
             cameraNode.position.y = y

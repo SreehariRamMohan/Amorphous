@@ -19,6 +19,7 @@ class LevelSelect: SKScene {
     var button_level_4: MSButtonNode!
     var button_level_5: MSButtonNode!
     var button_level_6: MSButtonNode!
+    var button_level_7: MSButtonNode!
 
     
     //next chapter button variable
@@ -130,6 +131,8 @@ class LevelSelect: SKScene {
         
         button_level_6 = self.childNode(withName: "//button_level_6") as! MSButtonNode
 
+        button_level_7 = self.childNode(withName: "//button_level_7") as! MSButtonNode
+
     }
     
     func setButtonCallbacks() {
@@ -178,6 +181,14 @@ class LevelSelect: SKScene {
             self.loadLevel(level: 6)
             print("Going to level 6")
         }
+        
+        button_level_7.selectedHandler = {
+            //load level 2
+            LevelSelect.current_level = 7
+            self.loadLevel(level: 7)
+            print("Going to level 7")
+        }
+
         
         button_next_chapter.selectedHandler =
             {

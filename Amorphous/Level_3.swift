@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Foundation
 import SpriteKit
 class Level_3: Level {
     
