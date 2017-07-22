@@ -10,7 +10,6 @@ import SpriteKit
 class LevelSelect2: LevelSelect {
     
     //button variables for chapter 1 levels 1 - 5
-    var button_level_6: MSButtonNode!
     var button_level_7: MSButtonNode!
     var button_level_8: MSButtonNode!
     var button_level_9: MSButtonNode!
@@ -26,8 +25,6 @@ class LevelSelect2: LevelSelect {
     
     override func initializeButtons(){
         //making a code connection with the buttons
-        print("WHYYYYYYYYY 248209348203948230482-0348203842034209384234234")
-        button_level_6 = self.childNode(withName: "//button_level_6") as! MSButtonNode
         
         button_level_7 = self.childNode(withName: "//button_level_7") as! MSButtonNode
         
@@ -46,12 +43,6 @@ class LevelSelect2: LevelSelect {
     
         button_back_to_forest.selectedHandler = {
             self.load_forest()
-        }
-        button_level_6.selectedHandler = {
-            //load level 1
-            LevelSelect.current_level = 6
-            self.loadLevel(level: 6)
-            print("Going to level 6")
         }
         
         button_level_7.selectedHandler = {

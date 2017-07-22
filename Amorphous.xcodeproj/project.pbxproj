@@ -62,13 +62,15 @@
 		F77F436E1F22AFDD00312E78 /* Level_3.sks in Resources */ = {isa = PBXBuildFile; fileRef = F77F436D1F22AFDD00312E78 /* Level_3.sks */; };
 		F77F43721F22F1C800312E78 /* Level_5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77F43711F22F1C800312E78 /* Level_5.swift */; };
 		F77F43761F22F1FA00312E78 /* Level_5.sks in Resources */ = {isa = PBXBuildFile; fileRef = F77F43751F22F1FA00312E78 /* Level_5.sks */; };
+		F77F43791F22F8CB00312E78 /* Level_6.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77F43781F22F8CB00312E78 /* Level_6.swift */; };
+		F77F437B1F22F91400312E78 /* Level_6.sks in Resources */ = {isa = PBXBuildFile; fileRef = F77F437A1F22F91400312E78 /* Level_6.sks */; };
 		F780B69C1F16C32600A54538 /* WindowCrack.sks in Resources */ = {isa = PBXBuildFile; fileRef = F780B69B1F16C32600A54538 /* WindowCrack.sks */; };
 		F7993ED41F1F37D300FE430D /* LevelSelect2.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7993ED31F1F37D300FE430D /* LevelSelect2.sks */; };
 		F7993ED61F1F37FD00FE430D /* LevelSelect2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7993ED51F1F37FD00FE430D /* LevelSelect2.swift */; };
 		F7993ED81F1FC77700FE430D /* FallingBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7993ED71F1FC77700FE430D /* FallingBlock.swift */; };
 		F7993EDA1F1FC7A500FE430D /* FallingBlock.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7993ED91F1FC7A500FE430D /* FallingBlock.sks */; };
-		F7993EDC1F1FD13E00FE430D /* Level_6.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7993EDB1F1FD13E00FE430D /* Level_6.swift */; };
-		F7993EDE1F1FD20C00FE430D /* Level_6.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7993EDD1F1FD20C00FE430D /* Level_6.sks */; };
+		F7993EDC1F1FD13E00FE430D /* Level_66.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7993EDB1F1FD13E00FE430D /* Level_66.swift */; };
+		F7993EDE1F1FD20C00FE430D /* Level_66.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7993EDD1F1FD20C00FE430D /* Level_66.sks */; };
 		F7993EE21F20221100FE430D /* LevelSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7993EE11F20221000FE430D /* LevelSummary.swift */; };
 		F7993EE41F20222000FE430D /* LevelSummary.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7993EE31F20222000FE430D /* LevelSummary.sks */; };
 		F7C1E6081F197AD900D063E0 /* OilSpill_Left.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7C1E6071F197AD900D063E0 /* OilSpill_Left.sks */; };
@@ -157,13 +159,15 @@
 		F77F436D1F22AFDD00312E78 /* Level_3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_3.sks; sourceTree = "<group>"; };
 		F77F43711F22F1C800312E78 /* Level_5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_5.swift; sourceTree = "<group>"; };
 		F77F43751F22F1FA00312E78 /* Level_5.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_5.sks; sourceTree = "<group>"; };
+		F77F43781F22F8CB00312E78 /* Level_6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_6.swift; sourceTree = "<group>"; };
+		F77F437A1F22F91400312E78 /* Level_6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_6.sks; sourceTree = "<group>"; };
 		F780B69B1F16C32600A54538 /* WindowCrack.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = WindowCrack.sks; path = ../WindowCrack.sks; sourceTree = "<group>"; };
 		F7993ED31F1F37D300FE430D /* LevelSelect2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelSelect2.sks; sourceTree = "<group>"; };
 		F7993ED51F1F37FD00FE430D /* LevelSelect2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelect2.swift; sourceTree = "<group>"; };
 		F7993ED71F1FC77700FE430D /* FallingBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FallingBlock.swift; sourceTree = "<group>"; };
 		F7993ED91F1FC7A500FE430D /* FallingBlock.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FallingBlock.sks; sourceTree = "<group>"; };
-		F7993EDB1F1FD13E00FE430D /* Level_6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_6.swift; sourceTree = "<group>"; };
-		F7993EDD1F1FD20C00FE430D /* Level_6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_6.sks; sourceTree = "<group>"; };
+		F7993EDB1F1FD13E00FE430D /* Level_66.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_66.swift; sourceTree = "<group>"; };
+		F7993EDD1F1FD20C00FE430D /* Level_66.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_66.sks; sourceTree = "<group>"; };
 		F7993EE11F20221000FE430D /* LevelSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSummary.swift; sourceTree = "<group>"; };
 		F7993EE31F20222000FE430D /* LevelSummary.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelSummary.sks; sourceTree = "<group>"; };
 		F7C1E6071F197AD900D063E0 /* OilSpill_Left.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OilSpill_Left.sks; sourceTree = "<group>"; };
@@ -341,12 +345,12 @@
 				F71205411F17F3D1007DF257 /* Animations */,
 				F76C41BE1F15469500F84F43 /* Obstacles/Objects */,
 				F7101A3D1F1D50CE002C8367 /* Forest */,
-				F77F436F1F22C77900312E78 /* Chapter_1 */,
+				F77F437D1F22FBBD00312E78 /* Levels */,
 				F71205391F17DB35007DF257 /* Level_10 */,
 				F71BD4411F1948A90045DC2B /* Level_31 */,
 				F752B10F1F1B28DC00FAC328 /* Level_44 */,
 				F7101A421F1D8358002C8367 /* Level_55 */,
-				F7993EDF1F1FD30B00FE430D /* Level_6 */,
+				F7993EDF1F1FD30B00FE430D /* Level_66 */,
 				F7F162BF1F21713A00BB8F77 /* Level_7 */,
 				F77F43571F226DC600312E78 /* Level_8 */,
 			);
@@ -457,6 +461,7 @@
 				F77F43701F22CBE800312E78 /* Level_3 */,
 				F76C41B61F13FEF100F84F43 /* Level_4 */,
 				F77F43771F22F5AA00312E78 /* Level_5 */,
+				F77F437C1F22FBA600312E78 /* Level_6 */,
 			);
 			name = Chapter_1;
 			sourceTree = "<group>";
@@ -479,6 +484,23 @@
 			name = Level_5;
 			sourceTree = "<group>";
 		};
+		F77F437C1F22FBA600312E78 /* Level_6 */ = {
+			isa = PBXGroup;
+			children = (
+				F77F43781F22F8CB00312E78 /* Level_6.swift */,
+				F77F437A1F22F91400312E78 /* Level_6.sks */,
+			);
+			name = Level_6;
+			sourceTree = "<group>";
+		};
+		F77F437D1F22FBBD00312E78 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				F77F436F1F22C77900312E78 /* Chapter_1 */,
+			);
+			name = Levels;
+			sourceTree = "<group>";
+		};
 		F7993ED21F1F378900FE430D /* LevelSelect */ = {
 			isa = PBXGroup;
 			children = (
@@ -490,13 +512,13 @@
 			name = LevelSelect;
 			sourceTree = "<group>";
 		};
-		F7993EDF1F1FD30B00FE430D /* Level_6 */ = {
+		F7993EDF1F1FD30B00FE430D /* Level_66 */ = {
 			isa = PBXGroup;
 			children = (
-				F7993EDB1F1FD13E00FE430D /* Level_6.swift */,
-				F7993EDD1F1FD20C00FE430D /* Level_6.sks */,
+				F7993EDB1F1FD13E00FE430D /* Level_66.swift */,
+				F7993EDD1F1FD20C00FE430D /* Level_66.sks */,
 			);
-			name = Level_6;
+			name = Level_66;
 			sourceTree = "<group>";
 		};
 		F7993EE01F1FF3A300FE430D /* FallingBlock */ = {
@@ -653,6 +675,7 @@
 				F76C41841F13DFB000F84F43 /* Main.storyboard in Resources */,
 				F713B87A1F1E84520022E8E4 /* BuyPlants.sks in Resources */,
 				F712053B1F17DCB8007DF257 /* Level_10.sks in Resources */,
+				F77F437B1F22F91400312E78 /* Level_6.sks in Resources */,
 				F76C417B1F13DFB000F84F43 /* Forest.sks in Resources */,
 				F76C41AF1F13EB3500F84F43 /* LevelSelect.sks in Resources */,
 				F7101A3F1F1D833B002C8367 /* Level_55.sks in Resources */,
@@ -676,7 +699,7 @@
 				F71205311F17D9DC007DF257 /* Spikes.sks in Resources */,
 				F7F162BE1F21713200BB8F77 /* Level_7.sks in Resources */,
 				F71BD43B1F1941DC0045DC2B /* OilSpill_Right.sks in Resources */,
-				F7993EDE1F1FD20C00FE430D /* Level_6.sks in Resources */,
+				F7993EDE1F1FD20C00FE430D /* Level_66.sks in Resources */,
 				F7DD4D841F1EC9A00024687B /* PlantsPage.sks in Resources */,
 				F77F43641F22A8DF00312E78 /* Level_1.sks in Resources */,
 				F7993ED41F1F37D300FE430D /* LevelSelect2.sks in Resources */,
@@ -716,7 +739,7 @@
 				F76C41B81F14057E00F84F43 /* Level.swift in Sources */,
 				F76C41C81F1597C600F84F43 /* CollisionManager.swift in Sources */,
 				F77F43671F22AD0800312E78 /* Level_2.swift in Sources */,
-				F7993EDC1F1FD13E00FE430D /* Level_6.swift in Sources */,
+				F7993EDC1F1FD13E00FE430D /* Level_66.swift in Sources */,
 				F7993ED81F1FC77700FE430D /* FallingBlock.swift in Sources */,
 				F752B10B1F1B244600FAC328 /* Water.swift in Sources */,
 				F76C41C21F15706F00F84F43 /* Sponge.swift in Sources */,
@@ -738,6 +761,7 @@
 				F7DD4D821F1EC5880024687B /* PlantsPage.swift in Sources */,
 				F713B87C1F1E84690022E8E4 /* BuyPlants.swift in Sources */,
 				F71205341F17DA21007DF257 /* Spikes.swift in Sources */,
+				F77F43791F22F8CB00312E78 /* Level_6.swift in Sources */,
 				F76C41AD1F13E67400F84F43 /* MSButtonNode.swift in Sources */,
 				F752B1131F1B29CA00FAC328 /* Level_44.swift in Sources */,
 				F77F43541F226DA100312E78 /* Level_8.swift in Sources */,
