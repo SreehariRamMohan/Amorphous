@@ -67,6 +67,12 @@ class Level: SKScene, SKPhysicsContactDelegate {
     //goals for levels
     var goals = [(13, 20, 25), (13, 20, 25),(13, 20, 25),(13, 20, 25),(13, 20, 25),(13, 20, 25),]
     
+    //flame constants to determine when to melt ice
+    var timeTouchingFlameAsIce: NSDate!
+    var endTimeTouchingFlame: NSDate!
+    var canTransform: Int = 0
+
+    
     override func didMove(to view: SKView) {
         
         initializeCriticalGameVariables()
@@ -639,18 +645,39 @@ class Level: SKScene, SKPhysicsContactDelegate {
         
         if(contactA.categoryBitMask == UInt32(CollisionManager.FLAME_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.WATER_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.FLAME_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.WATER_CATEGORY_BITMASK) || contactA.categoryBitMask == UInt32(CollisionManager.FLAME_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.FLAME_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK)) {
             
+            if(self.canTransform != 0) {
+                self.canTransform -= 1
+                print("Reeeeejjjjjjjjjjeeeeeeccccccctttttteeeeeedddddd")
+            }
             var sprite: Player!
+            
+            if(self.canTransform == 0) {
             if(contactA.categoryBitMask == UInt32(CollisionManager.WATER_CATEGORY_BITMASK)) {
                 //node A is water
                 sprite = nodeA as! Player
                 sprite.changeState(rawValue: 3)
-                print("Changed after first if in contact")
             } else if(contactB.categoryBitMask == UInt32(CollisionManager.WATER_CATEGORY_BITMASK)) {
                 //node B is water
                 sprite = nodeB as! Player
                 sprite.changeState(rawValue: 3)
-                print("Changed after second if in contact")
             }
+            }
+            
+            if(contactA.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK)) {
+                //node A is ice
+                print("Did Begin")
+                //start the timer for when we are touching the flame as ice, note if this time is greater than 2 seconds we will transfer to gas
+                //if this time is less than 2 seconds then the ice will simply melt into water
+                self.timeTouchingFlameAsIce = NSDate()
+                print("contact with ice")
+            } else if(contactB.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK)) {
+                //node B is ice
+                print("Did Begin")
+                self.timeTouchingFlameAsIce = NSDate()
+                print("Contact with ice")
+            }
+            
+            
         }
     }
     
@@ -666,6 +693,37 @@ class Level: SKScene, SKPhysicsContactDelegate {
         if(contactA.categoryBitMask == UInt32(CollisionManager.WATER_POOL_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.WATER_POOL_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK)) {
             self.touchingWater -= 1
         }
+        
+        if(contactA.categoryBitMask == UInt32(CollisionManager.FLAME_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.FLAME_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK)) {
+            self.endTimeTouchingFlame = NSDate()
+            let timeInterval: Double = self.endTimeTouchingFlame.timeIntervalSince(self.timeTouchingFlameAsIce as Date)
+            print("----> "  + String(timeInterval))
+            print("Did end")
+            
+            var sprite: Player!
+            
+            //assigns the sprite variable to the node which is ice
+            if(contactA.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK)) {
+                sprite = nodeA as! Player
+            } else {
+                sprite = nodeB as! Player
+            }
+            
+            //if the ice has been on the fire for less than 1.5 sec then change it to water, but if it has been on the flame for more than 1.5 sec change it to gas.
+            if(timeInterval < 1) {
+                sprite.changeState(rawValue: 2)
+                print(timeInterval)
+                print("water")
+                self.canTransform = 130
+                
+            } else {
+                sprite.changeState(rawValue: 3)
+                print(timeInterval)
+                print("gas")
+            }
+        }
+        
+        
     }
 
     func updateCamera() {
