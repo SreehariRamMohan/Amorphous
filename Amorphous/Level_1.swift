@@ -27,7 +27,7 @@ class Level_1: Level {
         //tell Level who the player is
         self.setPlayer(player: player)
         
-        print("reset the player in level 9")
+        print("reset the player in level 1")
         
         //add player to the world
         addChild(player)

@@ -20,7 +20,7 @@ class Level_8: Level {
         //call did move in parent
         super.didMove(to: view)
         initialize_variables()
-        print("did move of level 2")
+        print("did move of level 8")
         
         //level 2 has more obstacles, so we need to zoom the camera out in order for the player to be able to see them
         let zoomInAction = SKAction.scale(to: 2, duration: 1)
@@ -36,7 +36,7 @@ class Level_8: Level {
         self.setPlayer(player: player)
         
         print("reset the player")
-        print("in level 2")
+        print("in level 8")
         
         //add player to the world
         addChild(player)
