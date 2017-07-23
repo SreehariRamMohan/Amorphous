@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class Level_44: Level {
+class Level_10: Level {
     
     //player variable
     var player: Player!
