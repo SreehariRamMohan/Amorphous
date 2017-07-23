@@ -646,35 +646,32 @@ class Level: SKScene, SKPhysicsContactDelegate {
         if(contactA.categoryBitMask == UInt32(CollisionManager.FLAME_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.WATER_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.FLAME_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.WATER_CATEGORY_BITMASK) || contactA.categoryBitMask == UInt32(CollisionManager.FLAME_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.FLAME_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK)) {
             
             if(self.canTransform != 0) {
+                //this check makes sure that ice can't directly go to gas after it has touched fire. It needs to wait at least < 2 seconds(130 times into this method) before it can make the jump from ice -> water -> gas
                 self.canTransform -= 1
-                print("Reeeeejjjjjjjjjjeeeeeeccccccctttttteeeeeedddddd")
             }
+            
             var sprite: Player!
             
-            if(self.canTransform == 0) {
-            if(contactA.categoryBitMask == UInt32(CollisionManager.WATER_CATEGORY_BITMASK)) {
-                //node A is water
-                sprite = nodeA as! Player
-                sprite.changeState(rawValue: 3)
-            } else if(contactB.categoryBitMask == UInt32(CollisionManager.WATER_CATEGORY_BITMASK)) {
-                //node B is water
-                sprite = nodeB as! Player
-                sprite.changeState(rawValue: 3)
-            }
+            if(self.canTransform == 0) { //makes sure that we aren't directly switching from ice -> gas, we need to wait in water for at least 130 frames!
+                if(contactA.categoryBitMask == UInt32(CollisionManager.WATER_CATEGORY_BITMASK)) {
+                    //node A is water
+                    sprite = nodeA as! Player
+                    sprite.changeState(rawValue: 3)
+                } else if(contactB.categoryBitMask == UInt32(CollisionManager.WATER_CATEGORY_BITMASK)) {
+                    //node B is water
+                    sprite = nodeB as! Player
+                    sprite.changeState(rawValue: 3)
+                }
             }
             
             if(contactA.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK)) {
                 //node A is ice
-                print("Did Begin")
                 //start the timer for when we are touching the flame as ice, note if this time is greater than 2 seconds we will transfer to gas
                 //if this time is less than 2 seconds then the ice will simply melt into water
                 self.timeTouchingFlameAsIce = NSDate()
-                print("contact with ice")
             } else if(contactB.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK)) {
                 //node B is ice
-                print("Did Begin")
                 self.timeTouchingFlameAsIce = NSDate()
-                print("Contact with ice")
             }
             
             
@@ -697,9 +694,6 @@ class Level: SKScene, SKPhysicsContactDelegate {
         if(contactA.categoryBitMask == UInt32(CollisionManager.FLAME_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.FLAME_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK)) {
             self.endTimeTouchingFlame = NSDate()
             let timeInterval: Double = self.endTimeTouchingFlame.timeIntervalSince(self.timeTouchingFlameAsIce as Date)
-            print("----> "  + String(timeInterval))
-            print("Did end")
-            
             var sprite: Player!
             
             //assigns the sprite variable to the node which is ice
@@ -713,13 +707,11 @@ class Level: SKScene, SKPhysicsContactDelegate {
             if(timeInterval < 1) {
                 sprite.changeState(rawValue: 2)
                 print(timeInterval)
-                print("water")
                 self.canTransform = 130
                 
             } else {
                 sprite.changeState(rawValue: 3)
                 print(timeInterval)
-                print("gas")
             }
         }
         
