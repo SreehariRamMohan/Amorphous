@@ -80,6 +80,8 @@
 		F7C1E6081F197AD900D063E0 /* OilSpill_Left.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7C1E6071F197AD900D063E0 /* OilSpill_Left.sks */; };
 		F7DD4D821F1EC5880024687B /* PlantsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DD4D811F1EC5880024687B /* PlantsPage.swift */; };
 		F7DD4D841F1EC9A00024687B /* PlantsPage.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7DD4D831F1EC9A00024687B /* PlantsPage.sks */; };
+		F7EF5D5D1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7EF5D5C1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks */; };
+		F7EF5D5F1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF5D5E1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift */; };
 		F7F162BC1F21712400BB8F77 /* Level_77.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F162BB1F21712400BB8F77 /* Level_77.swift */; };
 		F7F162BE1F21713200BB8F77 /* Level_77.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7F162BD1F21713200BB8F77 /* Level_77.sks */; };
 /* End PBXBuildFile section */
@@ -181,6 +183,8 @@
 		F7C1E6071F197AD900D063E0 /* OilSpill_Left.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OilSpill_Left.sks; sourceTree = "<group>"; };
 		F7DD4D811F1EC5880024687B /* PlantsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantsPage.swift; sourceTree = "<group>"; };
 		F7DD4D831F1EC9A00024687B /* PlantsPage.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlantsPage.sks; sourceTree = "<group>"; };
+		F7EF5D5C1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HorizontalMovingPlatform.sks; sourceTree = "<group>"; };
+		F7EF5D5E1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalMovingPlatform.swift; sourceTree = "<group>"; };
 		F7F162BB1F21712400BB8F77 /* Level_77.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_77.swift; sourceTree = "<group>"; };
 		F7F162BD1F21713200BB8F77 /* Level_77.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_77.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -409,6 +413,7 @@
 				F71BD43C1F19443D0045DC2B /* OilSpill */,
 				F752B10C1F1B245200FAC328 /* Water */,
 				F7993EE01F1FF3A300FE430D /* FallingBlock */,
+				F7EF5D601F25DC16007BBC40 /* HorizontalMovingPlatform */,
 				F76C41C61F15811F00F84F43 /* Window */,
 			);
 			name = Obstacles/Objects;
@@ -576,6 +581,15 @@
 			name = PlantsPage;
 			sourceTree = "<group>";
 		};
+		F7EF5D601F25DC16007BBC40 /* HorizontalMovingPlatform */ = {
+			isa = PBXGroup;
+			children = (
+				F7EF5D5C1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks */,
+				F7EF5D5E1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift */,
+			);
+			name = HorizontalMovingPlatform;
+			sourceTree = "<group>";
+		};
 		F7F162BF1F21713A00BB8F77 /* Level_77 */ = {
 			isa = PBXGroup;
 			children = (
@@ -700,6 +714,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7EF5D5D1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks in Resources */,
 				F76C41841F13DFB000F84F43 /* Main.storyboard in Resources */,
 				F713B87A1F1E84520022E8E4 /* BuyPlants.sks in Resources */,
 				F712053B1F17DCB8007DF257 /* Level_8.sks in Resources */,
@@ -786,6 +801,7 @@
 				F7F162BC1F21712400BB8F77 /* Level_77.swift in Sources */,
 				F77F437F1F23461F00312E78 /* Level_7.swift in Sources */,
 				F7993ED61F1F37FD00FE430D /* LevelSelect2.swift in Sources */,
+				F7EF5D5F1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift in Sources */,
 				F76C41B11F13EBD000F84F43 /* LevelSelect.swift in Sources */,
 				F76C41791F13DFB000F84F43 /* AppDelegate.swift in Sources */,
 				F71BD43E1F1944D90045DC2B /* OilSpill.swift in Sources */,

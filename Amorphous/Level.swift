@@ -72,6 +72,8 @@ class Level: SKScene, SKPhysicsContactDelegate {
     var endTimeTouchingFlame: NSDate!
     var canTransform: Int = 0
 
+    //boolean variables for the platform object. 
+    var hasPassedReference: Bool = false
     
     override func didMove(to view: SKView) {
         
@@ -165,6 +167,16 @@ class Level: SKScene, SKPhysicsContactDelegate {
             Sponge.update()
         }
         
+        //Loop over all of the horizontal platforms and call their update methods to allow them to move.
+        self.enumerateChildNodes(withName: "//horizontal_platform") {
+            node, stop in
+            let platform = node as! HorizontalMovingPlatform
+            if(!self.hasPassedReference) {
+                platform.passParentReference(parent: self)
+            }
+            platform.update()
+        }
+        self.hasPassedReference = true
         
         //Loop over all of the FallingBlock sprites, and if they are directly above the current player, then drop them down to the ground!
         self.enumerateChildNodes(withName: "//falling_block_sprite") {
