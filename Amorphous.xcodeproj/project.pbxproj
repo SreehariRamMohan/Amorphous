@@ -18,6 +18,8 @@
 		F71205451F17F59A007DF257 /* Fan.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71205441F17F59A007DF257 /* Fan.sks */; };
 		F713B87A1F1E84520022E8E4 /* BuyPlants.sks in Resources */ = {isa = PBXBuildFile; fileRef = F713B8791F1E84520022E8E4 /* BuyPlants.sks */; };
 		F713B87C1F1E84690022E8E4 /* BuyPlants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F713B87B1F1E84690022E8E4 /* BuyPlants.swift */; };
+		F71A32631F265FAF00F80338 /* VerticalMovingPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71A32621F265FAF00F80338 /* VerticalMovingPlatform.swift */; };
+		F71A32651F265FC400F80338 /* VerticalMovingPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71A32641F265FC400F80338 /* VerticalMovingPlatform.sks */; };
 		F71BD43B1F1941DC0045DC2B /* OilSpill_Right.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71BD43A1F1941DC0045DC2B /* OilSpill_Right.sks */; };
 		F71BD43E1F1944D90045DC2B /* OilSpill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71BD43D1F1944D90045DC2B /* OilSpill.swift */; };
 		F71BD4401F1948A40045DC2B /* Level_31.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71BD43F1F1948A40045DC2B /* Level_31.sks */; };
@@ -115,6 +117,8 @@
 		F71205441F17F59A007DF257 /* Fan.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fan.sks; sourceTree = "<group>"; };
 		F713B8791F1E84520022E8E4 /* BuyPlants.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BuyPlants.sks; sourceTree = "<group>"; };
 		F713B87B1F1E84690022E8E4 /* BuyPlants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyPlants.swift; sourceTree = "<group>"; };
+		F71A32621F265FAF00F80338 /* VerticalMovingPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalMovingPlatform.swift; sourceTree = "<group>"; };
+		F71A32641F265FC400F80338 /* VerticalMovingPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = VerticalMovingPlatform.sks; sourceTree = "<group>"; };
 		F71BD43A1F1941DC0045DC2B /* OilSpill_Right.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OilSpill_Right.sks; sourceTree = "<group>"; };
 		F71BD43D1F1944D90045DC2B /* OilSpill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OilSpill.swift; sourceTree = "<group>"; };
 		F71BD43F1F1948A40045DC2B /* Level_31.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_31.sks; sourceTree = "<group>"; };
@@ -280,6 +284,15 @@
 			name = BuyPlants;
 			sourceTree = "<group>";
 		};
+		F71A32661F266C8E00F80338 /* VerticalMovingPlatform */ = {
+			isa = PBXGroup;
+			children = (
+				F71A32621F265FAF00F80338 /* VerticalMovingPlatform.swift */,
+				F71A32641F265FC400F80338 /* VerticalMovingPlatform.sks */,
+			);
+			name = VerticalMovingPlatform;
+			sourceTree = "<group>";
+		};
 		F71BD43C1F19443D0045DC2B /* OilSpill */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,6 +427,7 @@
 				F752B10C1F1B245200FAC328 /* Water */,
 				F7993EE01F1FF3A300FE430D /* FallingBlock */,
 				F7EF5D601F25DC16007BBC40 /* HorizontalMovingPlatform */,
+				F71A32661F266C8E00F80338 /* VerticalMovingPlatform */,
 				F76C41C61F15811F00F84F43 /* Window */,
 			);
 			name = Obstacles/Objects;
@@ -738,6 +752,7 @@
 				F7C1E6081F197AD900D063E0 /* OilSpill_Left.sks in Resources */,
 				F71205451F17F59A007DF257 /* Fan.sks in Resources */,
 				F77F435B1F2278CE00312E78 /* Flame.sks in Resources */,
+				F71A32651F265FC400F80338 /* VerticalMovingPlatform.sks in Resources */,
 				F752B1111F1B29B100FAC328 /* Level_10.sks in Resources */,
 				F71BD4401F1948A40045DC2B /* Level_31.sks in Resources */,
 				F71205311F17D9DC007DF257 /* Spikes.sks in Resources */,
@@ -787,6 +802,7 @@
 				F7993EDC1F1FD13E00FE430D /* Level_66.swift in Sources */,
 				F7993ED81F1FC77700FE430D /* FallingBlock.swift in Sources */,
 				F752B10B1F1B244600FAC328 /* Water.swift in Sources */,
+				F71A32631F265FAF00F80338 /* VerticalMovingPlatform.swift in Sources */,
 				F76C41C21F15706F00F84F43 /* Sponge.swift in Sources */,
 				F76C41811F13DFB000F84F43 /* GameViewController.swift in Sources */,
 				F76C41B51F13FE9800F84F43 /* Level_4.swift in Sources */,
