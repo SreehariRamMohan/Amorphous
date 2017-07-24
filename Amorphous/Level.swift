@@ -435,7 +435,10 @@ class Level: SKScene, SKPhysicsContactDelegate {
     }
     
     func buttonRestartLevel(sender: UIButton!) {
-        button_back_to_level_select.isHidden = true
+        
+        //remove all current buttons, to prevent the build-up of buttons in the scene
+        removeButtons()
+        
         guard sender == button_restart_level else { return }
         // This function is called when button_back_to_level_select is pressed
         print("restarting level")
@@ -750,9 +753,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
         LevelSelect.current_level += 1
         print("loading level " + String(LevelSelect.current_level))
         self.loadLevel(level: LevelSelect.current_level)
-        //make sure to hide any created buttons/labels that are not needed at the start of the level here.
-        //hideLabelsAndButtons()
-        //removeButtons()
+        //make sure to remove any created buttons/labels that are not needed at the start of the level here.
+        //This prevents the build-up of excessive buttons that are not needed by the sytem.
+        removeButtons()
     }
     
     func loadLevel(level: Int) {
@@ -798,6 +801,12 @@ class Level: SKScene, SKPhysicsContactDelegate {
         button_hint.removeFromSuperview()
         timerLabel.removeFromSuperview()
         button_back_to_level_select.removeFromSuperview()
+        print("Remooooooooving      BUTTTTTTTTOOOOOOONSS")
+        print(self.view?.subviews.contains(button_hint))
+        print(self.view?.subviews.contains(timerLabel))
+        print(self.view?.subviews.contains(button_back_to_level_select))
+
+
     }
     
     /* Make a Class method to level */
