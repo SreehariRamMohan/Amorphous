@@ -20,6 +20,8 @@
 		F713B87C1F1E84690022E8E4 /* BuyPlants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F713B87B1F1E84690022E8E4 /* BuyPlants.swift */; };
 		F71A32631F265FAF00F80338 /* VerticalMovingPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71A32621F265FAF00F80338 /* VerticalMovingPlatform.swift */; };
 		F71A32651F265FC400F80338 /* VerticalMovingPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71A32641F265FC400F80338 /* VerticalMovingPlatform.sks */; };
+		F71A32681F266E4100F80338 /* Level_11.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71A32671F266E4100F80338 /* Level_11.swift */; };
+		F71A326C1F26786400F80338 /* Level_11.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71A326B1F26786400F80338 /* Level_11.sks */; };
 		F71BD43B1F1941DC0045DC2B /* OilSpill_Right.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71BD43A1F1941DC0045DC2B /* OilSpill_Right.sks */; };
 		F71BD43E1F1944D90045DC2B /* OilSpill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71BD43D1F1944D90045DC2B /* OilSpill.swift */; };
 		F71BD4401F1948A40045DC2B /* Level_31.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71BD43F1F1948A40045DC2B /* Level_31.sks */; };
@@ -119,6 +121,8 @@
 		F713B87B1F1E84690022E8E4 /* BuyPlants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyPlants.swift; sourceTree = "<group>"; };
 		F71A32621F265FAF00F80338 /* VerticalMovingPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalMovingPlatform.swift; sourceTree = "<group>"; };
 		F71A32641F265FC400F80338 /* VerticalMovingPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = VerticalMovingPlatform.sks; sourceTree = "<group>"; };
+		F71A32671F266E4100F80338 /* Level_11.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_11.swift; sourceTree = "<group>"; };
+		F71A326B1F26786400F80338 /* Level_11.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_11.sks; sourceTree = "<group>"; };
 		F71BD43A1F1941DC0045DC2B /* OilSpill_Right.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OilSpill_Right.sks; sourceTree = "<group>"; };
 		F71BD43D1F1944D90045DC2B /* OilSpill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OilSpill.swift; sourceTree = "<group>"; };
 		F71BD43F1F1948A40045DC2B /* Level_31.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_31.sks; sourceTree = "<group>"; };
@@ -291,6 +295,15 @@
 				F71A32641F265FC400F80338 /* VerticalMovingPlatform.sks */,
 			);
 			name = VerticalMovingPlatform;
+			sourceTree = "<group>";
+		};
+		F71A326D1F26935400F80338 /* Level_11 */ = {
+			isa = PBXGroup;
+			children = (
+				F71A32671F266E4100F80338 /* Level_11.swift */,
+				F71A326B1F26786400F80338 /* Level_11.sks */,
+			);
+			name = Level_11;
 			sourceTree = "<group>";
 		};
 		F71BD43C1F19443D0045DC2B /* OilSpill */ = {
@@ -500,6 +513,7 @@
 				F71205391F17DB35007DF257 /* Level_8 */,
 				F71DF1291F249B3E006B0E44 /* Level_9 */,
 				F752B10F1F1B28DC00FAC328 /* Level_10 */,
+				F71A326D1F26935400F80338 /* Level_11 */,
 			);
 			name = Chapter_1;
 			sourceTree = "<group>";
@@ -749,6 +763,7 @@
 				F7993EDA1F1FC7A500FE430D /* FallingBlock.sks in Resources */,
 				F76C41CA1F159C4B00F84F43 /* CharacterActions.sks in Resources */,
 				F77F43761F22F1FA00312E78 /* Level_5.sks in Resources */,
+				F71A326C1F26786400F80338 /* Level_11.sks in Resources */,
 				F7C1E6081F197AD900D063E0 /* OilSpill_Left.sks in Resources */,
 				F71205451F17F59A007DF257 /* Fan.sks in Resources */,
 				F77F435B1F2278CE00312E78 /* Flame.sks in Resources */,
@@ -804,6 +819,7 @@
 				F752B10B1F1B244600FAC328 /* Water.swift in Sources */,
 				F71A32631F265FAF00F80338 /* VerticalMovingPlatform.swift in Sources */,
 				F76C41C21F15706F00F84F43 /* Sponge.swift in Sources */,
+				F71A32681F266E4100F80338 /* Level_11.swift in Sources */,
 				F76C41811F13DFB000F84F43 /* GameViewController.swift in Sources */,
 				F76C41B51F13FE9800F84F43 /* Level_4.swift in Sources */,
 				F7101A411F1D8350002C8367 /* Level_55.swift in Sources */,

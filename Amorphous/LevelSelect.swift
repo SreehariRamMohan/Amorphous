@@ -23,7 +23,7 @@ class LevelSelect: SKScene {
     var button_level_8: MSButtonNode!
     var button_level_9: MSButtonNode!
     var button_level_10: MSButtonNode!
-
+    var button_level_11: MSButtonNode!
     
     //next chapter button variable
     var button_next_chapter: MSButtonNode!
@@ -141,6 +141,8 @@ class LevelSelect: SKScene {
         button_level_9 = self.childNode(withName: "//button_level_9") as! MSButtonNode
         
         button_level_10 = self.childNode(withName: "//button_level_10") as! MSButtonNode
+        
+        button_level_11 = self.childNode(withName: "//button_level_11") as! MSButtonNode
 
     }
     
@@ -185,38 +187,45 @@ class LevelSelect: SKScene {
         }
         
         button_level_6.selectedHandler = {
-            //load level 1
+            //load level 6
             LevelSelect.current_level = 6
             self.loadLevel(level: 6)
             print("Going to level 6")
         }
         
         button_level_7.selectedHandler = {
-            //load level 2
+            //load level 7
             LevelSelect.current_level = 7
             self.loadLevel(level: 7)
             print("Going to level 7")
         }
         
         button_level_8.selectedHandler = {
-            //load level 3
+            //load level 8
             LevelSelect.current_level = 8
             self.loadLevel(level: 8)
             print("Going to level 8")
         }
         
         button_level_9.selectedHandler = {
-            //load level 4
+            //load level 9
             LevelSelect.current_level = 9
             self.loadLevel(level: 9)
             print("Going to level 9")
         }
         
         button_level_10.selectedHandler = {
-            //load level 5
+            //load level 10
             LevelSelect.current_level = 10
             self.loadLevel(level: 10)
             print("Going to level 10")
+        }
+        
+        button_level_11.selectedHandler = {
+            //load level 11
+            LevelSelect.current_level = 11
+            self.loadLevel(level: 11)
+            print("Going to level 11")
         }
         
         button_next_chapter.selectedHandler =

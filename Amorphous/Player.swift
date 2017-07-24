@@ -25,7 +25,7 @@ class Player: SKSpriteNode {
     var WATER_DROPLET_FRICTION_VALUE: CGFloat
         = 0.7
     var GAS_FRICTION_VALUE: CGFloat = 0
-    var ICE_CUBE_FRICTION_VALUE: CGFloat = 0.5
+    var ICE_CUBE_FRICTION_VALUE: CGFloat = 0.3
     var PLASMA_FRICTION_VALUE: CGFloat! //not decided yet
     
     //Bitmask Constants for the Player
