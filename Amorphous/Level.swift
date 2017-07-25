@@ -122,7 +122,11 @@ class Level: SKScene, SKPhysicsContactDelegate {
         
         //set a callback to update so that updateTimer is called every 1/10 second
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateStopwatch), userInfo: nil, repeats: true)
-    }
+        
+        //This code can reverse gravity. Maybe make an antigravity obstacle later on???
+        //self.physicsWorld.gravity = CGVector(dx: 0, dy: 9.8)
+        
+        }
     
     func initializeCriticalGameVariables() {
         windowHasCracked = false
