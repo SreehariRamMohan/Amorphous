@@ -87,6 +87,10 @@
 		F7993EDE1F1FD20C00FE430D /* Level_66.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7993EDD1F1FD20C00FE430D /* Level_66.sks */; };
 		F7993EE21F20221100FE430D /* LevelSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7993EE11F20221000FE430D /* LevelSummary.swift */; };
 		F7993EE41F20222000FE430D /* LevelSummary.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7993EE31F20222000FE430D /* LevelSummary.sks */; };
+		F7AC5D451F27AC7C00E6D18A /* Level_16.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AC5D441F27AC7C00E6D18A /* Level_16.swift */; };
+		F7AC5D471F27AC8B00E6D18A /* Level_16.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7AC5D461F27AC8B00E6D18A /* Level_16.sks */; };
+		F7AC5D4A1F27B6E700E6D18A /* Level_17.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AC5D491F27B6E700E6D18A /* Level_17.swift */; };
+		F7AC5D4C1F27B6F600E6D18A /* Level_17.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7AC5D4B1F27B6F600E6D18A /* Level_17.sks */; };
 		F7C1E6081F197AD900D063E0 /* OilSpill_Left.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7C1E6071F197AD900D063E0 /* OilSpill_Left.sks */; };
 		F7DD4D821F1EC5880024687B /* PlantsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DD4D811F1EC5880024687B /* PlantsPage.swift */; };
 		F7DD4D841F1EC9A00024687B /* PlantsPage.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7DD4D831F1EC9A00024687B /* PlantsPage.sks */; };
@@ -200,6 +204,10 @@
 		F7993EDD1F1FD20C00FE430D /* Level_66.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_66.sks; sourceTree = "<group>"; };
 		F7993EE11F20221000FE430D /* LevelSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSummary.swift; sourceTree = "<group>"; };
 		F7993EE31F20222000FE430D /* LevelSummary.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelSummary.sks; sourceTree = "<group>"; };
+		F7AC5D441F27AC7C00E6D18A /* Level_16.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_16.swift; sourceTree = "<group>"; };
+		F7AC5D461F27AC8B00E6D18A /* Level_16.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_16.sks; sourceTree = "<group>"; };
+		F7AC5D491F27B6E700E6D18A /* Level_17.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_17.swift; sourceTree = "<group>"; };
+		F7AC5D4B1F27B6F600E6D18A /* Level_17.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_17.sks; sourceTree = "<group>"; };
 		F7C1E6071F197AD900D063E0 /* OilSpill_Left.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OilSpill_Left.sks; sourceTree = "<group>"; };
 		F7DD4D811F1EC5880024687B /* PlantsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantsPage.swift; sourceTree = "<group>"; };
 		F7DD4D831F1EC9A00024687B /* PlantsPage.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlantsPage.sks; sourceTree = "<group>"; };
@@ -426,6 +434,8 @@
 				F76C41871F13DFB000F84F43 /* LaunchScreen.storyboard */,
 				F76C418A1F13DFB000F84F43 /* Info.plist */,
 				F76C41C91F159C4B00F84F43 /* CharacterActions.sks */,
+				F7AC5D491F27B6E700E6D18A /* Level_17.swift */,
+				F7AC5D4B1F27B6F600E6D18A /* Level_17.sks */,
 				F7993EE51F2025B000FE430D /* LevelSummary */,
 				F7993ED21F1F378900FE430D /* LevelSelect */,
 				F71205411F17F3D1007DF257 /* Animations */,
@@ -556,6 +566,7 @@
 				F71A32721F269BCB00F80338 /* Level_13 */,
 				F71A32771F26A48A00F80338 /* Level_14 */,
 				F71A327C1F26B40B00F80338 /* Level_15 */,
+				F7AC5D481F27B63200E6D18A /* Level_16 */,
 			);
 			name = Chapter_1;
 			sourceTree = "<group>";
@@ -640,6 +651,15 @@
 				F7993EE31F20222000FE430D /* LevelSummary.sks */,
 			);
 			name = LevelSummary;
+			sourceTree = "<group>";
+		};
+		F7AC5D481F27B63200E6D18A /* Level_16 */ = {
+			isa = PBXGroup;
+			children = (
+				F7AC5D441F27AC7C00E6D18A /* Level_16.swift */,
+				F7AC5D461F27AC8B00E6D18A /* Level_16.sks */,
+			);
+			name = Level_16;
 			sourceTree = "<group>";
 		};
 		F7DD4D801F1EC56B0024687B /* PlantsPage */ = {
@@ -794,6 +814,7 @@
 				F76C41AF1F13EB3500F84F43 /* LevelSelect.sks in Resources */,
 				F71DF1281F249B39006B0E44 /* Level_9.sks in Resources */,
 				F7101A3F1F1D833B002C8367 /* Level_55.sks in Resources */,
+				F7AC5D471F27AC8B00E6D18A /* Level_16.sks in Resources */,
 				F76C41861F13DFB000F84F43 /* Assets.xcassets in Resources */,
 				F76C41CC1F159CA100F84F43 /* SpongeSuck.sks in Resources */,
 				F71A327B1F26A5E400F80338 /* Level_15.sks in Resources */,
@@ -805,6 +826,7 @@
 				F77F436E1F22AFDD00312E78 /* Level_3.sks in Resources */,
 				F71205431F17F3E9007DF257 /* FanSpin.sks in Resources */,
 				F7993EDA1F1FC7A500FE430D /* FallingBlock.sks in Resources */,
+				F7AC5D4C1F27B6F600E6D18A /* Level_17.sks in Resources */,
 				F76C41CA1F159C4B00F84F43 /* CharacterActions.sks in Resources */,
 				F77F43761F22F1FA00312E78 /* Level_5.sks in Resources */,
 				F71A326C1F26786400F80338 /* Level_11.sks in Resources */,
@@ -853,6 +875,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F76C417F1F13DFB000F84F43 /* Forest.swift in Sources */,
+				F7AC5D451F27AC7C00E6D18A /* Level_16.swift in Sources */,
 				F76C41C51F15811700F84F43 /* Window.swift in Sources */,
 				F71BD4431F1949020045DC2B /* Level_12.swift in Sources */,
 				F77F43591F2278BF00312E78 /* Flame.swift in Sources */,
@@ -860,6 +883,7 @@
 				F76C41C81F1597C600F84F43 /* CollisionManager.swift in Sources */,
 				F77F43671F22AD0800312E78 /* Level_2.swift in Sources */,
 				F7993EDC1F1FD13E00FE430D /* Level_66.swift in Sources */,
+				F7AC5D4A1F27B6E700E6D18A /* Level_17.swift in Sources */,
 				F7993ED81F1FC77700FE430D /* FallingBlock.swift in Sources */,
 				F752B10B1F1B244600FAC328 /* Water.swift in Sources */,
 				F71A32631F265FAF00F80338 /* VerticalMovingPlatform.swift in Sources */,

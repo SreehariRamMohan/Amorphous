@@ -81,7 +81,6 @@ class Player: SKSpriteNode {
         self.physicsBody?.categoryBitMask = UInt32(WATER_CATEGORY_BITMASK)
         self.physicsBody?.contactTestBitMask = UInt32(WATER_CONTACT_BITMASK)
         self.physicsBody?.collisionBitMask = UInt32(WATER_COLLISION_BITMASK)
-        
         //set our z position to 2 so we are in front of everything else
         self.zPosition = 2
     }
