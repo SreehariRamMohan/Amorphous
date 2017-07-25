@@ -96,8 +96,8 @@
 		F7DD4D841F1EC9A00024687B /* PlantsPage.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7DD4D831F1EC9A00024687B /* PlantsPage.sks */; };
 		F7EF5D5D1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7EF5D5C1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks */; };
 		F7EF5D5F1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF5D5E1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift */; };
-		F7F162BC1F21712400BB8F77 /* Level_77.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F162BB1F21712400BB8F77 /* Level_77.swift */; };
-		F7F162BE1F21713200BB8F77 /* Level_77.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7F162BD1F21713200BB8F77 /* Level_77.sks */; };
+		F7F162BC1F21712400BB8F77 /* Level_18.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F162BB1F21712400BB8F77 /* Level_18.swift */; };
+		F7F162BE1F21713200BB8F77 /* Level_18.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7F162BD1F21713200BB8F77 /* Level_18.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,8 +213,8 @@
 		F7DD4D831F1EC9A00024687B /* PlantsPage.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlantsPage.sks; sourceTree = "<group>"; };
 		F7EF5D5C1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HorizontalMovingPlatform.sks; sourceTree = "<group>"; };
 		F7EF5D5E1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalMovingPlatform.swift; sourceTree = "<group>"; };
-		F7F162BB1F21712400BB8F77 /* Level_77.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_77.swift; sourceTree = "<group>"; };
-		F7F162BD1F21713200BB8F77 /* Level_77.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_77.sks; sourceTree = "<group>"; };
+		F7F162BB1F21712400BB8F77 /* Level_18.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_18.swift; sourceTree = "<group>"; };
+		F7F162BD1F21713200BB8F77 /* Level_18.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_18.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -442,7 +442,6 @@
 				F77F437D1F22FBBD00312E78 /* Levels */,
 				F7101A421F1D8358002C8367 /* Level_55 */,
 				F7993EDF1F1FD30B00FE430D /* Level_66 */,
-				F7F162BF1F21713A00BB8F77 /* Level_77 */,
 				F77F43571F226DC600312E78 /* Level_88 */,
 			);
 			path = Amorphous;
@@ -566,6 +565,7 @@
 				F71A327C1F26B40B00F80338 /* Level_15 */,
 				F7AC5D481F27B63200E6D18A /* Level_16 */,
 				F7A094311F27CCE900A88923 /* Level_17 */,
+				F7F162BF1F21713A00BB8F77 /* Level_18 */,
 			);
 			name = Chapter_1;
 			sourceTree = "<group>";
@@ -688,13 +688,13 @@
 			name = HorizontalMovingPlatform;
 			sourceTree = "<group>";
 		};
-		F7F162BF1F21713A00BB8F77 /* Level_77 */ = {
+		F7F162BF1F21713A00BB8F77 /* Level_18 */ = {
 			isa = PBXGroup;
 			children = (
-				F7F162BB1F21712400BB8F77 /* Level_77.swift */,
-				F7F162BD1F21713200BB8F77 /* Level_77.sks */,
+				F7F162BB1F21712400BB8F77 /* Level_18.swift */,
+				F7F162BD1F21713200BB8F77 /* Level_18.sks */,
 			);
-			name = Level_77;
+			name = Level_18;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -847,7 +847,7 @@
 				F71A32711F26984200F80338 /* Level_13.sks in Resources */,
 				F71205311F17D9DC007DF257 /* Spikes.sks in Resources */,
 				F77F43811F23462800312E78 /* Level_7.sks in Resources */,
-				F7F162BE1F21713200BB8F77 /* Level_77.sks in Resources */,
+				F7F162BE1F21713200BB8F77 /* Level_18.sks in Resources */,
 				F71BD43B1F1941DC0045DC2B /* OilSpill_Right.sks in Resources */,
 				F7993EDE1F1FD20C00FE430D /* Level_66.sks in Resources */,
 				F7DD4D841F1EC9A00024687B /* PlantsPage.sks in Resources */,
@@ -908,7 +908,7 @@
 				F71205401F17F39C007DF257 /* Fan.swift in Sources */,
 				F71A32791F26A5D500F80338 /* Level_15.swift in Sources */,
 				F77F43721F22F1C800312E78 /* Level_5.swift in Sources */,
-				F7F162BC1F21712400BB8F77 /* Level_77.swift in Sources */,
+				F7F162BC1F21712400BB8F77 /* Level_18.swift in Sources */,
 				F77F437F1F23461F00312E78 /* Level_7.swift in Sources */,
 				F71A326F1F26970600F80338 /* Level_13.swift in Sources */,
 				F7993ED61F1F37FD00FE430D /* LevelSelect2.swift in Sources */,

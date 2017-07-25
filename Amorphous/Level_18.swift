@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class Level_77: Level {
+class Level_18: Level {
     
     //player variable
     var player: Player!
@@ -50,14 +50,7 @@ class Level_77: Level {
                 //the player is far below the screen, display the restart button
                 showRestartButton()
             }
-            print(currentPlayer.position.x)
-            var y = currentPlayer.position.y
-            if(currentPlayer.position.x > 735) {
-                //allow the user to see the hidden underwater tunnel
-                y = currentPlayer.position.y
-            } else {
-                y = clamp(value: currentPlayer.position.y, lower: UIScreen.main.bounds.width/4, upper: UIScreen.main.bounds.width/2 - 180)
-            }
+            var y = clamp(value: currentPlayer.position.y, lower: UIScreen.main.bounds.width/4, upper: UIScreen.main.bounds.width/2 - 180)
             let x = clamp(value: currentPlayer.position.x, lower: (UIScreen.main.bounds.height)/2 + 100 , upper: (7*(UIScreen.main.bounds.height/2) + 190))
             //clamp with level 1 dimensions in mind
             cameraNode.position.x = x
