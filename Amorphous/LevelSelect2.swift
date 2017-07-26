@@ -9,9 +9,10 @@ import Foundation
 import SpriteKit
 class LevelSelect2: LevelSelect {
     
-    //button variables for chapter 1 levels 1 - 5
+    //button variables for chapter 2 levels 
     var button_previous_chapter: MSButtonNode!
     var button_back_to_forest: MSButtonNode!
+    var button_level_21: MSButtonNode!
     
     override func didMove(to view: SKView) {
         print("here")
@@ -25,6 +26,8 @@ class LevelSelect2: LevelSelect {
         button_previous_chapter = self.childNode(withName: "//button_previous_chapter") as! MSButtonNode
         
         button_back_to_forest = self.childNode(withName: "//back_to_forest_button") as! MSButtonNode
+        
+        button_level_21 = self.childNode(withName: "//button_level_21") as! MSButtonNode
     }
     
     override func setButtonCallbacks() {
@@ -38,6 +41,12 @@ class LevelSelect2: LevelSelect {
             self.current_chapter = 1
             print(self.current_chapter)
             self.loadLevelSelect(levelSelect: self.current_chapter)
+        }
+        
+        button_level_21.selectedHandler = {
+            //go to level 21
+            LevelSelect.current_level = 21
+            self.loadLevel(level: 21)
         }
         
        
