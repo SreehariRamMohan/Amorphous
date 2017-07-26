@@ -12,8 +12,19 @@ class LevelSelect2: LevelSelect {
     //button variables for chapter 2 levels 
     var button_previous_chapter: MSButtonNode!
     var button_back_to_forest: MSButtonNode!
-    var button_level_21: MSButtonNode!
+    var button_next_chapter2: MSButtonNode!
+    var button_level_11: MSButtonNode!
+    var button_level_12: MSButtonNode!
+    var button_level_13: MSButtonNode!
+    var button_level_14: MSButtonNode!
+    var button_level_15: MSButtonNode!
+    var button_level_16: MSButtonNode!
+    var button_level_17: MSButtonNode!
+    var button_level_18: MSButtonNode!
+    var button_level_19: MSButtonNode!
+    var button_level_20: MSButtonNode!
     
+
     override func didMove(to view: SKView) {
         print("here")
         initializeButtons()
@@ -27,7 +38,28 @@ class LevelSelect2: LevelSelect {
         
         button_back_to_forest = self.childNode(withName: "//back_to_forest_button") as! MSButtonNode
         
-        button_level_21 = self.childNode(withName: "//button_level_21") as! MSButtonNode
+        button_next_chapter2 = self.childNode(withName: "//button_next_chapter") as! MSButtonNode
+        
+        button_level_11 = self.childNode(withName: "//button_level_11") as! MSButtonNode
+        
+        button_level_12 = self.childNode(withName: "//button_level_12") as! MSButtonNode
+        
+        button_level_13 = self.childNode(withName: "//button_level_13") as! MSButtonNode
+        
+        button_level_14 = self.childNode(withName: "//button_level_14") as! MSButtonNode
+        
+        button_level_15 = self.childNode(withName: "//button_level_15") as! MSButtonNode
+        
+        button_level_16 = self.childNode(withName: "//button_level_16") as! MSButtonNode
+        
+        button_level_17 = self.childNode(withName: "//button_level_17") as! MSButtonNode
+        
+        button_level_18 = self.childNode(withName: "//button_level_18") as! MSButtonNode
+        
+        button_level_19 = self.childNode(withName: "//button_level_19") as! MSButtonNode
+        
+        button_level_20 = self.childNode(withName: "//button_level_20") as! MSButtonNode
+
     }
     
     override func setButtonCallbacks() {
@@ -42,14 +74,82 @@ class LevelSelect2: LevelSelect {
             print(self.current_chapter)
             self.loadLevelSelect(levelSelect: self.current_chapter)
         }
+      
         
-        button_level_21.selectedHandler = {
-            //go to level 21
-            LevelSelect.current_level = 21
-            self.loadLevel(level: 21)
+        button_next_chapter2.selectedHandler = {
+                //load next chapter
+                self.current_chapter = 3
+                self.loadLevelSelect(levelSelect: self.current_chapter)
         }
         
-       
+        button_level_11.selectedHandler = {
+            //load level 11
+            LevelSelect.current_level = 11
+            self.loadLevel(level: 11)
+            print("Going to level 11")
+        }
         
+        button_level_12.selectedHandler = {
+            //load level 12
+            LevelSelect.current_level = 12
+            self.loadLevel(level: 12)
+            print("Going to level 12")
+        }
+        
+        button_level_13.selectedHandler = {
+            //load level 13
+            LevelSelect.current_level = 13
+            self.loadLevel(level: 13)
+            print("Going to level 13")
+        }
+        
+        button_level_14.selectedHandler = {
+            //load level 14
+            LevelSelect.current_level = 14
+            self.loadLevel(level: 14)
+            print("Going to level 14")
+        }
+        
+        button_level_15.selectedHandler = {
+            //load level 15
+            LevelSelect.current_level = 15
+            self.loadLevel(level: 15)
+            print("Going to level 15")
+        }
+        
+        button_level_16.selectedHandler = {
+            //load level 16
+            LevelSelect.current_level = 16
+            self.loadLevel(level: 16)
+            print("Going to level 16")
+        }
+        
+        button_level_17.selectedHandler = {
+            //load level 17
+            LevelSelect.current_level = 17
+            self.loadLevel(level: 17)
+            print("Going to level 17")
+        }
+        
+        button_level_18.selectedHandler = {
+            //load level 18
+            LevelSelect.current_level = 18
+            self.loadLevel(level: 18)
+            print("Going to level 18")
+        }
+        
+        button_level_19.selectedHandler = {
+            //load level 19
+            LevelSelect.current_level = 19
+            self.loadLevel(level: 19)
+            print("Going to level 19")
+        }
+        
+        button_level_20.selectedHandler = {
+            //load level 20
+            LevelSelect.current_level = 20
+            self.loadLevel(level: 20)
+            print("Going to level 20")
+        }
     }
 }
