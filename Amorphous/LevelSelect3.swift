@@ -17,6 +17,8 @@ class LevelSelect3: LevelSelect {
     var button_level_22: MSButtonNode!
     var button_level_23: MSButtonNode!
     var button_level_24: MSButtonNode!
+    var button_level_25: MSButtonNode!
+    
     
     override func didMove(to view: SKView) {
         print("here")
@@ -38,6 +40,8 @@ class LevelSelect3: LevelSelect {
         button_level_23 = self.childNode(withName: "//button_level_23") as! MSButtonNode
         
         button_level_24 = self.childNode(withName: "//button_level_24") as! MSButtonNode
+        
+        button_level_25 = self.childNode(withName: "//button_level_25") as! MSButtonNode
     }
     
     override func setButtonCallbacks() {
@@ -75,6 +79,12 @@ class LevelSelect3: LevelSelect {
             //go to level 24
             LevelSelect.current_level = 24
             self.loadLevel(level: 24)
+        }
+        
+        button_level_25.selectedHandler = {
+            //go to level 25
+            LevelSelect.current_level = 25
+            self.loadLevel(level: 25)
         }
     }
 }
