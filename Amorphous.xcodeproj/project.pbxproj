@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F702DEAD1F29486400ACEED1 /* LevelSelectStars.swift in Sources */ = {isa = PBXBuildFile; fileRef = F702DEAC1F29486400ACEED1 /* LevelSelectStars.swift */; };
 		F702DEB01F29498400ACEED1 /* LevelSelectStars.sks in Resources */ = {isa = PBXBuildFile; fileRef = F702DEAF1F29498400ACEED1 /* LevelSelectStars.sks */; };
+		F702DEB31F2A8D9600ACEED1 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F702DEB21F2A8D9600ACEED1 /* Plant.swift */; };
 		F7101A3F1F1D833B002C8367 /* Level_22.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7101A3E1F1D833B002C8367 /* Level_22.sks */; };
 		F7101A411F1D8350002C8367 /* Level_22.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7101A401F1D8350002C8367 /* Level_22.swift */; };
 		F71205311F17D9DC007DF257 /* Spikes.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71205301F17D9DC007DF257 /* Spikes.sks */; };
@@ -136,6 +137,7 @@
 /* Begin PBXFileReference section */
 		F702DEAC1F29486400ACEED1 /* LevelSelectStars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectStars.swift; sourceTree = "<group>"; };
 		F702DEAF1F29498400ACEED1 /* LevelSelectStars.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelSelectStars.sks; sourceTree = "<group>"; };
+		F702DEB21F2A8D9600ACEED1 /* Plant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		F7101A3E1F1D833B002C8367 /* Level_22.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_22.sks; sourceTree = "<group>"; };
 		F7101A401F1D8350002C8367 /* Level_22.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_22.swift; sourceTree = "<group>"; };
 		F71205301F17D9DC007DF257 /* Spikes.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spikes.sks; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 			children = (
 				F76C417A1F13DFB000F84F43 /* Forest.sks */,
 				F76C417E1F13DFB000F84F43 /* Forest.swift */,
+				F702DEB21F2A8D9600ACEED1 /* Plant.swift */,
 				F713B87D1F1E84720022E8E4 /* BuyPlants */,
 			);
 			name = Forest;
@@ -1007,6 +1010,7 @@
 				F7A094551F29355200A88923 /* Level_25.swift in Sources */,
 				F7A094441F28F97D00A88923 /* Level_21.swift in Sources */,
 				F71BD4431F1949020045DC2B /* Level_12.swift in Sources */,
+				F702DEB31F2A8D9600ACEED1 /* Plant.swift in Sources */,
 				F7A094421F280D4100A88923 /* DataManager.swift in Sources */,
 				F77F43591F2278BF00312E78 /* Flame.swift in Sources */,
 				F7A0943F1F280CB100A88923 /* GameData.swift in Sources */,

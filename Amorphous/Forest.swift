@@ -16,43 +16,47 @@ class Forest: SKScene {
     var water_plants_button: MSButtonNode!
     var rescue_water_button: MSButtonNode!
     var background_of_forest: SKNode!
+    var planting_instructions_label: SKNode!
     var effects_node: SKEffectNode!
     var button_x: MSButtonNode!
-    var num_water_bottles: Int = 3
+    static var num_water_bottles: Int = 3
     var buy_fragment: SKReferenceNode!
     
     var forest_camera: SKCameraNode!
     
     //boolean values
     var canScroll: Bool = true
+    //a boolean flag variable to help differentiate between scrolling and touching so the placement of trees can be accurate
+    var didScroll = false
     
     //arrays
     var arrayOfBottles: [SKSpriteNode] = []
     
+    //boolean values for planting
+    var canPlant: Bool = false
+        
     
     override func didMove(to view: SKView) {
         initialize_buttons()
         button_action_callbacks()
         setDefaultButtonVisibilityState()
         
-//Loop over all of the children recursively which contain the word water_bottle_ and only make the number of water bottles I have as visible
-        var numBottlesShown = 0
-        self.enumerateChildNodes(withName: "//*") {
-            (node, stop) in
-            
-            if let name = node.name, name.contains("water_bottle_") {
-                let bottle = node as! SKSpriteNode
-                if(numBottlesShown < self.num_water_bottles) {
-                    //making the bottle visible
-                    bottle.isHidden = false
-                } else {
-                    //making the bottle invisible
-                    bottle.isHidden = true
-                }
-                self.arrayOfBottles.append(bottle)
-                numBottlesShown += 1
-                
+        
+        //cap the maximum water you can have at any time to 10 water bottles
+        if(Forest.num_water_bottles > 10) {
+            Forest.num_water_bottles = 10
+        }
+        
+        print(Forest.num_water_bottles)
+        for i in 1...10 {
+            var water_bottle: SKSpriteNode = self.childNode(withName: "//water_bottle_\(i)") as! SKSpriteNode
+            water_bottle.isHidden = true
+            if(i <= Forest.num_water_bottles) {
+                water_bottle.isHidden = false
+            } else {
+                water_bottle.isHidden = true
             }
+            self.arrayOfBottles.append(water_bottle)
         }
         
         
@@ -62,7 +66,23 @@ class Forest: SKScene {
         }
 
     override func update(_ currentTime: TimeInterval) {
-        
+        if(canPlant) {
+            //show the can plant message, and hide the other buttons for the sake of convenience
+            plant_button.isHidden = true
+            water_plants_button.isHidden = true
+            rescue_water_button.isHidden = true
+            planting_instructions_label.isHidden = false
+        } else {
+            //make sure that all of the other buttons are still able to be shown.
+            planting_instructions_label.isHidden = true
+            plant_button.isHidden = false
+            water_plants_button.isHidden = false
+            rescue_water_button.isHidden = false
+        }
+    }
+    
+    func startPlantingProcess() {
+        self.canPlant = true
     }
     
     func initialize_buttons() {
@@ -75,6 +95,8 @@ class Forest: SKScene {
         background_of_forest = self.childNode(withName: "//forest_background")
         
         button_x = self.childNode(withName: "//button_x") as! MSButtonNode
+        
+        planting_instructions_label = self.childNode(withName: "//planting_instructions")!
     }
     
     func button_action_callbacks() {
@@ -115,15 +137,32 @@ class Forest: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        didScroll = false
         
+    }
+    
+    func plant(at: CGPoint) {
+        var plant: Plant = Plant()
+        plant.position = at
+        self.addChild(plant)
+        self.canPlant = false
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        if(!didScroll) {
+            //touch occurred
+            if(self.canPlant) {
+                let touch = touches.first!
+                let location = touch.location(in: self)
+                print(location)
+                print("You are going to plant in this location")
+                plant(at: location)
+            }
+        }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+
     }
     
     func showXButton() {
@@ -166,6 +205,9 @@ class Forest: SKScene {
                 let previousLocation = touch.previousLocation(in: self)
                 let deltaX = previousLocation.x - location.x
                 let deltaY = previousLocation.y - location.y
+                if(abs(deltaX) > 1 || abs(deltaY) > 1) {
+                    didScroll = true
+                }
                 let camPosX = forest_camera.position.x + 2*deltaX
                 forest_camera.position.x = clamp(value: camPosX,lower: -220,upper: 220)
                 let camPosY = forest_camera.position.y + 2*deltaY
@@ -179,6 +221,10 @@ class Forest: SKScene {
         let fragment = SKReferenceNode(url: URL (fileURLWithPath: path!))
         fragment.position = CGPoint(x: forest_camera.position.x , y: forest_camera.position.y)
         self.buy_fragment = fragment
+        //pass the reference to self to the buy fragment so we can trigger button events that have an effect on the forest scene, such as decreasing the amount of $ or bottles that we have or starting the planting process.
+        let buyPage = fragment.childNode(withName: "//BuyPlants") as! BuyPlants
+        buyPage.setParentReference(ref: self)
+        
         addChild(fragment)
         addBlurEffect()
         showXButton()
@@ -245,9 +291,9 @@ class Forest: SKScene {
         self.forest_camera.addChild(self.rescue_water_button)
         self.forest_camera.addChild(self.water_plants_button)
         
-        for i in 0..<self.num_water_bottles {
+        for i in 0..<Forest.num_water_bottles {
             //self.forest_camera.addChild(arrayOfBottles[i])
-            if(i < self.num_water_bottles) {
+            if(i < Forest.num_water_bottles) {
                 arrayOfBottles[i].isHidden = false
             } else {
                 arrayOfBottles[i].isHidden = true

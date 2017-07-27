@@ -79,6 +79,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
     var hasPassedHorizontalReference: Bool = false
     var hasPassedVerticalReference: Bool = false
     
+    //boolean variables for the water bottles earned
+    var hasAlreadyAddedToWaterBottleTotal: Bool = false
+    
     override func didMove(to view: SKView) {
         
         initializeCriticalGameVariables()
@@ -827,12 +830,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
         button_hint.removeFromSuperview()
         timerLabel.removeFromSuperview()
         button_back_to_level_select.removeFromSuperview()
-        print("Remooooooooving      BUTTTTTTTTOOOOOOONSS")
         print(self.view?.subviews.contains(button_hint))
         print(self.view?.subviews.contains(timerLabel))
         print(self.view?.subviews.contains(button_back_to_level_select))
-
-
     }
     
     /* Make a Class method to level */
@@ -845,6 +845,15 @@ class Level: SKScene, SKPhysicsContactDelegate {
     }
     
     func launchLevelSummaryFragment() {
+        
+        //to make sure that this method isn't called more than once and subseauently, the players water bottle count goes up by 2-3 for each level.
+        if(!hasAlreadyAddedToWaterBottleTotal) {
+            //Increase our num water bottles since we succesfully completed the level!
+            Forest.num_water_bottles += 1
+            self.hasAlreadyAddedToWaterBottleTotal = true
+        }
+        
+        
         //intentionally delay the summary screen fromt showing until the break window animation has finished
         let delay = SKAction.wait(forDuration: 2.9)
         self.run(delay) {
