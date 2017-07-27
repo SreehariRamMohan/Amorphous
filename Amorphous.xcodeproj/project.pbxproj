@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F702DEAD1F29486400ACEED1 /* LevelSelectStars.swift in Sources */ = {isa = PBXBuildFile; fileRef = F702DEAC1F29486400ACEED1 /* LevelSelectStars.swift */; };
+		F702DEB01F29498400ACEED1 /* LevelSelectStars.sks in Resources */ = {isa = PBXBuildFile; fileRef = F702DEAF1F29498400ACEED1 /* LevelSelectStars.sks */; };
 		F7101A3F1F1D833B002C8367 /* Level_22.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7101A3E1F1D833B002C8367 /* Level_22.sks */; };
 		F7101A411F1D8350002C8367 /* Level_22.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7101A401F1D8350002C8367 /* Level_22.swift */; };
 		F71205311F17D9DC007DF257 /* Spikes.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71205301F17D9DC007DF257 /* Spikes.sks */; };
@@ -134,6 +135,7 @@
 
 /* Begin PBXFileReference section */
 		F702DEAC1F29486400ACEED1 /* LevelSelectStars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectStars.swift; sourceTree = "<group>"; };
+		F702DEAF1F29498400ACEED1 /* LevelSelectStars.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelSelectStars.sks; sourceTree = "<group>"; };
 		F7101A3E1F1D833B002C8367 /* Level_22.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_22.sks; sourceTree = "<group>"; };
 		F7101A401F1D8350002C8367 /* Level_22.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_22.swift; sourceTree = "<group>"; };
 		F71205301F17D9DC007DF257 /* Spikes.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spikes.sks; sourceTree = "<group>"; };
@@ -474,6 +476,7 @@
 				F76C418A1F13DFB000F84F43 /* Info.plist */,
 				F76C41C91F159C4B00F84F43 /* CharacterActions.sks */,
 				F702DEAC1F29486400ACEED1 /* LevelSelectStars.swift */,
+				F702DEAF1F29498400ACEED1 /* LevelSelectStars.sks */,
 				F7A094401F280D3100A88923 /* Data Persistence */,
 				F7993EE51F2025B000FE430D /* LevelSummary */,
 				F7993ED21F1F378900FE430D /* LevelSelect */,
@@ -946,6 +949,7 @@
 				F71A326C1F26786400F80338 /* Level_11.sks in Resources */,
 				F7C1E6081F197AD900D063E0 /* OilSpill_Left.sks in Resources */,
 				F71205451F17F59A007DF257 /* Fan.sks in Resources */,
+				F702DEB01F29498400ACEED1 /* LevelSelectStars.sks in Resources */,
 				F7A094461F28F98A00A88923 /* Level_21.sks in Resources */,
 				F77F435B1F2278CE00312E78 /* Flame.sks in Resources */,
 				F71A32651F265FC400F80338 /* VerticalMovingPlatform.sks in Resources */,

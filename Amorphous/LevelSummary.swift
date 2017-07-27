@@ -90,18 +90,26 @@ class LevelSummary: SKSpriteNode {
             star1.isHidden = false
             star2.isHidden = false
             star3.isHidden = false
+            //set the number of stars the player received on this level
+            Level.starsReceived[LevelSelect.current_level-1] = 3
         } else if(score == 2) {
             star1.isHidden = false
             star2.isHidden = false
             star3.isHidden = true
+            //set the number of stars the player received on this level
+            Level.starsReceived[LevelSelect.current_level-1] = 2
         } else if(score == 1) {
             star1.isHidden = false
             star2.isHidden = true
             star3.isHidden = true
+            //set the number of stars the player received on this level
+            Level.starsReceived[LevelSelect.current_level-1] = 1
         } else if(score == 0) {
             star1.isHidden = true
             star2.isHidden = true
             star3.isHidden = true
+            //set the number of stars the player received on this level
+            Level.starsReceived[LevelSelect.current_level-1] = 0
         }
     }
     //setters for the min time to get stars

@@ -66,6 +66,8 @@ class Level: SKScene, SKPhysicsContactDelegate {
     
     //goals for levels
     var goals = [(13, 20, 25), (13, 20, 25),(13, 20, 25),(13, 20, 25),(13, 20, 25),(13, 20, 25),]
+    //this is the number of stars the user has received latest. This is a number from 0(for no stars) to 3(all stars), these values are then put into the array.
+    static var starsReceived: [Int] = []
     
     //flame constants to determine when to melt ice
     var timeTouchingFlameAsIce: NSDate!
@@ -125,6 +127,11 @@ class Level: SKScene, SKPhysicsContactDelegate {
         
         //This code can reverse gravity. Maybe make an antigravity obstacle later on???
         //self.physicsWorld.gravity = CGVector(dx: 0, dy: 9.8)
+        
+        for i in 0..<25 {
+            //initialize the array of stars received to an array of 0's
+            Level.starsReceived.append(0)
+        }
         
         }
     

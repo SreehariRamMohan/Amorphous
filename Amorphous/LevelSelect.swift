@@ -24,6 +24,31 @@ class LevelSelect: SKScene {
     var button_level_9: MSButtonNode!
     var button_level_10: MSButtonNode!
     
+    //Star References for each level
+    var level_1_star_ref: SKReferenceNode!
+    var level_2_star_ref: SKReferenceNode!
+    var level_3_star_ref: SKReferenceNode!
+    var level_4_star_ref: SKReferenceNode!
+    var level_5_star_ref: SKReferenceNode!
+    var level_6_star_ref: SKReferenceNode!
+    var level_7_star_ref: SKReferenceNode!
+    var level_8_star_ref: SKReferenceNode!
+    var level_9_star_ref: SKReferenceNode!
+    var level_10_star_ref: SKReferenceNode!
+    
+    //Star Objects for each level
+    var level_1_star: LevelSelectStars!
+    var level_2_star: LevelSelectStars!
+    var level_3_star: LevelSelectStars!
+    var level_4_star: LevelSelectStars!
+    var level_5_star: LevelSelectStars!
+    var level_6_star: LevelSelectStars!
+    var level_7_star: LevelSelectStars!
+    var level_8_star: LevelSelectStars!
+    var level_9_star: LevelSelectStars!
+    var level_10_star: LevelSelectStars!
+
+    
     //next chapter button variable
     var button_next_chapter: MSButtonNode!
     
@@ -32,6 +57,7 @@ class LevelSelect: SKScene {
     
     override func didMove(to view: SKView) {
         initializeButtons()
+        initializeStarReferences()
         setButtonCallbacks()
     }
     
@@ -140,6 +166,56 @@ class LevelSelect: SKScene {
         button_level_9 = self.childNode(withName: "//button_level_9") as! MSButtonNode
         
         button_level_10 = self.childNode(withName: "//button_level_10") as! MSButtonNode
+        
+        
+//Below WORKS!!!!!!
+        //the code below is for setting the stars that the player earned in each level.
+//        var ref = self.childNode(withName: "stars_level_1") as! SKReferenceNode
+//
+//        level_1_stars = ref.childNode(withName: "//star_background") as! LevelSelectStars
+//        level_1_stars.initializeStars()
+//        level_1_stars.set_2_star()
+//        
+//        print("set 1 star")
+        
+    }
+    
+    func initializeStarReferences() {
+        //get the references to the stars
+        level_1_star_ref = self.childNode(withName: "stars_level_1") as! SKReferenceNode
+        level_2_star_ref = self.childNode(withName: "stars_level_2") as! SKReferenceNode
+        level_3_star_ref = self.childNode(withName: "stars_level_3") as! SKReferenceNode
+        level_4_star_ref = self.childNode(withName: "stars_level_4") as! SKReferenceNode
+        level_5_star_ref = self.childNode(withName: "stars_level_5") as! SKReferenceNode
+        level_6_star_ref = self.childNode(withName: "stars_level_6") as! SKReferenceNode
+        level_7_star_ref = self.childNode(withName: "stars_level_7") as! SKReferenceNode
+        level_8_star_ref = self.childNode(withName: "stars_level_8") as! SKReferenceNode
+        level_9_star_ref = self.childNode(withName: "stars_level_9") as! SKReferenceNode
+        level_10_star_ref = self.childNode(withName: "stars_level_10") as! SKReferenceNode
+        
+        //get the star obejcts from the references
+        level_1_star = level_1_star_ref.childNode(withName: "//star_background") as! LevelSelectStars
+        level_2_star = level_2_star_ref.childNode(withName: "//star_background") as! LevelSelectStars
+        level_3_star = level_3_star_ref.childNode(withName: "//star_background") as! LevelSelectStars
+        level_4_star = level_4_star_ref.childNode(withName: "//star_background") as! LevelSelectStars
+        level_5_star = level_5_star_ref.childNode(withName: "//star_background") as! LevelSelectStars
+        level_6_star = level_6_star_ref.childNode(withName: "//star_background") as! LevelSelectStars
+        level_7_star = level_7_star_ref.childNode(withName: "//star_background") as! LevelSelectStars
+        level_8_star = level_8_star_ref.childNode(withName: "//star_background") as! LevelSelectStars
+        level_9_star = level_9_star_ref.childNode(withName: "//star_background") as! LevelSelectStars
+        level_10_star = level_10_star_ref.childNode(withName: "//star_background") as! LevelSelectStars
+        
+//        //set the default for all stars to no stars
+//        level_1_star.set_no_stars()
+//        level_2_star.set_no_stars()
+//        level_3_star.set_no_stars()
+//        level_4_star.set_no_stars()
+//        level_5_star.set_no_stars()
+//        level_6_star.set_no_stars()
+//        level_7_star.set_no_stars()
+//        level_8_star.set_no_stars()
+//        level_9_star.set_no_stars()
+//        level_10_star.set_no_stars()
     }
     
     func setButtonCallbacks() {
