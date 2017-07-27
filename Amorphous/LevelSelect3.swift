@@ -19,11 +19,22 @@ class LevelSelect3: LevelSelect {
     var button_level_24: MSButtonNode!
     var button_level_25: MSButtonNode!
     
+    var chapter_3_star_references: [SKReferenceNode] = []
+    
     
     override func didMove(to view: SKView) {
         print("here")
         initializeButtons()
         setButtonCallbacks()
+        initializeStarReferences()
+        
+        //create a data manager so the stars can be loaded in the scene as soon as the level select is created!
+        Level.dataManager = DataManager()
+        for element in Level.dataManager.getScores() {
+            Level.starsReceived.append(element.getScore())
+        }
+        //if this function is called when the user presses back, we need to update the star references to reflect the score the player got on each level.
+        updateStarReferences()
     }
     
     override func initializeButtons(){
@@ -42,6 +53,41 @@ class LevelSelect3: LevelSelect {
         button_level_24 = self.childNode(withName: "//button_level_24") as! MSButtonNode
         
         button_level_25 = self.childNode(withName: "//button_level_25") as! MSButtonNode
+    }
+    
+    override func initializeStarReferences() {
+        for i in 20..<25 {
+            chapter_3_star_references.append(self.childNode(withName: "stars_level_\(i + 1)") as! SKReferenceNode)
+            var star_object = chapter_3_star_references[i-20].childNode(withName: ".//star_background") as! LevelSelectStars
+            star_object.initializeStars()
+            //initialize the game where all of the star objects have no stars. Since the player has not defeated any of the levels yet.
+            star_object.set_no_stars()
+        }
+    }
+    
+    override func updateStarReferences() {
+        print("__________Updating stars____________")
+        for i in 20..<25 {
+            chapter_3_star_references.append(self.childNode(withName: "stars_level_\(i + 1)") as! SKReferenceNode)
+            var star_object = chapter_3_star_references[i-20].childNode(withName: ".//star_background") as! LevelSelectStars
+            star_object.initializeStars()
+            //set the stars on the screen to the stars that the player has earned. These stars will be present in the array.
+            if(i <= Level.starsReceived.count) {
+                let stars_received_on_level_i = Level.starsReceived[i]
+                print(stars_received_on_level_i)
+                if(stars_received_on_level_i == 0) {
+                    star_object.set_no_stars()
+                } else if(stars_received_on_level_i == 1) {
+                    star_object.set_1_star()
+                } else if(stars_received_on_level_i == 2) {
+                    star_object.set_2_star()
+                } else if(stars_received_on_level_i == 3) {
+                    star_object.set_3_star()
+                }
+            } else {
+                print("Couldn't update")
+            }
+        }
     }
     
     override func setButtonCallbacks() {

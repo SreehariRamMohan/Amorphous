@@ -42,9 +42,6 @@ class LevelSelect: SKScene {
         for element in Level.dataManager.getScores() {
             Level.starsReceived.append(element.getScore())
         }
-        updateStarReferences()
-        
-        
         //if this function is called when the user presses back, we need to update the star references to reflect the score the player got on each level.
         updateStarReferences()
         
