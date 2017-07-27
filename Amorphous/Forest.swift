@@ -34,7 +34,8 @@ class Forest: SKScene {
     
     //boolean values for planting
     var canPlant: Bool = false
-        
+    //type of tree to plant
+    var typeOfTree: Int = -1
     
     override func didMove(to view: SKView) {
         initialize_buttons()
@@ -81,8 +82,26 @@ class Forest: SKScene {
         }
     }
     
-    func startPlantingProcess() {
+    func updateWaterBottles() {
+        print("In update water bottles")
+        for i in 1...10 {
+            var water_bottle: SKSpriteNode = self.childNode(withName: "//water_bottle_\(i)") as! SKSpriteNode
+            water_bottle.isHidden = true
+            if(i <= Forest.num_water_bottles) {
+                water_bottle.isHidden = false
+            } else {
+                water_bottle.isHidden = true
+            }
+            self.arrayOfBottles.append(water_bottle)
+        }
+        print(Forest.num_water_bottles)
+    }
+    
+    func startPlantingProcess(type: Int) {
+        //update the number of water bottles on the screen, taking into account the recent purchase of a new plant
+        self.updateWaterBottles()
         self.canPlant = true
+        self.typeOfTree = type
     }
     
     func initialize_buttons() {
@@ -142,7 +161,7 @@ class Forest: SKScene {
     }
     
     func plant(at: CGPoint) {
-        var plant: Plant = Plant()
+        var plant: Plant = Plant(type: typeOfTree)
         plant.position = at
         self.addChild(plant)
         self.canPlant = false
@@ -208,9 +227,9 @@ class Forest: SKScene {
                 if(abs(deltaX) > 1 || abs(deltaY) > 1) {
                     didScroll = true
                 }
-                let camPosX = forest_camera.position.x + 2*deltaX
+                let camPosX = forest_camera.position.x + deltaX
                 forest_camera.position.x = clamp(value: camPosX,lower: -220,upper: 220)
-                let camPosY = forest_camera.position.y + 2*deltaY
+                let camPosY = forest_camera.position.y + deltaY
                 forest_camera.position.y = clamp(value: camPosY, lower: -300, upper: 300)
             }
         }
