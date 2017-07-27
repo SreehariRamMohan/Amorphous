@@ -68,6 +68,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
     var goals = [(13, 20, 25), (13, 20, 25),(13, 20, 25),(13, 20, 25),(13, 20, 25),(13, 20, 25),]
     //this is the number of stars the user has received latest. This is a number from 0(for no stars) to 3(all stars), these values are then put into the array.
     static var starsReceived: [Int] = []
+    static var dataManager: DataManager!
     
     //flame constants to determine when to melt ice
     var timeTouchingFlameAsIce: NSDate!
@@ -128,12 +129,20 @@ class Level: SKScene, SKPhysicsContactDelegate {
         //This code can reverse gravity. Maybe make an antigravity obstacle later on???
         //self.physicsWorld.gravity = CGVector(dx: 0, dy: 9.8)
         
+        //create a new Data Manager
+        Level.dataManager = DataManager()
+        for element in Level.dataManager.getScores() {
+            Level.starsReceived.append(element.getScore())
+            print("Here")
+            print(element.getScore())
+        }
+    }
+    
+    func saveStarData() {
         for i in 0..<25 {
-            //initialize the array of stars received to an array of 0's
-            Level.starsReceived.append(0)
+            Level.dataManager.addNewStar(level:(i+1), newScore: Level.starsReceived[i])
         }
-        
-        }
+    }
     
     func initializeCriticalGameVariables() {
         windowHasCracked = false
@@ -145,6 +154,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
     }
     
     func buttonLoadLevelSelect(sender: UIButton!) {
+        //save the game before we go to the next level
+        self.saveStarData()
+        
         guard sender == button_back_to_level_select else { return }
         // This function is called when button_back_to_level_select is pressed
         self.loadLevelSelect()
@@ -761,6 +773,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
     }
     
     func gotToNextLevel() {
+        //save the game before we go to the next level
+        self.saveStarData()
+        
         LevelSelect.current_level += 1
         print("loading level " + String(LevelSelect.current_level))
         self.loadLevel(level: LevelSelect.current_level)

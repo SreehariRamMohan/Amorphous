@@ -94,7 +94,7 @@
 		F7A094351F27F36D00A88923 /* Level_19.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7A094341F27F36D00A88923 /* Level_19.sks */; };
 		F7A094381F27FBBA00A88923 /* Level_20.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A094371F27FBBA00A88923 /* Level_20.swift */; };
 		F7A0943C1F27FC4400A88923 /* Level_20.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7A0943B1F27FC4400A88923 /* Level_20.sks */; };
-		F7A0943F1F280CB100A88923 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A0943E1F280CB100A88923 /* Data.swift */; };
+		F7A0943F1F280CB100A88923 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A0943E1F280CB100A88923 /* GameData.swift */; };
 		F7A094421F280D4100A88923 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A094411F280D4100A88923 /* DataManager.swift */; };
 		F7A094441F28F97D00A88923 /* Level_21.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A094431F28F97D00A88923 /* Level_21.swift */; };
 		F7A094461F28F98A00A88923 /* Level_21.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7A094451F28F98A00A88923 /* Level_21.sks */; };
@@ -227,7 +227,7 @@
 		F7A094341F27F36D00A88923 /* Level_19.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_19.sks; sourceTree = "<group>"; };
 		F7A094371F27FBBA00A88923 /* Level_20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_20.swift; sourceTree = "<group>"; };
 		F7A0943B1F27FC4400A88923 /* Level_20.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_20.sks; sourceTree = "<group>"; };
-		F7A0943E1F280CB100A88923 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		F7A0943E1F280CB100A88923 /* GameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		F7A094411F280D4100A88923 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F7A094431F28F97D00A88923 /* Level_21.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_21.swift; sourceTree = "<group>"; };
 		F7A094451F28F98A00A88923 /* Level_21.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_21.sks; sourceTree = "<group>"; };
@@ -281,6 +281,15 @@
 				F7A094561F2939CF00A88923 /* Level_25.sks */,
 			);
 			name = Level_25;
+			sourceTree = "<group>";
+		};
+		F702DEB11F2A5D6100ACEED1 /* LevelSelectStars */ = {
+			isa = PBXGroup;
+			children = (
+				F702DEAC1F29486400ACEED1 /* LevelSelectStars.swift */,
+				F702DEAF1F29498400ACEED1 /* LevelSelectStars.sks */,
+			);
+			name = LevelSelectStars;
 			sourceTree = "<group>";
 		};
 		F7101A3D1F1D50CE002C8367 /* Forest */ = {
@@ -475,8 +484,6 @@
 				F76C41871F13DFB000F84F43 /* LaunchScreen.storyboard */,
 				F76C418A1F13DFB000F84F43 /* Info.plist */,
 				F76C41C91F159C4B00F84F43 /* CharacterActions.sks */,
-				F702DEAC1F29486400ACEED1 /* LevelSelectStars.swift */,
-				F702DEAF1F29498400ACEED1 /* LevelSelectStars.sks */,
 				F7A094401F280D3100A88923 /* Data Persistence */,
 				F7993EE51F2025B000FE430D /* LevelSummary */,
 				F7993ED21F1F378900FE430D /* LevelSelect */,
@@ -662,6 +669,7 @@
 		F7993ED21F1F378900FE430D /* LevelSelect */ = {
 			isa = PBXGroup;
 			children = (
+				F702DEB11F2A5D6100ACEED1 /* LevelSelectStars */,
 				F76C41AE1F13EB3500F84F43 /* LevelSelect.sks */,
 				F7993ED31F1F37D300FE430D /* LevelSelect2.sks */,
 				F7A0944B1F2908F500A88923 /* LevelSelect3.sks */,
@@ -729,7 +737,7 @@
 		F7A094401F280D3100A88923 /* Data Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				F7A0943E1F280CB100A88923 /* Data.swift */,
+				F7A0943E1F280CB100A88923 /* GameData.swift */,
 				F7A094411F280D4100A88923 /* DataManager.swift */,
 			);
 			name = "Data Persistence";
@@ -1001,7 +1009,7 @@
 				F71BD4431F1949020045DC2B /* Level_12.swift in Sources */,
 				F7A094421F280D4100A88923 /* DataManager.swift in Sources */,
 				F77F43591F2278BF00312E78 /* Flame.swift in Sources */,
-				F7A0943F1F280CB100A88923 /* Data.swift in Sources */,
+				F7A0943F1F280CB100A88923 /* GameData.swift in Sources */,
 				F76C41B81F14057E00F84F43 /* Level.swift in Sources */,
 				F76C41C81F1597C600F84F43 /* CollisionManager.swift in Sources */,
 				F77F43671F22AD0800312E78 /* Level_2.swift in Sources */,

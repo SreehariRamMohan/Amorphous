@@ -21,9 +21,9 @@ class LevelSelectStars: SKSpriteNode, SKPhysicsContactDelegate {
     }
     
     func initializeStars() {
-        star1 = self.childNode(withName: "//star_1") as! SKSpriteNode
-        star2 = self.childNode(withName: "//star_2") as! SKSpriteNode
-        star3 = self.childNode(withName: "//star_3") as! SKSpriteNode
+        star1 = self.childNode(withName: "star_1") as! SKSpriteNode
+        star2 = self.childNode(withName: "star_2") as! SKSpriteNode
+        star3 = self.childNode(withName: "star_3") as! SKSpriteNode
     }
     
     func set_1_star(){
