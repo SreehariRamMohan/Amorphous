@@ -13,6 +13,9 @@ import GameplayKit
 
 class Plant: SKSpriteNode {
     
+    var x: CGFloat!
+    var y: CGFloat!
+    var plant_type: Int!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -24,13 +27,12 @@ class Plant: SKSpriteNode {
     let texture = SKTexture(imageNamed: "tree_1")
     let color = UIColor.clear
     let size = texture.size()
-    
     // Call the designated initializer
     super.init(texture: texture, color: color, size: size)
     
     }
     
-    init(type: Int) {
+    init(type: Int, x_position: CGFloat, y_position: CGFloat) {
         //set a default texture for the tree so if something gets screwed up, the app won't crash on the user
         var texture = SKTexture(imageNamed: "tree_1")
         if(type == 1) {
@@ -50,6 +52,10 @@ class Plant: SKSpriteNode {
         let color = UIColor.clear
         let size = texture.size()
         
+        self.x = x_position
+        self.y = y_position
+        self.plant_type = type
+        
         // Call the designated initializer
         super.init(texture: texture, color: color, size: size)
 
@@ -61,7 +67,15 @@ class Plant: SKSpriteNode {
         
     }
     
+    func getX() -> CGFloat {
+        return x
+    }
     
+    func getY() -> CGFloat {
+        return y
+    }
     
-    
+    func getPlantType() -> Int {
+        return plant_type
+    }
 }

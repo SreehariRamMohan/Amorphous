@@ -20,7 +20,7 @@ class Forest: SKScene {
     var effects_node: SKEffectNode!
     var button_x: MSButtonNode!
     var forestDataManager: DataManager!
-    static var num_water_bottles: Int = 3
+    static var num_water_bottles: Int!
     var buy_fragment: SKReferenceNode!
     
     var forest_camera: SKCameraNode!
@@ -37,12 +37,18 @@ class Forest: SKScene {
     var canPlant: Bool = false
     //type of tree to plant
     var typeOfTree: Int = -1
+    //array to hold trees in the forest
+    var tree_array: [Plant]!
     
     override func didMove(to view: SKView) {
         //initialize the data manager
         forestDataManager = DataManager()
         
-        //Forest.num_water_bottles = forestDataManager.getBottles().getNumberOfBottles()
+        Forest.num_water_bottles = forestDataManager.getBottles().getNumberOfBottles()
+        //get an array of our saved garden
+        self.tree_array = forestDataManager.getTreesAsPlantObjectArray()
+        //redraw the saved objects to the screen.
+        drawSavedTrees(array: self.tree_array)
         
         initialize_buttons()
         button_action_callbacks()
@@ -90,16 +96,18 @@ class Forest: SKScene {
     
     func updateWaterBottles() {
         print("In update water bottles")
+        //clear original given array and remove all of the showing bottles from the screen
         for i in 1...10 {
             var water_bottle: SKSpriteNode = self.childNode(withName: "//water_bottle_\(i)") as! SKSpriteNode
             water_bottle.isHidden = true
-            if(i <= Forest.num_water_bottles) {
+            if(i <= forestDataManager.getBottles().getNumberOfBottles()) {
                 water_bottle.isHidden = false
             } else {
                 water_bottle.isHidden = true
             }
-            self.arrayOfBottles.append(water_bottle)
         }
+        print("Balance is \(forestDataManager.getBottles().getNumberOfBottles())")
+        Forest.num_water_bottles = forestDataManager.getBottles().getNumberOfBottles()
         print(Forest.num_water_bottles)
     }
     
@@ -166,11 +174,21 @@ class Forest: SKScene {
         
     }
     
+    func drawSavedTrees(array: [Plant]) {
+        for element in array {
+            self.addChild(element)
+            element.position = CGPoint(x: element.getX(), y: element.getY())
+            print("added to screen")
+        }
+    }
+    
     func plant(at: CGPoint) {
-        var plant: Plant = Plant(type: typeOfTree)
+        var plant: Plant = Plant(type: typeOfTree, x_position: at.x, y_position: at.y)
         plant.position = at
         self.addChild(plant)
         self.canPlant = false
+        tree_array.append(plant)
+        forestDataManager.saveArrayOfTrees(array: self.tree_array)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

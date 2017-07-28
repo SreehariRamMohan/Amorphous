@@ -66,17 +66,18 @@ class PlantsPage: SKSpriteNode {
                 self.not_enough_water_label.isHidden = false
                 self.balance_label.isHidden = false
             } else {
-                self.forestReference.startPlantingProcess(type: 1)
                 
                 //subtract the cost of the plant from the number of water bottles that the player has so we can update their remaining balance when we go back to the forest activity
-                Forest.num_water_bottles -= self.cost_for_option_1
+                self.forestReference.forestDataManager.addBottleData(numBottles: Int(self.forestReference.forestDataManager.getBottles().getNumberOfBottles()) - Int(self.cost_for_option_1))
+
+                self.forestReference.startPlantingProcess(type: 1)
                 
                 //remove the buying screen after we have decided which plant we want to buy
                 self.forestReference.destroyBuyFragment()
                 
                 
                 //BELOW NOT WORKING WILL FIX
-                self.forestReference.forestDataManager.addBottleData(numBottles: Forest.num_water_bottles)
+                //self.forestReference.forestDataManager.addBottleData(numBottles: Forest.num_water_bottles)
 
             }
             
@@ -90,10 +91,10 @@ class PlantsPage: SKSpriteNode {
                 self.not_enough_water_label.isHidden = false
                 self.balance_label.isHidden = false
             } else {
-                self.forestReference.startPlantingProcess(type: 2)
-                
                 //subtract the cost of the plant from the number of water bottles that the player has so we can update their remaining balance when we go back to the forest activity
-                Forest.num_water_bottles -= self.cost_for_option_2
+                self.forestReference.forestDataManager.addBottleData(numBottles: Int(self.forestReference.forestDataManager.getBottles().getNumberOfBottles()) - Int(self.cost_for_option_2))
+                
+                self.forestReference.startPlantingProcess(type: 2)
                 
                 //remove the buying screen after we have decided which plant we want to buy
                 self.forestReference.destroyBuyFragment()
@@ -106,11 +107,12 @@ class PlantsPage: SKSpriteNode {
                 self.not_enough_water_label.isHidden = false
                 self.balance_label.isHidden = false
             } else {
+                //subtract the cost of the plant from the number of water bottles that the player has so we can update their remaining balance when we go back to the forest activity
+                self.forestReference.forestDataManager.addBottleData(numBottles: Int(self.forestReference.forestDataManager.getBottles().getNumberOfBottles()) - Int(self.cost_for_option_3))
+                
                 self.forestReference.startPlantingProcess(type: 3)
                 
-                //subtract the cost of the plant from the number of water bottles that the player has so we can update their remaining balance when we go back to the forest activity
-                Forest.num_water_bottles -= self.cost_for_option_3
-                
+               
                 //remove the buying screen after we have decided which plant we want to buy
                 self.forestReference.destroyBuyFragment()
             }
@@ -122,10 +124,10 @@ class PlantsPage: SKSpriteNode {
                 self.not_enough_water_label.isHidden = false
                 self.balance_label.isHidden = false
             } else {
-                self.forestReference.startPlantingProcess(type: 4)
-                
                 //subtract the cost of the plant from the number of water bottles that the player has so we can update their remaining balance when we go back to the forest activity
-                Forest.num_water_bottles -= self.cost_for_option_4
+                self.forestReference.forestDataManager.addBottleData(numBottles: Int(self.forestReference.forestDataManager.getBottles().getNumberOfBottles()) - Int(self.cost_for_option_4))
+                
+                self.forestReference.startPlantingProcess(type: 4)
                 
                 //remove the buying screen after we have decided which plant we want to buy
                 self.forestReference.destroyBuyFragment()
@@ -138,10 +140,10 @@ class PlantsPage: SKSpriteNode {
                 self.not_enough_water_label.isHidden = false
                 self.balance_label.isHidden = false
             } else {
-                self.forestReference.startPlantingProcess(type: 5)
-                
                 //subtract the cost of the plant from the number of water bottles that the player has so we can update their remaining balance when we go back to the forest activity
-                Forest.num_water_bottles -= self.cost_for_option_5
+                self.forestReference.forestDataManager.addBottleData(numBottles: Int(self.forestReference.forestDataManager.getBottles().getNumberOfBottles()) - Int(self.cost_for_option_5))
+                
+                self.forestReference.startPlantingProcess(type: 5)
                 
                 //remove the buying screen after we have decided which plant we want to buy
                 self.forestReference.destroyBuyFragment()
@@ -154,10 +156,10 @@ class PlantsPage: SKSpriteNode {
                 self.not_enough_water_label.isHidden = false
                 self.balance_label.isHidden = false
             } else {
-                self.forestReference.startPlantingProcess(type: 6)
-                
                 //subtract the cost of the plant from the number of water bottles that the player has so we can update their remaining balance when we go back to the forest activity
-                Forest.num_water_bottles -= self.cost_for_option_6
+                self.forestReference.forestDataManager.addBottleData(numBottles: Int(self.forestReference.forestDataManager.getBottles().getNumberOfBottles()) - Int(self.cost_for_option_6))
+                
+                self.forestReference.startPlantingProcess(type: 6)
                 
                 //remove the buying screen after we have decided which plant we want to buy
                 self.forestReference.destroyBuyFragment()

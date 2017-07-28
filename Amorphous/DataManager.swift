@@ -8,8 +8,9 @@
 import Foundation
 import SpriteKit
 class DataManager {
-    var scores:Array<GameData> = [];
+    var scores:Array<GameData> = []
     var bottles: WaterBottleData!
+    var forest_trees: Array<ForestDataItem> = []
     
     init() {
         // load existing high scores or set up an empty array
@@ -87,6 +88,41 @@ class DataManager {
             self.bottles = WaterBottleData(bottle_balance: 3)
         }
         
+        
+        //////////////////////////////////////SAVING FOR FOREST TREES BELOW////////////////////////////////////////////////
+
+        path = URL(fileURLWithPath: documentsDirectory).appendingPathComponent("ForestTrees.plist")
+        
+        // check if file exists
+        if !fileManager.fileExists(atPath: path.absoluteString) {
+            // create an empty file if it doesn't exist
+            if let bundle = Bundle.main.path(forResource: "ForestTrees", ofType: "plist") {
+                do{
+                    try fileManager.copyItem(atPath: bundle, toPath: path.absoluteString)
+                }
+                catch {
+                    print("Failed")
+                }
+            }
+        } else {
+            //if the file path doesn't exist let's create an array full of 0's and initialize tha to scores
+            
+        }
+        do {
+            let rawData = try Data(contentsOf: path)
+            // do we get serialized data back from the attempted path?
+            // if so, unarchive it into an AnyObject, and then convert to an array of HighScores, if possible
+            let trees: Any? = NSKeyedUnarchiver.unarchiveObject(with: rawData)
+            self.forest_trees = trees as? [ForestDataItem] ?? [];
+        } catch {
+            
+        }
+        
+        if(self.forest_trees.count == 0) {
+            print("EMPTY SINCE THIS IS THE FIRST TIME")
+        }
+        
+        
     }
     
     
@@ -118,6 +154,19 @@ class DataManager {
 
     }
     
+    func saveTrees() {
+        // find the save directory our app has permission to use, and save the serialized version of self.scores - the HighScores array.
+        let saveData = NSKeyedArchiver.archivedData(withRootObject: self.forest_trees)
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as Array;
+        let documentsDirectory = paths[0] as! String;
+        let path = URL(fileURLWithPath: documentsDirectory).appendingPathComponent("ForestTrees.plist")
+        do {
+            try saveData.write(to: path)
+        } catch {
+            
+        }
+    }
+    
     // a simple function to add a new high score, to be called from your game logic
     // note that this doesn't sort or filter the scores in any way
     func addNewStar(level: Int, newScore:Int) {
@@ -138,6 +187,14 @@ class DataManager {
         self.saveBottles()
     }
     
+    func saveArrayOfTrees(array: [Plant]) {
+        for element in array {
+            self.forest_trees.append(ForestDataItem(plant_type: element.getPlantType(), x: element.getX(), y: element.getY()))
+            print("Appending whilest I am saving")
+        }
+        self.saveTrees()
+    }
+    
     
     func getScores() -> [GameData] {
         print("Returning game data array")
@@ -147,5 +204,18 @@ class DataManager {
     func getBottles() -> WaterBottleData {
         print("Returning bottle data from data manager")
         return self.bottles
+    }
+    
+    func getTreesAsPlantObjectArray() -> [Plant] {
+        print("Returning an array of PLANT's No need to convert")
+        var arr: [Plant] = []
+        for element in self.forest_trees {
+            arr.append(Plant(type: element.getPlantType(), x_position: element.getX(), y_position: element.getY()))
+        }
+        return arr
+    }
+    
+    func getTreesAsForestDataObjectArray() -> [ForestDataItem] {
+        return self.forest_trees
     }
 }

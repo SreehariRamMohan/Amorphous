@@ -849,7 +849,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
         //to make sure that this method isn't called more than once and subseauently, the players water bottle count goes up by 2-3 for each level.
         if(!hasAlreadyAddedToWaterBottleTotal) {
             //Increase our num water bottles since we succesfully completed the level!
-            Forest.num_water_bottles += 1
+            Level.dataManager.addBottleData(numBottles: Int(Level.dataManager.getBottles().getNumberOfBottles()) + Int(1))
             self.hasAlreadyAddedToWaterBottleTotal = true
         }
         
