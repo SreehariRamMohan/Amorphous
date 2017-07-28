@@ -19,6 +19,7 @@ class Forest: SKScene {
     var planting_instructions_label: SKNode!
     var effects_node: SKEffectNode!
     var button_x: MSButtonNode!
+    var forestDataManager: DataManager!
     static var num_water_bottles: Int = 3
     var buy_fragment: SKReferenceNode!
     
@@ -38,6 +39,11 @@ class Forest: SKScene {
     var typeOfTree: Int = -1
     
     override func didMove(to view: SKView) {
+        //initialize the data manager
+        forestDataManager = DataManager()
+        
+        //Forest.num_water_bottles = forestDataManager.getBottles().getNumberOfBottles()
+        
         initialize_buttons()
         button_action_callbacks()
         setDefaultButtonVisibilityState()

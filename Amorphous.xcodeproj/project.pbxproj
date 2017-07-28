@@ -10,6 +10,7 @@
 		F702DEAD1F29486400ACEED1 /* LevelSelectStars.swift in Sources */ = {isa = PBXBuildFile; fileRef = F702DEAC1F29486400ACEED1 /* LevelSelectStars.swift */; };
 		F702DEB01F29498400ACEED1 /* LevelSelectStars.sks in Resources */ = {isa = PBXBuildFile; fileRef = F702DEAF1F29498400ACEED1 /* LevelSelectStars.sks */; };
 		F702DEB31F2A8D9600ACEED1 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F702DEB21F2A8D9600ACEED1 /* Plant.swift */; };
+		F702DEB51F2AACF100ACEED1 /* WaterBottleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F702DEB41F2AACF100ACEED1 /* WaterBottleData.swift */; };
 		F7101A3F1F1D833B002C8367 /* Level_22.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7101A3E1F1D833B002C8367 /* Level_22.sks */; };
 		F7101A411F1D8350002C8367 /* Level_22.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7101A401F1D8350002C8367 /* Level_22.swift */; };
 		F71205311F17D9DC007DF257 /* Spikes.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71205301F17D9DC007DF257 /* Spikes.sks */; };
@@ -138,6 +139,7 @@
 		F702DEAC1F29486400ACEED1 /* LevelSelectStars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectStars.swift; sourceTree = "<group>"; };
 		F702DEAF1F29498400ACEED1 /* LevelSelectStars.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelSelectStars.sks; sourceTree = "<group>"; };
 		F702DEB21F2A8D9600ACEED1 /* Plant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
+		F702DEB41F2AACF100ACEED1 /* WaterBottleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterBottleData.swift; sourceTree = "<group>"; };
 		F7101A3E1F1D833B002C8367 /* Level_22.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_22.sks; sourceTree = "<group>"; };
 		F7101A401F1D8350002C8367 /* Level_22.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_22.swift; sourceTree = "<group>"; };
 		F71205301F17D9DC007DF257 /* Spikes.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spikes.sks; sourceTree = "<group>"; };
@@ -741,6 +743,7 @@
 			isa = PBXGroup;
 			children = (
 				F7A0943E1F280CB100A88923 /* GameData.swift */,
+				F702DEB41F2AACF100ACEED1 /* WaterBottleData.swift */,
 				F7A094411F280D4100A88923 /* DataManager.swift */,
 			);
 			name = "Data Persistence";
@@ -1039,6 +1042,7 @@
 				F71A32791F26A5D500F80338 /* Level_15.swift in Sources */,
 				F77F43721F22F1C800312E78 /* Level_5.swift in Sources */,
 				F7F162BC1F21712400BB8F77 /* Level_18.swift in Sources */,
+				F702DEB51F2AACF100ACEED1 /* WaterBottleData.swift in Sources */,
 				F77F437F1F23461F00312E78 /* Level_7.swift in Sources */,
 				F71A326F1F26970600F80338 /* Level_13.swift in Sources */,
 				F7993ED61F1F37FD00FE430D /* LevelSelect2.swift in Sources */,

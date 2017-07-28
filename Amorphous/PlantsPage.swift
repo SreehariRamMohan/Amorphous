@@ -31,6 +31,8 @@ class PlantsPage: SKSpriteNode {
     let cost_for_option_5: Int = 9
     let cost_for_option_6: Int = 10
     
+    var assigned = false
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         //this will be called when the PlantPage fragment is created.
@@ -71,7 +73,14 @@ class PlantsPage: SKSpriteNode {
                 
                 //remove the buying screen after we have decided which plant we want to buy
                 self.forestReference.destroyBuyFragment()
+                
+                
+                //BELOW NOT WORKING WILL FIX
+                self.forestReference.forestDataManager.addBottleData(numBottles: Forest.num_water_bottles)
+
             }
+            
+
         }
         
         option_2_button.selectedHandler = {

@@ -9,12 +9,13 @@ import Foundation
 import SpriteKit
 class DataManager {
     var scores:Array<GameData> = [];
+    var bottles: WaterBottleData!
     
     init() {
         // load existing high scores or set up an empty array
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentsDirectory = paths[0] as String
-        let path = URL(fileURLWithPath: documentsDirectory).appendingPathComponent("GameData.plist")
+        var path = URL(fileURLWithPath: documentsDirectory).appendingPathComponent("GameData.plist")
         let fileManager = FileManager.default
         
         // check if file exists
@@ -49,7 +50,46 @@ class DataManager {
                 scores.append(GameData(level: i + 1, scoreForThatLevel: 0))
             }
         }
+        
+        //////////////////////////////////////SAVING FOR WATERBOTTLES BELOW////////////////////////////////////////////////
+        
+        
+        path = URL(fileURLWithPath: documentsDirectory).appendingPathComponent("WaterBottles.plist")
+        // check if file exists
+        if !fileManager.fileExists(atPath: path.absoluteString) {
+            // create an empty file if it doesn't exist
+            if let bundle = Bundle.main.path(forResource: "WaterBottles", ofType: "plist") {
+                do{
+                    try fileManager.copyItem(atPath: bundle, toPath: path.absoluteString)
+                }
+                catch {
+                    print("Failed")
+                }
+            }
+        } else {
+            //if the file path doesn't exist let's create an array full of 0's and initialize tha to scores
+            
+        }
+        do {
+            let rawData = try Data(contentsOf: path)
+            // do we get serialized data back from the attempted path?
+            // if so, unarchive it into an AnyObject, and then convert to an array of HighScores, if possible
+            let bottlesRAW: Any? = NSKeyedUnarchiver.unarchiveObject(with: rawData)
+            self.bottles = bottlesRAW as? WaterBottleData ?? nil;
+            
+            //the first time we run the code we will get nil, so lets assign the value of nil to 3 which is the default starting value
+            
+        } catch {
+            
+        }
+        
+        if(self.bottles == nil) {
+            self.bottles = WaterBottleData(bottle_balance: 3)
+        }
+        
     }
+    
+    
     
     func save() {
         // find the save directory our app has permission to use, and save the serialized version of self.scores - the HighScores array.
@@ -62,6 +102,20 @@ class DataManager {
         } catch {
             
         }
+    }
+    
+    func saveBottles() {
+        // find the save directory our app has permission to use, and save the serialized version of self.scores - the HighScores array.
+        let saveData = NSKeyedArchiver.archivedData(withRootObject: self.bottles)
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as Array;
+        let documentsDirectory = paths[0] as! String;
+        let path = URL(fileURLWithPath: documentsDirectory).appendingPathComponent("WaterBottles.plist")
+        do {
+            try saveData.write(to: path)
+        } catch {
+            
+        }
+
     }
     
     // a simple function to add a new high score, to be called from your game logic
@@ -78,8 +132,20 @@ class DataManager {
         }
     }
     
+    func addBottleData(numBottles: Int) {
+        let bottle = WaterBottleData(bottle_balance: numBottles)
+        self.bottles = bottle
+        self.saveBottles()
+    }
+    
+    
     func getScores() -> [GameData] {
         print("Returning game data array")
         return scores
+    }
+    
+    func getBottles() -> WaterBottleData {
+        print("Returning bottle data from data manager")
+        return self.bottles
     }
 }
