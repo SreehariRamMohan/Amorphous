@@ -17,6 +17,7 @@ class Forest: SKScene {
     var rescue_water_button: MSButtonNode!
     var background_of_forest: SKNode!
     var planting_instructions_label: SKNode!
+    var watering_instructions_label: SKNode!
     var effects_node: SKEffectNode!
     var button_x: MSButtonNode!
     var forestDataManager: DataManager!
@@ -33,8 +34,9 @@ class Forest: SKScene {
     //arrays
     var arrayOfBottles: [SKSpriteNode] = []
     
-    //boolean values for planting
+    //boolean values for planting/watering
     var canPlant: Bool = false
+    var canWater: Bool = false
     //type of tree to plant
     var typeOfTree: Int = -1
     //array to hold trees in the forest
@@ -85,6 +87,13 @@ class Forest: SKScene {
             water_plants_button.isHidden = true
             rescue_water_button.isHidden = true
             planting_instructions_label.isHidden = false
+        } else if(canWater) {
+            //show the can watering message, and hide the other buttons for the sake of convenience
+            self.plant_button.isHidden = true
+            self.water_plants_button.isHidden = true
+            self.rescue_water_button.isHidden = true
+            self.planting_instructions_label.isHidden = true
+            self.watering_instructions_label.isHidden = false
         } else {
             //make sure that all of the other buttons are still able to be shown.
             planting_instructions_label.isHidden = true
@@ -130,6 +139,10 @@ class Forest: SKScene {
         button_x = self.childNode(withName: "//button_x") as! MSButtonNode
         
         planting_instructions_label = self.childNode(withName: "//planting_instructions")!
+        
+        watering_instructions_label = self.childNode(withName: "//watering_instructions")!
+        //as soon as this label it needs to be hidden until someone decides to water their plants.
+        watering_instructions_label.isHidden = true
     }
     
     func button_action_callbacks() {
@@ -140,6 +153,7 @@ class Forest: SKScene {
         
         water_plants_button.selectedHandler = {
             print("watering plants")
+            self.canWater = true
         }
         
         rescue_water_button.selectedHandler = {
@@ -166,7 +180,7 @@ class Forest: SKScene {
     }
     
     func touchUp(atPoint pos : CGPoint) {
-       
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -200,6 +214,19 @@ class Forest: SKScene {
                 print(location)
                 print("You are going to plant in this location")
                 plant(at: location)
+            }
+            if(self.canWater) {
+                let touch = touches.first!
+                let location = touch.location(in: self)
+                print(location)
+                self.canWater = false
+                self.watering_instructions_label.isHidden = true
+                
+                //check if they tapped on a plant
+                //if they tapped on a plant decrement 1 from the amount of water they have
+                
+                
+                //after the player has tapped on the screen, we assume that they are done watering their plants and we set the canWater variable to false
             }
         }
     }

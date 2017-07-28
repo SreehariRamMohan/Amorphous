@@ -17,6 +17,8 @@ class Plant: SKSpriteNode {
     var y: CGFloat!
     var plant_type: Int!
     
+    //var date_last_watered: Date!
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         //this will be called when the sponge is created.
