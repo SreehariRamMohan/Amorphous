@@ -17,7 +17,7 @@ class Plant: SKSpriteNode {
     var y: CGFloat!
     var plant_type: Int!
     
-    //var date_last_watered: Date!
+    var date_last_watered: Date!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -34,7 +34,7 @@ class Plant: SKSpriteNode {
     
     }
     
-    init(type: Int, x_position: CGFloat, y_position: CGFloat) {
+    init(type: Int, x_position: CGFloat, y_position: CGFloat, date_last_watered: Date) {
         //set a default texture for the tree so if something gets screwed up, the app won't crash on the user
         var texture = SKTexture(imageNamed: "tree_1")
         if(type == 1) {
@@ -57,7 +57,7 @@ class Plant: SKSpriteNode {
         self.x = x_position
         self.y = y_position
         self.plant_type = type
-        
+        self.date_last_watered = date_last_watered
         // Call the designated initializer
         super.init(texture: texture, color: color, size: size)
 
@@ -79,5 +79,13 @@ class Plant: SKSpriteNode {
     
     func getPlantType() -> Int {
         return plant_type
+    }
+    
+    func getLastWateredDate() -> Date {
+        return date_last_watered
+    }
+    
+    func setDateLastWatered(date: Date) {
+        self.date_last_watered = date
     }
 }

@@ -49,6 +49,11 @@ class Forest: SKScene {
         Forest.num_water_bottles = forestDataManager.getBottles().getNumberOfBottles()
         //get an array of our saved garden
         self.tree_array = forestDataManager.getTreesAsPlantObjectArray()
+        
+        //update the color of the trees based on how long ago they've been watered. If they've been watered a long time ago, make them turn brown. 
+        
+        updateTheHealthOfTrees(array: self.tree_array)
+        
         //redraw the saved objects to the screen.
         drawSavedTrees(array: self.tree_array)
         
@@ -127,6 +132,53 @@ class Forest: SKScene {
         self.typeOfTree = type
     }
     
+    func updateTheHealthOfTrees(array: [Plant]) {
+        let calendar = NSCalendar.current
+        print("HI in update health of trees")
+        for i in 0..<self.tree_array.count {
+            //calculating the time in days between now and the last time the plant was watered to determine if the plant needs to be watered.
+            // Replace the hour (time) of both dates with 00:00
+            let date1 = calendar.startOfDay(for: self.tree_array[i].getLastWateredDate())
+            let date2 = calendar.startOfDay(for: Date())
+            
+            //let components = calendar.dateComponents([.day], from: date1, to: date2)
+            let difference = date2.timeIntervalSince(date1)
+            //converts the seconds to days
+            print((difference / 86400))
+            if(difference >= 1.0) {
+                //it has been more than one day since the plant was watered and that is bad. The plant needs to go into a dying state until it is rewatered. 
+                
+                //depending on the original shape of the plant we need to choose a different dead tree form
+                if(self.tree_array[i].getPlantType() == 1 || self.tree_array[i].getPlantType() == 3 || self.tree_array[i].getPlantType() == 4 || self.tree_array[i].getPlantType() == 5) {
+                    self.tree_array[i].texture = SKTexture(imageNamed: "deadtree_short")
+                } else {
+                    self.tree_array[i].texture = SKTexture(imageNamed: "deadtree_tall")
+                }
+            } else {
+                //the time difference is less than 1 day so we need to keep the original texture
+                var type = self.tree_array[i].getPlantType()
+                var texture = SKTexture(imageNamed: "tree_1")
+                if(type == 1) {
+                    // Make a texture from an image, a color, and size
+                    texture = SKTexture(imageNamed: "tree_1")
+                } else if(type == 2){
+                    texture = SKTexture(imageNamed: "tree_2")
+                } else if(type == 3) {
+                    texture = SKTexture(imageNamed: "tree_3")
+                } else if(type == 4) {
+                    texture = SKTexture(imageNamed: "tree_4")
+                } else if(type == 5) {
+                    texture = SKTexture(imageNamed: "tree_5")
+                } else if(type == 6) {
+                    texture = SKTexture(imageNamed: "tree_6")
+                }
+                
+                self.tree_array[i].texture = texture
+            }
+        }
+    }
+
+    
     func initialize_buttons() {
         water_plants_button = self.childNode(withName: "//water_image") as! MSButtonNode
         
@@ -197,12 +249,13 @@ class Forest: SKScene {
     }
     
     func plant(at: CGPoint) {
-        var plant: Plant = Plant(type: typeOfTree, x_position: at.x, y_position: at.y)
+        var plant: Plant = Plant(type: typeOfTree, x_position: at.x, y_position: at.y, date_last_watered: Date())
         plant.position = at
         self.addChild(plant)
         self.canPlant = false
         tree_array.append(plant)
         forestDataManager.saveArrayOfTrees(array: self.tree_array)
+        self.tree_array = forestDataManager.getTreesAsPlantObjectArray()
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -215,21 +268,48 @@ class Forest: SKScene {
                 print("You are going to plant in this location")
                 plant(at: location)
             }
-            if(self.canWater) {
+            else if(self.canWater) {
                 let touch = touches.first!
                 let location = touch.location(in: self)
                 print(location)
                 self.canWater = false
                 self.watering_instructions_label.isHidden = true
-                
+                if(self.forestDataManager.getBottles().getNumberOfBottles() <= 0) {
+                    print("Not enough water to water the plants")
+                    return
+                }
                 //check if they tapped on a plant
                 //if they tapped on a plant decrement 1 from the amount of water they have
-                
-                
-                //after the player has tapped on the screen, we assume that they are done watering their plants and we set the canWater variable to false
+                for i in 0..<self.tree_array.count {
+                    if(self.tree_array[i].contains(location)) {
+                        print("Watering a plant I just touched")
+                        self.tree_array[i].setDateLastWatered(date: Date()) //set the date last watered to now, since I just watered the plant
+                        
+                        //call update on the array of trees since our data has just changed!
+                        
+                        updateTheHealthOfTrees(array: self.tree_array)
+                        
+                        //save the new replenished tree to storage so that when we open the game again the tree shows up as healthy
+                        forestDataManager.saveArrayOfTrees(array: self.tree_array)
+
+                        
+                        
+                        //subtract 1 from the number of bottles that the player has, since watering plants uses up 1 water
+//                        element.setDateLastWatered(date: Date())
+//                        self.forestDataManager.addBottleData(numBottles: Int(self.forestDataManager.getBottles().getNumberOfBottles()) - Int(1))
+//                        Forest.num_water_bottles = self.forestDataManager.getBottles().getNumberOfBottles()
+//                        updateWaterBottles()
+//                        
+//                        self.tree_array = forestDataManager.getTreesAsPlantObjectArray()
+//                        updateTheHealthOfTrees(array: self.tree_array)
+                    }
+                }
+                    
             }
         }
     }
+
+
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
 

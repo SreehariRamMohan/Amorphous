@@ -189,8 +189,7 @@ class DataManager {
     
     func saveArrayOfTrees(array: [Plant]) {
         for element in array {
-            self.forest_trees.append(ForestDataItem(plant_type: element.getPlantType(), x: element.getX(), y: element.getY()))
-            print("Appending whilest I am saving")
+            self.forest_trees.append(ForestDataItem(plant_type: element.getPlantType(), x: element.getX(), y: element.getY(), date_last_watered: element.getLastWateredDate()))
         }
         self.saveTrees()
     }
@@ -210,7 +209,7 @@ class DataManager {
         print("Returning an array of PLANT's No need to convert")
         var arr: [Plant] = []
         for element in self.forest_trees {
-            arr.append(Plant(type: element.getPlantType(), x_position: element.getX(), y_position: element.getY()))
+            arr.append(Plant(type: element.getPlantType(), x_position: element.getX(), y_position: element.getY(), date_last_watered: element.getDateLastWatered()))
         }
         return arr
     }

@@ -7,26 +7,27 @@
 //
 
 import Foundation
-import Foundation
-import Foundation
 import SpriteKit
 class ForestDataItem: NSObject, NSCoding{
     
     var x: CGFloat!
     var y: CGFloat!
     var plant_type: Int!
+    var date_last_watered: Date!
     
     
-    init(plant_type: Int, x: CGFloat, y: CGFloat) {
+    init(plant_type: Int, x: CGFloat, y: CGFloat, date_last_watered: Date) {
         self.x = x
         self.y = y
         self.plant_type = plant_type
+        self.date_last_watered = date_last_watered
     }
     
     required init(coder: NSCoder) {
         self.x = coder.decodeObject(forKey: "x") as! CGFloat
         self.y = coder.decodeObject(forKey: "y") as! CGFloat
         self.plant_type = coder.decodeObject(forKey: "plant_type") as! Int
+        self.date_last_watered = coder.decodeObject(forKey: "date") as! Date
         super.init()
     }
     
@@ -34,6 +35,7 @@ class ForestDataItem: NSObject, NSCoding{
         coder.encode(self.x, forKey: "x")
         coder.encode(self.y, forKey: "y")
         coder.encode(self.plant_type, forKey: "plant_type")
+        coder.encode(self.date_last_watered, forKey: "date")
 
     }
     
@@ -41,6 +43,7 @@ class ForestDataItem: NSObject, NSCoding{
         aCoder.encode(self.x, forKey: "x")
         aCoder.encode(self.y, forKey: "y")
         aCoder.encode(self.plant_type, forKey: "plant_type")
+        aCoder.encode(self.date_last_watered, forKey: "date")
     }
     
     func getX() -> CGFloat {
@@ -53,5 +56,9 @@ class ForestDataItem: NSObject, NSCoding{
     
     func getPlantType() -> Int {
         return plant_type
+    }
+    
+    func getDateLastWatered() -> Date {
+        return date_last_watered
     }
 }
