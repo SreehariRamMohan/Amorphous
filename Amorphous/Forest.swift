@@ -246,6 +246,8 @@ class Forest: SKScene {
             element.position = CGPoint(x: element.getX(), y: element.getY())
             print("added to screen")
         }
+        
+        
     }
     
     func plant(at: CGPoint) {
@@ -283,6 +285,7 @@ class Forest: SKScene {
                 for i in 0..<self.tree_array.count {
                     if(self.tree_array[i].contains(location)) {
                         print("Watering a plant I just touched")
+                        self.tree_array[i].texture = SKTexture(imageNamed: "tree_1")
                         self.tree_array[i].setDateLastWatered(date: Date()) //set the date last watered to now, since I just watered the plant
                         
                         //call update on the array of trees since our data has just changed!
@@ -291,7 +294,7 @@ class Forest: SKScene {
                         
                         //save the new replenished tree to storage so that when we open the game again the tree shows up as healthy
                         forestDataManager.saveArrayOfTrees(array: self.tree_array)
-
+                        self.tree_array = forestDataManager.getTreesAsPlantObjectArray()
                         
                         
                         //subtract 1 from the number of bottles that the player has, since watering plants uses up 1 water
@@ -302,6 +305,7 @@ class Forest: SKScene {
 //                        
 //                        self.tree_array = forestDataManager.getTreesAsPlantObjectArray()
 //                        updateTheHealthOfTrees(array: self.tree_array)
+                        break
                     }
                 }
                     
