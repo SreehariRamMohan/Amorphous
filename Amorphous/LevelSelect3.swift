@@ -92,45 +92,45 @@ class LevelSelect3: LevelSelect {
     
     override func setButtonCallbacks() {
         
-        button_back_to_forest.selectedHandler = {
-            self.load_forest()
+        button_back_to_forest.selectedHandler = { [weak self] in
+            self?.load_forest()
         }
         
-        button_previous_chapter.selectedHandler = {
+        button_previous_chapter.selectedHandler = { [weak self] in
             //go back one chapter
-            self.current_chapter = 2
-            print(self.current_chapter)
-            self.loadLevelSelect(levelSelect: self.current_chapter)
+            self?.current_chapter = 2
+            print(self?.current_chapter)
+            self?.loadLevelSelect(levelSelect: (self?.current_chapter)!)
         }
         
-        button_level_21.selectedHandler = {
+        button_level_21.selectedHandler = { [weak self] in
             //go to level 21
             LevelSelect.current_level = 21
-            self.loadLevel(level: 21)
+            self?.loadLevel(level: 21)
         }
         
-        button_level_22.selectedHandler = {
+        button_level_22.selectedHandler = { [weak self] in
             //go to level 22
             LevelSelect.current_level = 22
-            self.loadLevel(level: 22)
+            self?.loadLevel(level: 22)
         }
         
-        button_level_23.selectedHandler = {
+        button_level_23.selectedHandler = { [weak self] in
             //go to level 23
             LevelSelect.current_level = 23
-            self.loadLevel(level: 23)
+            self?.loadLevel(level: 23)
         }
         
-        button_level_24.selectedHandler = {
+        button_level_24.selectedHandler = { [weak self] in
             //go to level 24
             LevelSelect.current_level = 24
-            self.loadLevel(level: 24)
+            self?.loadLevel(level: 24)
         }
         
-        button_level_25.selectedHandler = {
+        button_level_25.selectedHandler = { [weak self] in
             //go to level 25
             LevelSelect.current_level = 25
-            self.loadLevel(level: 25)
+            self?.loadLevel(level: 25)
         }
     }
 }

@@ -65,7 +65,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
     var Level_Summary_Fragment: SKReferenceNode!
     
     //goals for levels
-    var goals = [(13, 20, 25), (13, 20, 25),(13, 20, 25),(13, 20, 25),(13, 20, 25),(13, 20, 25),]
+    var goals: [(Double, Double, Double)] = [(0.6, 3, 4), (3.1, 5.1, 7.5),(6.1, 8, 10),(13.7, 15, 18),(6.8, 9.5, 11),(8.3, 9.7, 10.7),(12, 15.4, 19.6),(12.3, 14.2, 16.3),(16.5, 19.2, 22.3),(11.3, 12.7, 13.5),(16.8, 17.2, 18.5),(12.8, 14.3, 15),(14.5, 16, 18),(21, 22.9, 25),(27, 29, 30.5),(14.8, 15.4, 16),(29, 30.6, 31),(4.4, 9.3, 10.2),(30, 32, 33),(28.5, 29.3, 31),(10.6, 11.5, 12),(15.1, 16.3, 17.4),(30, 36, 39),(30, 30.5, 33),(55, 57, 62),(999, 999, 999), (999, 999, 999)]
     //this is the number of stars the user has received latest. This is a number from 0(for no stars) to 3(all stars), these values are then put into the array.
     static var starsReceived: [Int] = []
     static var dataManager: DataManager!
@@ -164,6 +164,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
         // This function is called when button_back_to_level_select is pressed
         self.loadLevelSelect()
         self.isHidden = true
+        
+        //invalidate the timer to prevent memory leaks
+        timer.invalidate()
     }
     
     func setPlayer(player: Player) {
@@ -188,7 +191,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
         
         //Loop over all of the children recursively which have name Sponge and call their update functions.
         self.enumerateChildNodes(withName: "//Sponge") {
-            node, stop in
+            [weak self] node, stop in
             let Sponge = node as! Sponge
             // calling the sponge's update functions
             Sponge.update()
@@ -196,21 +199,21 @@ class Level: SKScene, SKPhysicsContactDelegate {
         
         //Loop over all of the horizontal platforms and call their update methods to allow them to move.
         self.enumerateChildNodes(withName: "//horizontal_platform") {
-            node, stop in
+            [weak self] node, stop in
             let platform = node as! HorizontalMovingPlatform
-            if(!self.hasPassedHorizontalReference) {
-                platform.passParentReference(parent: self)
+            if(!(self?.hasPassedHorizontalReference)!) {
+                platform.passParentReference(parent: self!)
             }
             platform.update()
         }
         self.hasPassedHorizontalReference = true
         
         //Loop over all of the vertical platforms and call their update methods to allow them to move
-        self.enumerateChildNodes(withName: "//vertical_platform") {
-            node, stop in
+        self.enumerateChildNodes(withName: "//vertical_platform"){
+            [weak self] node, stop in
             let platform = node as! VerticalMovingPlatform
-            if(!self.hasPassedVerticalReference) {
-                platform.passParentReference(parent: self)
+            if(!(self?.hasPassedVerticalReference)!) {
+                platform.passParentReference(parent: self!)
             }
             platform.update()
         }
@@ -218,22 +221,22 @@ class Level: SKScene, SKPhysicsContactDelegate {
         
         //Loop over all of the FallingBlock sprites, and if they are directly above the current player, then drop them down to the ground!
         self.enumerateChildNodes(withName: "//falling_block_sprite") {
-            node, stop in
+            [weak self] node, stop in
             let BlockSprite = node as! FallingBlock
             
             //create a spring joint to the ceiling
-            if(!self.createdSpringJoint) {
+            if(!(self?.createdSpringJoint)!) {
                 let spring = SKPhysicsJointSpring.joint(withBodyA: BlockSprite.physicsBody!,
-                                                        bodyB: self.ceiling.physicsBody!,
-                                                        anchorA: BlockSprite.convert(CGPoint(x: 0, y: 0), to: self),
-                                                        anchorB: CGPoint(x: BlockSprite.convert(CGPoint(x: 0, y: 0), to: self).x, y: self.ceiling.position.y))
-                print(self.ceiling.position)
+                                                        bodyB: (self?.ceiling.physicsBody!)!,
+                                                        anchorA: BlockSprite.convert(CGPoint(x: 0, y: 0), to: self!),
+                                                        anchorB: CGPoint(x: BlockSprite.convert(CGPoint(x: 0, y: 0), to: self!).x, y: (self?.ceiling.position.y)!))
+                print(self?.ceiling.position)
                 spring.frequency = 0.5
                 spring.damping = 0.01
-                self.scene?.physicsWorld.add(spring)
+                self?.scene?.physicsWorld.add(spring)
             }
             
-            else if(abs(BlockSprite.convert(CGPoint(x: 0,y: 0), to: self).x-self.currentPlayer.position.x) < 8 ){
+            else if(abs(BlockSprite.convert(CGPoint(x: 0,y: 0), to: self!).x-(self?.currentPlayer.position.x)!) < 8 ){
                 // calling the Block's fall functions
                 BlockSprite.fall()
             }
@@ -395,8 +398,10 @@ class Level: SKScene, SKPhysicsContactDelegate {
         if(canMove && canShift) {
             counter? += 0.1
             timerLabel.text = String(self.counter.format(f: ".1"))
+            updateStopwatchBackground()
+        } else {
+            timer.invalidate()
         }
-        updateStopwatchBackground()
     }
     
     func addYouLoseLabel() {
@@ -461,6 +466,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
     }
     
     func buttonRestartLevel(sender: UIButton!) {
+        
+        //remove the timer to prevent memory leaks
+        timer.invalidate()
         
         //remove all current buttons, to prevent the build-up of buttons in the scene
         removeButtons()
@@ -815,15 +823,16 @@ class Level: SKScene, SKPhysicsContactDelegate {
     
     //This is a function that each level will override to set the time constraints differently!
     func updateStopwatchBackground() {
-        if(self.counter < 13) {
+        if(self.counter < Double(self.goals[LevelSelect.current_level-1].0)) {
             timerLabel.layer.backgroundColor = UIColor(red: 12/255, green: 183/255, blue: 15/255, alpha: 1.0).cgColor
-        } else if(self.counter < 20) {
+        } else if(self.counter < Double(self.goals[LevelSelect.current_level-1].1)) {
             timerLabel.layer.backgroundColor = UIColor(red: 239/255, green: 232/255, blue: 11/255, alpha: 1.0).cgColor
-        } else if(self.counter < 25) {
+        } else if(self.counter < Double(self.goals[LevelSelect.current_level-1].2)) {
             timerLabel.layer.backgroundColor = UIColor(red: 229/255, green: 55/255, blue: 55/255, alpha: 1.0).cgColor
         } else {
             timerLabel.layer.backgroundColor = UIColor(red: 48/255, green: 3/255, blue: 3/255, alpha: 1.0).cgColor
         }
+        
     }
     
     func removeButtons() {
@@ -889,6 +898,15 @@ class Level: SKScene, SKPhysicsContactDelegate {
         print(self.timerLabel)
         return self.timerLabel
     }
+    
+    deinit {
+        print("De init Forest page")
+        //remove all SKActions to help free up some memory
+        self.removeAllActions()
+        self.view?.gestureRecognizers?.removeAll()
+        self.timer.invalidate()
+    }
+    
 }
 
 func clamp<T: Comparable>(value: T, lower: T, upper: T) -> T {

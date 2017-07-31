@@ -13,7 +13,7 @@ class BuyPlants: SKSpriteNode, SKPhysicsContactDelegate {
     var plants_button: MSButtonNode!
     var bottles_button: MSButtonNode!
     var states_button: MSButtonNode!
-    var parentRef: SKScene!
+    weak var parentRef: SKScene!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -34,16 +34,16 @@ class BuyPlants: SKSpriteNode, SKPhysicsContactDelegate {
     }
     
     func setButtonCallbacks() {
-        plants_button.selectedHandler = {
-            self.launchPickPlants()
+        plants_button.selectedHandler = { [weak self] in
+            self?.launchPickPlants()
             print("going to plants page")
         }
         
-        bottles_button.selectedHandler = {
+        bottles_button.selectedHandler = { [weak self] in
             print("Going to buy bottles page")
         }
         
-        states_button.selectedHandler = {
+        states_button.selectedHandler = { [weak self] in
             print("Going to buy a new state of matter")
         }
         
@@ -65,7 +65,7 @@ class BuyPlants: SKSpriteNode, SKPhysicsContactDelegate {
         self.parentRef = ref
     }
     
-    
-    
-    
+    deinit {
+        print("De init BuyPlants page")
+    }
 }

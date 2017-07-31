@@ -20,7 +20,7 @@ class PlantsPage: SKSpriteNode {
     var option_5_button: MSButtonNode!
     var option_6_button: MSButtonNode!
     
-    var forestReference: Forest!
+    weak var forestReference: Forest!
     
     var not_enough_water_label: SKNode!
     var balance_label: SKLabelNode!
@@ -171,5 +171,9 @@ class PlantsPage: SKSpriteNode {
         self.forestReference = ref as! Forest
         print("Got the forest reference !")
         print(self.forestReference)
+    }
+    
+    deinit {
+        print("De init PlantsPage page")
     }
 }

@@ -64,4 +64,10 @@ class Level_1: Level {
         
         cameraNode.run(sequence)
     }
+    
+    deinit {
+        print("De init Forest page")
+        //remove all actions from this level to free up memory
+        self.removeAllActions()
+    }
 }

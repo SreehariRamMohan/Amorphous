@@ -191,85 +191,85 @@ class LevelSelect: SKScene {
     }
     
     func setButtonCallbacks() {
-        back_to_forest_button.selectedHandler = {
-            self.load_forest()
+        back_to_forest_button.selectedHandler = { [weak self] in
+            self?.load_forest()
         }
         
-        button_level_1.selectedHandler = {
+        button_level_1.selectedHandler = { [weak self] in
             //load level 1
             LevelSelect.current_level = 1
-            self.loadLevel(level: 1)
+            self?.loadLevel(level: 1)
             print("Going to level 1")
         }
         
-        button_level_2.selectedHandler = {
+        button_level_2.selectedHandler = { [weak self] in
             //load level 2
             LevelSelect.current_level = 2
-            self.loadLevel(level: 2)
+            self?.loadLevel(level: 2)
             print("Going to level 2")
         }
         
-        button_level_3.selectedHandler = {
+        button_level_3.selectedHandler = { [weak self] in
             //load level 3
             LevelSelect.current_level = 3
-            self.loadLevel(level: 3)
+            self?.loadLevel(level: 3)
             print("Going to level 3")
         }
         
-        button_level_4.selectedHandler = {
+        button_level_4.selectedHandler = { [weak self] in
             //load level 4
             LevelSelect.current_level = 4
-            self.loadLevel(level: 4)
+            self?.loadLevel(level: 4)
             print("Going to level 4")
         }
         
-        button_level_5.selectedHandler = {
+        button_level_5.selectedHandler = { [weak self] in
             //load level 5
             LevelSelect.current_level = 5
-            self.loadLevel(level: 5)
+            self?.loadLevel(level: 5)
             print("Going to level 5")
         }
         
-        button_level_6.selectedHandler = {
+        button_level_6.selectedHandler = { [weak self] in
             //load level 6
             LevelSelect.current_level = 6
-            self.loadLevel(level: 6)
+            self?.loadLevel(level: 6)
             print("Going to level 6")
         }
         
-        button_level_7.selectedHandler = {
+        button_level_7.selectedHandler = { [weak self] in
             //load level 7
             LevelSelect.current_level = 7
-            self.loadLevel(level: 7)
+            self?.loadLevel(level: 7)
             print("Going to level 7")
         }
         
-        button_level_8.selectedHandler = {
+        button_level_8.selectedHandler = { [weak self] in
             //load level 8
             LevelSelect.current_level = 8
-            self.loadLevel(level: 8)
+            self?.loadLevel(level: 8)
             print("Going to level 8")
         }
         
-        button_level_9.selectedHandler = {
+        button_level_9.selectedHandler = { [weak self] in
             //load level 9
             LevelSelect.current_level = 9
-            self.loadLevel(level: 9)
+            self?.loadLevel(level: 9)
             print("Going to level 9")
         }
         
-        button_level_10.selectedHandler = {
+        button_level_10.selectedHandler = { [weak self] in
             //load level 10
             LevelSelect.current_level = 10
-            self.loadLevel(level: 10)
+            self?.loadLevel(level: 10)
             print("Going to level 10")
         }
         
         button_next_chapter.selectedHandler =
-            {
-            //load next chapter
-            self.current_chapter = 2
-            self.loadLevelSelect(levelSelect: self.current_chapter)
+            { [weak self] in
+            //load next chapt
+            self?.current_chapter = 2
+            self?.loadLevelSelect(levelSelect: (self?.current_chapter)!)
         }
         
     }

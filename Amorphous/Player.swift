@@ -119,6 +119,7 @@ class Player: SKSpriteNode {
             self.physicsBody?.categoryBitMask = UInt32(ICE_CATEGORY_BITMASK)
             self.physicsBody?.contactTestBitMask = UInt32(ICE_CONTACT_BITMASK)
             self.physicsBody?.collisionBitMask = UInt32(ICE_COLLISION_BITMASK)
+            self.physicsBody?.mass = 0.149333342604223
             
             /* Create a CLOSURE to safely keep the ice cube the same scale as the shrunken down water droplet */
             let scalePhysicsBody = SKAction.run({
@@ -233,7 +234,7 @@ class Player: SKSpriteNode {
     }
     
     func float() {
-        self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 9.8*sqrt(getMass())))
+        self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 3.9*sqrt(getMass())))
         
         //The line below can tend to cause some lag
         if(self.preventLagWhenSwitching && (CFAbsoluteTimeGetCurrent() - self.timeAsGas) > 2){

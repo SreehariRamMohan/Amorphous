@@ -13,7 +13,7 @@ import GameplayKit
 
 class HorizontalMovingPlatform: SKSpriteNode, SKPhysicsContactDelegate {
     var start_x_position: CGFloat!
-    var parentRef: Level!
+    weak var parentRef: Level!
     var maxDeviation: CGFloat = 300.0
     var direction: CGFloat = 2
     required init?(coder aDecoder: NSCoder) {

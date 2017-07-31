@@ -22,7 +22,7 @@ class Forest: SKScene {
     var button_x: MSButtonNode!
     var forestDataManager: DataManager!
     static var num_water_bottles: Int!
-    var buy_fragment: SKReferenceNode!
+    weak var buy_fragment: SKReferenceNode!
     
     var forest_camera: SKCameraNode!
     
@@ -199,24 +199,24 @@ class Forest: SKScene {
     }
     
     func button_action_callbacks() {
-        plant_button.selectedHandler = {
-            self.launchBuyFragment()
+        plant_button.selectedHandler = { [weak self] in
+            self?.launchBuyFragment()
             print("planting plants")
         }
         
-        water_plants_button.selectedHandler = {
+        water_plants_button.selectedHandler = { [weak self] in
             print("watering plants")
-            self.canWater = true
+            self?.canWater = true
         }
         
-        rescue_water_button.selectedHandler = {
+        rescue_water_button.selectedHandler = { [weak self] in
             print("rescuing water")
-            self.loadLevelSelect()
+            self?.loadLevelSelect()
         }
         
-        button_x.selectedHandler = {
+        button_x.selectedHandler = { [weak self] in
             print("Exiting the fragment")
-            self.destroyBuyFragment()
+            self?.destroyBuyFragment()
         }
     }
     
@@ -457,6 +457,10 @@ class Forest: SKScene {
         //allow the user to pan around the screen again
         self.canScroll = false
 
+    }
+    
+    deinit {
+        print("De init Forest page")
     }
 
 }

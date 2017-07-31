@@ -133,7 +133,7 @@ class LevelSummary: SKSpriteNode {
     
     func populateWithInformation() {
         let score = parentRef.counter
-        let levelSpecificGoal = parentRef.goals[parentRef.currentPlayer.currentLevel]
+        let levelSpecificGoal = parentRef.goals[LevelSelect.current_level-1]
         //set the times for different stars
         set_3_star_time(time: Double(levelSpecificGoal.0))
         set_2_star_time(time: Double(levelSpecificGoal.1))
