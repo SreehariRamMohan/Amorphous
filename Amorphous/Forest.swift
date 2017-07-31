@@ -133,6 +133,7 @@ class Forest: SKScene {
     }
     
     func updateTheHealthOfTrees(array: [Plant]) {
+        
         let calendar = NSCalendar.current
         print("HI in update health of trees")
         for i in 0..<self.tree_array.count {
@@ -241,6 +242,7 @@ class Forest: SKScene {
     }
     
     func drawSavedTrees(array: [Plant]) {
+        
         for element in array {
             self.addChild(element)
             element.position = CGPoint(x: element.getX(), y: element.getY())
@@ -284,6 +286,7 @@ class Forest: SKScene {
                 //if they tapped on a plant decrement 1 from the amount of water they have
                 for i in 0..<self.tree_array.count {
                     if(self.tree_array[i].contains(location)) {
+                        
                         print("Watering a plant I just touched")
                         self.tree_array[i].texture = SKTexture(imageNamed: "tree_1")
                         self.tree_array[i].setDateLastWatered(date: Date()) //set the date last watered to now, since I just watered the plant
@@ -293,8 +296,17 @@ class Forest: SKScene {
                         updateTheHealthOfTrees(array: self.tree_array)
                         
                         //save the new replenished tree to storage so that when we open the game again the tree shows up as healthy
+                        
+                        
+                        //need to clear the array in memory so that we don't end up with 2 exact same trees on screen one dead and one alive. This bug consumed many hours of my time!
+                        
+                        forestDataManager.nukeTreeArray()
                         forestDataManager.saveArrayOfTrees(array: self.tree_array)
+
                         self.tree_array = forestDataManager.getTreesAsPlantObjectArray()
+                        
+                        
+                        
                         
                         
                         //subtract 1 from the number of bottles that the player has, since watering plants uses up 1 water

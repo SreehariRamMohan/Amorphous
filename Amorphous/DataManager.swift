@@ -194,6 +194,9 @@ class DataManager {
         self.saveTrees()
     }
     
+    func nukeTreeArray() {
+        self.forest_trees.removeAll()
+    }
     
     func getScores() -> [GameData] {
         print("Returning game data array")
