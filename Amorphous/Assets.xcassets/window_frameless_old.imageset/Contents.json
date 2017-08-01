@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "window_top_left_and_bottom_left_gone.png",
+      "filename" : "window_frameless.png",
       "scale" : "1x"
     },
     {
