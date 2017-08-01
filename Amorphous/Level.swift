@@ -162,8 +162,8 @@ class Level: SKScene, SKPhysicsContactDelegate {
         
         guard sender == button_back_to_level_select else { return }
         // This function is called when button_back_to_level_select is pressed
+        button_back_to_level_select.removeFromSuperview()
         self.loadLevelSelect()
-        self.isHidden = true
         
         //invalidate the timer to prevent memory leaks
         timer.invalidate()

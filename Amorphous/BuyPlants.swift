@@ -18,11 +18,13 @@ class BuyPlants: SKSpriteNode, SKPhysicsContactDelegate {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         //this will be called when the BuyPlants fragment is created.
-        plants_button = self.childNode(withName: "plants_button") as! MSButtonNode
+        plants_button = self.childNode(withName: "//plants_button") as! MSButtonNode
         
-        bottles_button = self.childNode(withName: "button_bottles") as! MSButtonNode
         
-        states_button = self.childNode(withName: "button_states") as! MSButtonNode
+        //These buttons will come soon in a future update!
+        //bottles_button = self.childNode(withName: "button_bottles") as! MSButtonNode
+        
+        //states_button = self.childNode(withName: "button_states") as! MSButtonNode
         
         setButtonCallbacks()
     }
@@ -39,13 +41,13 @@ class BuyPlants: SKSpriteNode, SKPhysicsContactDelegate {
             print("going to plants page")
         }
         
-        bottles_button.selectedHandler = { [weak self] in
-            print("Going to buy bottles page")
-        }
-        
-        states_button.selectedHandler = { [weak self] in
-            print("Going to buy a new state of matter")
-        }
+//        bottles_button.selectedHandler = { [weak self] in
+//            print("Going to buy bottles page")
+//        }
+//        
+//        states_button.selectedHandler = { [weak self] in
+//            print("Going to buy a new state of matter")
+//        }
         
     }
     

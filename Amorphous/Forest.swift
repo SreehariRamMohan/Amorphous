@@ -65,6 +65,7 @@ class Forest: SKScene {
         //cap the maximum water you can have at any time to 10 water bottles
         if(Forest.num_water_bottles > 10) {
             Forest.num_water_bottles = 10
+            forestDataManager.addBottleData(numBottles: Forest.num_water_bottles)
         }
         
         print(Forest.num_water_bottles)
@@ -442,6 +443,13 @@ class Forest: SKScene {
         self.forest_camera.addChild(self.plant_button)
         self.forest_camera.addChild(self.rescue_water_button)
         self.forest_camera.addChild(self.water_plants_button)
+        
+        //placed again here to prevent a crash, in the unlikely event that bottles is greater than 10
+        //cap the maximum water you can have at any time to 10 water bottles
+        if(Forest.num_water_bottles > 10) {
+            Forest.num_water_bottles = 10
+            forestDataManager.addBottleData(numBottles: Forest.num_water_bottles)
+        }
         
         for i in 0..<Forest.num_water_bottles {
             //self.forest_camera.addChild(arrayOfBottles[i])
