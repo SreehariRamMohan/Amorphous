@@ -13,7 +13,6 @@ class Forest: SKScene {
     
     //create button variables
     var plant_button: MSButtonNode!
-    var water_plants_button: MSButtonNode!
     var rescue_water_button: MSButtonNode!
     var background_of_forest: SKNode!
     var planting_instructions_label: SKNode!
@@ -90,13 +89,11 @@ class Forest: SKScene {
         if(canPlant) {
             //show the can plant message, and hide the other buttons for the sake of convenience
             plant_button.isHidden = true
-            water_plants_button.isHidden = true
             rescue_water_button.isHidden = true
             planting_instructions_label.isHidden = false
         } else if(canWater) {
             //show the can watering message, and hide the other buttons for the sake of convenience
             self.plant_button.isHidden = true
-            self.water_plants_button.isHidden = true
             self.rescue_water_button.isHidden = true
             self.planting_instructions_label.isHidden = true
             self.watering_instructions_label.isHidden = false
@@ -104,7 +101,6 @@ class Forest: SKScene {
             //make sure that all of the other buttons are still able to be shown.
             planting_instructions_label.isHidden = true
             plant_button.isHidden = false
-            water_plants_button.isHidden = false
             rescue_water_button.isHidden = false
         }
     }
@@ -182,7 +178,6 @@ class Forest: SKScene {
 
     
     func initialize_buttons() {
-        water_plants_button = self.childNode(withName: "//water_image") as! MSButtonNode
         
         plant_button = self.childNode(withName: "//plant_image") as! MSButtonNode
         
@@ -203,11 +198,6 @@ class Forest: SKScene {
         plant_button.selectedHandler = { [weak self] in
             self?.launchBuyFragment()
             print("planting plants")
-        }
-        
-        water_plants_button.selectedHandler = { [weak self] in
-            print("watering plants")
-            self?.canWater = true
         }
         
         rescue_water_button.selectedHandler = { [weak self] in
@@ -409,14 +399,12 @@ class Forest: SKScene {
         //remove the forest background as a child of the main view, so we can make it a child of the effects_node, this way it will have the blur effect
         self.background_of_forest.removeFromParent()
         self.plant_button.removeFromParent()
-        self.water_plants_button.removeFromParent()
         self.rescue_water_button.removeFromParent()
         
         //Add the forest background, and the forest buttons as a child of the effect_node so they will have the blur effect applied to them
         self.effects_node.addChild(self.background_of_forest)
         self.effects_node.addChild(self.plant_button)
         self.effects_node.addChild(self.rescue_water_button)
-        self.effects_node.addChild(self.water_plants_button)
         
         
         //Loop over all of the children recursively which have name water_bottle and blur all of them by adding them as children to the effect_node
@@ -442,7 +430,6 @@ class Forest: SKScene {
         self.addChild(self.background_of_forest)
         self.forest_camera.addChild(self.plant_button)
         self.forest_camera.addChild(self.rescue_water_button)
-        self.forest_camera.addChild(self.water_plants_button)
         
         //placed again here to prevent a crash, in the unlikely event that bottles is greater than 10
         //cap the maximum water you can have at any time to 10 water bottles
@@ -469,6 +456,10 @@ class Forest: SKScene {
     
     deinit {
         print("De init Forest page")
+    }
+    
+    func initiateWaterProcess() {
+        self.canWater = true
     }
 
 }

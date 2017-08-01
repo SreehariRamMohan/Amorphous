@@ -13,12 +13,15 @@ class BuyPlants: SKSpriteNode, SKPhysicsContactDelegate {
     var plants_button: MSButtonNode!
     var bottles_button: MSButtonNode!
     var states_button: MSButtonNode!
-    weak var parentRef: SKScene!
+    var water_plants_button: MSButtonNode!
+    weak var parentRef: Forest!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         //this will be called when the BuyPlants fragment is created.
         plants_button = self.childNode(withName: "//plants_button") as! MSButtonNode
+        
+        water_plants_button = self.childNode(withName: "//water_plants") as! MSButtonNode
         
         
         //These buttons will come soon in a future update!
@@ -39,6 +42,14 @@ class BuyPlants: SKSpriteNode, SKPhysicsContactDelegate {
         plants_button.selectedHandler = { [weak self] in
             self?.launchPickPlants()
             print("going to plants page")
+        }
+        
+        water_plants_button.selectedHandler = { [weak self] in
+            //start the watering process in the forest class
+            self?.parentRef.initiateWaterProcess()
+            //destroy the buy fragment to let the user tap a plant to water it
+            self?.parentRef.destroyBuyFragment()
+            print("Starting the watering process")
         }
         
 //        bottles_button.selectedHandler = { [weak self] in
@@ -64,7 +75,7 @@ class BuyPlants: SKSpriteNode, SKPhysicsContactDelegate {
     }
     
     func setParentReference(ref: SKScene) {
-        self.parentRef = ref
+        self.parentRef = ref as! Forest
     }
     
     deinit {
