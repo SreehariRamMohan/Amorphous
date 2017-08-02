@@ -8,6 +8,9 @@
 
 import Foundation
 import SpriteKit
+import AudioToolbox
+import AVFoundation
+
 class LevelSelect3: LevelSelect {
     
     //button variables for chapter 2 levels
@@ -35,6 +38,9 @@ class LevelSelect3: LevelSelect {
         }
         //if this function is called when the user presses back, we need to update the star references to reflect the score the player got on each level.
         updateStarReferences()
+        
+        //play the backgorund music
+        playSound()
     }
     
     override func initializeButtons(){
@@ -131,6 +137,23 @@ class LevelSelect3: LevelSelect {
             //go to level 25
             LevelSelect.current_level = 25
             self?.loadLevel(level: 25)
+        }
+    }
+    
+    override func playSound() {
+        let url = Bundle.main.url(forResource: "Level_Select_Chapter_3", withExtension: "mp3")!
+        
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            guard let player = player else { return }
+            
+            //makes sure that the player continues to loop over the sound once the song finishes so the music never stops.
+            player.numberOfLoops = -1
+            
+            player.prepareToPlay()
+            player.play()
+        } catch let error as NSError {
+            print(error.description)
         }
     }
 }

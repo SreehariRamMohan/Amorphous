@@ -8,6 +8,8 @@
 
 import SpriteKit
 import GameplayKit
+import AudioToolbox
+import AVFoundation
 
 class Forest: SKScene {
     
@@ -23,6 +25,9 @@ class Forest: SKScene {
     var forestDataManager: DataManager!
     static var num_water_bottles: Int!
     weak var buy_fragment: SKReferenceNode!
+    
+    //audio player
+    var player: AVAudioPlayer!
     
     var forest_camera: SKCameraNode!
     
@@ -86,6 +91,9 @@ class Forest: SKScene {
         
         //shows the user a tutorial if it is there first time opening the app
         create_tutorial()
+        
+        //player the main background sound
+        playSound()
     
         }
 
@@ -276,6 +284,20 @@ class Forest: SKScene {
                 self.watering_instructions_label.isHidden = true
                 if(self.forestDataManager.getBottles().getNumberOfBottles() <= 0) {
                     print("Not enough water to water the plants")
+                    let not_enough_money_label = SKLabelNode()
+                    not_enough_money_label.text = "You don't have enough water to water plants"
+                    not_enough_money_label.position = CGPoint(x: 0, y: 0)
+                    not_enough_money_label.zPosition = 2
+                    self.addChild(not_enough_money_label)
+                    
+                    let remove = SKAction.run({
+                        not_enough_money_label.removeFromParent()
+                    })
+                    
+                    let wait = SKAction.wait(forDuration: 2)
+                    
+                    let sequence = SKAction.sequence([wait, remove])
+                    self.run(sequence)
                     return
                 }
                 //check if they tapped on a plant
@@ -554,6 +576,24 @@ class Forest: SKScene {
     deinit {
         print("De init Forest page")
         self.removeAllActions()
+    }
+    
+    
+    func playSound() {
+        let url = Bundle.main.url(forResource: "forest_background_sound", withExtension: "wav")!
+        
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            guard let player = player else { return }
+            
+            //makes sure that the player continues to loop over the sound once the song finishes so the music never stops. 
+            player.numberOfLoops = -1
+
+            player.prepareToPlay()
+            player.play()
+        } catch let error as NSError {
+            print(error.description)
+        }
     }
 
 }

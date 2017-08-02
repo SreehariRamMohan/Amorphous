@@ -7,6 +7,9 @@
 //
 import Foundation
 import SpriteKit
+import AudioToolbox
+import AVFoundation
+
 class LevelSelect: SKScene {
     
     //create variables for UI elements
@@ -23,6 +26,8 @@ class LevelSelect: SKScene {
     var button_level_8: MSButtonNode!
     var button_level_9: MSButtonNode!
     var button_level_10: MSButtonNode!
+    
+    var player: AVAudioPlayer!
     
     var chapter_1_star_references: [SKReferenceNode] = []
     
@@ -44,6 +49,9 @@ class LevelSelect: SKScene {
         }
         //if this function is called when the user presses back, we need to update the star references to reflect the score the player got on each level.
         updateStarReferences()
+        
+        //play background sound
+        playSound()
         
         }
     
@@ -299,6 +307,24 @@ class LevelSelect: SKScene {
         skView.presentScene(scene)
 
     }
+    
+    func playSound() {
+        let url = Bundle.main.url(forResource: "Level_Select_background", withExtension: "mp3")!
+        
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            guard let player = player else { return }
+            
+            //makes sure that the player continues to loop over the sound once the song finishes so the music never stops.
+            player.numberOfLoops = -1
+            
+            player.prepareToPlay()
+            player.play()
+        } catch let error as NSError {
+            print(error.description)
+        }
+    }
+
     
     /* Make a Class method to load levels */
     class func level(_ levelNumber: Int) -> Level? {
