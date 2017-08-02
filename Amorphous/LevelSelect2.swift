@@ -118,16 +118,16 @@ class LevelSelect2: LevelSelect {
         
         button_previous_chapter.selectedHandler = { [weak self] in
             //go back one chapter
-            self?.current_chapter = 1
-            print(self?.current_chapter)
-            self?.loadLevelSelect(levelSelect: (self?.current_chapter)!)
+            LevelSelect.current_chapter = 1
+            print(LevelSelect.current_chapter)
+            self?.loadLevelSelect(levelSelect: LevelSelect.current_chapter)
         }
       
         
         button_next_chapter2.selectedHandler = { [weak self] in
                 //load next chapter
-                self?.current_chapter = 3
-                self?.loadLevelSelect(levelSelect: (self?.current_chapter)!)
+                LevelSelect.current_chapter = 3
+                self?.loadLevelSelect(levelSelect: LevelSelect.current_chapter)
         }
         
         button_level_11.selectedHandler = { [weak self] in

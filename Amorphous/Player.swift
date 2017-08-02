@@ -234,7 +234,7 @@ class Player: SKSpriteNode {
     }
     
     func float() {
-        self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 3.9*sqrt(getMass())))
+        self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 5*sqrt(getMass())))
         
         //The line below can tend to cause some lag
         if(self.preventLagWhenSwitching && (CFAbsoluteTimeGetCurrent() - self.timeAsGas) > 2){
@@ -244,8 +244,6 @@ class Player: SKSpriteNode {
         } else {
             self.preventLagWhenSwitching = true
         }
-        
-        
     }
     
     func jump() {

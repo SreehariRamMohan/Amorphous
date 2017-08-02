@@ -317,10 +317,18 @@ class Level: SKScene, SKPhysicsContactDelegate {
             return
         }
         
-        /* Load Game scene */
-        guard let scene = LevelSelect(fileNamed: "LevelSelect") else {
-            print("Could not go back and load level select")
-            return
+        var scene: SKScene!
+        
+        //Go back to the current chapter the player is currently in when they press the back button, not the first chapter.
+        if(LevelSelect.current_chapter == 1) {
+            /* Load Game scene */
+            scene = LevelSelect(fileNamed: "LevelSelect")
+        } else if(LevelSelect.current_chapter == 2) {
+            /* Load Game scene */
+            scene = LevelSelect2(fileNamed: "LevelSelect2")
+        } else if(LevelSelect.current_chapter == 3) {
+            /* Load Game scene */
+            scene = LevelSelect3(fileNamed: "LevelSelect3")
         }
         
         /* Ensure correct aspect mode */

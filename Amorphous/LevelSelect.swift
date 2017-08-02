@@ -30,7 +30,7 @@ class LevelSelect: SKScene {
     var button_next_chapter: MSButtonNode!
     
     static var current_level = 1
-    var current_chapter: Int = 1
+    static var current_chapter: Int = 1
     
     override func didMove(to view: SKView) {
         initializeButtons()
@@ -103,8 +103,8 @@ class LevelSelect: SKScene {
         } else {
             print("In else block")
             /* Load Game scene */
-            guard let scene = LevelSelect.levelselect(current_chapter) else {
-                print("Could not load levelselect # " + String(current_chapter))
+            guard let scene = LevelSelect.levelselect(LevelSelect.current_chapter) else {
+                print("Could not load levelselect # " + String(LevelSelect.current_chapter))
                 return
             }
             /* Ensure correct aspect mode */
@@ -268,8 +268,8 @@ class LevelSelect: SKScene {
         button_next_chapter.selectedHandler =
             { [weak self] in
             //load next chapt
-            self?.current_chapter = 2
-            self?.loadLevelSelect(levelSelect: (self?.current_chapter)!)
+            LevelSelect.current_chapter = 2
+            self?.loadLevelSelect(levelSelect: LevelSelect.current_chapter)
         }
         
     }

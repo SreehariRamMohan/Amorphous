@@ -45,6 +45,9 @@ class Forest: SKScene {
         //initialize the data manager
         forestDataManager = DataManager()
         
+        //shows the user a tutorial if it is there first time opening the app
+        tutorial()
+        
         Forest.num_water_bottles = forestDataManager.getBottles().getNumberOfBottles()
         //get an array of our saved garden
         self.tree_array = forestDataManager.getTreesAsPlantObjectArray()
@@ -454,12 +457,80 @@ class Forest: SKScene {
 
     }
     
-    deinit {
-        print("De init Forest page")
-    }
-    
     func initiateWaterProcess() {
         self.canWater = true
+    }
+    
+    func tutorial() {
+        //storing a value in user preferences for wether or not the user ocmpleted the tutorial
+        let userDefaults = UserDefaults.standard
+        var state = userDefaults.bool(forKey: "HasFinishedTutorial") ?? false
+        if(state == true) {
+            //first time so the user needs to do the tutorial
+            print("Doing the tutorial")
+            showTutorial()
+        } else {
+            print("Skipping the tutorial")
+        }
+        //ensure that they won't do the tutorial again
+        userDefaults.set(true, forKey: "HasFinishedTutorial")
+        
+    }
+    
+    func showTutorial() {
+        
+        var label = SKLabelNode()
+        label.zPosition = 5
+        label.fontName = "Gill Sans"
+        label.position = CGPoint(x: 0, y: 0)
+        self.addChild(label)
+        
+        let welcomeMessage = SKAction.run({
+           label.text = "Welcome to Amorpheous"
+        })
+        let wait = SKAction.wait(forDuration: 2)
+        
+        let goal = SKAction.run ({
+            label.text = "The goal of Amorpheous is simple"
+        })
+        
+        let goalDescription = SKAction.run({
+            label.fontSize = 24
+            label.text = "Collect water, and build the best forest you can"
+        })
+       
+        let watering_warning = SKAction.run({
+            label.fontSize = 24
+            label.text = "Make sure to water you plants daily or they will die"
+        })
+        
+        let plant_first_tree = SKAction.run({
+            label.text = "Try it now, lets plant a tree"
+        })
+        
+        let clickShop = SKAction.run({
+            label.zPosition = 10
+            label.text = "Click shop"
+        })
+        
+        let clickDouglasFir = SKAction.run({
+            label.zPosition = 10
+            label.text = "Click Plants, then Click Douglas Fir"
+        })
+        
+        let remove = SKAction.run({
+            label.removeFromParent()
+        })
+        
+        let sequence = SKAction.sequence([welcomeMessage, wait, goal, wait, goalDescription, wait, watering_warning, wait, plant_first_tree, wait, clickShop, wait, clickDouglasFir, remove])
+        
+        self.run(sequence)
+    }
+    
+    
+    deinit {
+        print("De init Forest page")
+        self.removeAllActions()
     }
 
 }
