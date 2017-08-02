@@ -33,6 +33,9 @@ class Level_5: Level {
         //add player to the world
         addChild(player)
         
+        //play the correct sound
+        playSound(nameOfFile: "Level_Music_5", type: "mp3")
+        
     }
     
     override func updateCamera() {

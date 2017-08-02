@@ -34,6 +34,9 @@ class Level_4: Level {
         addChild(player)
         
         player.changeState(rawValue: 2)
+        
+        //play the correct sound
+        playSound(nameOfFile: "Level_Music_4", type: "mp3")
     }
     
     override func updateCamera() {

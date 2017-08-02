@@ -117,6 +117,12 @@
 		F7DE95391F327756005D9E76 /* Level_Select_background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95381F327756005D9E76 /* Level_Select_background.mp3 */; };
 		F7DE953B1F327D1A005D9E76 /* Level_select_chapter_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE953A1F327D1A005D9E76 /* Level_select_chapter_2.mp3 */; };
 		F7DE953D1F3282BC005D9E76 /* Level_Select_Chapter_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE953C1F3282BC005D9E76 /* Level_Select_Chapter_3.mp3 */; };
+		F7DE953F1F3286D5005D9E76 /* Level_Music_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE953E1F3286D5005D9E76 /* Level_Music_1.mp3 */; };
+		F7DE95431F3288E0005D9E76 /* Level_Music_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95421F3288E0005D9E76 /* Level_Music_2.mp3 */; };
+		F7DE95451F328AB5005D9E76 /* Level_Music_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95441F328AB5005D9E76 /* Level_Music_3.mp3 */; };
+		F7DE95471F329178005D9E76 /* Level_Music_4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95461F329178005D9E76 /* Level_Music_4.mp3 */; };
+		F7DE95491F32924B005D9E76 /* Level_Music_5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95481F32924B005D9E76 /* Level_Music_5.mp3 */; };
+		F7DE954B1F329B39005D9E76 /* Level_Music_6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE954A1F329B39005D9E76 /* Level_Music_6.mp3 */; };
 		F7EF5D5D1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7EF5D5C1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks */; };
 		F7EF5D5F1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF5D5E1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift */; };
 		F7F162BC1F21712400BB8F77 /* Level_18.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F162BB1F21712400BB8F77 /* Level_18.swift */; };
@@ -257,6 +263,12 @@
 		F7DE95381F327756005D9E76 /* Level_Select_background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Level_Select_background.mp3; sourceTree = "<group>"; };
 		F7DE953A1F327D1A005D9E76 /* Level_select_chapter_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Level_select_chapter_2.mp3; sourceTree = "<group>"; };
 		F7DE953C1F3282BC005D9E76 /* Level_Select_Chapter_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Level_Select_Chapter_3.mp3; sourceTree = "<group>"; };
+		F7DE953E1F3286D5005D9E76 /* Level_Music_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Level_Music_1.mp3; sourceTree = "<group>"; };
+		F7DE95421F3288E0005D9E76 /* Level_Music_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Level_Music_2.mp3; sourceTree = "<group>"; };
+		F7DE95441F328AB5005D9E76 /* Level_Music_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Level_Music_3.mp3; sourceTree = "<group>"; };
+		F7DE95461F329178005D9E76 /* Level_Music_4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Level_Music_4.mp3; sourceTree = "<group>"; };
+		F7DE95481F32924B005D9E76 /* Level_Music_5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Level_Music_5.mp3; sourceTree = "<group>"; };
+		F7DE954A1F329B39005D9E76 /* Level_Music_6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Level_Music_6.mp3; sourceTree = "<group>"; };
 		F7EF5D5C1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HorizontalMovingPlatform.sks; sourceTree = "<group>"; };
 		F7EF5D5E1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalMovingPlatform.swift; sourceTree = "<group>"; };
 		F7F162BB1F21712400BB8F77 /* Level_18.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_18.swift; sourceTree = "<group>"; };
@@ -623,16 +635,6 @@
 				F71205391F17DB35007DF257 /* Level_8 */,
 				F71DF1291F249B3E006B0E44 /* Level_9 */,
 				F752B10F1F1B28DC00FAC328 /* Level_10 */,
-				F71A326D1F26935400F80338 /* Level_11 */,
-				F71BD4411F1948A90045DC2B /* Level_12 */,
-				F71A32721F269BCB00F80338 /* Level_13 */,
-				F71A32771F26A48A00F80338 /* Level_14 */,
-				F71A327C1F26B40B00F80338 /* Level_15 */,
-				F7AC5D481F27B63200E6D18A /* Level_16 */,
-				F7A094311F27CCE900A88923 /* Level_17 */,
-				F7F162BF1F21713A00BB8F77 /* Level_18 */,
-				F7A094361F27FB9500A88923 /* Level_19 */,
-				F7A0943D1F280C7800A88923 /* Level_20 */,
 			);
 			name = Chapter_1;
 			sourceTree = "<group>";
@@ -668,7 +670,8 @@
 			isa = PBXGroup;
 			children = (
 				F77F436F1F22C77900312E78 /* Chapter_1 */,
-				F7A094481F2907D100A88923 /* Chapter 2 */,
+				F7DE95411F328715005D9E76 /* Chapter_2 */,
+				F7A094481F2907D100A88923 /* Chapter_3 */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -770,7 +773,7 @@
 			name = Level_21;
 			sourceTree = "<group>";
 		};
-		F7A094481F2907D100A88923 /* Chapter 2 */ = {
+		F7A094481F2907D100A88923 /* Chapter_3 */ = {
 			isa = PBXGroup;
 			children = (
 				F7A094471F2907B500A88923 /* Level_21 */,
@@ -779,7 +782,7 @@
 				F77F43571F226DC600312E78 /* Level_24 */,
 				F702DEAE1F2948C300ACEED1 /* Level_25 */,
 			);
-			name = "Chapter 2";
+			name = Chapter_3;
 			sourceTree = "<group>";
 		};
 		F7A094531F291CE900A88923 /* Level_23 */ = {
@@ -816,8 +819,39 @@
 				F7DE953A1F327D1A005D9E76 /* Level_select_chapter_2.mp3 */,
 				F7DE953C1F3282BC005D9E76 /* Level_Select_Chapter_3.mp3 */,
 				F7DE95381F327756005D9E76 /* Level_Select_background.mp3 */,
+				F7DE95401F3286DA005D9E76 /* Level_Music */,
 			);
 			name = Sounds;
+			sourceTree = "<group>";
+		};
+		F7DE95401F3286DA005D9E76 /* Level_Music */ = {
+			isa = PBXGroup;
+			children = (
+				F7DE953E1F3286D5005D9E76 /* Level_Music_1.mp3 */,
+				F7DE95421F3288E0005D9E76 /* Level_Music_2.mp3 */,
+				F7DE95441F328AB5005D9E76 /* Level_Music_3.mp3 */,
+				F7DE95461F329178005D9E76 /* Level_Music_4.mp3 */,
+				F7DE95481F32924B005D9E76 /* Level_Music_5.mp3 */,
+				F7DE954A1F329B39005D9E76 /* Level_Music_6.mp3 */,
+			);
+			name = Level_Music;
+			sourceTree = "<group>";
+		};
+		F7DE95411F328715005D9E76 /* Chapter_2 */ = {
+			isa = PBXGroup;
+			children = (
+				F71A326D1F26935400F80338 /* Level_11 */,
+				F71BD4411F1948A90045DC2B /* Level_12 */,
+				F71A32721F269BCB00F80338 /* Level_13 */,
+				F71A32771F26A48A00F80338 /* Level_14 */,
+				F71A327C1F26B40B00F80338 /* Level_15 */,
+				F7AC5D481F27B63200E6D18A /* Level_16 */,
+				F7A094311F27CCE900A88923 /* Level_17 */,
+				F7F162BF1F21713A00BB8F77 /* Level_18 */,
+				F7A094361F27FB9500A88923 /* Level_19 */,
+				F7A0943D1F280C7800A88923 /* Level_20 */,
+			);
+			name = Chapter_2;
 			sourceTree = "<group>";
 		};
 		F7EF5D601F25DC16007BBC40 /* HorizontalMovingPlatform */ = {
@@ -974,10 +1008,13 @@
 				F7A094351F27F36D00A88923 /* Level_19.sks in Resources */,
 				F752B1151F1B307700FAC328 /* Water.sks in Resources */,
 				F77F43561F226DBA00312E78 /* Level_24.sks in Resources */,
+				F7DE95491F32924B005D9E76 /* Level_Music_5.mp3 in Resources */,
 				F76C41C01F156CE300F84F43 /* Window.sks in Resources */,
+				F7DE954B1F329B39005D9E76 /* Level_Music_6.mp3 in Resources */,
 				F76C41891F13DFB000F84F43 /* LaunchScreen.storyboard in Resources */,
 				F76C41BD1F15468000F84F43 /* Sponge.sks in Resources */,
 				F77F436E1F22AFDD00312E78 /* Level_3.sks in Resources */,
+				F7DE95431F3288E0005D9E76 /* Level_Music_2.mp3 in Resources */,
 				F71205431F17F3E9007DF257 /* FanSpin.sks in Resources */,
 				F7993EDA1F1FC7A500FE430D /* FallingBlock.sks in Resources */,
 				F7DE95361F32749A005D9E76 /* forest_background_sound.wav in Resources */,
@@ -985,11 +1022,13 @@
 				F76C41CA1F159C4B00F84F43 /* CharacterActions.sks in Resources */,
 				F77F43761F22F1FA00312E78 /* Level_5.sks in Resources */,
 				F71A326C1F26786400F80338 /* Level_11.sks in Resources */,
+				F7DE95471F329178005D9E76 /* Level_Music_4.mp3 in Resources */,
 				F7C1E6081F197AD900D063E0 /* OilSpill_Left.sks in Resources */,
 				F71205451F17F59A007DF257 /* Fan.sks in Resources */,
 				F702DEB01F29498400ACEED1 /* LevelSelectStars.sks in Resources */,
 				F7A094461F28F98A00A88923 /* Level_21.sks in Resources */,
 				F77F435B1F2278CE00312E78 /* Flame.sks in Resources */,
+				F7DE953F1F3286D5005D9E76 /* Level_Music_1.mp3 in Resources */,
 				F71A32651F265FC400F80338 /* VerticalMovingPlatform.sks in Resources */,
 				F752B1111F1B29B100FAC328 /* Level_10.sks in Resources */,
 				F71BD4401F1948A40045DC2B /* Level_12.sks in Resources */,
@@ -1004,6 +1043,7 @@
 				F77F43641F22A8DF00312E78 /* Level_1.sks in Resources */,
 				F7993ED41F1F37D300FE430D /* LevelSelect2.sks in Resources */,
 				F77F43691F22AD3100312E78 /* Level_2.sks in Resources */,
+				F7DE95451F328AB5005D9E76 /* Level_Music_3.mp3 in Resources */,
 				F76C41B31F13FE6B00F84F43 /* Level_4.sks in Resources */,
 				F780B69C1F16C32600A54538 /* WindowCrack.sks in Resources */,
 				F7993EE41F20222000FE430D /* LevelSummary.sks in Resources */,

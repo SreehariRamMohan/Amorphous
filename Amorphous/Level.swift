@@ -7,6 +7,9 @@
 //
 import Foundation
 import SpriteKit
+import AudioToolbox
+import AVFoundation
+
 class Level: SKScene, SKPhysicsContactDelegate {
 
     //a reference to the current player, value will be reassigned at the start of each Level
@@ -64,9 +67,12 @@ class Level: SKScene, SKPhysicsContactDelegate {
     
     var Level_Summary_Fragment: SKReferenceNode!
     
-    //goals for levels
+    //a player to play the background music, this is shared through all of the levels through the inheritance structure that I set up.
+    var audio_player: AVAudioPlayer!
+    
+    //goals for levels, which an array of tuples.
     var goals: [(Double, Double, Double)] = [(0.6, 3, 4), (3.1, 5.1, 7.5),(6.1, 8, 10),(13.7, 15, 18),(6.8, 9.5, 11),(8.3, 9.7, 10.7),(12, 15.4, 19.6),(12.3, 14.2, 16.3),(16.5, 19.2, 22.3),(11.3, 12.7, 13.5),(16.8, 17.2, 18.5),(12.8, 14.3, 15),(14.5, 16, 18),(21, 22.9, 25),(27, 29, 30.5),(14.8, 15.4, 16),(29, 30.6, 31),(4.4, 9.3, 10.2),(30, 32, 33),(28.5, 29.3, 31),(10.6, 11.5, 12),(15.1, 16.3, 17.4),(30, 36, 39),(30, 30.5, 33),(55, 57, 62),(999, 999, 999), (999, 999, 999)]
-    //this is the number of stars the user has received latest. This is a number from 0(for no stars) to 3(all stars), these values are then put into the array.
+    //this is the number of stars the user has received latest. This is a number from 0(for no stars) to 3(all stars).
     static var starsReceived: [Int] = []
     static var dataManager: DataManager!
     
@@ -908,6 +914,25 @@ class Level: SKScene, SKPhysicsContactDelegate {
         print(self.timerLabel)
         return self.timerLabel
     }
+    
+    
+    func playSound(nameOfFile: String, type: String) {
+        let url = Bundle.main.url(forResource: nameOfFile, withExtension: type)!
+        
+        do {
+            audio_player = try AVAudioPlayer(contentsOf: url)
+            guard let audio_player = audio_player else { return }
+            
+            //makes sure that the player continues to loop over the sound once the song finishes so the music never stops.
+            audio_player.numberOfLoops = -1
+            
+            audio_player.prepareToPlay()
+            audio_player.play()
+        } catch let error as NSError {
+            print(error.description)
+        }
+    }
+
     
     deinit {
         print("De init Forest page")

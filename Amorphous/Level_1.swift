@@ -17,6 +17,9 @@ class Level_1: Level {
         //call did move in parent
         super.didMove(to: view)
         initialize_variables()
+        
+        //play the correct sound
+        playSound(nameOfFile: "Level_Music_1", type: "mp3")
     }
     
     
