@@ -66,6 +66,10 @@ class LevelSummary: SKSpriteNode {
     func setButtonCallbacks() {
         button_retry.selectedHandler = {
             print("restarting level")
+            
+            //remove buttons from the screen to prevent buildup of buttons and memory leaks
+            self.parentRef.removeButtons()
+            
             guard let skView = self.parentRef.view as SKView! else{
                 print("Could not get Skview")
                 return

@@ -18,6 +18,7 @@ class Forest: SKScene {
     var planting_instructions_label: SKNode!
     var watering_instructions_label: SKNode!
     var effects_node: SKEffectNode!
+    var tutorial_label: SKLabelNode!
     var button_x: MSButtonNode!
     var forestDataManager: DataManager!
     static var num_water_bottles: Int!
@@ -44,9 +45,6 @@ class Forest: SKScene {
     override func didMove(to view: SKView) {
         //initialize the data manager
         forestDataManager = DataManager()
-        
-        //shows the user a tutorial if it is there first time opening the app
-        tutorial()
         
         Forest.num_water_bottles = forestDataManager.getBottles().getNumberOfBottles()
         //get an array of our saved garden
@@ -85,6 +83,9 @@ class Forest: SKScene {
         
         forest_camera = self.childNode(withName: "forest_camera_node") as! SKCameraNode
         self.camera = forest_camera
+        
+        //shows the user a tutorial if it is there first time opening the app
+        create_tutorial()
     
         }
 
@@ -252,6 +253,7 @@ class Forest: SKScene {
         self.addChild(plant)
         self.canPlant = false
         tree_array.append(plant)
+        forestDataManager.nukeTreeArray()
         forestDataManager.saveArrayOfTrees(array: self.tree_array)
         self.tree_array = forestDataManager.getTreesAsPlantObjectArray()
     }
@@ -281,13 +283,17 @@ class Forest: SKScene {
                 for i in 0..<self.tree_array.count {
                     if(self.tree_array[i].contains(location)) {
                         print("Watering a plant I just touched")
-                        self.tree_array[i].texture = SKTexture(imageNamed: "tree_1")
+                        
+                        self.tree_array[i].texture = SKTexture(imageNamed: "tree_\(self.tree_array[i].getPlantType())")
                         self.tree_array[i].setDateLastWatered(date: Date()) //set the date last watered to now, since I just watered the plant
+                        
                         //call update on the array of trees since our data has just changed!
-                        updateTheHealthOfTrees(array: self.tree_array)
+                        //updateTheHealthOfTrees(array: self.tree_array)
                         //need to clear the array in memory so that we don't end up with 2 exact same trees on screen one dead and one alive. This bug consumed many hours of my time!
+                        
                         forestDataManager.nukeTreeArray()
                         //save the new replenished tree to storage so that when we open the game again the tree shows up as healthy
+                        
                         forestDataManager.saveArrayOfTrees(array: self.tree_array)
                         self.tree_array = forestDataManager.getTreesAsPlantObjectArray()
                         
@@ -296,10 +302,14 @@ class Forest: SKScene {
                         Forest.num_water_bottles = self.forestDataManager.getBottles().getNumberOfBottles()
                         updateWaterBottles()
                         
+                        
+                        
                         //break out since we already touched the plant, this reduces time complexity
                         break
                     }
                 }
+                
+                
                     
             }
         }
@@ -461,14 +471,14 @@ class Forest: SKScene {
         self.canWater = true
     }
     
-    func tutorial() {
+    func create_tutorial() {
         //storing a value in user preferences for wether or not the user ocmpleted the tutorial
         let userDefaults = UserDefaults.standard
         var state = userDefaults.bool(forKey: "HasFinishedTutorial") ?? false
-        if(state == true) {
+        if(state == false) {
             //first time so the user needs to do the tutorial
             print("Doing the tutorial")
-            showTutorial()
+            show_Tutorial()
         } else {
             print("Skipping the tutorial")
         }
@@ -477,54 +487,67 @@ class Forest: SKScene {
         
     }
     
-    func showTutorial() {
+    func show_Tutorial() {
         
-        var label = SKLabelNode()
-        label.zPosition = 5
-        label.fontName = "Gill Sans"
-        label.position = CGPoint(x: 0, y: 0)
-        self.addChild(label)
+        self.tutorial_label = SKLabelNode()
         
-        let welcomeMessage = SKAction.run({
-           label.text = "Welcome to Amorpheous"
-        })
-        let wait = SKAction.wait(forDuration: 2)
+        //set z-position to be on top of everything!
+        self.tutorial_label.zPosition = 50
         
-        let goal = SKAction.run ({
-            label.text = "The goal of Amorpheous is simple"
-        })
+        //set label font
+        self.tutorial_label.fontName = "Gill Sans Bold"
         
-        let goalDescription = SKAction.run({
-            label.fontSize = 24
-            label.text = "Collect water, and build the best forest you can"
-        })
-       
-        let watering_warning = SKAction.run({
-            label.fontSize = 24
-            label.text = "Make sure to water you plants daily or they will die"
-        })
+        //set the position to the center of the screen
+        self.tutorial_label.position = CGPoint(x: 0, y: 0)
         
-        let plant_first_tree = SKAction.run({
-            label.text = "Try it now, lets plant a tree"
-        })
+        //add the label to the screen
+        self.forest_camera.addChild(self.tutorial_label)
         
-        let clickShop = SKAction.run({
-            label.zPosition = 10
-            label.text = "Click shop"
-        })
+        //define default times to wait
+        let short_wait = SKAction.wait(forDuration: 1)
         
-        let clickDouglasFir = SKAction.run({
-            label.zPosition = 10
-            label.text = "Click Plants, then Click Douglas Fir"
-        })
+        let medium_wait = SKAction.wait(forDuration: 2)
+        
+        let long_wait = SKAction.wait(forDuration: 3)
+        
+        //tutorial messages
+        
+        let welcomeMessage = createSKAction(fontSize: 40, text: "Welcome to Amorphous")
+
+        let goal = createSKAction(fontSize: 16, text: "The goal of Amorphous is really simple...")
+        
+        let goalDescription = createSKAction(fontSize: 16, text: "Rescue water, and use that water to build the best forest you can!")
+        
+        let watering_warning = createSKAction(fontSize: 16, text: "Make sure to water you plants daily or they will die")
+        
+        let how_to_get_water = createSKAction(fontSize: 16, text: "You get 1 water-bottle for every level you complete")
+        
+        let where_money_is_located = createSKAction(fontSize: 16, text: "Your current balance(in water bottles) is shown on the top right")
+        
+        let where_to_buy_stuff = createSKAction(fontSize: 16, text: "You can water plants and buy stuff in the shop")
+        
+        let what_to_do_now = createSKAction(fontSize: 16, text: "So what do you do now?")
+        
+        let option_1 = createSKAction(fontSize: 16, text: "You could plant a tree from the shop with 3 water bottles")
+        
+        let option_2 = createSKAction(fontSize: 16, text: "Tap Rescue Water in the BOTTOM RIGHT to start on levels")
+        
+        let good_luck = createSKAction(fontSize: 40, text: "Good Luck, get started!")
         
         let remove = SKAction.run({
-            label.removeFromParent()
+            self.tutorial_label.removeFromParent()
         })
         
-        let sequence = SKAction.sequence([welcomeMessage, wait, goal, wait, goalDescription, wait, watering_warning, wait, plant_first_tree, wait, clickShop, wait, clickDouglasFir, remove])
+        let sequence = SKAction.sequence([welcomeMessage, long_wait, goal, long_wait, goalDescription, long_wait, watering_warning, long_wait, how_to_get_water, long_wait, where_money_is_located, long_wait, where_to_buy_stuff, long_wait, option_1, long_wait, option_2, long_wait, good_luck, long_wait, remove])
         
         self.run(sequence)
+    }
+    
+    func createSKAction(fontSize: Int, text: String) -> SKAction {
+        return SKAction.run({
+            self.tutorial_label.fontSize = CGFloat(fontSize)
+            self.tutorial_label.text = text
+        })
     }
     
     

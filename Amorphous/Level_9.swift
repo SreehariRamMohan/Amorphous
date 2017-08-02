@@ -46,7 +46,7 @@ class Level_9: Level {
     
     override func updateCamera() {
         if(currentPlayer != nil && currentPlayer?.position != nil) {
-            if(cameraNode.position.y < -2*UIScreen.main.bounds.width){
+            if(currentPlayer.position.y < -2*UIScreen.main.bounds.width){
                 //the player is far below the screen, display the restart button
                 showRestartButton()
             }

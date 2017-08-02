@@ -38,7 +38,7 @@ class Level_1: Level {
     
     override func updateCamera() {
         if(currentPlayer != nil && currentPlayer?.position != nil) {
-            if(cameraNode.position.y < -2*UIScreen.main.bounds.width){
+            if(currentPlayer.position.y < -2*UIScreen.main.bounds.width){
                 //the player is far below the screen, display the restart button
                 showRestartButton()
             }
@@ -58,11 +58,12 @@ class Level_1: Level {
         let windowPos: CGPoint = self.convert(CGPoint(x:0, y:0), from: window)
         let myPosition = self.position
         
-        let moveAction = SKAction.move(to: CGPoint(x: windowPos.x, y: myPosition.y), duration: 5)
-        let moveAction2 = SKAction.move(to: CGPoint(x: myPosition.x, y: myPosition.y), duration: 5)
+        let moveAction = SKAction.move(to: CGPoint(x: windowPos.x, y: myPosition.y), duration: 1)
+        let moveAction2 = SKAction.move(to: CGPoint(x: myPosition.x, y: myPosition.y), duration: 1)
         let sequence = SKAction.sequence([moveAction, moveAction2])
         
         cameraNode.run(sequence)
+        
     }
     
     deinit {

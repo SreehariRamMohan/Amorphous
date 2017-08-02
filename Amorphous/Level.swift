@@ -846,7 +846,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
     func removeButtons() {
         button_hint.removeFromSuperview()
         timerLabel.removeFromSuperview()
+
         button_back_to_level_select.removeFromSuperview()
+        
         print(self.view?.subviews.contains(button_hint))
         print(self.view?.subviews.contains(timerLabel))
         print(self.view?.subviews.contains(button_back_to_level_select))
