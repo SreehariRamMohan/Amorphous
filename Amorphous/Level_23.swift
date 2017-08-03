@@ -25,6 +25,9 @@ class Level_23: Level {
         //level 23 has more obstacles, so we need to zoom the camera out in order for the player to be able to see them
         let zoomInAction = SKAction.scale(to: 2, duration: 0)
         cameraNode.run(zoomInAction)
+        
+        //play the correct sound
+        playSound(nameOfFile: "Level_Music_23", type: "mp3")
     }
     
     

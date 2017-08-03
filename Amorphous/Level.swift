@@ -487,6 +487,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
         //remove all current buttons, to prevent the build-up of buttons in the scene
         removeButtons()
         
+        //stop sound in advance to prevent double sound 
+        safelyStopAudio()
+        
         guard sender == button_restart_level else { return }
         // This function is called when button_back_to_level_select is pressed
         print("restarting level")
@@ -940,6 +943,20 @@ class Level: SKScene, SKPhysicsContactDelegate {
         self.removeAllActions()
         self.view?.gestureRecognizers?.removeAll()
         self.timer.invalidate()
+        
+        //stop the audio once the level has been destroyed.
+        if audio_player != nil {
+            audio_player.stop()
+            audio_player = nil
+        }
+    }
+    
+    func safelyStopAudio() {
+        //stop the audio once the level has been destroyed.
+        if audio_player != nil {
+            audio_player.stop()
+            audio_player = nil
+        }
     }
     
 }
