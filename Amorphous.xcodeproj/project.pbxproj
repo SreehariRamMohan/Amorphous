@@ -142,6 +142,8 @@
 		F7DE95731F339A23005D9E76 /* Level_Music_24.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95701F339A23005D9E76 /* Level_Music_24.mp3 */; };
 		F7DE95751F339A23005D9E76 /* Level_Music_23.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95721F339A23005D9E76 /* Level_Music_23.mp3 */; };
 		F7DE95771F339BC9005D9E76 /* Level_Music_25.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95761F339BC9005D9E76 /* Level_Music_25.mp3 */; };
+		F7DE95791F33A3ED005D9E76 /* Credits.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95781F33A3ED005D9E76 /* Credits.sks */; };
+		F7DE957D1F33C4DF005D9E76 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DE957C1F33C4DF005D9E76 /* Credits.swift */; };
 		F7EF5D5D1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7EF5D5C1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks */; };
 		F7EF5D5F1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF5D5E1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift */; };
 		F7F162BC1F21712400BB8F77 /* Level_18.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F162BB1F21712400BB8F77 /* Level_18.swift */; };
@@ -307,6 +309,8 @@
 		F7DE95701F339A23005D9E76 /* Level_Music_24.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Level_Music_24.mp3; sourceTree = "<group>"; };
 		F7DE95721F339A23005D9E76 /* Level_Music_23.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Level_Music_23.mp3; sourceTree = "<group>"; };
 		F7DE95761F339BC9005D9E76 /* Level_Music_25.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Level_Music_25.mp3; sourceTree = "<group>"; };
+		F7DE95781F33A3ED005D9E76 /* Credits.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Credits.sks; sourceTree = "<group>"; };
+		F7DE957C1F33C4DF005D9E76 /* Credits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
 		F7EF5D5C1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HorizontalMovingPlatform.sks; sourceTree = "<group>"; };
 		F7EF5D5E1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalMovingPlatform.swift; sourceTree = "<group>"; };
 		F7F162BB1F21712400BB8F77 /* Level_18.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_18.swift; sourceTree = "<group>"; };
@@ -418,6 +422,7 @@
 			children = (
 				F713B8791F1E84520022E8E4 /* BuyPlants.sks */,
 				F713B87B1F1E84690022E8E4 /* BuyPlants.swift */,
+				F7DE957E1F33C777005D9E76 /* Credits */,
 				F7DD4D801F1EC56B0024687B /* PlantsPage */,
 			);
 			name = BuyPlants;
@@ -911,6 +916,15 @@
 			name = Chapter_2;
 			sourceTree = "<group>";
 		};
+		F7DE957E1F33C777005D9E76 /* Credits */ = {
+			isa = PBXGroup;
+			children = (
+				F7DE95781F33A3ED005D9E76 /* Credits.sks */,
+				F7DE957C1F33C4DF005D9E76 /* Credits.swift */,
+			);
+			name = Credits;
+			sourceTree = "<group>";
+		};
 		F7EF5D601F25DC16007BBC40 /* HorizontalMovingPlatform */ = {
 			isa = PBXGroup;
 			children = (
@@ -1067,6 +1081,7 @@
 				F7A094521F29140100A88923 /* Level_23.sks in Resources */,
 				F7DE95691F3395EA005D9E76 /* Level_Music_19.mp3 in Resources */,
 				F76C41861F13DFB000F84F43 /* Assets.xcassets in Resources */,
+				F7DE95791F33A3ED005D9E76 /* Credits.sks in Resources */,
 				F7DE95631F339313005D9E76 /* Level_Music_16.mp3 in Resources */,
 				F7DE95531F338A88005D9E76 /* Level_Music_9.mp3 in Resources */,
 				F76C41CC1F159CA100F84F43 /* SpongeSuck.sks in Resources */,
@@ -1204,6 +1219,7 @@
 				F71A32741F269CBE00F80338 /* Level_14.swift in Sources */,
 				F752B1131F1B29CA00FAC328 /* Level_10.swift in Sources */,
 				F7A094331F27F20300A88923 /* Level_19.swift in Sources */,
+				F7DE957D1F33C4DF005D9E76 /* Credits.swift in Sources */,
 				F77F43541F226DA100312E78 /* Level_24.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

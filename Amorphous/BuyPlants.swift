@@ -14,6 +14,7 @@ class BuyPlants: SKSpriteNode, SKPhysicsContactDelegate {
     var bottles_button: MSButtonNode!
     var states_button: MSButtonNode!
     var water_plants_button: MSButtonNode!
+    var button_credits: MSButtonNode!
     weak var parentRef: Forest!
     
     required init?(coder aDecoder: NSCoder) {
@@ -22,6 +23,8 @@ class BuyPlants: SKSpriteNode, SKPhysicsContactDelegate {
         plants_button = self.childNode(withName: "//plants_button") as! MSButtonNode
         
         water_plants_button = self.childNode(withName: "//water_plants") as! MSButtonNode
+        
+        button_credits = self.childNode(withName: "//button_credits") as! MSButtonNode
         
         
         //These buttons will come soon in a future update!
@@ -52,6 +55,11 @@ class BuyPlants: SKSpriteNode, SKPhysicsContactDelegate {
             print("Starting the watering process")
         }
         
+        button_credits.selectedHandler = { [weak self] in
+            print("Launching credits screens")
+            self?.launchCreditsScreen()
+        }
+        
 //        bottles_button.selectedHandler = { [weak self] in
 //            print("Going to buy bottles page")
 //        }
@@ -76,6 +84,13 @@ class BuyPlants: SKSpriteNode, SKPhysicsContactDelegate {
     
     func setParentReference(ref: SKScene) {
         self.parentRef = ref as! Forest
+    }
+    
+    func launchCreditsScreen() {
+        let skView = self.parentRef.view as SKView!
+        guard let scene = Credits(fileNamed:"Credits") as Credits! else { return }
+        scene.scaleMode = .aspectFill
+        skView?.presentScene(scene)
     }
     
     deinit {

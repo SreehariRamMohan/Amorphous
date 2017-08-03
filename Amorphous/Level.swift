@@ -88,6 +88,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
     //boolean variables for the water bottles earned
     var hasAlreadyAddedToWaterBottleTotal: Bool = false
     
+    //boolean values to prevent spamming of the hint button and lag
+    var hasPressedHint: Bool = false
+    
     override func didMove(to view: SKView) {
         
         initializeCriticalGameVariables()
@@ -475,8 +478,31 @@ class Level: SKScene, SKPhysicsContactDelegate {
         self.view?.addSubview(button)
     }
     
+    
+    //give children the option to override this function if they want.
     func hintButtonPressed() {
-        print("leave to children to implement")
+        //prevent the player from spamming the hint button
+        if(self.hasPressedHint) {
+            return
+        }
+        //Pan the camera around the level to alert the player of what obstacles are to come
+        //Pan the camera from where the player is currently located to the location of the window(for them to escape)
+        
+        var window = self.childNode(withName: "//window") as! SKSpriteNode
+        let windowPos: CGPoint = self.convert(CGPoint(x:0, y:0), from: window)
+        let myPosition = self.position
+        
+        let moveAction = SKAction.move(to: CGPoint(x: windowPos.x, y: windowPos.y), duration: 1)
+        let moveAction2 = SKAction.move(to: CGPoint(x: myPosition.x, y: myPosition.y), duration: 1)
+        let reset = SKAction.run({
+            self.hasPressedHint = false
+        })
+        let sequence = SKAction.sequence([moveAction, moveAction2, reset])
+        
+        cameraNode.run(sequence)
+        
+        self.hasPressedHint = true
+        
     }
     
     func buttonRestartLevel(sender: UIButton!) {
