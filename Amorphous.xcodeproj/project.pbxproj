@@ -144,6 +144,9 @@
 		F7DE95771F339BC9005D9E76 /* Level_Music_25.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95761F339BC9005D9E76 /* Level_Music_25.mp3 */; };
 		F7DE95791F33A3ED005D9E76 /* Credits.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95781F33A3ED005D9E76 /* Credits.sks */; };
 		F7DE957D1F33C4DF005D9E76 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DE957C1F33C4DF005D9E76 /* Credits.swift */; };
+		F7DE95801F34DA61005D9E76 /* switch_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE957F1F34DA61005D9E76 /* switch_sound.mp3 */; };
+		F7DE95831F34DFAD005D9E76 /* waterReentry.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95821F34DFAD005D9E76 /* waterReentry.mp3 */; };
+		F7DE95851F34E2A6005D9E76 /* water.wav in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95841F34E2A6005D9E76 /* water.wav */; };
 		F7EF5D5D1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7EF5D5C1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks */; };
 		F7EF5D5F1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF5D5E1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift */; };
 		F7F162BC1F21712400BB8F77 /* Level_18.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F162BB1F21712400BB8F77 /* Level_18.swift */; };
@@ -311,6 +314,9 @@
 		F7DE95761F339BC9005D9E76 /* Level_Music_25.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Level_Music_25.mp3; sourceTree = "<group>"; };
 		F7DE95781F33A3ED005D9E76 /* Credits.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Credits.sks; sourceTree = "<group>"; };
 		F7DE957C1F33C4DF005D9E76 /* Credits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
+		F7DE957F1F34DA61005D9E76 /* switch_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = switch_sound.mp3; path = "/Users/sreeharirammohan/Desktop/iOS Projects/Amorphous/Amorphous/switch_sound.mp3"; sourceTree = "<absolute>"; };
+		F7DE95821F34DFAD005D9E76 /* waterReentry.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = waterReentry.mp3; path = "/Users/sreeharirammohan/Desktop/iOS Projects/Amorphous/Amorphous/waterReentry.mp3"; sourceTree = "<absolute>"; };
+		F7DE95841F34E2A6005D9E76 /* water.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = water.wav; sourceTree = "<group>"; };
 		F7EF5D5C1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HorizontalMovingPlatform.sks; sourceTree = "<group>"; };
 		F7EF5D5E1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalMovingPlatform.swift; sourceTree = "<group>"; };
 		F7F162BB1F21712400BB8F77 /* Level_18.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_18.swift; sourceTree = "<group>"; };
@@ -862,6 +868,7 @@
 				F7DE953A1F327D1A005D9E76 /* Level_select_chapter_2.mp3 */,
 				F7DE953C1F3282BC005D9E76 /* Level_Select_Chapter_3.mp3 */,
 				F7DE95381F327756005D9E76 /* Level_Select_background.mp3 */,
+				F7DE95811F34DA66005D9E76 /* Effects */,
 				F7DE95401F3286DA005D9E76 /* Level_Music */,
 			);
 			name = Sounds;
@@ -923,6 +930,16 @@
 				F7DE957C1F33C4DF005D9E76 /* Credits.swift */,
 			);
 			name = Credits;
+			sourceTree = "<group>";
+		};
+		F7DE95811F34DA66005D9E76 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				F7DE957F1F34DA61005D9E76 /* switch_sound.mp3 */,
+				F7DE95821F34DFAD005D9E76 /* waterReentry.mp3 */,
+				F7DE95841F34E2A6005D9E76 /* water.wav */,
+			);
+			name = Effects;
 			sourceTree = "<group>";
 		};
 		F7EF5D601F25DC16007BBC40 /* HorizontalMovingPlatform */ = {
@@ -1059,6 +1076,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F71A32761F269CD000F80338 /* Level_14.sks in Resources */,
+				F7DE95801F34DA61005D9E76 /* switch_sound.mp3 in Resources */,
 				F7EF5D5D1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks in Resources */,
 				F7DE95771F339BC9005D9E76 /* Level_Music_25.mp3 in Resources */,
 				F76C41841F13DFB000F84F43 /* Main.storyboard in Resources */,
@@ -1075,11 +1093,13 @@
 				F7DE956D1F33979F005D9E76 /* Level_Music_21.mp3 in Resources */,
 				F7DE956B1F339686005D9E76 /* Level_Music_20.mp3 in Resources */,
 				F76C41AF1F13EB3500F84F43 /* LevelSelect.sks in Resources */,
+				F7DE95831F34DFAD005D9E76 /* waterReentry.mp3 in Resources */,
 				F71DF1281F249B39006B0E44 /* Level_9.sks in Resources */,
 				F7101A3F1F1D833B002C8367 /* Level_22.sks in Resources */,
 				F7AC5D471F27AC8B00E6D18A /* Level_16.sks in Resources */,
 				F7A094521F29140100A88923 /* Level_23.sks in Resources */,
 				F7DE95691F3395EA005D9E76 /* Level_Music_19.mp3 in Resources */,
+				F7DE95851F34E2A6005D9E76 /* water.wav in Resources */,
 				F76C41861F13DFB000F84F43 /* Assets.xcassets in Resources */,
 				F7DE95791F33A3ED005D9E76 /* Credits.sks in Resources */,
 				F7DE95631F339313005D9E76 /* Level_Music_16.mp3 in Resources */,

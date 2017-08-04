@@ -52,8 +52,8 @@ class Level_15: Level {
                 //the player is far below the screen, display the restart button
                 showRestartButton()
             }
-            let y = clamp(value: currentPlayer.position.y, lower: UIScreen.main.bounds.width/4, upper: 5*UIScreen.main.bounds.width)
-            let x = clamp(value: currentPlayer.position.x, lower: (UIScreen.main.bounds.height)/2 + 100 , upper: (15*(UIScreen.main.bounds.height/2) + 190))
+            let y = clamp(value: currentPlayer.position.y, lower: UIScreen.main.bounds.width/4, upper: 2*UIScreen.main.bounds.width)
+            let x = clamp(value: currentPlayer.position.x, lower: (UIScreen.main.bounds.height)/2 + 100 , upper: (11*(UIScreen.main.bounds.height/2) + 190))
             //clamp with level 1 dimensions in mind
             cameraNode.position.x = x
             cameraNode.position.y = y
@@ -70,7 +70,7 @@ class Level_15: Level {
         
         window = self.childNode(withName: "//window") as! SKSpriteNode
         let windowPos: CGPoint = self.convert(CGPoint(x:0, y:0), from: window)
-        let myPosition = self.position
+        let myPosition = self.player.position
         
         let moveAction = SKAction.move(to: CGPoint(x: reformX(x: windowPos.x), y: reformY(y: windowPos.y)), duration: 2)
         let moveAction2 = SKAction.move(to: CGPoint(x: reformX(x: myPosition.x), y: reformY(y: myPosition.y)), duration: 1)

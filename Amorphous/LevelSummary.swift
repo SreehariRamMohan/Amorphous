@@ -158,6 +158,11 @@ class LevelSummary: SKSpriteNode {
         }
         //display the time the player took to complete the level
         set_player_time(time: parentRef.counter)
+        
+        //currently we don't have more than 25 levels so we need to stop the player from hitting onward at level 25. 
+        if(LevelSelect.current_level == 25) {
+            button_onward.isHidden = true
+        }
     }
     
 }

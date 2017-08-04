@@ -51,14 +51,12 @@ class Level_17: Level {
                 //the player is far below the screen, display the restart button
                 showRestartButton()
             }
-            let y = clamp(value: currentPlayer.position.y, lower: UIScreen.main.bounds.width/6, upper: UIScreen.main.bounds.width-10)
-            let x = clamp(value: currentPlayer.position.x, lower: UIScreen.main.bounds.height/4 , upper: 25*(UIScreen.main.bounds.width/3))
+            let y = clamp(value: currentPlayer.position.y, lower: UIScreen.main.bounds.width/3, upper: UIScreen.main.bounds.width-10)
+            let x = clamp(value: currentPlayer.position.x, lower: 3*UIScreen.main.bounds.height/2, upper: 23*(UIScreen.main.bounds.width/3))
             //clamp with level 1 dimensions in mind
             cameraNode.position.x = x
             cameraNode.position.y = y
         }
-        
-        print(currentPlayer.position)
     }
     
     override func hintButtonPressed() {
@@ -71,7 +69,7 @@ class Level_17: Level {
         
         window = self.childNode(withName: "//window") as! SKSpriteNode
         let windowPos: CGPoint = self.convert(CGPoint(x:0, y:0), from: window)
-        let myPosition = self.position
+        let myPosition = self.player.position
         
         let moveAction = SKAction.move(to: CGPoint(x: reformX(x: windowPos.x), y: reformY(y: windowPos.y)), duration: 2)
         let moveAction2 = SKAction.move(to: CGPoint(x: reformX(x: myPosition.x), y: reformY(y: myPosition.y)), duration: 1)
@@ -86,10 +84,10 @@ class Level_17: Level {
     }
     
     func reformY(y: CGFloat) -> CGFloat {
-        return clamp(value: y, lower: UIScreen.main.bounds.width/6, upper: UIScreen.main.bounds.width-10)
+        return clamp(value: y, lower: UIScreen.main.bounds.width/3, upper: UIScreen.main.bounds.width-10)
     }
     
     func reformX(x: CGFloat) -> CGFloat {
-        return clamp(value: x, lower: UIScreen.main.bounds.height/4 , upper: 25*(UIScreen.main.bounds.width/3))
+        return clamp(value: x, lower: UIScreen.main.bounds.height/4 , upper: 22*(UIScreen.main.bounds.width/3))
     }
 }

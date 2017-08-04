@@ -8,6 +8,8 @@
 
 import Foundation
 import SpriteKit
+import AudioToolbox
+import AVFoundation
 
 class Player: SKSpriteNode {
     
@@ -48,7 +50,7 @@ class Player: SKSpriteNode {
     var timeAsGas: Double = 0
     var preventLagWhenSwitching: Bool = false
     
-    
+    var audio_player: AVAudioPlayer!
     
     init() {
         // Make a texture from an image, a color, and size
@@ -83,6 +85,9 @@ class Player: SKSpriteNode {
         self.physicsBody?.collisionBitMask = UInt32(WATER_COLLISION_BITMASK)
         //set our z position to 2 so we are in front of everything else
         self.zPosition = 2
+        
+        createAudioPlayer()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -112,6 +117,10 @@ class Player: SKSpriteNode {
         if(currentState.rawValue == 1) {
             //change to solid state
             self.texture = SKTexture(imageNamed:"ice_cube_image")
+            
+            //play switching sound effect
+            playSwitchingSoundEffect()
+            
             //reset the physics body to fit the shape of the new texture
             self.physicsBody = SKPhysicsBody(texture: self.texture!,
                                              size: self.texture!.size())
@@ -147,6 +156,10 @@ class Player: SKSpriteNode {
         } else if(currentState.rawValue == 2) {
             //change to liquid state
             self.texture = SKTexture(imageNamed:"water_droplet_image")
+            
+            //play switching sound effect
+            playSwitchingSoundEffect()
+            
             /* Create a CLOSURE to safely keep the water droplet the same scale as the shrunken down water droplet after player changes state after decreasing scale */
             let scalePhysicsBody = SKAction.run({
                 /* Scale the currentPlayer.physics body in the scene */
@@ -173,6 +186,9 @@ class Player: SKSpriteNode {
         } else if(currentState.rawValue == 3) {
             //change to gas state
             self.texture = SKTexture(imageNamed:"water_vapor_image")
+            
+            //play switching sound effect
+            playSwitchingSoundEffect()
             
             //reset the physics body to fit the shape of the new texture
             
@@ -286,5 +302,24 @@ class Player: SKSpriteNode {
     
     func getTimeAsGas() -> Double {
         return self.timeAsGas
+    }
+    
+    func createAudioPlayer() {
+        let url = Bundle.main.url(forResource: "waterReentry", withExtension: "mp3")!
+        
+        do {
+            self.audio_player = try AVAudioPlayer(contentsOf: url)
+            guard let audio_player = self.audio_player else { return }
+            audio_player.numberOfLoops = 1
+        } catch let error as NSError {
+            print(error.description)
+        }
+    }
+    
+    func playSwitchingSoundEffect() {
+        if(!self.audio_player.isPlaying) {
+            self.audio_player.prepareToPlay()
+            self.audio_player.play()
+        }
     }
 }

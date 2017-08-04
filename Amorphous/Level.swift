@@ -954,7 +954,6 @@ class Level: SKScene, SKPhysicsContactDelegate {
             
             //makes sure that the player continues to loop over the sound once the song finishes so the music never stops.
             audio_player.numberOfLoops = -1
-            
             audio_player.prepareToPlay()
             audio_player.play()
         } catch let error as NSError {
