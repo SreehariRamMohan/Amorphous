@@ -22,8 +22,6 @@ class PlantsPage: SKSpriteNode {
     
     weak var forestReference: Forest!
     
-    var not_enough_water_label: SKNode!
-    var balance_label: SKLabelNode!
     let cost_for_option_1: Int = 3
     let cost_for_option_2: Int = 5
     let cost_for_option_3: Int = 7
@@ -32,6 +30,8 @@ class PlantsPage: SKSpriteNode {
     let cost_for_option_6: Int = 10
     
     var assigned = false
+    
+    var not_enough_water_label: SKLabelNode!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -49,13 +49,15 @@ class PlantsPage: SKSpriteNode {
         option_4_button = self.childNode(withName: "//option_4") as! MSButtonNode
         option_5_button = self.childNode(withName: "//option_5") as! MSButtonNode
         option_6_button = self.childNode(withName: "//option_6") as! MSButtonNode
-        not_enough_water_label = self.childNode(withName: "//not_enough_water_label")!
-        balance_label = self.childNode(withName: "//balance_label") as! SKLabelNode
         
-        //hide the notification that the user doesn't have enough $ untilt they make an ilicit purchase.
+        not_enough_water_label = SKLabelNode()
+        self.forestReference.addChild(not_enough_water_label)
+        not_enough_water_label.fontName = "Gill Sans"
+        not_enough_water_label.fontSize = 36
+        not_enough_water_label.fontColor = UIColor.red
+        not_enough_water_label.zPosition = 10
+        not_enough_water_label.text = "Not enough water to buy!"
         not_enough_water_label.isHidden = true
-        balance_label.text! += String(Forest.num_water_bottles) + " water in bank"
-        balance_label.isHidden = true
     }
     
     func setOptionButtonCallbacks() {
@@ -63,8 +65,7 @@ class PlantsPage: SKSpriteNode {
             print("Option button 1 pressed")
             
             if(Forest.num_water_bottles < self.cost_for_option_1) {
-                self.not_enough_water_label.isHidden = false
-                self.balance_label.isHidden = false
+                self.showBadBalance()
             } else {
                 
                 //subtract the cost of the plant from the number of water bottles that the player has so we can update their remaining balance when we go back to the forest activity
@@ -75,10 +76,8 @@ class PlantsPage: SKSpriteNode {
                 //remove the buying screen after we have decided which plant we want to buy
                 self.forestReference.destroyBuyFragment()
                 
-                
                 //BELOW NOT WORKING WILL FIX
                 //self.forestReference.forestDataManager.addBottleData(numBottles: Forest.num_water_bottles)
-
             }
             
 
@@ -88,8 +87,7 @@ class PlantsPage: SKSpriteNode {
             print("Option button 2 pressed")
             
             if(Forest.num_water_bottles < self.cost_for_option_2) {
-                self.not_enough_water_label.isHidden = false
-                self.balance_label.isHidden = false
+                self.showBadBalance()
             } else {
                 //subtract the cost of the plant from the number of water bottles that the player has so we can update their remaining balance when we go back to the forest activity
                 self.forestReference.forestDataManager.addBottleData(numBottles: Int(self.forestReference.forestDataManager.getBottles().getNumberOfBottles()) - Int(self.cost_for_option_2))
@@ -104,8 +102,7 @@ class PlantsPage: SKSpriteNode {
         option_3_button.selectedHandler = {
             print("Option button 3 pressed")
             if(Forest.num_water_bottles < self.cost_for_option_3) {
-                self.not_enough_water_label.isHidden = false
-                self.balance_label.isHidden = false
+                self.showBadBalance()
             } else {
                 //subtract the cost of the plant from the number of water bottles that the player has so we can update their remaining balance when we go back to the forest activity
                 self.forestReference.forestDataManager.addBottleData(numBottles: Int(self.forestReference.forestDataManager.getBottles().getNumberOfBottles()) - Int(self.cost_for_option_3))
@@ -121,8 +118,7 @@ class PlantsPage: SKSpriteNode {
         option_4_button.selectedHandler = {
             print("Option button 4 pressed")
             if(Forest.num_water_bottles < self.cost_for_option_4) {
-                self.not_enough_water_label.isHidden = false
-                self.balance_label.isHidden = false
+                self.showBadBalance()
             } else {
                 //subtract the cost of the plant from the number of water bottles that the player has so we can update their remaining balance when we go back to the forest activity
                 self.forestReference.forestDataManager.addBottleData(numBottles: Int(self.forestReference.forestDataManager.getBottles().getNumberOfBottles()) - Int(self.cost_for_option_4))
@@ -137,8 +133,7 @@ class PlantsPage: SKSpriteNode {
         option_5_button.selectedHandler = {
             print("Option button 5 pressed")
             if(Forest.num_water_bottles < self.cost_for_option_5) {
-                self.not_enough_water_label.isHidden = false
-                self.balance_label.isHidden = false
+                self.showBadBalance()
             } else {
                 //subtract the cost of the plant from the number of water bottles that the player has so we can update their remaining balance when we go back to the forest activity
                 self.forestReference.forestDataManager.addBottleData(numBottles: Int(self.forestReference.forestDataManager.getBottles().getNumberOfBottles()) - Int(self.cost_for_option_5))
@@ -153,8 +148,7 @@ class PlantsPage: SKSpriteNode {
         option_6_button.selectedHandler = {
             print("Option button 6 pressed")
             if(Forest.num_water_bottles < self.cost_for_option_6) {
-                self.not_enough_water_label.isHidden = false
-                self.balance_label.isHidden = false
+                self.showBadBalance()
             } else {
                 //subtract the cost of the plant from the number of water bottles that the player has so we can update their remaining balance when we go back to the forest activity
                 self.forestReference.forestDataManager.addBottleData(numBottles: Int(self.forestReference.forestDataManager.getBottles().getNumberOfBottles()) - Int(self.cost_for_option_6))
@@ -171,6 +165,19 @@ class PlantsPage: SKSpriteNode {
         self.forestReference = ref as! Forest
         print("Got the forest reference !")
         print(self.forestReference)
+    }
+    
+    func showBadBalance() {
+        let action1 = SKAction.run({
+            self.not_enough_water_label.isHidden = false
+        })
+        let waitAction = SKAction.wait(forDuration: 1.25)
+        let action2 = SKAction.run({
+            self.not_enough_water_label.isHidden = true
+        })
+        let sequence = SKAction.sequence([action1, waitAction, action2])
+        self.run(sequence)
+        
     }
     
     deinit {

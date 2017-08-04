@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38F1F882892CEB7ADA99A7D6 /* Pods_AmorphousTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE60D8B90B38CDDFC3D0C19 /* Pods_AmorphousTests.framework */; };
+		47CE310E3DC0ECEDC040718F /* Pods_Amorphous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5423C9D463C229AFE2A7A994 /* Pods_Amorphous.framework */; };
+		541C53B8493F694B3DC69729 /* Pods_AmorphousUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2F2E4AC3D5145B7D40FB9EB /* Pods_AmorphousUITests.framework */; };
 		F702DEAD1F29486400ACEED1 /* LevelSelectStars.swift in Sources */ = {isa = PBXBuildFile; fileRef = F702DEAC1F29486400ACEED1 /* LevelSelectStars.swift */; };
 		F702DEB01F29498400ACEED1 /* LevelSelectStars.sks in Resources */ = {isa = PBXBuildFile; fileRef = F702DEAF1F29498400ACEED1 /* LevelSelectStars.sks */; };
 		F702DEB31F2A8D9600ACEED1 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F702DEB21F2A8D9600ACEED1 /* Plant.swift */; };
@@ -144,9 +147,10 @@
 		F7DE95771F339BC9005D9E76 /* Level_Music_25.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95761F339BC9005D9E76 /* Level_Music_25.mp3 */; };
 		F7DE95791F33A3ED005D9E76 /* Credits.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95781F33A3ED005D9E76 /* Credits.sks */; };
 		F7DE957D1F33C4DF005D9E76 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DE957C1F33C4DF005D9E76 /* Credits.swift */; };
-		F7DE95801F34DA61005D9E76 /* switch_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE957F1F34DA61005D9E76 /* switch_sound.mp3 */; };
-		F7DE95831F34DFAD005D9E76 /* waterReentry.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95821F34DFAD005D9E76 /* waterReentry.mp3 */; };
 		F7DE95851F34E2A6005D9E76 /* water.wav in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95841F34E2A6005D9E76 /* water.wav */; };
+		F7DE95871F3510FE005D9E76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95861F3510FE005D9E76 /* LaunchScreen.storyboard */; };
+		F7DE958A1F351FF6005D9E76 /* switch_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95881F351FF6005D9E76 /* switch_sound.mp3 */; };
+		F7DE958B1F351FF6005D9E76 /* waterReentry.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95891F351FF6005D9E76 /* waterReentry.mp3 */; };
 		F7EF5D5D1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7EF5D5C1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks */; };
 		F7EF5D5F1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF5D5E1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift */; };
 		F7F162BC1F21712400BB8F77 /* Level_18.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F162BB1F21712400BB8F77 /* Level_18.swift */; };
@@ -171,6 +175,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		155E78C4CB3E6BFCB6EB7E31 /* Pods-AmorphousUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmorphousUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AmorphousUITests/Pods-AmorphousUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		38AF9A60B84E0DFF7A8D3243 /* Pods-AmorphousUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmorphousUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AmorphousUITests/Pods-AmorphousUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3D6355D5933E6ABDE17C5DF7 /* Pods-AmorphousTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmorphousTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AmorphousTests/Pods-AmorphousTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5423C9D463C229AFE2A7A994 /* Pods_Amorphous.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Amorphous.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CB66C0996C8BA6E5A440C2B /* Pods-Amorphous.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Amorphous.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Amorphous/Pods-Amorphous.debug.xcconfig"; sourceTree = "<group>"; };
+		BBE60D8B90B38CDDFC3D0C19 /* Pods_AmorphousTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AmorphousTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2F2E4AC3D5145B7D40FB9EB /* Pods_AmorphousUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AmorphousUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9EB2C0E62A3276503B1449D /* Pods-AmorphousTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmorphousTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AmorphousTests/Pods-AmorphousTests.release.xcconfig"; sourceTree = "<group>"; };
 		F702DEAC1F29486400ACEED1 /* LevelSelectStars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectStars.swift; sourceTree = "<group>"; };
 		F702DEAF1F29498400ACEED1 /* LevelSelectStars.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelSelectStars.sks; sourceTree = "<group>"; };
 		F702DEB21F2A8D9600ACEED1 /* Plant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
@@ -203,6 +215,7 @@
 		F71BD4421F1949020045DC2B /* Level_12.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_12.swift; sourceTree = "<group>"; };
 		F71DF1251F249B2E006B0E44 /* Level_9.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_9.swift; sourceTree = "<group>"; };
 		F71DF1271F249B39006B0E44 /* Level_9.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_9.sks; sourceTree = "<group>"; };
+		F746BE179AC74816CEC47BFB /* Pods-Amorphous.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Amorphous.release.xcconfig"; path = "Pods/Target Support Files/Pods-Amorphous/Pods-Amorphous.release.xcconfig"; sourceTree = "<group>"; };
 		F752B10A1F1B244600FAC328 /* Water.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Water.swift; sourceTree = "<group>"; };
 		F752B1101F1B29B100FAC328 /* Level_10.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_10.sks; sourceTree = "<group>"; };
 		F752B1121F1B29CA00FAC328 /* Level_10.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_10.swift; sourceTree = "<group>"; };
@@ -314,9 +327,10 @@
 		F7DE95761F339BC9005D9E76 /* Level_Music_25.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Level_Music_25.mp3; sourceTree = "<group>"; };
 		F7DE95781F33A3ED005D9E76 /* Credits.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Credits.sks; sourceTree = "<group>"; };
 		F7DE957C1F33C4DF005D9E76 /* Credits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
-		F7DE957F1F34DA61005D9E76 /* switch_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = switch_sound.mp3; path = "/Users/sreeharirammohan/Desktop/iOS Projects/Amorphous/Amorphous/switch_sound.mp3"; sourceTree = "<absolute>"; };
-		F7DE95821F34DFAD005D9E76 /* waterReentry.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = waterReentry.mp3; path = "/Users/sreeharirammohan/Desktop/iOS Projects/Amorphous/Amorphous/waterReentry.mp3"; sourceTree = "<absolute>"; };
 		F7DE95841F34E2A6005D9E76 /* water.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = water.wav; sourceTree = "<group>"; };
+		F7DE95861F3510FE005D9E76 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F7DE95881F351FF6005D9E76 /* switch_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = switch_sound.mp3; sourceTree = "<group>"; };
+		F7DE95891F351FF6005D9E76 /* waterReentry.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = waterReentry.mp3; sourceTree = "<group>"; };
 		F7EF5D5C1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HorizontalMovingPlatform.sks; sourceTree = "<group>"; };
 		F7EF5D5E1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalMovingPlatform.swift; sourceTree = "<group>"; };
 		F7F162BB1F21712400BB8F77 /* Level_18.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_18.swift; sourceTree = "<group>"; };
@@ -328,6 +342,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47CE310E3DC0ECEDC040718F /* Pods_Amorphous.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +350,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38F1F882892CEB7ADA99A7D6 /* Pods_AmorphousTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,12 +358,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				541C53B8493F694B3DC69729 /* Pods_AmorphousUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D40659459D070F7D77D3BF9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5423C9D463C229AFE2A7A994 /* Pods_Amorphous.framework */,
+				BBE60D8B90B38CDDFC3D0C19 /* Pods_AmorphousTests.framework */,
+				E2F2E4AC3D5145B7D40FB9EB /* Pods_AmorphousUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D80A0CA61A17FD75D97B329F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9CB66C0996C8BA6E5A440C2B /* Pods-Amorphous.debug.xcconfig */,
+				F746BE179AC74816CEC47BFB /* Pods-Amorphous.release.xcconfig */,
+				3D6355D5933E6ABDE17C5DF7 /* Pods-AmorphousTests.debug.xcconfig */,
+				E9EB2C0E62A3276503B1449D /* Pods-AmorphousTests.release.xcconfig */,
+				155E78C4CB3E6BFCB6EB7E31 /* Pods-AmorphousUITests.debug.xcconfig */,
+				38AF9A60B84E0DFF7A8D3243 /* Pods-AmorphousUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F702DEAE1F2948C300ACEED1 /* Level_25 */ = {
 			isa = PBXGroup;
 			children = (
@@ -532,6 +572,8 @@
 				F76C41921F13DFB100F84F43 /* AmorphousTests */,
 				F76C419D1F13DFB100F84F43 /* AmorphousUITests */,
 				F76C41761F13DFB000F84F43 /* Products */,
+				D80A0CA61A17FD75D97B329F /* Pods */,
+				5D40659459D070F7D77D3BF9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -556,6 +598,7 @@
 				F76C41B91F141DE800F84F43 /* Player.swift */,
 				F76C41C71F1597C600F84F43 /* CollisionManager.swift */,
 				F76C41821F13DFB000F84F43 /* Main.storyboard */,
+				F7DE95861F3510FE005D9E76 /* LaunchScreen.storyboard */,
 				F76C41851F13DFB000F84F43 /* Assets.xcassets */,
 				F7DE95371F3274A9005D9E76 /* Sounds */,
 				F76C41871F13DFB000F84F43 /* LaunchScreen.storyboard */,
@@ -935,8 +978,8 @@
 		F7DE95811F34DA66005D9E76 /* Effects */ = {
 			isa = PBXGroup;
 			children = (
-				F7DE957F1F34DA61005D9E76 /* switch_sound.mp3 */,
-				F7DE95821F34DFAD005D9E76 /* waterReentry.mp3 */,
+				F7DE95881F351FF6005D9E76 /* switch_sound.mp3 */,
+				F7DE95891F351FF6005D9E76 /* waterReentry.mp3 */,
 				F7DE95841F34E2A6005D9E76 /* water.wav */,
 			);
 			name = Effects;
@@ -967,9 +1010,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F76C41A31F13DFB100F84F43 /* Build configuration list for PBXNativeTarget "Amorphous" */;
 			buildPhases = (
+				B9FEA71339C31D811F2BDB7D /* [CP] Check Pods Manifest.lock */,
 				F76C41711F13DFB000F84F43 /* Sources */,
 				F76C41721F13DFB000F84F43 /* Frameworks */,
 				F76C41731F13DFB000F84F43 /* Resources */,
+				D0B281E5BFDC47ADE16B2D1F /* [CP] Embed Pods Frameworks */,
+				E4EDD4518C488F8888A93C09 /* [CP] Copy Pods Resources */,
+				F7DE958C1F352065005D9E76 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -984,9 +1031,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F76C41A61F13DFB100F84F43 /* Build configuration list for PBXNativeTarget "AmorphousTests" */;
 			buildPhases = (
+				C9335900F82BE975D71A68F7 /* [CP] Check Pods Manifest.lock */,
 				F76C418B1F13DFB000F84F43 /* Sources */,
 				F76C418C1F13DFB000F84F43 /* Frameworks */,
 				F76C418D1F13DFB000F84F43 /* Resources */,
+				859A3EB4D9BC5975B2B1113D /* [CP] Embed Pods Frameworks */,
+				CD4CDB23D50DD263FA2385EB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1002,9 +1052,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F76C41A91F13DFB100F84F43 /* Build configuration list for PBXNativeTarget "AmorphousUITests" */;
 			buildPhases = (
+				336E52A92623D195D0DA13FE /* [CP] Check Pods Manifest.lock */,
 				F76C41961F13DFB100F84F43 /* Sources */,
 				F76C41971F13DFB100F84F43 /* Frameworks */,
 				F76C41981F13DFB100F84F43 /* Resources */,
+				D8FAAB29DA4DA905DA09AE49 /* [CP] Embed Pods Frameworks */,
+				FC543D935FFAEA6D9B241C70 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1076,7 +1129,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F71A32761F269CD000F80338 /* Level_14.sks in Resources */,
-				F7DE95801F34DA61005D9E76 /* switch_sound.mp3 in Resources */,
 				F7EF5D5D1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks in Resources */,
 				F7DE95771F339BC9005D9E76 /* Level_Music_25.mp3 in Resources */,
 				F76C41841F13DFB000F84F43 /* Main.storyboard in Resources */,
@@ -1093,7 +1145,7 @@
 				F7DE956D1F33979F005D9E76 /* Level_Music_21.mp3 in Resources */,
 				F7DE956B1F339686005D9E76 /* Level_Music_20.mp3 in Resources */,
 				F76C41AF1F13EB3500F84F43 /* LevelSelect.sks in Resources */,
-				F7DE95831F34DFAD005D9E76 /* waterReentry.mp3 in Resources */,
+				F7DE95871F3510FE005D9E76 /* LaunchScreen.storyboard in Resources */,
 				F71DF1281F249B39006B0E44 /* Level_9.sks in Resources */,
 				F7101A3F1F1D833B002C8367 /* Level_22.sks in Resources */,
 				F7AC5D471F27AC8B00E6D18A /* Level_16.sks in Resources */,
@@ -1144,6 +1196,7 @@
 				F7DE95731F339A23005D9E76 /* Level_Music_24.mp3 in Resources */,
 				F7DE955B1F338DFD005D9E76 /* Level_Music_12.mp3 in Resources */,
 				F7F162BE1F21713200BB8F77 /* Level_18.sks in Resources */,
+				F7DE958A1F351FF6005D9E76 /* switch_sound.mp3 in Resources */,
 				F71BD43B1F1941DC0045DC2B /* OilSpill_Right.sks in Resources */,
 				F7993EDE1F1FD20C00FE430D /* Level_66.sks in Resources */,
 				F7DD4D841F1EC9A00024687B /* PlantsPage.sks in Resources */,
@@ -1161,6 +1214,7 @@
 				F7DE954D1F33885E005D9E76 /* Level_Music_7.mp3 in Resources */,
 				F7DE953B1F327D1A005D9E76 /* Level_select_chapter_2.mp3 in Resources */,
 				F76C417D1F13DFB000F84F43 /* Actions.sks in Resources */,
+				F7DE958B1F351FF6005D9E76 /* waterReentry.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1179,6 +1233,166 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		336E52A92623D195D0DA13FE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AmorphousUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		859A3EB4D9BC5975B2B1113D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AmorphousTests/Pods-AmorphousTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9FEA71339C31D811F2BDB7D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Amorphous-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9335900F82BE975D71A68F7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AmorphousTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD4CDB23D50DD263FA2385EB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AmorphousTests/Pods-AmorphousTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0B281E5BFDC47ADE16B2D1F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Amorphous/Pods-Amorphous-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8FAAB29DA4DA905DA09AE49 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AmorphousUITests/Pods-AmorphousUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4EDD4518C488F8888A93C09 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Amorphous/Pods-Amorphous-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F7DE958C1F352065005D9E76 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" a5274c34fc3bac63a1c5c406ab7286dab7b91714 fa7ead74df5e9da6da95ee504bea9e0e62aa005f55908c2363b6bd5fdbcb255c";
+		};
+		FC543D935FFAEA6D9B241C70 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AmorphousUITests/Pods-AmorphousUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F76C41711F13DFB000F84F43 /* Sources */ = {
@@ -1392,10 +1606,13 @@
 		};
 		F76C41A41F13DFB100F84F43 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9CB66C0996C8BA6E5A440C2B /* Pods-Amorphous.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = H9K3EBE8A3;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Amorphous/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SreehariRamMohan.Amorphous;
@@ -1407,10 +1624,12 @@
 		};
 		F76C41A51F13DFB100F84F43 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F746BE179AC74816CEC47BFB /* Pods-Amorphous.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = H9K3EBE8A3;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Amorphous/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SreehariRamMohan.Amorphous;
@@ -1422,6 +1641,7 @@
 		};
 		F76C41A71F13DFB100F84F43 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D6355D5933E6ABDE17C5DF7 /* Pods-AmorphousTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1437,6 +1657,7 @@
 		};
 		F76C41A81F13DFB100F84F43 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9EB2C0E62A3276503B1449D /* Pods-AmorphousTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1452,6 +1673,7 @@
 		};
 		F76C41AA1F13DFB100F84F43 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 155E78C4CB3E6BFCB6EB7E31 /* Pods-AmorphousUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = H9K3EBE8A3;
@@ -1466,6 +1688,7 @@
 		};
 		F76C41AB1F13DFB100F84F43 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38AF9A60B84E0DFF7A8D3243 /* Pods-AmorphousUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = H9K3EBE8A3;

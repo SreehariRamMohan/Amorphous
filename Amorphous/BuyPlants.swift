@@ -44,7 +44,6 @@ class BuyPlants: SKSpriteNode, SKPhysicsContactDelegate {
     func setButtonCallbacks() {
         plants_button.selectedHandler = { [weak self] in
             self?.launchPickPlants()
-            print("going to plants page")
         }
         
         water_plants_button.selectedHandler = { [weak self] in
@@ -52,11 +51,9 @@ class BuyPlants: SKSpriteNode, SKPhysicsContactDelegate {
             self?.parentRef.initiateWaterProcess()
             //destroy the buy fragment to let the user tap a plant to water it
             self?.parentRef.destroyBuyFragment()
-            print("Starting the watering process")
         }
         
         button_credits.selectedHandler = { [weak self] in
-            print("Launching credits screens")
             self?.launchCreditsScreen()
         }
         
@@ -94,6 +91,7 @@ class BuyPlants: SKSpriteNode, SKPhysicsContactDelegate {
     }
     
     deinit {
-        print("De init BuyPlants page")
+        
+        
     }
 }

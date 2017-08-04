@@ -9,6 +9,7 @@ import Foundation
 import SpriteKit
 import AudioToolbox
 import AVFoundation
+import Crashlytics
 
 class Level: SKScene, SKPhysicsContactDelegate {
 
@@ -148,6 +149,13 @@ class Level: SKScene, SKPhysicsContactDelegate {
             print("Here")
             print(element.getScore())
         }
+        
+        
+        //Send data back to my FIBER Analytics software about the level which the user is currently starting.
+        Answers.logLevelStart("Level \(LevelSelect.current_level)",
+                              customAttributes: [:])
+        
+        
     }
     
     func saveStarData() {
