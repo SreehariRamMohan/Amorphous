@@ -680,6 +680,12 @@ class Level: SKScene, SKPhysicsContactDelegate {
             
             //Player has beaten the level
             
+            //Log the completion of the level to Fabric so I can see the user analytics and the ratio of completion vs started and the time the player took to complete it.
+            Answers.logLevelEnd("Level \(LevelSelect.current_level)",
+                score: counter as! NSNumber,
+                success: true,
+                customAttributes: [:])
+            
             launchLevelSummaryFragment()
             
             //Display a message to the player telling them that they completed the level
