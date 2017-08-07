@@ -47,6 +47,9 @@ class Forest: SKScene {
     //array to hold trees in the forest
     var tree_array: [Plant]!
     
+    //reference for the actual sprite which is BuyPlants
+    weak var plant_page_sprite: BuyPlants!
+    
     override func didMove(to view: SKView) {
         //initialize the data manager
         forestDataManager = DataManager()
@@ -409,7 +412,10 @@ class Forest: SKScene {
         self.buy_fragment = fragment
         //pass the reference to self to the buy fragment so we can trigger button events that have an effect on the forest scene, such as decreasing the amount of $ or bottles that we have or starting the planting process.
         let buyPage = fragment.childNode(withName: "//BuyPlants") as! BuyPlants
+
         buyPage.setParentReference(ref: self)
+        
+        self.plant_page_sprite = buyPage
         
         addChild(fragment)
         addBlurEffect()
@@ -417,6 +423,9 @@ class Forest: SKScene {
     }
     
     func destroyBuyFragment() {
+        if(self.plant_page_sprite.plantsPageReference != nil) {
+            self.plant_page_sprite.plantsPageReference.removeFromParent()
+        }
         buy_fragment.removeAllChildren()
         buy_fragment.removeFromParent()
         hideXButton()

@@ -16,6 +16,7 @@ class BuyPlants: SKSpriteNode, SKPhysicsContactDelegate {
     var water_plants_button: MSButtonNode!
     var button_credits: MSButtonNode!
     weak var parentRef: Forest!
+    weak var plantsPageReference: PlantsPage!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -68,15 +69,20 @@ class BuyPlants: SKSpriteNode, SKPhysicsContactDelegate {
     }
     
     func launchPickPlants() {
+        
         let path = Bundle.main.path(forResource: "PlantsPage", ofType: "sks")
         let fragment = SKReferenceNode(url: URL (fileURLWithPath: path!))
         fragment.position = CGPoint(x:0 , y:0)
-        fragment.setScale(0.5)
+        
+        //fragment.setScale(0.5)
         let plantsPage = fragment.childNode(withName: "//PlantsPage") as! PlantsPage
         plantsPage.setForestReference(ref: parentRef)
         plantsPage.initializeBuyPlantsButtons()
         plantsPage.setOptionButtonCallbacks()
-        addChild(fragment)
+        parentRef.addChild(fragment)
+        
+        //store the reference to the plants page so we can remove it later.
+        plantsPageReference = plantsPage
     }
     
     func setParentReference(ref: SKScene) {
