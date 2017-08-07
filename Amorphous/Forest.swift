@@ -275,12 +275,15 @@ class Forest: SKScene {
                 print(location)
                 print("You are going to plant in this location")
                 plant(at: location)
+                
             }
-            else if(self.canWater) {
-                let touch = touches.first!
-                let location = touch.location(in: self)
-                print(location)
+            if(self.canWater) {
                 self.canWater = false
+                let touch = touches.first!
+                
+                let location = touch.location(in: self)
+                
+                print(location)
                 self.watering_instructions_label.isHidden = true
                 if(self.forestDataManager.getBottles().getNumberOfBottles() <= 0) {
                     print("Not enough water to water the plants")
@@ -298,11 +301,15 @@ class Forest: SKScene {
                     
                     let sequence = SKAction.sequence([wait, remove])
                     self.run(sequence)
+                    
+                    self.canWater = false
+                    
                     return
                 }
                 //check if they tapped on a plant
                 //if they tapped on a plant decrement 1 from the amount of water they have
                 for i in 0..<self.tree_array.count {
+                    
                     if(self.tree_array[i].contains(location)) {
                         print("Watering a plant I just touched")
                         
@@ -317,7 +324,7 @@ class Forest: SKScene {
                         //save the new replenished tree to storage so that when we open the game again the tree shows up as healthy
                         
                         forestDataManager.saveArrayOfTrees(array: self.tree_array)
-                        self.tree_array = forestDataManager.getTreesAsPlantObjectArray()
+                        //self.tree_array = forestDataManager.getTreesAsPlantObjectArray()
                         
                         //subtract 1 from the number of bottles that the player has, since watering plants uses up 1 water
                         self.forestDataManager.addBottleData(numBottles: Int(self.forestDataManager.getBottles().getNumberOfBottles()) - Int(1))
@@ -327,12 +334,13 @@ class Forest: SKScene {
                         
                         
                         //break out since we already touched the plant, this reduces time complexity
+                        //break
+                        
+                        self.canWater = false
+                        
                         break
                     }
                 }
-                
-                
-                    
             }
         }
     }

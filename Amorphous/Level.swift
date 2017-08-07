@@ -184,6 +184,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
         
         //invalidate the timer to prevent memory leaks
         timer.invalidate()
+        
+        //stop the current audio from playing when the player presses the back button. This stops audio from "leaking" over into different scenes and creating an audio mess
+        safelyStopAudio()
     }
     
     func setPlayer(player: Player) {
@@ -518,6 +521,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
         //remove the timer to prevent memory leaks
         timer.invalidate()
         
+        //stop audio to prevent it from playing twice in the same level ontop of the original
+        safelyStopAudio()
+        
         //remove all current buttons, to prevent the build-up of buttons in the scene
         removeButtons()
         
@@ -843,6 +849,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
     func gotToNextLevel() {
         //save the game before we go to the next level
         self.saveStarData()
+        
+        //stop the audio in the current level
+        safelyStopAudio()
         
         LevelSelect.current_level += 1
         print("loading level " + String(LevelSelect.current_level))

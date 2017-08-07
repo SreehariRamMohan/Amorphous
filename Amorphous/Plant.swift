@@ -31,7 +31,6 @@ class Plant: SKSpriteNode {
     let size = texture.size()
     // Call the designated initializer
     super.init(texture: texture, color: color, size: size)
-    
     }
     
     init(type: Int, x_position: CGFloat, y_position: CGFloat, date_last_watered: Date) {
@@ -60,7 +59,7 @@ class Plant: SKSpriteNode {
         self.date_last_watered = date_last_watered
         // Call the designated initializer
         super.init(texture: texture, color: color, size: size)
-
+        self.position = CGPoint(x: self.x, y: self.y)
     }
     
     func update() {
