@@ -51,8 +51,8 @@ class PlantsPage: SKSpriteNode {
         option_6_button = self.childNode(withName: "//option_6") as! MSButtonNode
         
         not_enough_water_label = SKLabelNode()
-        not_enough_water_label.zPosition = 12
-        self.forestReference.addChild(not_enough_water_label)
+        not_enough_water_label.zPosition = 15
+        self.addChild(not_enough_water_label)
         not_enough_water_label.fontName = "Gill Sans"
         not_enough_water_label.fontSize = 36
         not_enough_water_label.fontColor = UIColor.red
@@ -169,8 +169,8 @@ class PlantsPage: SKSpriteNode {
     
     func showBadBalance() {
         let action1 = SKAction.run({
+            self.not_enough_water_label.zPosition = 15
             self.not_enough_water_label.isHidden = false
-            self.not_enough_water_label.zPosition = 12
         })
         let waitAction = SKAction.wait(forDuration: 1.25)
         let action2 = SKAction.run({

@@ -19,7 +19,10 @@ class Forest: SKScene {
     var background_of_forest: SKNode!
     var planting_instructions_label: SKNode!
     var watering_instructions_label: SKNode!
+    
     var effects_node: SKEffectNode!
+    var buy_plants_filter: CIFilter!
+    
     var tutorial_label: SKLabelNode!
     var button_x: MSButtonNode!
     var forestDataManager: DataManager!
@@ -97,6 +100,11 @@ class Forest: SKScene {
         
         //player the main background sound
         playSound()
+        
+        //initialize the effects node once instead of every time I press the button
+        self.effects_node = SKEffectNode()
+        self.buy_plants_filter = CIFilter(name: "CIGaussianBlur")
+
     
         }
 
@@ -406,15 +414,17 @@ class Forest: SKScene {
     }
     
     func launchBuyFragment() {
+        
         let path = Bundle.main.path(forResource: "BuyPlants", ofType: "sks")
         let fragment = SKReferenceNode(url: URL (fileURLWithPath: path!))
         fragment.position = CGPoint(x: forest_camera.position.x , y: forest_camera.position.y)
+        
         self.buy_fragment = fragment
         //pass the reference to self to the buy fragment so we can trigger button events that have an effect on the forest scene, such as decreasing the amount of $ or bottles that we have or starting the planting process.
         let buyPage = fragment.childNode(withName: "//BuyPlants") as! BuyPlants
-
-        buyPage.setParentReference(ref: self)
         
+        buyPage.setParentReference(ref: self)
+       
         self.plant_page_sprite = buyPage
         
         addChild(fragment)
@@ -434,14 +444,11 @@ class Forest: SKScene {
     }
     
     func addBlurEffect() {
-        // Create an effects node with a gaussian blur filter
-        self.effects_node = SKEffectNode()
-        let filter = CIFilter(name: "CIGaussianBlur")
         // Set the blur amount. Adjust this to achieve the desired effect
         let blurAmount = 10.0
-        filter?.setValue(blurAmount, forKey: kCIInputRadiusKey)
+        self.buy_plants_filter?.setValue(blurAmount, forKey: kCIInputRadiusKey)
         
-        effects_node.filter = filter
+        effects_node.filter = self.buy_plants_filter
         effects_node.position = self.view!.center
         effects_node.blendMode = .alpha
         
@@ -500,6 +507,8 @@ class Forest: SKScene {
         }
         
         effects_node.shouldEnableEffects = false
+        
+        effects_node.removeFromParent()
         
         //allow the user to pan around the screen again
         self.canScroll = false

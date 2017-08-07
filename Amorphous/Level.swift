@@ -433,16 +433,17 @@ class Level: SKScene, SKPhysicsContactDelegate {
     }
     
     func addYouLoseLabel() {
-        let label = UILabel(frame: CGRect(x: UIScreen.main.bounds.width/2 - 100, y: UIScreen.main.bounds.height/2 - 25, width: 200, height: 50))
+        let label = UILabel(frame: CGRect(x: UIScreen.main.bounds.width/2 - 100, y: UIScreen.main.bounds.height/2 - 25, width: 100, height: 100))
         label.center = CGPoint(x: 160, y: 285)
         label.textAlignment = .center
         label.text = "This is the default text when the Label is initialized"
-        label.layer.backgroundColor = UIColor(red: 61/255, green: 83/255, blue: 255/255, alpha: 1.0).cgColor
+        label.layer.backgroundColor = UIColor(red: 234/255, green: 240/255, blue: 255/255, alpha: 1.0).cgColor
         label.sizeToFit()
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
         self.view?.addSubview(label)
-        label.center = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2 - 30)
+        label.center = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2 - 35)
+        label.font = UIFont(name: "Gill Sans Bold", size: 24)
         you_lose_label = label
         you_lose_label.isHidden = true
     }
@@ -647,6 +648,12 @@ class Level: SKScene, SKPhysicsContactDelegate {
         }
         
         if(contactA.categoryBitMask == UInt32(CollisionManager.WINDOW_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.WINDOW_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK)) {
+            
+            //prevent the player from beating the level after the restart button shows up on screen.(prevent them from touching the window after they've already lost(if that happens by chance).
+            if(!canMove || !canShift) {
+                return
+            }
+            
             /* Load the Window Crack animation so the player can escape and finish level 1!*/
             var iceCube: SKSpriteNode!
             if(contactA.categoryBitMask == UInt32(ICE_CATEGORY_BITMASK)) {
