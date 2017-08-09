@@ -118,20 +118,20 @@ class LevelSummary: SKSpriteNode {
     }
     //setters for the min time to get stars
     func set_3_star_time(time: Double) {
-        self.label_3_star.text! += String(time)
+        self.label_3_star.text! = String(time)
     }
     
     func set_2_star_time(time: Double) {
-        self.label_2_star.text! += String(time)
+        self.label_2_star.text! = String(time)
     }
     
     func set_1_star_time(time: Double) {
-        self.label_1_star.text! += String(time)
+        self.label_1_star.text! = String(time)
     }
     
     func set_player_time(time: Double) {
         //format the counter time the player took to one decimal place
-        self.time_label.text! += String(parentRef.counter.format(f: ".1"))
+        self.time_label.text! = String(parentRef.counter.format(f: ".1"))
     }
     
     

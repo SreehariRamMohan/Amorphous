@@ -25,6 +25,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
     var next_level_label: UILabel!
     var button_next_level: UIButton!
     var button_hint: UIButton!
+    var current_level_label: SKLabelNode!
     
     //Bitmask Constants for the Player
     let ICE_COLLISION_BITMASK = CollisionManager.ICE_COLLISION_BITMASK
@@ -146,7 +147,6 @@ class Level: SKScene, SKPhysicsContactDelegate {
         Level.dataManager = DataManager()
         for element in Level.dataManager.getScores() {
             Level.starsReceived.append(element.getScore())
-            print("Here")
             print(element.getScore())
         }
         
@@ -155,7 +155,32 @@ class Level: SKScene, SKPhysicsContactDelegate {
         Answers.logLevelStart("Level \(LevelSelect.current_level)",
                               customAttributes: [:])
         
+    }
+    
+    func displayCurrentLevel() {
+        //display the current level on the screen for the player briefly.
+        current_level_label = SKLabelNode()
+        //set its text to display the current level
+        current_level_label.text = "Level \(LevelSelect.current_level)"
+        current_level_label.zPosition = 5
+        current_level_label.fontSize = 40
+        current_level_label.fontName = "Gill Sans Bold"
+        current_level_label.position = CGPoint(x: currentPlayer.position.x, y: currentPlayer.position.y)
+        addChild(current_level_label)
+        current_level_label.isHidden = true
         
+        let showAction = SKAction.run({ [weak self] in
+            self?.current_level_label.isHidden = false
+        })
+        
+        let waitAction = SKAction.wait(forDuration: 1)
+        
+        let removeAction = SKAction.run({ [weak self] in
+            self?.current_level_label.removeFromParent()
+        })
+        
+        let sequence = SKAction.sequence([showAction, waitAction, removeAction])
+        self.run(sequence)
     }
     
     func saveStarData() {
@@ -191,6 +216,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
     
     func setPlayer(player: Player) {
         self.currentPlayer = player
+        
+        //display the current player after the player has been initialized so we can put the label at the location of the player.
+        displayCurrentLevel()
     }
     
     
@@ -392,9 +420,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
         scene.scaleMode = .aspectFit
         
         /* Show debug */
-        skView.showsPhysics = true
-        skView.showsDrawCount = true
-        skView.showsFPS = true
+        skView.showsPhysics = false
+        skView.showsDrawCount = false
+        skView.showsFPS = false
         
         /* Start level select and hide buttons and labels that don't belong in level select*/
         hideYouLoseLabel()
@@ -922,9 +950,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
         scene.scaleMode = .aspectFit
         
         /* Show debug */
-        skView.showsPhysics = true
-        skView.showsDrawCount = true
-        skView.showsFPS = true
+        skView.showsPhysics = false
+        skView.showsDrawCount = false
+        skView.showsFPS = false
         
         /* Start game scene */
         skView.presentScene(scene)

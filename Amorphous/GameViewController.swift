@@ -23,12 +23,14 @@ class GameViewController: UIViewController {
                 
                 // Present the scene
                 view.presentScene(scene)
+                view.showsPhysics = false
             }
             
             view.ignoresSiblingOrder = true
             
-            view.showsFPS = true
-            view.showsNodeCount = true
+            view.showsFPS = false
+            view.showsDrawCount = false
+            view.showsNodeCount = false
         }
     }
 

@@ -72,7 +72,6 @@ class LevelSelect3: LevelSelect {
     }
     
     override func updateStarReferences() {
-        print("__________Updating stars____________")
         for i in 20..<25 {
             chapter_3_star_references.append(self.childNode(withName: "stars_level_\(i + 1)") as! SKReferenceNode)
             var star_object = chapter_3_star_references[i-20].childNode(withName: ".//star_background") as! LevelSelectStars
@@ -80,7 +79,6 @@ class LevelSelect3: LevelSelect {
             //set the stars on the screen to the stars that the player has earned. These stars will be present in the array.
             if(i <= Level.starsReceived.count) {
                 let stars_received_on_level_i = Level.starsReceived[i]
-                print(stars_received_on_level_i)
                 if(stars_received_on_level_i == 0) {
                     star_object.set_no_stars()
                 } else if(stars_received_on_level_i == 1) {

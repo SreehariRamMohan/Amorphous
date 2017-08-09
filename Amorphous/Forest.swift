@@ -260,7 +260,6 @@ class Forest: SKScene {
         for element in array {
             self.addChild(element)
             element.position = CGPoint(x: element.getX(), y: element.getY())
-            print("added to screen")
         }
         
         
@@ -387,9 +386,9 @@ class Forest: SKScene {
         scene.scaleMode = .aspectFit
         
         /* Show debug */
-        skView.showsPhysics = true
-        skView.showsDrawCount = true
-        skView.showsFPS = true
+        skView.showsPhysics = false
+        skView.showsDrawCount = false
+        skView.showsFPS = false
         
         /* Start game scene */
         skView.presentScene(scene)
@@ -433,6 +432,9 @@ class Forest: SKScene {
     }
     
     func destroyBuyFragment() {
+        if(self.plant_page_sprite == nil) {
+            return
+        }
         if(self.plant_page_sprite.plantsPageReference != nil) {
             self.plant_page_sprite.plantsPageReference.removeFromParent()
         }
