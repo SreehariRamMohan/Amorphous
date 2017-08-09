@@ -64,13 +64,13 @@ class LevelSummary: SKSpriteNode {
     }
     
     func setButtonCallbacks() {
-        button_retry.selectedHandler = {
+        button_retry.selectedHandler = { [weak self] in
             print("restarting level")
             
             //remove buttons from the screen to prevent buildup of buttons and memory leaks
-            self.parentRef.removeButtons()
+            self?.parentRef.removeButtons()
             
-            guard let skView = self.parentRef.view as SKView! else{
+            guard let skView = self?.parentRef.view as SKView! else{
                 print("Could not get Skview")
                 return
             }
@@ -82,9 +82,9 @@ class LevelSummary: SKSpriteNode {
             skView.presentScene(scene)
         }
         
-        button_onward.selectedHandler = {
+        button_onward.selectedHandler = { [weak self] in
             //insert code to go to the next level
-            self.parentRef.gotToNextLevel()
+            self?.parentRef.gotToNextLevel()
         }
     }
     

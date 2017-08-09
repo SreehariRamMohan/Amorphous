@@ -209,14 +209,51 @@ class Level: SKScene, SKPhysicsContactDelegate {
             }
         }
         
-        //Loop over all of the children recursively which have name Sponge and call their update functions.
-        self.enumerateChildNodes(withName: "//Sponge") {
-            [weak self] node, stop in
-            let Sponge = node as! Sponge
-            // calling the sponge's update functions
-            Sponge.update()
-        }
         
+        self.enumerateChildNodes(withName: "//*") {
+            [weak self] node, stop in
+            if(node.name == "horizontal_platform") {
+                let platform = node as! HorizontalMovingPlatform
+                if(!(self?.hasPassedHorizontalReference)!) {
+                    platform.passParentReference(parent: self!)
+                }
+                platform.update()
+            } else if(node.name == "vertical_platform") {
+                let platform = node as! VerticalMovingPlatform
+                if(!(self?.hasPassedVerticalReference)!) {
+                    platform.passParentReference(parent: self!)
+                }
+                platform.update()
+            } else if(node.name == "falling_block_sprite") {
+                let BlockSprite = node as! FallingBlock
+                
+                //create a spring joint to the ceiling
+                if(!(self?.createdSpringJoint)!) {
+                    let spring = SKPhysicsJointSpring.joint(withBodyA: BlockSprite.physicsBody!,
+                                                            bodyB: (self?.ceiling.physicsBody!)!,
+                                                            anchorA: BlockSprite.convert(CGPoint(x: 0, y: 0), to: self!),
+                                                            anchorB: CGPoint(x: BlockSprite.convert(CGPoint(x: 0, y: 0), to: self!).x, y: (self?.ceiling.position.y)!))
+                    print(self?.ceiling.position)
+                    spring.frequency = 0.5
+                    spring.damping = 0.01
+                    self?.scene?.physicsWorld.add(spring)
+                }
+                    
+                else if(abs(BlockSprite.convert(CGPoint(x: 0,y: 0), to: self!).x-(self?.currentPlayer.position.x)!) < 8 ){
+                    // calling the Block's fall functions
+                    BlockSprite.fall()
+                }
+
+            }
+            
+        }
+        self.hasPassedHorizontalReference = true
+        self.hasPassedVerticalReference = true
+        self.createdSpringJoint = true
+
+        
+        
+        /*
         //Loop over all of the horizontal platforms and call their update methods to allow them to move.
         self.enumerateChildNodes(withName: "//horizontal_platform") {
             [weak self] node, stop in
@@ -262,7 +299,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
             }
         }
         self.createdSpringJoint = true
-        
+        */
         
         
         if(self.touchingWater > 0) {
@@ -628,7 +665,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
             
             currentPlayer.setMass(mass: 0.99*currentPlayer.getMass())
             /* Create a CLOSURE to safely execute water shrinking after the physics engine has finished rendering the frame so the code doesn't crash */
-            let scalePhysicsBody = SKAction.run({
+            let scalePhysicsBody = SKAction.run({ [unowned self] in
                 /* Scale the currentPlayer.physics body in the scene */
                 //reset the physics body after scaling main character down
                 let currSize = self.currentPlayer.texture!.size()

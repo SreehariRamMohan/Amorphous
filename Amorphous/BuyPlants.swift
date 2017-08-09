@@ -72,7 +72,7 @@ class BuyPlants: SKSpriteNode, SKPhysicsContactDelegate {
         
         let path = Bundle.main.path(forResource: "PlantsPage", ofType: "sks")
         let fragment = SKReferenceNode(url: URL (fileURLWithPath: path!))
-        fragment.position = CGPoint(x:0 , y:0)
+        fragment.position = CGPoint(x:parentRef.forest_camera.position.x , y:parentRef.forest_camera.position.y)
         
         //fragment.setScale(0.5)
         let plantsPage = fragment.childNode(withName: "//PlantsPage") as! PlantsPage

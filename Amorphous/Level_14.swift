@@ -52,8 +52,8 @@ class Level_14: Level {
                 //the player is far below the screen, display the restart button
                 showRestartButton()
             }
-            let y = clamp(value: currentPlayer.position.y, lower: UIScreen.main.bounds.width/4, upper: 5*UIScreen.main.bounds.width)
-            let x = clamp(value: currentPlayer.position.x, lower: (UIScreen.main.bounds.height)/2 + 100 , upper: (7*(UIScreen.main.bounds.height/2) + 190))
+            let y = clamp(value: currentPlayer.position.y, lower: UIScreen.main.bounds.width/4, upper: 1*UIScreen.main.bounds.width)
+            let x = clamp(value: currentPlayer.position.x, lower: (UIScreen.main.bounds.height)/2 + 100 , upper: (4*(UIScreen.main.bounds.height/2)))
             //clamp with level 1 dimensions in mind
             cameraNode.position.x = x
             cameraNode.position.y = y

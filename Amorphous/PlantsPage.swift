@@ -61,20 +61,21 @@ class PlantsPage: SKSpriteNode {
     }
     
     func setOptionButtonCallbacks() {
-        option_1_button.selectedHandler = {
+        option_1_button.selectedHandler = { [weak self] in
             print("Option button 1 pressed")
             
-            if(Forest.num_water_bottles < self.cost_for_option_1) {
-                self.showBadBalance()
+            if(Forest.num_water_bottles < (self?.cost_for_option_1)!
+                ) {
+                self?.showBadBalance()
             } else {
                 
                 //subtract the cost of the plant from the number of water bottles that the player has so we can update their remaining balance when we go back to the forest activity
-                self.forestReference.forestDataManager.addBottleData(numBottles: Int(self.forestReference.forestDataManager.getBottles().getNumberOfBottles()) - Int(self.cost_for_option_1))
+                self?.forestReference.forestDataManager.addBottleData(numBottles: Int((self?.forestReference.forestDataManager.getBottles().getNumberOfBottles())!) - Int((self?.cost_for_option_1)!))
 
-                self.forestReference.startPlantingProcess(type: 1)
+                self?.forestReference.startPlantingProcess(type: 1)
                 
                 //remove the buying screen after we have decided which plant we want to buy
-                self.forestReference.destroyBuyFragment()
+                self?.forestReference.destroyBuyFragment()
                 
                 //BELOW NOT WORKING WILL FIX
                 //self.forestReference.forestDataManager.addBottleData(numBottles: Forest.num_water_bottles)
@@ -83,80 +84,80 @@ class PlantsPage: SKSpriteNode {
 
         }
         
-        option_2_button.selectedHandler = {
+        option_2_button.selectedHandler = { [weak self] in
             print("Option button 2 pressed")
             
-            if(Forest.num_water_bottles < self.cost_for_option_2) {
-                self.showBadBalance()
+            if(Forest.num_water_bottles < (self?.cost_for_option_2)!) {
+                self?.showBadBalance()
             } else {
                 //subtract the cost of the plant from the number of water bottles that the player has so we can update their remaining balance when we go back to the forest activity
-                self.forestReference.forestDataManager.addBottleData(numBottles: Int(self.forestReference.forestDataManager.getBottles().getNumberOfBottles()) - Int(self.cost_for_option_2))
+                self?.forestReference.forestDataManager.addBottleData(numBottles: Int((self?.forestReference.forestDataManager.getBottles().getNumberOfBottles())!) - Int((self?.cost_for_option_2)!))
                 
-                self.forestReference.startPlantingProcess(type: 2)
+                self?.forestReference.startPlantingProcess(type: 2)
                 
                 //remove the buying screen after we have decided which plant we want to buy
-                self.forestReference.destroyBuyFragment()
+                self?.forestReference.destroyBuyFragment()
             }
         }
         
-        option_3_button.selectedHandler = {
+        option_3_button.selectedHandler = { [weak self] in
             print("Option button 3 pressed")
-            if(Forest.num_water_bottles < self.cost_for_option_3) {
-                self.showBadBalance()
+            if(Forest.num_water_bottles < (self?.cost_for_option_3)!) {
+                self?.showBadBalance()
             } else {
                 //subtract the cost of the plant from the number of water bottles that the player has so we can update their remaining balance when we go back to the forest activity
-                self.forestReference.forestDataManager.addBottleData(numBottles: Int(self.forestReference.forestDataManager.getBottles().getNumberOfBottles()) - Int(self.cost_for_option_3))
+                self?.forestReference.forestDataManager.addBottleData(numBottles: Int((self?.forestReference.forestDataManager.getBottles().getNumberOfBottles())!) - Int((self?.cost_for_option_3)!))
                 
-                self.forestReference.startPlantingProcess(type: 3)
+                self?.forestReference.startPlantingProcess(type: 3)
                 
                
                 //remove the buying screen after we have decided which plant we want to buy
-                self.forestReference.destroyBuyFragment()
+                self?.forestReference.destroyBuyFragment()
             }
         }
         
-        option_4_button.selectedHandler = {
+        option_4_button.selectedHandler = { [weak self] in
             print("Option button 4 pressed")
-            if(Forest.num_water_bottles < self.cost_for_option_4) {
-                self.showBadBalance()
+            if(Forest.num_water_bottles < (self?.cost_for_option_4)!) {
+                self?.showBadBalance()
             } else {
                 //subtract the cost of the plant from the number of water bottles that the player has so we can update their remaining balance when we go back to the forest activity
-                self.forestReference.forestDataManager.addBottleData(numBottles: Int(self.forestReference.forestDataManager.getBottles().getNumberOfBottles()) - Int(self.cost_for_option_4))
+                self?.forestReference.forestDataManager.addBottleData(numBottles: Int((self?.forestReference.forestDataManager.getBottles().getNumberOfBottles())!) - Int((self?.cost_for_option_4)!))
                 
-                self.forestReference.startPlantingProcess(type: 4)
+                self?.forestReference.startPlantingProcess(type: 4)
                 
                 //remove the buying screen after we have decided which plant we want to buy
-                self.forestReference.destroyBuyFragment()
+                self?.forestReference.destroyBuyFragment()
             }
         }
         
-        option_5_button.selectedHandler = {
+        option_5_button.selectedHandler = { [weak self] in
             print("Option button 5 pressed")
-            if(Forest.num_water_bottles < self.cost_for_option_5) {
-                self.showBadBalance()
+            if(Forest.num_water_bottles < (self?.cost_for_option_5)!) {
+                self?.showBadBalance()
             } else {
                 //subtract the cost of the plant from the number of water bottles that the player has so we can update their remaining balance when we go back to the forest activity
-                self.forestReference.forestDataManager.addBottleData(numBottles: Int(self.forestReference.forestDataManager.getBottles().getNumberOfBottles()) - Int(self.cost_for_option_5))
+                self?.forestReference.forestDataManager.addBottleData(numBottles: Int((self?.forestReference.forestDataManager.getBottles().getNumberOfBottles())!) - Int((self?.cost_for_option_5)!))
                 
-                self.forestReference.startPlantingProcess(type: 5)
+                self?.forestReference.startPlantingProcess(type: 5)
                 
                 //remove the buying screen after we have decided which plant we want to buy
-                self.forestReference.destroyBuyFragment()
+                self?.forestReference.destroyBuyFragment()
             }
         }
         
-        option_6_button.selectedHandler = {
+        option_6_button.selectedHandler = { [weak self] in
             print("Option button 6 pressed")
-            if(Forest.num_water_bottles < self.cost_for_option_6) {
-                self.showBadBalance()
+            if(Forest.num_water_bottles < (self?.cost_for_option_6)!) {
+                self?.showBadBalance()
             } else {
                 //subtract the cost of the plant from the number of water bottles that the player has so we can update their remaining balance when we go back to the forest activity
-                self.forestReference.forestDataManager.addBottleData(numBottles: Int(self.forestReference.forestDataManager.getBottles().getNumberOfBottles()) - Int(self.cost_for_option_6))
+                self?.forestReference.forestDataManager.addBottleData(numBottles: Int((self?.forestReference.forestDataManager.getBottles().getNumberOfBottles())!) - Int((self?.cost_for_option_6)!))
                 
-                self.forestReference.startPlantingProcess(type: 6)
+                self?.forestReference.startPlantingProcess(type: 6)
                 
                 //remove the buying screen after we have decided which plant we want to buy
-                self.forestReference.destroyBuyFragment()
+                self?.forestReference.destroyBuyFragment()
             }
         }
     }
