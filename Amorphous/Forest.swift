@@ -225,6 +225,8 @@ class Forest: SKScene {
         
         rescue_water_button.selectedHandler = { [weak self] in
             print("rescuing water")
+            //stop forest audio to prevent audio bleeding. 
+            self?.safelyStopAudio()
             self?.loadLevelSelect()
         }
         
@@ -623,5 +625,12 @@ class Forest: SKScene {
             print(error.description)
         }
     }
-
+    
+    func safelyStopAudio() {
+        //stop the audio once the level has been destroyed.
+        if player != nil {
+            player.stop()
+            player = nil
+        }
+    }
 }

@@ -93,6 +93,11 @@ class Level: SKScene, SKPhysicsContactDelegate {
     //boolean values to prevent spamming of the hint button and lag
     var hasPressedHint: Bool = false
     
+    //Arrays to help perf every frame
+    var array_of_vertical_moving_platforms: [VerticalMovingPlatform] = []
+    var array_of_horizontal_moving_platforms: [HorizontalMovingPlatform] = []
+    var array_of_falling_block: [FallingBlock] = []
+    
     override func didMove(to view: SKView) {
         
         initializeCriticalGameVariables()
@@ -107,6 +112,8 @@ class Level: SKScene, SKPhysicsContactDelegate {
         swipeUp.direction = UISwipeGestureRecognizerDirection.up
         self.view?.addGestureRecognizer(swipeUp)
         
+        
+        /*
         //create a swipe left action
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left
@@ -115,7 +122,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
         //create a swipe right action and pass in respondToSwipeGesture to be called when a swipe is detected
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
-        self.view?.addGestureRecognizer(swipeRight)
+        self.view?.addGestureRecognizer(swipeRight) */
         
         //adds cameraNode to the scene's camera
         self.camera = cameraNode
@@ -155,6 +162,8 @@ class Level: SKScene, SKPhysicsContactDelegate {
         Answers.logLevelStart("Level \(LevelSelect.current_level)",
                               customAttributes: [:])
         
+        
+        initialize_perf_saving_arrays()
     }
     
     func displayCurrentLevel() {
@@ -237,49 +246,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
             }
         }
         
-        
-        self.enumerateChildNodes(withName: "//*") {
-            [weak self] node, stop in
-            if(node.name == "horizontal_platform") {
-                let platform = node as! HorizontalMovingPlatform
-                if(!(self?.hasPassedHorizontalReference)!) {
-                    platform.passParentReference(parent: self!)
-                }
-                platform.update()
-            } else if(node.name == "vertical_platform") {
-                let platform = node as! VerticalMovingPlatform
-                if(!(self?.hasPassedVerticalReference)!) {
-                    platform.passParentReference(parent: self!)
-                }
-                platform.update()
-            } else if(node.name == "falling_block_sprite") {
-                let BlockSprite = node as! FallingBlock
-                
-                //create a spring joint to the ceiling
-                if(!(self?.createdSpringJoint)!) {
-                    let spring = SKPhysicsJointSpring.joint(withBodyA: BlockSprite.physicsBody!,
-                                                            bodyB: (self?.ceiling.physicsBody!)!,
-                                                            anchorA: BlockSprite.convert(CGPoint(x: 0, y: 0), to: self!),
-                                                            anchorB: CGPoint(x: BlockSprite.convert(CGPoint(x: 0, y: 0), to: self!).x, y: (self?.ceiling.position.y)!))
-                    print(self?.ceiling.position)
-                    spring.frequency = 0.5
-                    spring.damping = 0.01
-                    self?.scene?.physicsWorld.add(spring)
-                }
-                    
-                else if(abs(BlockSprite.convert(CGPoint(x: 0,y: 0), to: self!).x-(self?.currentPlayer.position.x)!) < 8 ){
-                    // calling the Block's fall functions
-                    BlockSprite.fall()
-                }
-
-            }
-            
-        }
-        self.hasPassedHorizontalReference = true
-        self.hasPassedVerticalReference = true
-        self.createdSpringJoint = true
-
-        
+        update_obstacles()
         
         /*
         //Loop over all of the horizontal platforms and call their update methods to allow them to move.
@@ -374,6 +341,61 @@ class Level: SKScene, SKPhysicsContactDelegate {
                 currentPlayer.jump()
             default:
                 break
+            }
+        }
+    }
+    
+    func initialize_perf_saving_arrays() {
+        self.enumerateChildNodes(withName: "//*") {
+            [weak self] node, stop in
+            if(node.name == "horizontal_platform") {
+                let platform = node as! HorizontalMovingPlatform
+                if(!(self?.hasPassedHorizontalReference)!) {
+                    platform.passParentReference(parent: self!)
+                }
+                self?.array_of_horizontal_moving_platforms.append(platform)
+            } else if(node.name == "vertical_platform") {
+                let platform = node as! VerticalMovingPlatform
+                if(!(self?.hasPassedVerticalReference)!) {
+                    platform.passParentReference(parent: self!)
+                }
+                self?.array_of_vertical_moving_platforms.append(platform)
+            } else if(node.name == "falling_block_sprite") {
+                let BlockSprite = node as! FallingBlock
+                
+                //create a spring joint to the ceiling
+                if(!(self?.createdSpringJoint)!) {
+                    let spring = SKPhysicsJointSpring.joint(withBodyA: BlockSprite.physicsBody!,
+                                                            bodyB: (self?.ceiling.physicsBody!)!,
+                                                            anchorA: BlockSprite.convert(CGPoint(x: 0, y: 0), to: self!),
+                                                            anchorB: CGPoint(x: BlockSprite.convert(CGPoint(x: 0, y: 0), to: self!).x, y: (self?.ceiling.position.y)!))
+                    print(self?.ceiling.position)
+                    spring.frequency = 0.5
+                    spring.damping = 0.01
+                    self?.scene?.physicsWorld.add(spring)
+                    self?.array_of_falling_block.append(BlockSprite)
+
+                }
+                
+            }
+            
+        }
+        self.hasPassedHorizontalReference = true
+        self.hasPassedVerticalReference = true
+        self.createdSpringJoint = true
+    }
+    
+    func update_obstacles() {
+        for i in self.array_of_vertical_moving_platforms {
+            i.update()
+        }
+        for i in self.array_of_horizontal_moving_platforms {
+            i.update()
+        }
+        for i in self.array_of_falling_block {
+            if(abs(i.convert(CGPoint(x: 0,y: 0), to: self).x-(self.currentPlayer.position.x)) < 8 ){
+                // calling the Block's fall functions
+                i.fall()
             }
         }
     }
