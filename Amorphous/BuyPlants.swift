@@ -92,7 +92,7 @@ class BuyPlants: SKSpriteNode, SKPhysicsContactDelegate {
     func launchCreditsScreen() {
         let skView = self.parentRef.view as SKView!
         guard let scene = Credits(fileNamed:"Credits") as Credits! else { return }
-        scene.scaleMode = .aspectFill
+        scene.scaleMode = .aspectFit
         skView?.presentScene(scene)
     }
     

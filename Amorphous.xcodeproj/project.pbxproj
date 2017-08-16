@@ -151,6 +151,9 @@
 		F7DE95871F3510FE005D9E76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95861F3510FE005D9E76 /* LaunchScreen.storyboard */; };
 		F7DE958A1F351FF6005D9E76 /* switch_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95881F351FF6005D9E76 /* switch_sound.mp3 */; };
 		F7DE958B1F351FF6005D9E76 /* waterReentry.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7DE95891F351FF6005D9E76 /* waterReentry.mp3 */; };
+		F7DED2581F4401DC0023A023 /* Level_26.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7DED2571F4401DC0023A023 /* Level_26.sks */; };
+		F7DED25A1F4402090023A023 /* Level_26.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DED2591F4402090023A023 /* Level_26.swift */; };
+		F7DED25C1F4402820023A023 /* GravityDown.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7DED25B1F4402820023A023 /* GravityDown.sks */; };
 		F7EF5D5D1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7EF5D5C1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks */; };
 		F7EF5D5F1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF5D5E1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift */; };
 		F7F162BC1F21712400BB8F77 /* Level_18.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F162BB1F21712400BB8F77 /* Level_18.swift */; };
@@ -331,6 +334,9 @@
 		F7DE95861F3510FE005D9E76 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7DE95881F351FF6005D9E76 /* switch_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = switch_sound.mp3; sourceTree = "<group>"; };
 		F7DE95891F351FF6005D9E76 /* waterReentry.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = waterReentry.mp3; sourceTree = "<group>"; };
+		F7DED2571F4401DC0023A023 /* Level_26.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_26.sks; sourceTree = "<group>"; };
+		F7DED2591F4402090023A023 /* Level_26.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_26.swift; sourceTree = "<group>"; };
+		F7DED25B1F4402820023A023 /* GravityDown.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GravityDown.sks; sourceTree = "<group>"; };
 		F7EF5D5C1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HorizontalMovingPlatform.sks; sourceTree = "<group>"; };
 		F7EF5D5E1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalMovingPlatform.swift; sourceTree = "<group>"; };
 		F7F162BB1F21712400BB8F77 /* Level_18.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_18.swift; sourceTree = "<group>"; };
@@ -604,6 +610,9 @@
 				F76C41871F13DFB000F84F43 /* LaunchScreen.storyboard */,
 				F76C418A1F13DFB000F84F43 /* Info.plist */,
 				F76C41C91F159C4B00F84F43 /* CharacterActions.sks */,
+				F7DED2571F4401DC0023A023 /* Level_26.sks */,
+				F7DED2591F4402090023A023 /* Level_26.swift */,
+				F7DED25B1F4402820023A023 /* GravityDown.sks */,
 				F7A094401F280D3100A88923 /* Data Persistence */,
 				F7993EE51F2025B000FE430D /* LevelSummary */,
 				F7993ED21F1F378900FE430D /* LevelSelect */,
@@ -1143,6 +1152,7 @@
 				F76C417B1F13DFB000F84F43 /* Forest.sks in Resources */,
 				F7DE955D1F33906F005D9E76 /* Level_Music_13.mp3 in Resources */,
 				F7DE956D1F33979F005D9E76 /* Level_Music_21.mp3 in Resources */,
+				F7DED2581F4401DC0023A023 /* Level_26.sks in Resources */,
 				F7DE956B1F339686005D9E76 /* Level_Music_20.mp3 in Resources */,
 				F76C41AF1F13EB3500F84F43 /* LevelSelect.sks in Resources */,
 				F7DE95871F3510FE005D9E76 /* LaunchScreen.storyboard in Resources */,
@@ -1185,6 +1195,7 @@
 				F7DE95671F339516005D9E76 /* Level_Music_18.mp3 in Resources */,
 				F77F435B1F2278CE00312E78 /* Flame.sks in Resources */,
 				F7DE953F1F3286D5005D9E76 /* Level_Music_1.mp3 in Resources */,
+				F7DED25C1F4402820023A023 /* GravityDown.sks in Resources */,
 				F71A32651F265FC400F80338 /* VerticalMovingPlatform.sks in Resources */,
 				F752B1111F1B29B100FAC328 /* Level_10.sks in Resources */,
 				F71BD4401F1948A40045DC2B /* Level_12.sks in Resources */,
@@ -1432,6 +1443,7 @@
 				F77F436C1F22AFB400312E78 /* Level_3.swift in Sources */,
 				F7993EE21F20221100FE430D /* LevelSummary.swift in Sources */,
 				F71205401F17F39C007DF257 /* Fan.swift in Sources */,
+				F7DED25A1F4402090023A023 /* Level_26.swift in Sources */,
 				F71A32791F26A5D500F80338 /* Level_15.swift in Sources */,
 				F77F43721F22F1C800312E78 /* Level_5.swift in Sources */,
 				F7F162BC1F21712400BB8F77 /* Level_18.swift in Sources */,
