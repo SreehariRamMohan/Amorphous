@@ -21,6 +21,7 @@ class LevelSelect3: LevelSelect {
     var button_level_23: MSButtonNode!
     var button_level_24: MSButtonNode!
     var button_level_25: MSButtonNode!
+    var button_level_26: MSButtonNode!
     
     var chapter_3_star_references: [SKReferenceNode] = []
     
@@ -59,6 +60,8 @@ class LevelSelect3: LevelSelect {
         button_level_24 = self.childNode(withName: "//button_level_24") as! MSButtonNode
         
         button_level_25 = self.childNode(withName: "//button_level_25") as! MSButtonNode
+        
+        button_level_26 = self.childNode(withName: "//button_level_26") as! MSButtonNode
     }
     
     override func initializeStarReferences() {
@@ -135,6 +138,13 @@ class LevelSelect3: LevelSelect {
             //go to level 25
             LevelSelect.current_level = 25
             self?.loadLevel(level: 25)
+        }
+        
+        button_level_26.selectedHandler = { [weak self] in
+            //go to level 26
+            LevelSelect.current_level = 26
+            self?.loadLevel(level: 26)
+            
         }
     }
     

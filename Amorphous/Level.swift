@@ -894,6 +894,12 @@ class Level: SKScene, SKPhysicsContactDelegate {
             
             
         }
+        
+        if(contactA.categoryBitMask == UInt32(CollisionManager.GRAVITY_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.GRAVITY_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK) ) {
+            
+            print("Collision detected between gravity wall and ice.")
+            self.physicsWorld.gravity.dy = self.physicsWorld.gravity.dy * CGFloat(-1)
+        }
     }
     
     func didEnd(_ contact: SKPhysicsContact) {

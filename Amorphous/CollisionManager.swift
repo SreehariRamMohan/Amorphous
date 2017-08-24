@@ -77,4 +77,19 @@ class CollisionManager {
     static let FLAME_CATEGORY_BITMASK = 8192
     static let FLAME_COLLISION_BITMASK = 0
     static let FLAME_CONTACT_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.WATER_CATEGORY_BITMASK
+    
+    //Gravity Down Bitmask Constants
+    static let GRAVITY_CATEGORY_BITMASK = 16384
+    static let GRAVITY_COLLISION_BITMASK = 0
+    static let GRAVITY_CONTACT_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.WATER_CONTACT_BITMASK + CollisionManager.GAS_CATEGORY_BITMASK
+    
+    //Gravity Up Bitmask Constants
+    static let ANTI_GRAVITY_CATEGORY_BITMASK = 32768
+    static let ANTI_GRAVITY_COLLISION_BITMASK = 0
+    static let ANTI_GRAVITY_CONTACT_BITMASK = CollisionManager.ICE_CATEGORY_BITMASK + CollisionManager.WATER_CONTACT_BITMASK + CollisionManager.GAS_CATEGORY_BITMASK
+    
+    
+    
+
 }
+

@@ -154,6 +154,7 @@
 		F7DED2581F4401DC0023A023 /* Level_26.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7DED2571F4401DC0023A023 /* Level_26.sks */; };
 		F7DED25A1F4402090023A023 /* Level_26.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DED2591F4402090023A023 /* Level_26.swift */; };
 		F7DED25C1F4402820023A023 /* GravityDown.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7DED25B1F4402820023A023 /* GravityDown.sks */; };
+		F7DED25E1F4E9BB90023A023 /* GravityUp.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7DED25D1F4E9BB90023A023 /* GravityUp.sks */; };
 		F7EF5D5D1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7EF5D5C1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks */; };
 		F7EF5D5F1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF5D5E1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift */; };
 		F7F162BC1F21712400BB8F77 /* Level_18.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F162BB1F21712400BB8F77 /* Level_18.swift */; };
@@ -337,6 +338,7 @@
 		F7DED2571F4401DC0023A023 /* Level_26.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_26.sks; sourceTree = "<group>"; };
 		F7DED2591F4402090023A023 /* Level_26.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_26.swift; sourceTree = "<group>"; };
 		F7DED25B1F4402820023A023 /* GravityDown.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GravityDown.sks; sourceTree = "<group>"; };
+		F7DED25D1F4E9BB90023A023 /* GravityUp.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GravityUp.sks; sourceTree = "<group>"; };
 		F7EF5D5C1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HorizontalMovingPlatform.sks; sourceTree = "<group>"; };
 		F7EF5D5E1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalMovingPlatform.swift; sourceTree = "<group>"; };
 		F7F162BB1F21712400BB8F77 /* Level_18.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_18.swift; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 				F7DED2571F4401DC0023A023 /* Level_26.sks */,
 				F7DED2591F4402090023A023 /* Level_26.swift */,
 				F7DED25B1F4402820023A023 /* GravityDown.sks */,
+				F7DED25D1F4E9BB90023A023 /* GravityUp.sks */,
 				F7A094401F280D3100A88923 /* Data Persistence */,
 				F7993EE51F2025B000FE430D /* LevelSummary */,
 				F7993ED21F1F378900FE430D /* LevelSelect */,
@@ -1168,6 +1171,7 @@
 				F7DE95531F338A88005D9E76 /* Level_Music_9.mp3 in Resources */,
 				F76C41CC1F159CA100F84F43 /* SpongeSuck.sks in Resources */,
 				F71A327B1F26A5E400F80338 /* Level_15.sks in Resources */,
+				F7DED25E1F4E9BB90023A023 /* GravityUp.sks in Resources */,
 				F7A094351F27F36D00A88923 /* Level_19.sks in Resources */,
 				F752B1151F1B307700FAC328 /* Water.sks in Resources */,
 				F7DE955F1F33914D005D9E76 /* Level_Music_14.mp3 in Resources */,
