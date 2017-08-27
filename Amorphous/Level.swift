@@ -225,6 +225,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
     
     func setPlayer(player: Player) {
         self.currentPlayer = player
+        self.currentPlayer.set_physics_body(physicsBody: self.physicsWorld)
         
         //display the current player after the player has been initialized so we can put the label at the location of the player.
         displayCurrentLevel()
@@ -325,24 +326,42 @@ class Level: SKScene, SKPhysicsContactDelegate {
                     currentPlayer.applyRightImpulse()
                 }
             case UISwipeGestureRecognizerDirection.down:
-                print("Swiped down")
-                if(!canShift) {
-                    return
+                //accounts for a reversal of swipe up/swipe down actions when the gravity is switched.
+                if(self.physicsWorld.gravity.dy < 0) {
+                    downSwipeAction()
+                } else {
+                    upSwipeAction()
                 }
-                if(canMove && canShift) {
-                    currentPlayer.changeState()
-                }
-                self.touchingWater = 0
             case UISwipeGestureRecognizerDirection.left:
                 print("Swiped left")
                 currentPlayer.applyLeftImpulse()
             case UISwipeGestureRecognizerDirection.up:
-                print("Swiped up")
-                currentPlayer.jump()
+                //accounts for a reversal of swipe up/swipe down actions when the gravity is switched.
+                if(self.physicsWorld.gravity.dy < 0) {
+                    upSwipeAction()
+                } else {
+                    downSwipeAction()
+                }
             default:
                 break
             }
         }
+    }
+    
+    func downSwipeAction() {
+        print("Swiped down")
+        if(!canShift) {
+            return
+        }
+        if(canMove && canShift) {
+            currentPlayer.changeState()
+        }
+        self.touchingWater = 0
+    }
+    
+    func upSwipeAction() {
+        print("Swiped up")
+        currentPlayer.jump()
     }
     
     func initialize_perf_saving_arrays() {
@@ -895,10 +914,22 @@ class Level: SKScene, SKPhysicsContactDelegate {
             
         }
         
-        if(contactA.categoryBitMask == UInt32(CollisionManager.GRAVITY_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.GRAVITY_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK) ) {
-            
-            print("Collision detected between gravity wall and ice.")
-            self.physicsWorld.gravity.dy = self.physicsWorld.gravity.dy * CGFloat(-1)
+        if(contactA.categoryBitMask == UInt32(CollisionManager.GRAVITY_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.GRAVITY_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK)
+            ||
+            contactA.categoryBitMask == UInt32(CollisionManager.GRAVITY_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.WATER_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.GRAVITY_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.WATER_CATEGORY_BITMASK)
+            ||
+            contactA.categoryBitMask == UInt32(CollisionManager.GRAVITY_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.GAS_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.GRAVITY_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.GAS_CATEGORY_BITMASK)
+            ) {
+            self.physicsWorld.gravity.dy = -9.8
+        }
+        
+        if(contactA.categoryBitMask == UInt32(CollisionManager.ANTI_GRAVITY_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.ANTI_GRAVITY_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.ICE_CATEGORY_BITMASK)
+            ||
+            contactA.categoryBitMask == UInt32(CollisionManager.ANTI_GRAVITY_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.WATER_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.ANTI_GRAVITY_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.WATER_CATEGORY_BITMASK)
+            ||
+            contactA.categoryBitMask == UInt32(CollisionManager.ANTI_GRAVITY_CATEGORY_BITMASK) && contactB.categoryBitMask == UInt32(CollisionManager.GAS_CATEGORY_BITMASK) || contactB.categoryBitMask == UInt32(CollisionManager.ANTI_GRAVITY_CATEGORY_BITMASK) && contactA.categoryBitMask == UInt32(CollisionManager.GAS_CATEGORY_BITMASK)
+            ) {
+            self.physicsWorld.gravity.dy = 9.8
         }
     }
     

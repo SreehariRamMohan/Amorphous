@@ -17,6 +17,8 @@ class Player: SKSpriteNode {
         case solid = 1, liquid = 2, gas = 3, plasma = 0
     }
     
+    weak var level_physics_body: SKPhysicsWorld!
+    
     var currentState: State!
     let IMPULSE_MAGNITUDE: CGFloat = 70
     let JUMP_MAGNITUDE: CGFloat = 90
@@ -250,7 +252,12 @@ class Player: SKSpriteNode {
     }
     
     func float() {
-        self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 5*sqrt(getMass())))
+        //Make sure to float up in the correct direction, even when gravity is reversed.
+        if(self.level_physics_body.gravity.dy < 0) {
+            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 5*sqrt(getMass())))
+        } else {
+            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -5))
+        }
         
         //The line below can tend to cause some lag
         if(self.preventLagWhenSwitching && (CFAbsoluteTimeGetCurrent() - self.timeAsGas) > 2){
@@ -277,7 +284,15 @@ class Player: SKSpriteNode {
                 self.timeSinceLastJump = CFAbsoluteTimeGetCurrent()
             }
             //acutally perform the jump dependent on the player mass
-            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: JUMP_MAGNITUDE*sqrt(getMass())))
+            
+            //Jump in the right direction, even when gravity is reversed.
+            if(self.level_physics_body.gravity.dy < 0) {
+                self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: JUMP_MAGNITUDE*sqrt(getMass())))
+            } else {
+                self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -1*JUMP_MAGNITUDE*sqrt(getMass())))
+            }
+            
+            
             //increment the amount of jumps the player has taken in a row
             self.currentJumps += 1
 
@@ -321,5 +336,9 @@ class Player: SKSpriteNode {
             self.audio_player.prepareToPlay()
             self.audio_player.play()
         }
+    }
+    
+    func set_physics_body(physicsBody: SKPhysicsWorld) {
+        self.level_physics_body = physicsBody
     }
 }

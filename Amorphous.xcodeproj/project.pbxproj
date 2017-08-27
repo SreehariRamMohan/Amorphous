@@ -555,6 +555,24 @@
 			name = Level_9;
 			sourceTree = "<group>";
 		};
+		F73496061F527EBC004A5387 /* Level_26 */ = {
+			isa = PBXGroup;
+			children = (
+				F7DED2571F4401DC0023A023 /* Level_26.sks */,
+				F7DED2591F4402090023A023 /* Level_26.swift */,
+			);
+			name = Level_26;
+			sourceTree = "<group>";
+		};
+		F73496071F527ECC004A5387 /* GravityShift */ = {
+			isa = PBXGroup;
+			children = (
+				F7DED25B1F4402820023A023 /* GravityDown.sks */,
+				F7DED25D1F4E9BB90023A023 /* GravityUp.sks */,
+			);
+			name = GravityShift;
+			sourceTree = "<group>";
+		};
 		F752B10C1F1B245200FAC328 /* Water */ = {
 			isa = PBXGroup;
 			children = (
@@ -612,10 +630,6 @@
 				F76C41871F13DFB000F84F43 /* LaunchScreen.storyboard */,
 				F76C418A1F13DFB000F84F43 /* Info.plist */,
 				F76C41C91F159C4B00F84F43 /* CharacterActions.sks */,
-				F7DED2571F4401DC0023A023 /* Level_26.sks */,
-				F7DED2591F4402090023A023 /* Level_26.swift */,
-				F7DED25B1F4402820023A023 /* GravityDown.sks */,
-				F7DED25D1F4E9BB90023A023 /* GravityUp.sks */,
 				F7A094401F280D3100A88923 /* Data Persistence */,
 				F7993EE51F2025B000FE430D /* LevelSummary */,
 				F7993ED21F1F378900FE430D /* LevelSelect */,
@@ -667,6 +681,7 @@
 				F7993EE01F1FF3A300FE430D /* FallingBlock */,
 				F7EF5D601F25DC16007BBC40 /* HorizontalMovingPlatform */,
 				F71A32661F266C8E00F80338 /* VerticalMovingPlatform */,
+				F73496071F527ECC004A5387 /* GravityShift */,
 				F76C41C61F15811F00F84F43 /* Window */,
 			);
 			name = Obstacles/Objects;
@@ -885,6 +900,7 @@
 				F7A094531F291CE900A88923 /* Level_23 */,
 				F77F43571F226DC600312E78 /* Level_24 */,
 				F702DEAE1F2948C300ACEED1 /* Level_25 */,
+				F73496061F527EBC004A5387 /* Level_26 */,
 			);
 			name = Chapter_3;
 			sourceTree = "<group>";
