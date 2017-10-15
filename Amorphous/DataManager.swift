@@ -46,7 +46,7 @@ class DataManager {
         
         if(scores == nil || scores.count == 0) {
             //if the array we got back is empty or nil then we need to initialize a new one full of 0's since this is the first time the user is logging in
-            for i in 0..<25 {
+            for i in 0..<Level.NUMBER_OF_TOTAL_LEVELS {
                 print("RUNNING")
                 scores.append(GameData(level: i + 1, scoreForThatLevel: 0))
             }

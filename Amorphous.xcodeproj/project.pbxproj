@@ -155,6 +155,7 @@
 		F7DED25A1F4402090023A023 /* Level_26.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DED2591F4402090023A023 /* Level_26.swift */; };
 		F7DED25C1F4402820023A023 /* GravityDown.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7DED25B1F4402820023A023 /* GravityDown.sks */; };
 		F7DED25E1F4E9BB90023A023 /* GravityUp.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7DED25D1F4E9BB90023A023 /* GravityUp.sks */; };
+		F7EAA57C1F93021D0024C072 /* Level_Music_26.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7EAA57B1F9301000024C072 /* Level_Music_26.mp3 */; };
 		F7EF5D5D1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7EF5D5C1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks */; };
 		F7EF5D5F1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF5D5E1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift */; };
 		F7F162BC1F21712400BB8F77 /* Level_18.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F162BB1F21712400BB8F77 /* Level_18.swift */; };
@@ -339,6 +340,7 @@
 		F7DED2591F4402090023A023 /* Level_26.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_26.swift; sourceTree = "<group>"; };
 		F7DED25B1F4402820023A023 /* GravityDown.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GravityDown.sks; sourceTree = "<group>"; };
 		F7DED25D1F4E9BB90023A023 /* GravityUp.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GravityUp.sks; sourceTree = "<group>"; };
+		F7EAA57B1F9301000024C072 /* Level_Music_26.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Level_Music_26.mp3; sourceTree = "<group>"; };
 		F7EF5D5C1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HorizontalMovingPlatform.sks; sourceTree = "<group>"; };
 		F7EF5D5E1F25DB2C007BBC40 /* HorizontalMovingPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalMovingPlatform.swift; sourceTree = "<group>"; };
 		F7F162BB1F21712400BB8F77 /* Level_18.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_18.swift; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 				F76C41AC1F13E67400F84F43 /* MSButtonNode.swift */,
 				F76C41801F13DFB000F84F43 /* GameViewController.swift */,
 				F76C41B71F14057E00F84F43 /* Level.swift */,
+				F7EAA57B1F9301000024C072 /* Level_Music_26.mp3 */,
 				F76C41B91F141DE800F84F43 /* Player.swift */,
 				F76C41C71F1597C600F84F43 /* CollisionManager.swift */,
 				F76C41821F13DFB000F84F43 /* Main.storyboard */,
@@ -1156,6 +1159,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7EAA57C1F93021D0024C072 /* Level_Music_26.mp3 in Resources */,
 				F71A32761F269CD000F80338 /* Level_14.sks in Resources */,
 				F7EF5D5D1F25DB1B007BBC40 /* HorizontalMovingPlatform.sks in Resources */,
 				F7DE95771F339BC9005D9E76 /* Level_Music_25.mp3 in Resources */,

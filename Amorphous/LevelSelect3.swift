@@ -65,7 +65,7 @@ class LevelSelect3: LevelSelect {
     }
     
     override func initializeStarReferences() {
-        for i in 20..<25 {
+        for i in 20..<26 { //26 represents the upper limit for the number of level's shown on the screen
             chapter_3_star_references.append(self.childNode(withName: "stars_level_\(i + 1)") as! SKReferenceNode)
             var star_object = chapter_3_star_references[i-20].childNode(withName: ".//star_background") as! LevelSelectStars
             star_object.initializeStars()
@@ -75,7 +75,7 @@ class LevelSelect3: LevelSelect {
     }
     
     override func updateStarReferences() {
-        for i in 20..<25 {
+        for i in 20..<26 { //26 represents the upper limit for the number of level's shown on the screen
             chapter_3_star_references.append(self.childNode(withName: "stars_level_\(i + 1)") as! SKReferenceNode)
             var star_object = chapter_3_star_references[i-20].childNode(withName: ".//star_background") as! LevelSelectStars
             star_object.initializeStars()
