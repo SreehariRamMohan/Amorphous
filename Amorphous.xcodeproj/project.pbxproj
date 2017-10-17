@@ -15,6 +15,8 @@
 		F702DEB31F2A8D9600ACEED1 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F702DEB21F2A8D9600ACEED1 /* Plant.swift */; };
 		F702DEB51F2AACF100ACEED1 /* WaterBottleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F702DEB41F2AACF100ACEED1 /* WaterBottleData.swift */; };
 		F702DEB71F2BA93F00ACEED1 /* ForestDataPlant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F702DEB61F2BA93F00ACEED1 /* ForestDataPlant.swift */; };
+		F70AA25C1F957FA90084C8EB /* Level_27.sks in Resources */ = {isa = PBXBuildFile; fileRef = F70AA25A1F957EA90084C8EB /* Level_27.sks */; };
+		F70AA25D1F957FAF0084C8EB /* Level_27.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70AA25B1F957EAF0084C8EB /* Level_27.swift */; };
 		F7101A3F1F1D833B002C8367 /* Level_22.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7101A3E1F1D833B002C8367 /* Level_22.sks */; };
 		F7101A411F1D8350002C8367 /* Level_22.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7101A401F1D8350002C8367 /* Level_22.swift */; };
 		F71205311F17D9DC007DF257 /* Spikes.sks in Resources */ = {isa = PBXBuildFile; fileRef = F71205301F17D9DC007DF257 /* Spikes.sks */; };
@@ -193,6 +195,8 @@
 		F702DEB21F2A8D9600ACEED1 /* Plant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		F702DEB41F2AACF100ACEED1 /* WaterBottleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterBottleData.swift; sourceTree = "<group>"; };
 		F702DEB61F2BA93F00ACEED1 /* ForestDataPlant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForestDataPlant.swift; sourceTree = "<group>"; };
+		F70AA25A1F957EA90084C8EB /* Level_27.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_27.sks; sourceTree = "<group>"; };
+		F70AA25B1F957EAF0084C8EB /* Level_27.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level_27.swift; sourceTree = "<group>"; };
 		F7101A3E1F1D833B002C8367 /* Level_22.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_22.sks; sourceTree = "<group>"; };
 		F7101A401F1D8350002C8367 /* Level_22.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level_22.swift; sourceTree = "<group>"; };
 		F71205301F17D9DC007DF257 /* Spikes.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spikes.sks; sourceTree = "<group>"; };
@@ -904,6 +908,7 @@
 				F77F43571F226DC600312E78 /* Level_24 */,
 				F702DEAE1F2948C300ACEED1 /* Level_25 */,
 				F73496061F527EBC004A5387 /* Level_26 */,
+				F7EDA3001F957C3000DD891B /* Level_27 */,
 			);
 			name = Chapter_3;
 			sourceTree = "<group>";
@@ -1014,6 +1019,15 @@
 				F7DE95841F34E2A6005D9E76 /* water.wav */,
 			);
 			name = Effects;
+			sourceTree = "<group>";
+		};
+		F7EDA3001F957C3000DD891B /* Level_27 */ = {
+			isa = PBXGroup;
+			children = (
+				F70AA25A1F957EA90084C8EB /* Level_27.sks */,
+				F70AA25B1F957EAF0084C8EB /* Level_27.swift */,
+			);
+			name = Level_27;
 			sourceTree = "<group>";
 		};
 		F7EF5D601F25DC16007BBC40 /* HorizontalMovingPlatform */ = {
@@ -1234,6 +1248,7 @@
 				F7DE958A1F351FF6005D9E76 /* switch_sound.mp3 in Resources */,
 				F71BD43B1F1941DC0045DC2B /* OilSpill_Right.sks in Resources */,
 				F7993EDE1F1FD20C00FE430D /* Level_66.sks in Resources */,
+				F70AA25C1F957FA90084C8EB /* Level_27.sks in Resources */,
 				F7DD4D841F1EC9A00024687B /* PlantsPage.sks in Resources */,
 				F77F43641F22A8DF00312E78 /* Level_1.sks in Resources */,
 				F7993ED41F1F37D300FE430D /* LevelSelect2.sks in Resources */,
@@ -1449,6 +1464,7 @@
 				F76C41C81F1597C600F84F43 /* CollisionManager.swift in Sources */,
 				F77F43671F22AD0800312E78 /* Level_2.swift in Sources */,
 				F7993EDC1F1FD13E00FE430D /* Level_66.swift in Sources */,
+				F70AA25D1F957FAF0084C8EB /* Level_27.swift in Sources */,
 				F7AC5D4A1F27B6E700E6D18A /* Level_17.swift in Sources */,
 				F7993ED81F1FC77700FE430D /* FallingBlock.swift in Sources */,
 				F752B10B1F1B244600FAC328 /* Water.swift in Sources */,
