@@ -23,6 +23,7 @@ class LevelSelect3: LevelSelect {
     var button_level_25: MSButtonNode!
     var button_level_26: MSButtonNode!
     var button_level_27: MSButtonNode!
+    var button_level_28: MSButtonNode!
     
     var chapter_3_star_references: [SKReferenceNode] = []
     
@@ -65,10 +66,12 @@ class LevelSelect3: LevelSelect {
         button_level_26 = self.childNode(withName: "//button_level_26") as! MSButtonNode
         
         button_level_27 = self.childNode(withName: "//button_level_27") as! MSButtonNode
+        
+        button_level_28 = self.childNode(withName: "//button_level_28") as! MSButtonNode
     }
     
     override func initializeStarReferences() {
-        for i in 20..<26 { //26 represents the upper limit for the number of level's shown on the screen
+        for i in 20..<27 { //27 represents the upper limit for the number of level's shown on the screen
             chapter_3_star_references.append(self.childNode(withName: "stars_level_\(i + 1)") as! SKReferenceNode)
             var star_object = chapter_3_star_references[i-20].childNode(withName: ".//star_background") as! LevelSelectStars
             star_object.initializeStars()
@@ -78,7 +81,7 @@ class LevelSelect3: LevelSelect {
     }
     
     override func updateStarReferences() {
-        for i in 20..<26 { //26 represents the upper limit for the number of level's shown on the screen
+        for i in 20..<27 { //27 represents the upper limit for the number of level's shown on the screen
             chapter_3_star_references.append(self.childNode(withName: "stars_level_\(i + 1)") as! SKReferenceNode)
             var star_object = chapter_3_star_references[i-20].childNode(withName: ".//star_background") as! LevelSelectStars
             star_object.initializeStars()
@@ -154,6 +157,12 @@ class LevelSelect3: LevelSelect {
             //go to level 27
             LevelSelect.current_level = 27
             self?.loadLevel(level: 27)
+        }
+        
+        button_level_28.selectedHandler = { [weak self] in
+            //go to level 28
+            LevelSelect.current_level = 28
+            self?.loadLevel(level: 28)
         }
     }
     

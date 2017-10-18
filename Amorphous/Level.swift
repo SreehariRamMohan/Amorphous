@@ -14,7 +14,7 @@ import Crashlytics
 class Level: SKScene, SKPhysicsContactDelegate {
     
     //Number of total levels that I have created
-    static let NUMBER_OF_TOTAL_LEVELS: Int = 26
+    static let NUMBER_OF_TOTAL_LEVELS: Int = 27
     
     //a reference to the current player, value will be reassigned at the start of each Level
     var currentPlayer: Player!
