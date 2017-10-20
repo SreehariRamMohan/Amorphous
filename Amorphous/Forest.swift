@@ -123,7 +123,13 @@ class Forest: SKScene {
         } else {
             //make sure that all of the other buttons are still able to be shown.
             planting_instructions_label.isHidden = true
-            plant_button.isHidden = false
+            let userDefaults = UserDefaults.standard
+            if(userDefaults.bool(forKey: "HasFinishedTutorial")) {
+                
+                plant_button.isHidden = false
+            } else {
+                plant_button.isHidden = true
+            }
             rescue_water_button.isHidden = false
         }
     }
@@ -534,8 +540,6 @@ class Forest: SKScene {
         } else {
             print("Skipping the tutorial")
         }
-        //ensure that they won't do the tutorial again
-        userDefaults.set(true, forKey: "HasFinishedTutorial")
         
     }
     
@@ -564,6 +568,9 @@ class Forest: SKScene {
         
         //tutorial messages
         
+        //make sure the user can't hit shop while the tutorial is running.
+        self.plant_button.isHidden = true
+        
         let welcomeMessage = createSKAction(fontSize: 40, text: "Welcome to Amorphous")
 
         let goal = createSKAction(fontSize: 16, text: "The goal of Amorphous is really simple...")
@@ -590,9 +597,18 @@ class Forest: SKScene {
             self.tutorial_label.removeFromParent()
         })
         
-        let sequence = SKAction.sequence([welcomeMessage, long_wait, goal, long_wait, goalDescription, long_wait, watering_warning, long_wait, how_to_get_water, long_wait, where_money_is_located, long_wait, where_to_buy_stuff, long_wait, option_1, long_wait, option_2, long_wait, good_luck, long_wait, remove])
+        let showShopButton = SKAction.run({
+            self.plant_button.isHidden = false
+            //ensure that they won't do the tutorial again
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(true, forKey: "HasFinishedTutorial")
+        })
+        
+        let sequence = SKAction.sequence([welcomeMessage, long_wait, goal, long_wait, goalDescription, long_wait, watering_warning, long_wait, how_to_get_water, long_wait, where_money_is_located, long_wait, where_to_buy_stuff, long_wait, option_1, long_wait, option_2, long_wait, good_luck, long_wait, remove, showShopButton])
         
         self.run(sequence)
+        
+        
     }
     
     func createSKAction(fontSize: Int, text: String) -> SKAction {

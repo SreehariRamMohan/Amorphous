@@ -14,7 +14,7 @@ import Crashlytics
 class Level: SKScene, SKPhysicsContactDelegate {
     
     //Number of total levels that I have created
-    static let NUMBER_OF_TOTAL_LEVELS: Int = 27
+    static let NUMBER_OF_TOTAL_LEVELS: Int = 30
     
     //a reference to the current player, value will be reassigned at the start of each Level
     var currentPlayer: Player!
@@ -76,7 +76,15 @@ class Level: SKScene, SKPhysicsContactDelegate {
     var audio_player: AVAudioPlayer!
     
     //goals for levels, which an array of tuples.
-    var goals: [(Double, Double, Double)] = [(0.6, 3, 4), (3.1, 5.1, 7.5),(6.1, 8, 10),(13.7, 15, 18),(6.8, 9.5, 11),(8.3, 9.7, 10.7),(12, 15.4, 19.6),(12.3, 14.2, 16.3),(16.5, 19.2, 22.3),(11.3, 12.7, 13.5),(16.8, 17.2, 18.5),(12.8, 14.3, 15),(14.5, 16, 18),(21, 22.9, 25),(27, 29, 30.5),(14.8, 15.4, 16),(29, 30.6, 31),(4.4, 9.3, 10.2),(30, 32, 33),(28.5, 29.3, 31),(10.6, 11.5, 12),(15.1, 16.3, 17.4),(30, 36, 39),(30, 30.5, 33),(55, 57, 62), (1.7, 2.3, 2.4), (999, 999, 999), (999, 999, 999), (999, 999, 999)]
+    var goals: [(Double, Double, Double)] = [(0.6, 3, 4), (3.1, 5.1, 7.5),(6.1, 8, 10),(13.7, 15, 18),(6.8, 9.5, 11),(8.3, 9.7, 10.7),(12, 15.4, 19.6),(12.3, 14.2, 16.3),(16.5, 19.2, 22.3),(11.3, 12.7, 13.5),(16.8, 17.2, 18.5),(12.8, 14.3, 15),(14.5, 16, 18),(21, 22.9, 25),(27, 29, 30.5),(14.8, 15.4, 16),(29, 30.6, 31),(4.4, 9.3, 10.2),(30, 32, 33),(28.5, 29.3, 31),(10.6, 11.5, 12),(15.1, 16.3, 17.4),(30, 36, 39),(30, 30.5, 33),(55, 57, 62),
+         (1.7, 2.3, 2.4), //level 26
+        (3.2, 3.3, 3.5), //level 27
+         (5.3, 6.5, 7), //level 28
+         (9.5, 9.9, 10.2), //level 29
+         (24.2, 26, 31), //level 30
+         (999, 999, 999), (999, 999, 999), (999, 999, 999), (999, 999, 999), (999, 999, 999), (999, 999, 999), (999, 999, 999), (999, 999, 999), (999, 999, 999), (999, 999, 999)]
+    
+    
     //this is the number of stars the user has received latest. This is a number from 0(for no stars) to 3(all stars).
     static var starsReceived: [Int] = []
     static var dataManager: DataManager!

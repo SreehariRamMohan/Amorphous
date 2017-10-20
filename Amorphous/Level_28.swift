@@ -19,8 +19,13 @@ class Level_28: Level {
         super.didMove(to: view)
         initialize_variables()
         
+        //level 28 has more obstacles which fall from the ceiling, so we need to zoom the camera out in order for the player to be able to see them
+        let zoomInAction = SKAction.scale(to: 2, duration: 0)
+        print("ZOOMED")
+        cameraNode.run(zoomInAction)
+        
         //play the correct sound
-        playSound(nameOfFile: "Level_Music_26", type: "mp3")
+        playSound(nameOfFile: "Level_Music_28", type: "mp3")
     }
     
     

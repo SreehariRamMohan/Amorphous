@@ -8,7 +8,7 @@
 
 import Foundation
 import SpriteKit
-class Level_29: Level {
+class Level_30: Level {
     
     //player variable
     var player: Player!
@@ -19,13 +19,13 @@ class Level_29: Level {
         super.didMove(to: view)
         initialize_variables()
         
-        //level 29 has more obstacles which fall from the ceiling, so we need to zoom the camera out in order for the player to be able to see them
-        let zoomInAction = SKAction.scale(to: 2, duration: 0)
+        //level 30 has more obstacles which fall from the ceiling, so we need to zoom the camera out in order for the player to be able to see them
+        let zoomInAction = SKAction.scale(to: 3, duration: 0)
+        print("ZOOMED")
         cameraNode.run(zoomInAction)
         
-        
         //play the correct sound
-        playSound(nameOfFile: "Level_Music_29", type: "mp3")
+        playSound(nameOfFile: "Level_Music_30", type: "mp3")
     }
     
     
@@ -36,7 +36,7 @@ class Level_29: Level {
         //tell Level who the player is
         self.setPlayer(player: player)
         
-        print("reset the player in level 26")
+        print("reset the player in level 30")
         
         //add player to the world
         addChild(player)
@@ -51,8 +51,8 @@ class Level_29: Level {
                 //the player is far below the screen, display the restart button
                 showRestartButton()
             }
-            let y = clamp(value: currentPlayer.position.y, lower: 20, upper: UIScreen.main.bounds.width/2-10)
-            let x = clamp(value: currentPlayer.position.x, lower: 20 , upper: 4*(UIScreen.main.bounds.height))
+            let y = clamp(value: currentPlayer.position.y, lower: -1.5*UIScreen.main.bounds.height, upper: 6*UIScreen.main.bounds.height)
+            let x = clamp(value: currentPlayer.position.x, lower: -0.5*UIScreen.main.bounds.width , upper: 8*(UIScreen.main.bounds.height))
             //clamp with level 1 dimensions in mind
             cameraNode.position.x = x
             cameraNode.position.y = y
